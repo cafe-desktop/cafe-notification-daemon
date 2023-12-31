@@ -39,12 +39,12 @@ typedef struct
 {
 	gboolean has_arrow;
 
-	GdkPoint point_begin;
-	GdkPoint point_middle;
-	GdkPoint point_end;
+	CdkPoint point_begin;
+	CdkPoint point_middle;
+	CdkPoint point_end;
 
 	int offset;
-	GdkPoint position;
+	CdkPoint position;
 
 } ArrowParameters;
 
@@ -97,7 +97,7 @@ void get_theme_info(char **theme_name, char **theme_ver, char **author,
 CtkWindow* create_notification(UrlClickedCb url_clicked);
 void set_notification_text(CtkWindow *nw, const char *summary,
 			   const char *body);
-void set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf);
+void set_notification_icon(CtkWindow *nw, CdkPixbuf *pixbuf);
 void set_notification_arrow(CtkWidget *nw, gboolean visible, int x, int y);
 void add_notification_action(CtkWindow *nw, const char *text, const char *key,
 			     ActionInvokedCb cb);
@@ -401,9 +401,9 @@ draw_stripe(CtkWidget *widget, WindowData *windata, cairo_t *cr)
 	cairo_clip (cr);
 
 	gdouble  color_mult = 1.0;
-	GdkRGBA  top_color;
-	GdkRGBA  center_color;
-	GdkRGBA  bottom_color;
+	CdkRGBA  top_color;
+	CdkRGBA  center_color;
+	CdkRGBA  bottom_color;
 
 	float alpha;
 	if (windata->composited)
@@ -621,7 +621,7 @@ on_draw (CtkWidget *widget, cairo_t *cr, WindowData *windata)
 /* Event handlers */
 static gboolean
 configure_event_cb(CtkWidget *nw,
-				   GdkEventConfigure *event,
+				   CdkEventConfigure *event,
 				   WindowData *windata)
 {
 	windata->width = event->width;
@@ -677,7 +677,7 @@ countdown_expose_cb(CtkWidget *pie,
 }
 
 static void
-action_clicked_cb(CtkWidget *w, GdkEventButton *event,
+action_clicked_cb(CtkWidget *w, CdkEventButton *event,
 				  ActionInvokedCb action_cb)
 {
 	CtkWindow *nw   = g_object_get_data(G_OBJECT(w), "_nw");
@@ -726,8 +726,8 @@ create_notification(UrlClickedCb url_clicked)
 	CtkWidget *image;
 	AtkObject *atkobj;
 	WindowData *windata;
-	GdkVisual *visual;
-	GdkScreen *screen;
+	CdkVisual *visual;
+	CdkScreen *screen;
 
 	windata = g_new0(WindowData, 1);
 	windata->urgency = URGENCY_NORMAL;
@@ -958,7 +958,7 @@ renrer_ok:
 
 /* Set notification icon */
 void
-set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf)
+set_notification_icon(CtkWindow *nw, CdkPixbuf *pixbuf)
 {
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
 	g_assert(windata != NULL);
@@ -1005,7 +1005,7 @@ add_notification_action(CtkWindow *nw, const char *text, const char *key,
 	CtkWidget *label;
 	CtkWidget *button;
 	CtkWidget *hbox;
-	GdkPixbuf *pixbuf;
+	CdkPixbuf *pixbuf;
 	char *buf;
 
 	g_assert(windata != NULL);

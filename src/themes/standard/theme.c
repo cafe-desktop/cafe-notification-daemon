@@ -62,7 +62,7 @@ typedef struct {
 	int width;
 	int height;
 
-	GdkPoint* border_points;
+	CdkPoint* border_points;
 	size_t num_border_points;
 
 	cairo_region_t *window_region;
@@ -88,7 +88,7 @@ void get_theme_info(char **theme_name, char **theme_ver, char **author,
 CtkWindow* create_notification(UrlClickedCb url_clicked);
 void set_notification_text(CtkWindow *nw, const char *summary,
 			   const char *body);
-void set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf);
+void set_notification_icon(CtkWindow *nw, CdkPixbuf *pixbuf);
 void set_notification_arrow(CtkWidget *nw, gboolean visible, int x, int y);
 void add_notification_action(CtkWindow *nw, const char *text, const char *key,
 			     ActionInvokedCb cb);
@@ -123,9 +123,9 @@ void notification_tick(CtkWindow *nw, glong remaining);
 static void
 get_background_color (CtkStyleContext *context,
                       CtkStateFlags    state,
-                      GdkRGBA         *color)
+                      CdkRGBA         *color)
 {
-        GdkRGBA *c;
+        CdkRGBA *c;
 
         g_return_if_fail (color != NULL);
         g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
@@ -141,7 +141,7 @@ get_background_color (CtkStyleContext *context,
 static void fill_background(CtkWidget* widget, WindowData* windata, cairo_t* cr)
 {
     CtkStyleContext *context;
-    GdkRGBA bg;
+    CdkRGBA bg;
 
     CtkAllocation allocation;
 
@@ -194,7 +194,7 @@ static void fill_background(CtkWidget* widget, WindowData* windata, cairo_t* cr)
 static void draw_stripe(CtkWidget* widget, WindowData* windata, cairo_t* cr)
 {
 	CtkStyleContext* context;
-	GdkRGBA bg;
+	CdkRGBA bg;
 	int              stripe_x;
 	int              stripe_y;
 	int              stripe_height;
@@ -266,10 +266,10 @@ static void draw_stripe(CtkWidget* widget, WindowData* windata, cairo_t* cr)
 static CtkArrowType get_notification_arrow_type(CtkWidget* nw)
 {
 	WindowData*     windata;
-	GdkScreen*      screen;
-	GdkRectangle    monitor_geometry;
-	GdkDisplay*     display;
-	GdkMonitor*     monitor;
+	CdkScreen*      screen;
+	CdkRectangle    monitor_geometry;
+	CdkDisplay*     display;
+	CdkMonitor*     monitor;
 
 	windata = g_object_get_data(G_OBJECT(nw), "windata");
 
@@ -305,15 +305,15 @@ static void create_border_with_arrow(CtkWidget* nw, WindowData* windata)
 	int             norm_point_x;
 	int             norm_point_y;
 	CtkArrowType    arrow_type;
-	GdkScreen*      screen;
+	CdkScreen*      screen;
 	int             arrow_side1_width = DEFAULT_ARROW_WIDTH / 2;
 	int             arrow_side2_width = DEFAULT_ARROW_WIDTH / 2;
 	int             arrow_offset = DEFAULT_ARROW_OFFSET;
-	GdkPoint*       shape_points = NULL;
+	CdkPoint*       shape_points = NULL;
 	int             i = 0;
-	GdkMonitor*     monitor;
-	GdkDisplay*     display;
-	GdkRectangle    monitor_geometry;
+	CdkMonitor*     monitor;
+	CdkDisplay*     display;
+	CdkRectangle    monitor_geometry;
 
 	width = windata->width;
 	height = windata->height;
@@ -377,8 +377,8 @@ static void create_border_with_arrow(CtkWidget* nw, WindowData* windata)
 				g_assert(arrow_offset + arrow_side1_width + arrow_side2_width <= width);
 			#endif
 
-			windata->border_points = g_new0(GdkPoint, windata->num_border_points);
-			shape_points = g_new0(GdkPoint, windata->num_border_points);
+			windata->border_points = g_new0(CdkPoint, windata->num_border_points);
+			shape_points = g_new0(CdkPoint, windata->num_border_points);
 
 			windata->drawn_arrow_begin_x = arrow_offset;
 			windata->drawn_arrow_middle_x = arrow_offset + arrow_side1_width;
@@ -622,7 +622,7 @@ static void update_content_hbox_visibility(WindowData* windata)
 	}
 }
 
-static gboolean configure_event_cb(CtkWidget* nw, GdkEventConfigure* event, WindowData* windata)
+static gboolean configure_event_cb(CtkWidget* nw, CdkEventConfigure* event, WindowData* windata)
 {
 	windata->width = event->width;
 	windata->height = event->height;
@@ -652,8 +652,8 @@ CtkWindow* create_notification(UrlClickedCb url_clicked)
 	AtkObject* atkobj;
 	WindowData* windata;
 
-	GdkVisual *visual;
-	GdkScreen* screen;
+	CdkVisual *visual;
+	CdkScreen* screen;
 
 	windata = g_new0(WindowData, 1);
 	windata->urgency = URGENCY_NORMAL;
@@ -934,7 +934,7 @@ renrer_ok:
 	ctk_widget_set_size_request(windata->summary_label, WIDTH - (1 * 2) - (10 * 2) - SPACER_LEFT - req.width - (6 * 2), -1);
 }
 
-void set_notification_icon(CtkWindow* nw, GdkPixbuf* pixbuf)
+void set_notification_icon(CtkWindow* nw, CdkPixbuf* pixbuf)
 {
 	WindowData* windata = g_object_get_data(G_OBJECT(nw), "windata");
 
@@ -977,7 +977,7 @@ paint_countdown (CtkWidget  *pie,
                  WindowData *windata)
 {
     CtkStyleContext *context;
-    GdkRGBA bg;
+    CdkRGBA bg;
     CtkAllocation alloc;
     cairo_t* cr2;
     cairo_surface_t* surface;
@@ -1032,7 +1032,7 @@ on_countdown_draw (CtkWidget *widget, cairo_t *cr, WindowData *windata)
 	return FALSE;
 }
 
-static void action_clicked_cb(CtkWidget* w, GdkEventButton* event, ActionInvokedCb action_cb)
+static void action_clicked_cb(CtkWidget* w, CdkEventButton* event, ActionInvokedCb action_cb)
 {
 	CtkWindow* nw;
 	const char* key;
@@ -1047,7 +1047,7 @@ void add_notification_action(CtkWindow* nw, const char* text, const char* key, A
 	CtkWidget* label;
 	CtkWidget* button;
 	CtkWidget* hbox;
-	GdkPixbuf* pixbuf;
+	CdkPixbuf* pixbuf;
 	char* buf;
 
 	windata = g_object_get_data(G_OBJECT(nw), "windata");

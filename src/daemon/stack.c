@@ -35,8 +35,8 @@
 
 struct _NotifyStack {
 	NotifyDaemon* daemon;
-	GdkScreen* screen;
-	GdkMonitor *monitor;
+	CdkScreen* screen;
+	CdkMonitor *monitor;
 	NotifyStackLocation location;
 	GList* windows;
 	guint update_id;
@@ -49,7 +49,7 @@ GList* notify_stack_get_windows(NotifyStack *stack)
 
 static gboolean
 get_work_area (NotifyStack  *stack,
-               GdkRectangle *rect)
+               CdkRectangle *rect)
 {
         Atom            workarea;
         Atom            type;
@@ -115,7 +115,7 @@ get_work_area (NotifyStack  *stack,
 
 static void
 get_origin_coordinates (NotifyStackLocation stack_location,
-                        GdkRectangle       *workarea,
+                        CdkRectangle       *workarea,
                         gint               *x,
                         gint               *y,
                         gint               *shiftx,
@@ -153,7 +153,7 @@ get_origin_coordinates (NotifyStackLocation stack_location,
 
 static void
 translate_coordinates (NotifyStackLocation stack_location,
-                       GdkRectangle       *workarea,
+                       CdkRectangle       *workarea,
                        gint               *x,
                        gint               *y,
                        gint               *shiftx,
@@ -190,9 +190,9 @@ translate_coordinates (NotifyStackLocation stack_location,
 }
 
 static int
-_ctk_get_monitor_num (GdkMonitor *monitor)
+_ctk_get_monitor_num (CdkMonitor *monitor)
 {
-        GdkDisplay *display;
+        CdkDisplay *display;
         int n_monitors, i;
 
         display = cdk_monitor_get_display(monitor);
@@ -208,12 +208,12 @@ _ctk_get_monitor_num (GdkMonitor *monitor)
 
 NotifyStack *
 notify_stack_new (NotifyDaemon       *daemon,
-                  GdkScreen          *screen,
-                  GdkMonitor         *monitor,
+                  CdkScreen          *screen,
+                  CdkMonitor         *monitor,
                   NotifyStackLocation location)
 {
         NotifyStack    *stack;
-        GdkDisplay     *display;
+        CdkDisplay     *display;
 
         display = cdk_screen_get_display (screen);
         g_assert (daemon != NULL);
@@ -258,7 +258,7 @@ notify_stack_set_location (NotifyStack        *stack,
 }
 
 static void
-add_padding_to_rect (GdkRectangle *rect)
+add_padding_to_rect (CdkRectangle *rect)
 {
         rect->x += WORKAREA_PADDING;
         rect->y += WORKAREA_PADDING;
@@ -280,9 +280,9 @@ notify_stack_shift_notifications (NotifyStack *stack,
                                   gint        *nw_x,
                                   gint        *nw_y)
 {
-        GdkRectangle    workarea;
-        GdkRectangle    monitor;
-        GdkRectangle   *positions;
+        CdkRectangle    workarea;
+        CdkRectangle    monitor;
+        CdkRectangle   *positions;
         GList          *l;
         gint            x, y;
         gint            shiftx = 0;
@@ -297,7 +297,7 @@ notify_stack_shift_notifications (NotifyStack *stack,
         add_padding_to_rect (&workarea);
 
         n_wins = g_list_length (stack->windows);
-        positions = g_new0 (GdkRectangle, n_wins);
+        positions = g_new0 (CdkRectangle, n_wins);
 
         get_origin_coordinates (stack->location,
                                 &workarea,

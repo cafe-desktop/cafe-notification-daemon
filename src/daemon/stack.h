@@ -38,7 +38,7 @@ typedef enum {
 
 typedef struct _NotifyStack NotifyStack;
 
-NotifyStack* notify_stack_new(NotifyDaemon* daemon, GdkScreen* screen, GdkMonitor *monitor, NotifyStackLocation stack_location);
+NotifyStack* notify_stack_new(NotifyDaemon* daemon, CdkScreen* screen, CdkMonitor *monitor, NotifyStackLocation stack_location);
 void notify_stack_destroy(NotifyStack* stack);
 
 void notify_stack_set_location(NotifyStack* stack, NotifyStackLocation location);
