@@ -242,7 +242,7 @@ notify_stack_destroy (NotifyStack *stack)
         }
 
         for (l = stack->windows; l != NULL; l = l->next) {
-                GtkWindow *nw = GTK_WINDOW (l->data);
+                GtkWindow *nw = CTK_WINDOW (l->data);
                 g_signal_handlers_disconnect_by_data(G_OBJECT(nw), stack);
         }
 
@@ -314,11 +314,11 @@ notify_stack_shift_notifications (NotifyStack *stack,
                 *nw_y = y;
 
         for (i = 0, l = stack->windows; l != NULL; i++, l = l->next) {
-                GtkWindow      *nw2 = GTK_WINDOW (l->data);
+                GtkWindow      *nw2 = CTK_WINDOW (l->data);
                 GtkRequisition  req;
 
                 if (nw == NULL || nw2 != nw) {
-                        ctk_widget_get_preferred_size (GTK_WIDGET (nw2), NULL, &req);
+                        ctk_widget_get_preferred_size (CTK_WIDGET (nw2), NULL, &req);
 
                         translate_coordinates (stack->location,
                                                &workarea,
@@ -340,7 +340,7 @@ notify_stack_shift_notifications (NotifyStack *stack,
         /* move bubbles at the bottom of the stack first
            to avoid overlapping */
         for (i = n_wins - 1, l = g_list_last (stack->windows); l != NULL; i--, l = l->prev) {
-                GtkWindow *nw2 = GTK_WINDOW (l->data);
+                GtkWindow *nw2 = CTK_WINDOW (l->data);
 
                 if (nw == NULL || nw2 != nw) {
                         theme_move_notification (nw2, positions[i].x, positions[i].y);
@@ -379,7 +379,7 @@ void notify_stack_add_window(NotifyStack* stack, GtkWindow* nw, gboolean new_not
 	GtkRequisition  req;
 	gint            x, y;
 
-	ctk_widget_get_preferred_size(GTK_WIDGET(nw), NULL, &req);
+	ctk_widget_get_preferred_size(CTK_WIDGET(nw), NULL, &req);
 	notify_stack_shift_notifications(stack, nw, NULL, req.width, req.height + NOTIFY_STACK_SPACING, &x, &y);
 	theme_move_notification(nw, x, y);
 
@@ -401,6 +401,6 @@ void notify_stack_remove_window(NotifyStack* stack, GtkWindow* nw)
 		stack->windows = g_list_delete_link(stack->windows, remove_l);
 	}
 
-	if (ctk_widget_get_realized(GTK_WIDGET(nw)))
-		ctk_widget_unrealize(GTK_WIDGET(nw));
+	if (ctk_widget_get_realized(CTK_WIDGET(nw)))
+		ctk_widget_unrealize(CTK_WIDGET(nw));
 }

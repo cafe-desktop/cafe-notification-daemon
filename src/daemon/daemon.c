@@ -241,7 +241,7 @@ static void _notify_timeout_destroy(NotifyTimeout* nt)
 	 * destroyed.
 	 */
 	g_signal_handlers_disconnect_by_func(nt->nw, _notification_destroyed_cb, nt->daemon);
-	ctk_widget_destroy(GTK_WIDGET(nt->nw));
+	ctk_widget_destroy(CTK_WIDGET(nt->nw));
 	g_free(nt);
 }
 
@@ -991,7 +991,7 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 		GtkIconInfo  *icon_info;
 
 		theme = ctk_icon_theme_get_default ();
-		icon_info = ctk_icon_theme_lookup_icon (theme, path, IMAGE_SIZE, GTK_ICON_LOOKUP_USE_BUILTIN);
+		icon_info = ctk_icon_theme_lookup_icon (theme, path, IMAGE_SIZE, CTK_ICON_LOOKUP_USE_BUILTIN);
 
 		if (icon_info != NULL)
 		{
@@ -1004,7 +1004,7 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 				icon_size = IMAGE_SIZE;
 			}
 
-			pixbuf = ctk_icon_theme_load_icon (theme, path, icon_size, GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
+			pixbuf = ctk_icon_theme_load_icon (theme, path, icon_size, CTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 
 			g_object_unref (icon_info);
 		}
@@ -1288,7 +1288,7 @@ static void sync_notification_position(NotifyDaemon* daemon, GtkWindow* nw, Wind
 	 * fairly broken), so just calling move/show above isn't enough to cause
 	 * its position to be calculated.
 	 */
-	ctk_widget_queue_draw (GTK_WIDGET (nw));
+	ctk_widget_queue_draw (CTK_WIDGET (nw));
 }
 
 GQuark notify_daemon_error_quark(void)
@@ -1361,7 +1361,7 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 	{
 		nw = theme_create_notification (url_clicked_cb);
 		g_object_set_data (G_OBJECT (nw), "_notify_daemon", daemon);
-		ctk_widget_realize (GTK_WIDGET (nw));
+		ctk_widget_realize (CTK_WIDGET (nw));
 		new_notification = TRUE;
 
 		g_signal_connect (G_OBJECT (nw), "button-release-event", G_CALLBACK (window_clicked_cb), daemon);
@@ -1568,13 +1568,13 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 	/* If there is no timeout, show the notification also if screensaver
 	 * is active or there are fullscreen windows
 	 */
-	if (!nt->has_timeout || (!screensaver_active (GTK_WIDGET (nw)) && !fullscreen_window_exists (GTK_WIDGET (nw))))
+	if (!nt->has_timeout || (!screensaver_active (CTK_WIDGET (nw)) && !fullscreen_window_exists (CTK_WIDGET (nw))))
 	{
 		theme_show_notification (nw);
 
 		if (sound_file != NULL)
 		{
-			sound_play_file (GTK_WIDGET (nw), sound_file);
+			sound_play_file (CTK_WIDGET (nw), sound_file);
 		}
 	}
 	else

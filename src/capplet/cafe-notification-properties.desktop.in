@@ -7,7 +7,7 @@ Icon=cafe-notification-properties
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=GTK;Settings;DesktopSettings;
+Categories=CTK;Settings;DesktopSettings;
 OnlyShowIn=CAFE;
 # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 Keywords=CAFE;Notification;Theme;

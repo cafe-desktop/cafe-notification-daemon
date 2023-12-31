@@ -51,7 +51,7 @@
 ### cafe-notification-daemon 1.20.0
 
   * Translations update
-  * require GTK+ 3.22 and GLib 2.50
+  * require CTK+ 3.22 and GLib 2.50
 
 ### cafe-notification-daemon 1.19.1
 
@@ -86,11 +86,11 @@
 
   * Build: use 'm4' dir instead of 'macros' for m4 macros, like
     in other projects
-  * Move to GTK+3 (require GTK+ >= 3.14), drop GTK+2 code and
+  * Move to CTK+3 (require CTK+ >= 3.14), drop CTK+2 code and
     --with-ctk build option
   * Add support for GNotification
   * Fix escaping of special characters
-  * Fix various GTK+ deprecations
+  * Fix various CTK+ deprecations
   * Translations update
 
 ### cafe-notification-daemon 1.14.1
@@ -103,18 +103,18 @@
 ### cafe-notification-daemon 1.14.0
 
   * Drop CafeConf migration script
-  * GTK+3: explicitly wrap notification text at 50 characters
-  * GTK+3: stop reversing fg/bg colors in slider theme (use colors
-    from current GTK+ theme as is)
-  * GTK+3: some more fixes for slider theme
-  * GTK+3: some deprecation fixes
+  * CTK+3: explicitly wrap notification text at 50 characters
+  * CTK+3: stop reversing fg/bg colors in slider theme (use colors
+    from current CTK+ theme as is)
+  * CTK+3: some more fixes for slider theme
+  * CTK+3: some deprecation fixes
   * Translations update
   * Add Changelog generation
 
 ### cafe-notification-daemon 1.12.1
 
   * Fix crash due to regression
-  * GTK+3 fixes
+  * CTK+3 fixes
   * Translations update
 
 ### cafe-notification-daemon 1.12.0
