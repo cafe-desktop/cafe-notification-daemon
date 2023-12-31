@@ -1,0 +1,146 @@
+### mate-notification-daemon 1.24.1
+
+  * tx: sync with transifex
+  * build: silent build warnings for distcheck
+  * Filter-out img elements from notification body
+  * The body of a notification may also contain hyperlinks
+  * build: Remove generated files
+
+### mate-notification-daemon 1.24.0
+
+  * bump version
+
+### mate-notification-daemon 1.23.1
+
+  * Translations update
+  * migrate from intltools to gettext
+  * Use gresource for mate-notification-properties.ui
+  * Use WARN_CFLAGS which are only set with --enable-compiler-warnings
+  * Fix decoding the hints dictionary.
+  * mate-notification-properties: initialize do-not-disturb checkbox
+  * mate-notification-properties: Add do-not-disturb checkbox
+  * daemon.c: check for do-not-disturb and skip notification
+  * add do-not-disturb setting
+
+### mate-notification-daemon 1.23.0
+
+  * Translations update
+  * Remove trailing whitespaces
+  * Change url project's website
+  * [ci] Add cppcheck html report
+  * [ci] Enable Clang Static Analyzer
+
+### mate-notification-daemon 1.22.0
+
+  * Translations update
+  * initial travis-CI support
+  * disable deprecation warnings for distcheck
+  * Avoid compile warning for g_type_class_add_private
+
+### mate-notification-daemon 1.21.0
+
+  * Translations update
+  * Drop dbus-glib dependence
+  * Use GVariant
+  * Migrate from dbus-glib to GDBus
+  * Add signals, remove annotation from xml file
+  * Use gdbus generate files
+  * Fix some gdk deprecations
+  * src/daemon/daemon.c: Replace deprecated gvfs-open call by "gio open" from libglib2.0-bin.
+
+### mate-notification-daemon 1.20.0
+
+  * Translations update
+  * require GTK+ 3.22 and GLib 2.50
+
+### mate-notification-daemon 1.19.1
+
+  * Translations update
+  * WidthOfScreen and HeightOfScreen implementation
+
+### mate-notification-daemon 1.19.0
+
+  * Translations update
+  * gtk 3.22: avoid deprecated gdk_screen_get_monitor... functions:
+  * avoid deprecated gdk_screen_get_width/height
+  * avoid deprecated gdk_screen_get_n_monitors
+  * Fixes high cpu usage with large timeouts
+  * unescape URI-encode paths for icon files
+  * Restore Polish translation credits from GNOME
+
+### mate-notification-daemon 1.18.0
+
+  * NEWS: use consistent, project wide, markdown-like formatting
+    to make generating release announcements easier
+  * Implement action icons support (e.g. playback control icons
+    used by media players)
+  * Themes: fix some pie countdown issues
+  * Translations update
+
+### mate-notification-daemon 1.16.1
+
+  * Fix markup parsing
+  * Translations update
+
+### mate-notification-daemon 1.16.0
+
+  * Build: use 'm4' dir instead of 'macros' for m4 macros, like
+    in other projects
+  * Move to GTK+3 (require GTK+ >= 3.14), drop GTK+2 code and
+    --with-gtk build option
+  * Add support for GNotification
+  * Fix escaping of special characters
+  * Fix various GTK+ deprecations
+  * Translations update
+
+### mate-notification-daemon 1.14.1
+
+  * Translations update
+  * themes: make text translatable
+  * Save some RAM in NotifyTimeout
+  * Coco, Nodoka: set notification window type
+
+### mate-notification-daemon 1.14.0
+
+  * Drop MateConf migration script
+  * GTK+3: explicitly wrap notification text at 50 characters
+  * GTK+3: stop reversing fg/bg colors in slider theme (use colors
+    from current GTK+ theme as is)
+  * GTK+3: some more fixes for slider theme
+  * GTK+3: some deprecation fixes
+  * Translations update
+  * Add Changelog generation
+
+### mate-notification-daemon 1.12.1
+
+  * Fix crash due to regression
+  * GTK+3 fixes
+  * Translations update
+
+### mate-notification-daemon 1.12.0
+
+  * Retrieve strings directly from gschema (requires intltool 0.50.1)
+  * Fix height and visibility of themes in gtk3
+  * Multiple theme fixes
+  * Some more fixes and cleanups
+
+### mate-notification-daemon 1.10.2
+
+  * Standard theme: fix crash when clicking on close button
+  * Properties: remove useless help button
+  * Fix build with GLib 2.36
+  * Some more bugfixes
+
+### mate-notification-daemon 1.10.1
+
+  * Don't crash on notifications from Rhythmbox
+  * Some more bugfixes
+  * Translations update
+
+### mate-notification-daemon 1.10.0
+
+  * Bugfixes
+
+### mate-notification-daemon 1.8.0
+
+  * Switch to libwnck
