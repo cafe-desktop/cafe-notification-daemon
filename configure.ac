@@ -145,16 +145,16 @@ cdk_modules="
 	cdk-3.0 >= $CTK_REQUIRED, \
 	cdk-pixbuf-2.0 >= 2.22.0 \
 "
-PKG_CHECK_MODULES(GDK, $cdk_modules, have_cdk=yes,
+PKG_CHECK_MODULES(CDK, $cdk_modules, have_cdk=yes,
 [
 	have_cdk=no
 	AC_MSG_WARN("Some test apps will not be built")
 ])
 
-AM_CONDITIONAL(HAVE_GDK, test "x$have_cdk" = "xyes")
+AM_CONDITIONAL(HAVE_CDK, test "x$have_cdk" = "xyes")
 
-AC_SUBST(GDK_CFLAGS)
-AC_SUBST(GDK_LIBS)
+AC_SUBST(CDK_CFLAGS)
+AC_SUBST(CDK_LIBS)
 
 dnl
 dnl Enable gsettings schema macros

@@ -63,10 +63,10 @@ get_work_area (NotifyStack  *stack,
         int             result;
         int             disp_screen;
 
-	workarea = XInternAtom(GDK_DISPLAY_XDISPLAY(cdk_display_get_default()), "_NET_WORKAREA", True);
+	workarea = XInternAtom(CDK_DISPLAY_XDISPLAY(cdk_display_get_default()), "_NET_WORKAREA", True);
 
 
-        disp_screen = GDK_SCREEN_XNUMBER (stack->screen);
+        disp_screen = CDK_SCREEN_XNUMBER (stack->screen);
 
         /* Defaults in case of error */
         rect->x = 0;
@@ -78,9 +78,9 @@ get_work_area (NotifyStack  *stack,
                 return FALSE;
 
 
-	win = XRootWindow(GDK_DISPLAY_XDISPLAY(cdk_display_get_default()), disp_screen);
+	win = XRootWindow(CDK_DISPLAY_XDISPLAY(cdk_display_get_default()), disp_screen);
 
-	result = XGetWindowProperty(GDK_DISPLAY_XDISPLAY(cdk_display_get_default()),
+	result = XGetWindowProperty(CDK_DISPLAY_XDISPLAY(cdk_display_get_default()),
 		win,
 		workarea,
 		0,
@@ -217,7 +217,7 @@ notify_stack_new (NotifyDaemon       *daemon,
 
         display = cdk_screen_get_display (screen);
         g_assert (daemon != NULL);
-        g_assert (screen != NULL && GDK_IS_SCREEN (screen));
+        g_assert (screen != NULL && CDK_IS_SCREEN (screen));
         g_assert ((guint)_ctk_get_monitor_num (monitor) < (guint)cdk_display_get_n_monitors (display));
         g_assert (location != NOTIFY_STACK_LOCATION_UNKNOWN);
 

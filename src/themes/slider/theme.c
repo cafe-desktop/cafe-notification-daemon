@@ -348,8 +348,8 @@ CtkWindow* create_notification(UrlClickedCb url_clicked)
 	g_signal_connect(win, "composited-changed", G_CALLBACK(on_composited_changed), windata);
 
 	ctk_window_set_title(CTK_WINDOW(win), "Notification");
-	ctk_window_set_type_hint(CTK_WINDOW(win), GDK_WINDOW_TYPE_HINT_NOTIFICATION);
-	ctk_widget_add_events(win, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+	ctk_window_set_type_hint(CTK_WINDOW(win), CDK_WINDOW_TYPE_HINT_NOTIFICATION);
+	ctk_widget_add_events(win, CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK);
 
 	g_object_set_data_full(G_OBJECT(win), "windata", windata, (GDestroyNotify) destroy_windata);
 	atk_object_set_role(ctk_widget_get_accessible(win), ATK_ROLE_ALERT);
@@ -616,7 +616,7 @@ static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height,
 		scale_x = (int) (pw * scale_factor);
 		scale_y = (int) (ph * scale_factor);
 
-		return cdk_pixbuf_scale_simple(pixbuf, scale_x, scale_y, GDK_INTERP_BILINEAR);
+		return cdk_pixbuf_scale_simple(pixbuf, scale_x, scale_y, CDK_INTERP_BILINEAR);
 	}
 	else
 	{

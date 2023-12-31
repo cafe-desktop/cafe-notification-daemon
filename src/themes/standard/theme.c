@@ -273,7 +273,7 @@ static CtkArrowType get_notification_arrow_type(CtkWidget* nw)
 
 	windata = g_object_get_data(G_OBJECT(nw), "windata");
 
-	screen = cdk_window_get_screen(GDK_WINDOW( ctk_widget_get_window(nw)));
+	screen = cdk_window_get_screen(CDK_WINDOW( ctk_widget_get_window(nw)));
 	display = cdk_screen_get_display (screen);
 	monitor = cdk_display_get_monitor_at_point (display, windata->point_x, windata->point_y);
 	cdk_monitor_get_geometry (monitor, &monitor_geometry);
@@ -318,7 +318,7 @@ static void create_border_with_arrow(CtkWidget* nw, WindowData* windata)
 	width = windata->width;
 	height = windata->height;
 
-	screen = cdk_window_get_screen(GDK_WINDOW(ctk_widget_get_window(nw)));
+	screen = cdk_window_get_screen(CDK_WINDOW(ctk_widget_get_window(nw)));
 	display = cdk_screen_get_display (screen);
 	monitor = cdk_display_get_monitor_at_point (display, windata->point_x, windata->point_y);
 	cdk_monitor_get_geometry (monitor, &monitor_geometry);
@@ -482,7 +482,7 @@ static void create_border_with_arrow(CtkWidget* nw, WindowData* windata)
 	g_assert(shape_points != NULL);
 
 	/* FIXME won't work with CTK+3, need a replacement */
-	/*windata->window_region = cdk_region_polygon(shape_points, windata->num_border_points, GDK_EVEN_ODD_RULE);*/
+	/*windata->window_region = cdk_region_polygon(shape_points, windata->num_border_points, CDK_EVEN_ODD_RULE);*/
 	g_free(shape_points);
 }
 
@@ -681,8 +681,8 @@ CtkWindow* create_notification(UrlClickedCb url_clicked)
 	}
 
 	ctk_window_set_title(CTK_WINDOW(win), "Notification");
-	ctk_window_set_type_hint(CTK_WINDOW(win), GDK_WINDOW_TYPE_HINT_NOTIFICATION);
-	ctk_widget_add_events(win, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+	ctk_window_set_type_hint(CTK_WINDOW(win), CDK_WINDOW_TYPE_HINT_NOTIFICATION);
+	ctk_widget_add_events(win, CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK);
 	ctk_widget_realize(win);
 	ctk_widget_set_size_request(win, WIDTH, -1);
 
