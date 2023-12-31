@@ -1145,8 +1145,8 @@ static gboolean screensaver_active(CtkWidget* nw)
 
 static gboolean fullscreen_window_exists(CtkWidget* nw)
 {
-	WnckScreen* vnck_screen;
-	WnckWorkspace* vnck_workspace;
+	VnckScreen* vnck_screen;
+	VnckWorkspace* vnck_workspace;
 	GList* l;
 
 		vnck_screen = vnck_screen_get(CDK_SCREEN_XNUMBER(cdk_window_get_screen(ctk_widget_get_window(nw))));
@@ -1162,7 +1162,7 @@ static gboolean fullscreen_window_exists(CtkWidget* nw)
 
 	for (l = vnck_screen_get_windows_stacked (vnck_screen); l != NULL; l = l->next)
 	{
-		WnckWindow *vnck_win = (WnckWindow *) l->data;
+		VnckWindow *vnck_win = (VnckWindow *) l->data;
 
 		if (vnck_window_is_on_workspace (vnck_win, vnck_workspace) && vnck_window_is_fullscreen (vnck_win) && vnck_window_is_active (vnck_win))
 		{
