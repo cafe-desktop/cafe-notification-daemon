@@ -24,7 +24,7 @@
 #ifndef _ENGINES_H_
 #define _ENGINES_H_
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef void    (*UrlClickedCb) (GtkWindow * nw, const char *url);
 

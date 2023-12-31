@@ -23,7 +23,7 @@
 #include "config.h"
 #endif
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdlib.h>
 
 #include "daemon.h"
@@ -78,14 +78,14 @@ int main (int argc, char *argv[])
 {
 	NotifyDaemon *daemon;
 
-	gtk_init(&argc, &argv);
+	ctk_init(&argc, &argv);
 
 	if (!parse_arguments (&argc, &argv))
 		return EXIT_FAILURE;
 
 	daemon = notify_daemon_new (replace);
 
-	gtk_main();
+	ctk_main();
 
 	g_object_unref (daemon);
 

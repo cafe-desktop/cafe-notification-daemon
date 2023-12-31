@@ -23,7 +23,7 @@
 #ifndef _NOTIFY_STACK_H_
 #define _NOTIFY_STACK_H_
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "daemon.h"
 

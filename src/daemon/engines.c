@@ -219,7 +219,7 @@ void theme_destroy_notification(GtkWindow* nw)
 	}
 	else
 	{
-		gtk_widget_destroy(GTK_WIDGET(nw));
+		ctk_widget_destroy(GTK_WIDGET(nw));
 	}
 }
 
@@ -233,7 +233,7 @@ void theme_show_notification(GtkWindow* nw)
 	}
 	else
 	{
-		gtk_widget_show(GTK_WIDGET(nw));
+		ctk_widget_show(GTK_WIDGET(nw));
 	}
 }
 
@@ -247,7 +247,7 @@ void theme_hide_notification(GtkWindow* nw)
 	}
 	else
 	{
-		gtk_widget_hide(GTK_WIDGET(nw));
+		ctk_widget_hide(GTK_WIDGET(nw));
 	}
 }
 

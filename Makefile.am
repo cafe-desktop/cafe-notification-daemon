@@ -36,7 +36,7 @@ MAINTAINERCLEANFILES = \
         $(srcdir)/mkinstalldirs \
         $(srcdir)/omf.make \
         $(srcdir)/xmldocs.make \
-        $(srcdir)/gtk-doc.make \
+        $(srcdir)/ctk-doc.make \
         $(srcdir)/ChangeLog \
         `find "$(srcdir)" -type f -name Makefile.in -print`
 

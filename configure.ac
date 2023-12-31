@@ -109,7 +109,7 @@ GTK_REQUIRED=3.22.0
 XML_REQUIRED=2.9.0
 
 PKG_CHECK_MODULES(THEME,
-  gtk+-3.0 >= $GTK_REQUIRED
+  ctk+-3.0 >= $GTK_REQUIRED
   libxml-2.0 >= $XML_REQUIRED
 )
 AC_SUBST(THEME_CFLAGS)
@@ -122,11 +122,11 @@ REQ_GLIB_VERSION=2.50.0
 REQ_LIBCANBERRA_GTK_VERSION=0.4
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 pkg_modules="
-	gtk+-3.0 >= $GTK_REQUIRED, \
+	ctk+-3.0 >= $GTK_REQUIRED, \
 	glib-2.0 >= $REQ_GLIB_VERSION, \
 	gio-2.0 >= $REQ_GLIB_VERSION, \
         $GMODULE_ADD \
-        libcanberra-gtk3 >= $REQ_LIBCANBERRA_GTK_VERSION, \
+        libcanberra-ctk3 >= $REQ_LIBCANBERRA_GTK_VERSION, \
 	libwnck-3.0 \
         x11 \
 "
@@ -137,7 +137,7 @@ AC_SUBST(NOTIFICATION_DAEMON_LIBS)
 dnl ---------------------------------------------------------------------------
 dnl Requirements for the setup tool
 dnl ---------------------------------------------------------------------------
-PKG_CHECK_MODULES(NOTIFICATION_CAPPLET, glib-2.0 >= $REQ_GLIB_VERSION gio-2.0 >= $REQ_GLIB_VERSION gtk+-3.0 >= $GTK_REQUIRED libnotify)
+PKG_CHECK_MODULES(NOTIFICATION_CAPPLET, glib-2.0 >= $REQ_GLIB_VERSION gio-2.0 >= $REQ_GLIB_VERSION ctk+-3.0 >= $GTK_REQUIRED libnotify)
 AC_SUBST(NOTIFICATION_CAPPLET_CFLAGS)
 AC_SUBST(NOTIFICATION_CAPPLET_LIBS)
 
@@ -210,7 +210,7 @@ dnl ---------------------------------------------------------------------------
 AC_ARG_ENABLE(icon-update, AC_HELP_STRING([--disable-icon-update],
                                         [Disable icon cache update]))
 if (test "$enable_icon_update" != no); then
-        AC_PATH_PROG(UPDATE_ICON_CACHE, [gtk-update-icon-cache])
+        AC_PATH_PROG(UPDATE_ICON_CACHE, [ctk-update-icon-cache])
 fi
 AM_CONDITIONAL([ICON_UPDATE], [test -n "$UPDATE_ICON_CACHE"])
 
