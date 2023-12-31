@@ -102,7 +102,7 @@
 
 ### cafe-notification-daemon 1.14.0
 
-  * Drop MateConf migration script
+  * Drop CafeConf migration script
   * GTK+3: explicitly wrap notification text at 50 characters
   * GTK+3: stop reversing fg/bg colors in slider theme (use colors
     from current GTK+ theme as is)
