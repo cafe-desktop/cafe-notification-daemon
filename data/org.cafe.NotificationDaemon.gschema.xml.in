@@ -16,7 +16,7 @@
       <description>Monitor to display the notification. Allowed values: -1 (display on active monitor) and 0 to n - 1 where n is the number of monitors.</description>
     </key>
     <key name="theme" type="s">
-      <default>'nodoka'</default>
+      <default>'coco'</default>
       <summary>Current theme</summary>
       <description>The theme used when displaying notifications.</description>
     </key>
