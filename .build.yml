@@ -32,12 +32,16 @@ requires:
     - libx11-dev
     - libxml2-dev
     - libxml2-utils
-    - cafe-common
     - quilt
     - shared-mime-info
 
+    #required for cafe-common
+    - autoconf
+    - make
+
 before_scripts:
   - ./html-cppcheck
+  - ./install-from-git https://github.com/cafe-desktop/cafe-common master
 
 build_scripts:
   - ./before-build
