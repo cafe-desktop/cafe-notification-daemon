@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR MATE Desktop Environment team
+# Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the cafe-notification-daemon package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
@@ -138,8 +138,8 @@ msgstr "cafe-notification-properties"
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
 #: src/capplet/cafe-notification-properties.desktop.in:14
-msgid "MATE;Notification;Theme;"
-msgstr "MATE;Notificação;Tema;"
+msgid "CAFE;Notification;Theme;"
+msgstr "CAFE;Notificação;Tema;"
 
 #: src/capplet/cafe-notification-properties.ui:9
 msgid "Notification Settings"

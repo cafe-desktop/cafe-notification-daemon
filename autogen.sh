@@ -13,10 +13,10 @@ PKG_NAME="cafe-notification-daemon"
 }
 
 which cafe-autogen || {
-    echo "You need to install cafe-common from the MATE Git"
+    echo "You need to install cafe-common from the CAFE Git"
     exit 1
 }
 
-USE_MATE2_MACROS=1
+USE_CAFE2_MACROS=1
 
 . cafe-autogen

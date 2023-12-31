@@ -61,8 +61,8 @@ AC_TYPE_SIZE_T
 dnl ---------------------------------------------------------------------------
 dnl Warning flags
 dnl ---------------------------------------------------------------------------
-MATE_MAINTAINER_MODE_DEFINES
-MATE_COMPILE_WARNINGS([yes])
+CAFE_MAINTAINER_MODE_DEFINES
+CAFE_COMPILE_WARNINGS([yes])
 
 dnl ---------------------------------------------------------------------------
 dnl Initialize Libtool
