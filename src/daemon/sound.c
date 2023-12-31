@@ -30,7 +30,7 @@ void
 sound_play_file (CtkWidget *widget,
                  const char *filename)
 {
-        ca_ctk_play_for_widget (widget, 0,
+        ka_ctk_play_for_widget (widget, 0,
                                 CA_PROP_MEDIA_ROLE, "event",
                                 CA_PROP_MEDIA_FILENAME, filename,
                                 CA_PROP_EVENT_DESCRIPTION, _("Notification"),
