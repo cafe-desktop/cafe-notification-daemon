@@ -88,7 +88,7 @@ typedef struct {
 	GTimeVal expiration;
 	GTimeVal paused_diff;
 	guint id;
-	GtkWindow* nw;
+	CtkWindow* nw;
 	Window src_window_xid;
 	guint   has_timeout : 1;
 	guint   paused : 1;
@@ -125,13 +125,13 @@ typedef struct {
 } _NotifyPendingClose;
 
 static void notify_daemon_finalize(GObject* object);
-static void _notification_destroyed_cb(GtkWindow* nw, NotifyDaemon* daemon);
+static void _notification_destroyed_cb(CtkWindow* nw, NotifyDaemon* daemon);
 static void _close_notification(NotifyDaemon* daemon, guint id, gboolean hide_notification, NotifydClosedReason reason);
 static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, NotifyDaemon* daemon);
-static void _emit_closed_signal(GtkWindow* nw, NotifydClosedReason reason);
-static void _action_invoked_cb(GtkWindow* nw, const char* key);
+static void _emit_closed_signal(CtkWindow* nw, NotifydClosedReason reason);
+static void _action_invoked_cb(CtkWindow* nw, const char* key);
 static NotifyStackLocation get_stack_location_from_string(const gchar *slocation);
-static void sync_notification_position(NotifyDaemon* daemon, GtkWindow* nw, Window source);
+static void sync_notification_position(NotifyDaemon* daemon, CtkWindow* nw, Window source);
 static void monitor_notification_source_windows(NotifyDaemon* daemon, NotifyTimeout* nt, Window source);
 static GParamSpec *properties[LAST_PROP] = { NULL };
 
@@ -562,7 +562,7 @@ static NotifyStackLocation get_stack_location_from_string(const gchar *slocation
 	return stack_location;
 }
 
-static void _action_invoked_cb(GtkWindow* nw, const char *key)
+static void _action_invoked_cb(CtkWindow* nw, const char *key)
 {
 	NotifyDaemon* daemon;
 	guint id;
@@ -575,7 +575,7 @@ static void _action_invoked_cb(GtkWindow* nw, const char *key)
 	_close_notification(daemon, id, TRUE, NOTIFYD_CLOSED_USER);
 }
 
-static void _emit_closed_signal(GtkWindow* nw, NotifydClosedReason reason)
+static void _emit_closed_signal(CtkWindow* nw, NotifydClosedReason reason)
 {
 	guint id;
 	NotifyDaemon* daemon;
@@ -619,7 +619,7 @@ static gboolean _close_notification_not_shown(_NotifyPendingClose* data)
 	return FALSE;
 }
 
-static void _notification_destroyed_cb(GtkWindow* nw, NotifyDaemon* daemon)
+static void _notification_destroyed_cb(CtkWindow* nw, NotifyDaemon* daemon)
 {
 	/*
 	 * This usually won't happen, but can if notification-daemon dies before
@@ -732,7 +732,7 @@ static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, No
 	return GDK_FILTER_CONTINUE;
 }
 
-static void _mouse_entered_cb(GtkWindow* nw, GdkEventCrossing* event, NotifyDaemon* daemon)
+static void _mouse_entered_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaemon* daemon)
 {
 	NotifyTimeout* nt;
 	guint id;
@@ -759,7 +759,7 @@ static void _mouse_entered_cb(GtkWindow* nw, GdkEventCrossing* event, NotifyDaem
 	}
 }
 
-static void _mouse_exitted_cb(GtkWindow* nw, GdkEventCrossing* event, NotifyDaemon* daemon)
+static void _mouse_exitted_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaemon* daemon)
 {
 	if (event->detail == GDK_NOTIFY_INFERIOR)
 	{
@@ -899,7 +899,7 @@ static guint _generate_id(NotifyDaemon* daemon)
 	return id;
 }
 
-static NotifyTimeout* _store_notification(NotifyDaemon* daemon, GtkWindow* nw, int timeout)
+static NotifyTimeout* _store_notification(NotifyDaemon* daemon, CtkWindow* nw, int timeout)
 {
 	NotifyTimeout* nt;
 	guint id = _generate_id(daemon);
@@ -987,8 +987,8 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 	else
 	{
 		/* Load icon theme icon */
-		GtkIconTheme *theme;
-		GtkIconInfo  *icon_info;
+		CtkIconTheme *theme;
+		CtkIconInfo  *icon_info;
 
 		theme = ctk_icon_theme_get_default ();
 		icon_info = ctk_icon_theme_lookup_icon (theme, path, IMAGE_SIZE, CTK_ICON_LOOKUP_USE_BUILTIN);
@@ -1050,7 +1050,7 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 	}
 }
 
-static void window_clicked_cb(GtkWindow* nw, GdkEventButton* button, NotifyDaemon* daemon)
+static void window_clicked_cb(CtkWindow* nw, GdkEventButton* button, NotifyDaemon* daemon)
 {
 	if (daemon->url_clicked_lock)
 	{
@@ -1062,7 +1062,7 @@ static void window_clicked_cb(GtkWindow* nw, GdkEventButton* button, NotifyDaemo
 	_close_notification (daemon, NW_GET_NOTIFY_ID (nw), TRUE, NOTIFYD_CLOSED_USER);
 }
 
-static void url_clicked_cb(GtkWindow* nw, const char *url)
+static void url_clicked_cb(CtkWindow* nw, const char *url)
 {
 	NotifyDaemon* daemon;
 	gchar *escaped_url;
@@ -1103,7 +1103,7 @@ static void url_clicked_cb(GtkWindow* nw, const char *url)
 	}
 }
 
-static gboolean screensaver_active(GtkWidget* nw)
+static gboolean screensaver_active(CtkWidget* nw)
 {
 	GError* error = NULL;
 	gboolean active = FALSE;
@@ -1143,7 +1143,7 @@ static gboolean screensaver_active(GtkWidget* nw)
 	return active;
 }
 
-static gboolean fullscreen_window_exists(GtkWidget* nw)
+static gboolean fullscreen_window_exists(CtkWidget* nw)
 {
 	WnckScreen* wnck_screen;
 	WnckWorkspace* wnck_workspace;
@@ -1242,7 +1242,7 @@ static void monitor_notification_source_windows(NotifyDaemon  *daemon, NotifyTim
 }
 
 /* Use a source X Window ID to reposition a notification. */
-static void sync_notification_position(NotifyDaemon* daemon, GtkWindow* nw, Window source)
+static void sync_notification_position(NotifyDaemon* daemon, CtkWindow* nw, Window source)
 {
 	GdkDisplay *display;
 	Status result;
@@ -1308,7 +1308,7 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 	NotifyDaemon *daemon;
 	daemon = NOTIFY_DAEMON (user_data);
 	NotifyTimeout* nt = NULL;
-	GtkWindow* nw = NULL;
+	CtkWindow* nw = NULL;
 	GVariant* data;
 	gboolean use_pos_data = FALSE;
 	gboolean new_notification = FALSE;

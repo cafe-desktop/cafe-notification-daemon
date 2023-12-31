@@ -26,35 +26,35 @@
 
 #include <ctk/ctk.h>
 
-typedef void    (*UrlClickedCb) (GtkWindow * nw, const char *url);
+typedef void    (*UrlClickedCb) (CtkWindow * nw, const char *url);
 
-GtkWindow      *theme_create_notification        (UrlClickedCb url_clicked_cb);
-void            theme_destroy_notification       (GtkWindow   *nw);
-void            theme_show_notification          (GtkWindow   *nw);
-void            theme_hide_notification          (GtkWindow   *nw);
-void            theme_set_notification_hints     (GtkWindow   *nw,
+CtkWindow      *theme_create_notification        (UrlClickedCb url_clicked_cb);
+void            theme_destroy_notification       (CtkWindow   *nw);
+void            theme_show_notification          (CtkWindow   *nw);
+void            theme_hide_notification          (CtkWindow   *nw);
+void            theme_set_notification_hints     (CtkWindow   *nw,
 						  GVariant *hints);
-void            theme_set_notification_timeout   (GtkWindow   *nw,
+void            theme_set_notification_timeout   (CtkWindow   *nw,
                                                   glong        timeout);
-void            theme_notification_tick          (GtkWindow   *nw,
+void            theme_notification_tick          (CtkWindow   *nw,
                                                   glong        remaining);
-void            theme_set_notification_text      (GtkWindow   *nw,
+void            theme_set_notification_text      (CtkWindow   *nw,
                                                   const char  *summary,
                                                   const char  *body);
-void            theme_set_notification_icon      (GtkWindow   *nw,
+void            theme_set_notification_icon      (CtkWindow   *nw,
                                                   GdkPixbuf   *pixbuf);
-void            theme_set_notification_arrow     (GtkWindow   *nw,
+void            theme_set_notification_arrow     (CtkWindow   *nw,
                                                   gboolean     visible,
                                                   int          x,
                                                   int          y);
-void            theme_add_notification_action    (GtkWindow   *nw,
+void            theme_add_notification_action    (CtkWindow   *nw,
                                                   const char  *label,
                                                   const char  *key,
                                                   GCallback    cb);
-void            theme_clear_notification_actions (GtkWindow   *nw);
-void            theme_move_notification          (GtkWindow   *nw,
+void            theme_clear_notification_actions (CtkWindow   *nw);
+void            theme_move_notification          (CtkWindow   *nw,
                                                   int          x,
                                                   int          y);
-gboolean        theme_get_always_stack           (GtkWindow   *nw);
+gboolean        theme_get_always_stack           (CtkWindow   *nw);
 
 #endif /* _ENGINES_H_ */

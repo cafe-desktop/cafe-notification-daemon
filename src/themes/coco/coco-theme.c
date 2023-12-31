@@ -30,23 +30,23 @@
 #include <libxml/xpath.h>
 
 /* Define basic coco types */
-typedef void (*ActionInvokedCb)(GtkWindow *nw, const char *key);
-typedef void (*UrlClickedCb)(GtkWindow *nw, const char *url);
+typedef void (*ActionInvokedCb)(CtkWindow *nw, const char *key);
+typedef void (*UrlClickedCb)(CtkWindow *nw, const char *url);
 
 typedef struct
 {
-	GtkWidget *win;
-	GtkWidget *top_spacer;
-	GtkWidget *bottom_spacer;
-	GtkWidget *main_hbox;
-	GtkWidget *iconbox;
-	GtkWidget *icon;
-	GtkWidget *summary_label;
-	GtkWidget *body_label;
-	GtkWidget *actions_box;
-	GtkWidget *last_sep;
-	GtkWidget *stripe_spacer;
-	GtkWidget *pie_countdown;
+	CtkWidget *win;
+	CtkWidget *top_spacer;
+	CtkWidget *bottom_spacer;
+	CtkWidget *main_hbox;
+	CtkWidget *iconbox;
+	CtkWidget *icon;
+	CtkWidget *summary_label;
+	CtkWidget *body_label;
+	CtkWidget *actions_box;
+	CtkWidget *last_sep;
+	CtkWidget *stripe_spacer;
+	CtkWidget *pie_countdown;
 
 	gboolean composited;
 	gboolean action_icons;
@@ -62,7 +62,7 @@ typedef struct
 
 	UrlClickedCb url_clicked;
 
-	GtkTextDirection rtl;
+	CtkTextDirection rtl;
 } WindowData;
 
 
@@ -77,18 +77,18 @@ gboolean theme_check_init(unsigned int major_ver, unsigned int minor_ver,
 			  unsigned int micro_ver);
 void get_theme_info(char **theme_name, char **theme_ver, char **author,
 		    char **homepage);
-GtkWindow* create_notification(UrlClickedCb url_clicked);
-void set_notification_text(GtkWindow *nw, const char *summary,
+CtkWindow* create_notification(UrlClickedCb url_clicked);
+void set_notification_text(CtkWindow *nw, const char *summary,
 			   const char *body);
-void set_notification_icon(GtkWindow *nw, GdkPixbuf *pixbuf);
-void set_notification_arrow(GtkWidget *nw, gboolean visible, int x, int y);
-void add_notification_action(GtkWindow *nw, const char *text, const char *key,
+void set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf);
+void set_notification_arrow(CtkWidget *nw, gboolean visible, int x, int y);
+void add_notification_action(CtkWindow *nw, const char *text, const char *key,
 			     ActionInvokedCb cb);
-void clear_notification_actions(GtkWindow *nw);
-void move_notification(GtkWidget *nw, int x, int y);
-void set_notification_timeout(GtkWindow *nw, glong timeout);
-void set_notification_hints(GtkWindow *nw, GVariant *hints);
-void notification_tick(GtkWindow *nw, glong remaining);
+void clear_notification_actions(CtkWindow *nw);
+void move_notification(CtkWidget *nw, int x, int y);
+void set_notification_timeout(CtkWindow *nw, glong timeout);
+void set_notification_hints(CtkWindow *nw, GVariant *hints);
+void notification_tick(CtkWindow *nw, glong remaining);
 
 #define STRIPE_WIDTH  32
 #define WIDTH         300
@@ -110,7 +110,7 @@ void notification_tick(GtkWindow *nw, glong remaining);
 
 /* Handle clicking on link */
 static gboolean
-activate_link (GtkLabel *label, const char *url, WindowData *windata)
+activate_link (CtkLabel *label, const char *url, WindowData *windata)
 {
 	windata->url_clicked (CTK_WINDOW (windata->win), url);
 	return TRUE;
@@ -138,7 +138,7 @@ nodoka_rounded_rectangle (cairo_t * cr,
 
 /* Fill background */
 static void
-fill_background(GtkWidget *widget, WindowData *windata, cairo_t *cr)
+fill_background(CtkWidget *widget, WindowData *windata, cairo_t *cr)
 {
 	float alpha;
 	if (windata->composited)
@@ -164,7 +164,7 @@ fill_background(GtkWidget *widget, WindowData *windata, cairo_t *cr)
 }
 
 static void
-draw_pie(GtkWidget *pie, WindowData *windata, cairo_t *cr)
+draw_pie(CtkWidget *pie, WindowData *windata, cairo_t *cr)
 {
 	if (windata->timeout == 0)
 		return;
@@ -190,7 +190,7 @@ update_shape_region (cairo_surface_t *surface,
 
 	if (windata->width == 0 || windata->height == 0)
 	{
-		GtkAllocation allocation;
+		CtkAllocation allocation;
 		ctk_widget_get_allocation (windata->win, &allocation);
 
 		windata->width = MAX (allocation.width, 1);
@@ -213,7 +213,7 @@ update_shape_region (cairo_surface_t *surface,
 }
 
 static void
-paint_window (GtkWidget  *widget,
+paint_window (CtkWidget  *widget,
 	      cairo_t    *cr,
 	      WindowData *windata)
 {
@@ -221,7 +221,7 @@ paint_window (GtkWidget  *widget,
 	cairo_t *cr2;
 
 	if (windata->width == 0 || windata->height == 0) {
-		GtkAllocation allocation;
+		CtkAllocation allocation;
 
 		ctk_widget_get_allocation(windata->win, &allocation);
 		windata->width = allocation.width;
@@ -258,7 +258,7 @@ paint_window (GtkWidget  *widget,
 }
 
 static gboolean
-on_draw (GtkWidget *widget, cairo_t *cr, WindowData *windata)
+on_draw (CtkWidget *widget, cairo_t *cr, WindowData *windata)
 {
 	paint_window (widget, cr, windata);
 
@@ -267,7 +267,7 @@ on_draw (GtkWidget *widget, cairo_t *cr, WindowData *windata)
 
 /* Event handlers */
 static gboolean
-configure_event_cb(GtkWidget *nw,
+configure_event_cb(CtkWidget *nw,
 				   GdkEventConfigure *event,
 				   WindowData *windata)
 {
@@ -280,13 +280,13 @@ configure_event_cb(GtkWidget *nw,
 }
 
 static gboolean
-countdown_expose_cb(GtkWidget *pie,
+countdown_expose_cb(CtkWidget *pie,
 					cairo_t *cr,
 					WindowData *windata)
 {
 	cairo_t *cr2;
 	cairo_surface_t *surface;
-	GtkAllocation alloc;
+	CtkAllocation alloc;
 
 	cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
 
@@ -316,7 +316,7 @@ countdown_expose_cb(GtkWidget *pie,
 	return TRUE;
 }
 
-static gboolean on_configure_event (GtkWidget* widget, GdkEventConfigure* event, WindowData* windata)
+static gboolean on_configure_event (CtkWidget* widget, GdkEventConfigure* event, WindowData* windata)
 {
 	windata->width = event->width;
 	windata->height = event->height;
@@ -326,7 +326,7 @@ static gboolean on_configure_event (GtkWidget* widget, GdkEventConfigure* event,
 	return FALSE;
 }
 
-static void on_composited_changed (GtkWidget* window, WindowData* windata)
+static void on_composited_changed (CtkWidget* window, WindowData* windata)
 {
 	windata->composited = gdk_screen_is_composited (ctk_widget_get_screen(window));
 
@@ -334,10 +334,10 @@ static void on_composited_changed (GtkWidget* window, WindowData* windata)
 }
 
 static void
-action_clicked_cb(GtkWidget *w, GdkEventButton *event,
+action_clicked_cb(CtkWidget *w, GdkEventButton *event,
 				  ActionInvokedCb action_cb)
 {
-	GtkWindow *nw   = g_object_get_data(G_OBJECT(w), "_nw");
+	CtkWindow *nw   = g_object_get_data(G_OBJECT(w), "_nw");
 	const char *key = g_object_get_data(G_OBJECT(w), "_action_key");
 
 	action_cb(nw, key);
@@ -371,12 +371,12 @@ get_theme_info(char **theme_name,
 }
 
 /* Create new notification */
-GtkWindow *
+CtkWindow *
 create_notification(UrlClickedCb url_clicked)
 {
-	GtkWidget *win;
-	GtkWidget *main_vbox;
-	GtkWidget *vbox;
+	CtkWidget *win;
+	CtkWidget *main_vbox;
+	CtkWidget *vbox;
 	AtkObject *atkobj;
 	WindowData *windata;
 	GdkVisual *visual;
@@ -487,7 +487,7 @@ create_notification(UrlClickedCb url_clicked)
 
 /* Set the notification text */
 void
-set_notification_text(GtkWindow *nw, const char *summary, const char *body)
+set_notification_text(CtkWindow *nw, const char *summary, const char *body)
 {
 	char *str;
 	char *quoted;
@@ -571,7 +571,7 @@ renrer_ok:
 
 /* Set notification icon */
 void
-set_notification_icon(GtkWindow *nw, GdkPixbuf *pixbuf)
+set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf)
 {
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
 	g_assert(windata != NULL);
@@ -595,20 +595,20 @@ set_notification_icon(GtkWindow *nw, GdkPixbuf *pixbuf)
 
 /* Set notification arrow */
 void
-set_notification_arrow(GtkWidget *nw, gboolean visible, int x, int y)
+set_notification_arrow(CtkWidget *nw, gboolean visible, int x, int y)
 {
     /* nothing */
 }
 
 /* Add notification action */
 void
-add_notification_action(GtkWindow *nw, const char *text, const char *key,
+add_notification_action(CtkWindow *nw, const char *text, const char *key,
 						ActionInvokedCb cb)
 {
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
-	GtkWidget *label;
-	GtkWidget *button;
-	GtkWidget *hbox;
+	CtkWidget *label;
+	CtkWidget *button;
+	CtkWidget *hbox;
 	GdkPixbuf *pixbuf;
 	char *buf;
 
@@ -653,7 +653,7 @@ add_notification_action(GtkWindow *nw, const char *text, const char *key,
 
 	if (pixbuf != NULL)
 	{
-		GtkWidget *image = ctk_image_new_from_pixbuf(pixbuf);
+		CtkWidget *image = ctk_image_new_from_pixbuf(pixbuf);
 		ctk_widget_show(image);
 		ctk_box_pack_start(CTK_BOX(hbox), image, FALSE, FALSE, 0);
 		ctk_widget_set_halign (image, CTK_ALIGN_CENTER);
@@ -684,7 +684,7 @@ add_button:
 
 /* Clear notification actions */
 void
-clear_notification_actions(GtkWindow *nw)
+clear_notification_actions(CtkWindow *nw)
 {
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
 
@@ -692,12 +692,12 @@ clear_notification_actions(GtkWindow *nw)
 
 	ctk_widget_hide(windata->actions_box);
 	ctk_container_foreach(CTK_CONTAINER(windata->actions_box),
-						  (GtkCallback)ctk_widget_destroy, NULL);
+						  (CtkCallback)ctk_widget_destroy, NULL);
 }
 
 /* Move notification window */
 void
-move_notification(GtkWidget *nw, int x, int y)
+move_notification(CtkWidget *nw, int x, int y)
 {
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
 	g_assert(windata != NULL);
@@ -716,7 +716,7 @@ move_notification(GtkWidget *nw, int x, int y)
 
 /* Set notification timeout */
 void
-set_notification_timeout(GtkWindow *nw, glong timeout)
+set_notification_timeout(CtkWindow *nw, glong timeout)
 {
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
 	g_assert(windata != NULL);
@@ -725,7 +725,7 @@ set_notification_timeout(GtkWindow *nw, glong timeout)
 }
 
 /* Set notification hints */
-void set_notification_hints(GtkWindow *nw, GVariant *hints)
+void set_notification_hints(CtkWindow *nw, GVariant *hints)
 {
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
 	guint8 urgency;
@@ -753,7 +753,7 @@ void set_notification_hints(GtkWindow *nw, GVariant *hints)
 
 /* Notification tick */
 void
-notification_tick(GtkWindow *nw, glong remaining)
+notification_tick(CtkWindow *nw, glong remaining)
 {
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
 	windata->remaining = remaining;

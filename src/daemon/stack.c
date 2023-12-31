@@ -242,7 +242,7 @@ notify_stack_destroy (NotifyStack *stack)
         }
 
         for (l = stack->windows; l != NULL; l = l->next) {
-                GtkWindow *nw = CTK_WINDOW (l->data);
+                CtkWindow *nw = CTK_WINDOW (l->data);
                 g_signal_handlers_disconnect_by_data(G_OBJECT(nw), stack);
         }
 
@@ -273,7 +273,7 @@ add_padding_to_rect (GdkRectangle *rect)
 
 static void
 notify_stack_shift_notifications (NotifyStack *stack,
-                                  GtkWindow   *nw,
+                                  CtkWindow   *nw,
                                   GList      **nw_l,
                                   gint         init_width,
                                   gint         init_height,
@@ -314,8 +314,8 @@ notify_stack_shift_notifications (NotifyStack *stack,
                 *nw_y = y;
 
         for (i = 0, l = stack->windows; l != NULL; i++, l = l->next) {
-                GtkWindow      *nw2 = CTK_WINDOW (l->data);
-                GtkRequisition  req;
+                CtkWindow      *nw2 = CTK_WINDOW (l->data);
+                CtkRequisition  req;
 
                 if (nw == NULL || nw2 != nw) {
                         ctk_widget_get_preferred_size (CTK_WIDGET (nw2), NULL, &req);
@@ -340,7 +340,7 @@ notify_stack_shift_notifications (NotifyStack *stack,
         /* move bubbles at the bottom of the stack first
            to avoid overlapping */
         for (i = n_wins - 1, l = g_list_last (stack->windows); l != NULL; i--, l = l->prev) {
-                GtkWindow *nw2 = CTK_WINDOW (l->data);
+                CtkWindow *nw2 = CTK_WINDOW (l->data);
 
                 if (nw == NULL || nw2 != nw) {
                         theme_move_notification (nw2, positions[i].x, positions[i].y);
@@ -374,9 +374,9 @@ void notify_stack_queue_update_position(NotifyStack* stack)
 	stack->update_id = g_idle_add((GSourceFunc) update_position_idle, stack);
 }
 
-void notify_stack_add_window(NotifyStack* stack, GtkWindow* nw, gboolean new_notification)
+void notify_stack_add_window(NotifyStack* stack, CtkWindow* nw, gboolean new_notification)
 {
-	GtkRequisition  req;
+	CtkRequisition  req;
 	gint            x, y;
 
 	ctk_widget_get_preferred_size(CTK_WIDGET(nw), NULL, &req);
@@ -390,7 +390,7 @@ void notify_stack_add_window(NotifyStack* stack, GtkWindow* nw, gboolean new_not
 	}
 }
 
-void notify_stack_remove_window(NotifyStack* stack, GtkWindow* nw)
+void notify_stack_remove_window(NotifyStack* stack, CtkWindow* nw)
 {
 	GList* remove_l = NULL;
 

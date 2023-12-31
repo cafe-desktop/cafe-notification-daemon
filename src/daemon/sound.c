@@ -27,7 +27,7 @@
 #include <canberra-ctk.h>
 
 void
-sound_play_file (GtkWidget *widget,
+sound_play_file (CtkWidget *widget,
                  const char *filename)
 {
         ca_ctk_play_for_widget (widget, 0,
