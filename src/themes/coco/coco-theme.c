@@ -200,7 +200,7 @@ update_shape_region (cairo_surface_t *surface,
 	if (!windata->composited) {
 		cairo_region_t *region;
 
-		region = gdk_cairo_region_create_from_surface (surface);
+		region = cdk_cairo_region_create_from_surface (surface);
 		ctk_widget_shape_combine_region (windata->win, region);
 		cairo_region_destroy (region);
 	} else {
@@ -328,7 +328,7 @@ static gboolean on_configure_event (CtkWidget* widget, GdkEventConfigure* event,
 
 static void on_composited_changed (CtkWidget* window, WindowData* windata)
 {
-	windata->composited = gdk_screen_is_composited (ctk_widget_get_screen(window));
+	windata->composited = cdk_screen_is_composited (ctk_widget_get_screen(window));
 
 	ctk_widget_queue_draw (window);
 }
@@ -393,12 +393,12 @@ create_notification(UrlClickedCb url_clicked)
 	windata->rtl = ctk_widget_get_default_direction();
 	windata->composited = FALSE;
 	screen = ctk_window_get_screen(CTK_WINDOW(win));
-	visual = gdk_screen_get_rgba_visual(screen);
+	visual = cdk_screen_get_rgba_visual(screen);
 
 	if (visual != NULL)
 	{
 		ctk_widget_set_visual(win, visual);
-		if (gdk_screen_is_composited(screen))
+		if (cdk_screen_is_composited(screen))
 			windata->composited = TRUE;
 	}
 
@@ -580,7 +580,7 @@ set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf)
 
 	if (pixbuf != NULL)
 	{
-		int pixbuf_width = gdk_pixbuf_get_width(pixbuf);
+		int pixbuf_width = cdk_pixbuf_get_width(pixbuf);
 
 		ctk_widget_show(windata->icon);
 		ctk_widget_set_size_request(windata->iconbox,
@@ -647,7 +647,7 @@ add_notification_action(CtkWindow *nw, const char *text, const char *key,
 	buf = g_strdup_printf("stock_%s", key);
 	pixbuf = ctk_icon_theme_load_icon(
 		ctk_icon_theme_get_for_screen(
-			gdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
+			cdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
 		buf, 16, CTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 	g_free(buf);
 

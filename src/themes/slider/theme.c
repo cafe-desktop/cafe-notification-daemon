@@ -141,7 +141,7 @@ get_background_color (CtkStyleContext *context,
                            "background-color", &c,
                            NULL);
     *color = *c;
-    gdk_rgba_free (c);
+    cdk_rgba_free (c);
 }
 
 static void fill_background(CtkWidget* widget, WindowData* windata, cairo_t* cr)
@@ -197,7 +197,7 @@ update_shape_region (cairo_surface_t *surface,
 	if (!windata->composited) {
 		cairo_region_t *region;
 
-		region = gdk_cairo_region_create_from_surface (surface);
+		region = cdk_cairo_region_create_from_surface (surface);
 		ctk_widget_shape_combine_region (windata->win, region);
 		cairo_region_destroy (region);
 	} else {
@@ -300,7 +300,7 @@ static void on_window_realize(CtkWidget* widget, WindowData* windata)
 
 static void on_composited_changed(CtkWidget* window, WindowData* windata)
 {
-	windata->composited = gdk_screen_is_composited(ctk_widget_get_screen(window));
+	windata->composited = cdk_screen_is_composited(ctk_widget_get_screen(window));
 
 	ctk_widget_queue_draw (windata->win);
 }
@@ -334,12 +334,12 @@ CtkWindow* create_notification(UrlClickedCb url_clicked)
 
 	screen = ctk_window_get_screen(CTK_WINDOW(win));
 
-	visual = gdk_screen_get_rgba_visual(screen);
+	visual = cdk_screen_get_rgba_visual(screen);
 	if (visual != NULL)
 	{
 		ctk_widget_set_visual(win, visual);
 
-		if (gdk_screen_is_composited(screen))
+		if (cdk_screen_is_composited(screen))
 		{
 			windata->composited = TRUE;
 		}
@@ -591,8 +591,8 @@ static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height,
 	float scale_factor_y = 1.0;
 	float scale_factor = 1.0;
 
-	int pw = gdk_pixbuf_get_width(pixbuf);
-	int ph = gdk_pixbuf_get_height(pixbuf);
+	int pw = cdk_pixbuf_get_width(pixbuf);
+	int ph = cdk_pixbuf_get_height(pixbuf);
 
 	/* Determine which dimension requires the smallest scale. */
 	scale_factor_x = (float) max_width / (float) pw;
@@ -616,7 +616,7 @@ static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height,
 		scale_x = (int) (pw * scale_factor);
 		scale_y = (int) (ph * scale_factor);
 
-		return gdk_pixbuf_scale_simple(pixbuf, scale_x, scale_y, GDK_INTERP_BILINEAR);
+		return cdk_pixbuf_scale_simple(pixbuf, scale_x, scale_y, GDK_INTERP_BILINEAR);
 	}
 	else
 	{
@@ -641,7 +641,7 @@ void set_notification_icon(CtkWindow* nw, GdkPixbuf* pixbuf)
 
 	if (scaled != NULL)
 	{
-		int pixbuf_width = gdk_pixbuf_get_width(scaled);
+		int pixbuf_width = cdk_pixbuf_get_width(scaled);
 
 		ctk_widget_show(windata->icon);
 		ctk_widget_set_size_request(windata->icon, MAX(BODY_X_OFFSET, pixbuf_width), -1);
@@ -699,7 +699,7 @@ paint_countdown (CtkWidget  *pie,
 	{
 		gdouble pct = (gdouble) windata->remaining / (gdouble) windata->timeout;
 
-		gdk_cairo_set_source_rgba (cr2, &bg);
+		cdk_cairo_set_source_rgba (cr2, &bg);
 
 		cairo_move_to (cr2, PIE_RADIUS, PIE_RADIUS);
 		cairo_arc_negative (cr2, PIE_RADIUS, PIE_RADIUS, PIE_RADIUS, -G_PI_2, -(pct * G_PI * 2) - G_PI_2);
@@ -780,7 +780,7 @@ void add_notification_action(CtkWindow* nw, const char* text, const char* key, A
 
 	/* Try to be smart and find a suitable icon. */
 	buf = g_strdup_printf("stock_%s", key);
-	pixbuf = ctk_icon_theme_load_icon(ctk_icon_theme_get_for_screen(gdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
+	pixbuf = ctk_icon_theme_load_icon(ctk_icon_theme_get_for_screen(cdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
 									  buf, 16, CTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 	g_free(buf);
 

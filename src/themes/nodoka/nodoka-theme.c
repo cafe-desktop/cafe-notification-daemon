@@ -27,7 +27,7 @@
 
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 
 #include <libxml/xpath.h>
 
@@ -140,8 +140,8 @@ get_notification_arrow_type(CtkWidget *nw)
 	WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
 	int screen_height;
 
-	screen_height = HeightOfScreen (gdk_x11_screen_get_xscreen (
-		gdk_window_get_screen (ctk_widget_get_window (nw))));
+	screen_height = HeightOfScreen (cdk_x11_screen_get_xscreen (
+		cdk_window_get_screen (ctk_widget_get_window (nw))));
 
 	if (windata->arrow.position.y + windata->height + DEFAULT_ARROW_HEIGHT >
 		screen_height)
@@ -162,8 +162,8 @@ set_arrow_parameters (WindowData *windata)
 	int x,y;
 	CtkArrowType arrow_type;
 
-	screen_width = WidthOfScreen (gdk_x11_screen_get_xscreen (
-		gdk_window_get_screen (ctk_widget_get_window (windata->win))));
+	screen_width = WidthOfScreen (cdk_x11_screen_get_xscreen (
+		cdk_window_get_screen (ctk_widget_get_window (windata->win))));
 
 	/* Set arrow offset */
 	CtkAllocation alloc;
@@ -536,7 +536,7 @@ update_shape_region (cairo_surface_t *surface,
 	if (!windata->composited) {
 		cairo_region_t *region;
 
-		region = gdk_cairo_region_create_from_surface (surface);
+		region = cdk_cairo_region_create_from_surface (surface);
 		ctk_widget_shape_combine_region (windata->win, region);
 		cairo_region_destroy (region);
 	} else {
@@ -635,7 +635,7 @@ configure_event_cb(CtkWidget *nw,
 
 static void on_composited_changed (CtkWidget* window, WindowData* windata)
 {
-	windata->composited = gdk_screen_is_composited (ctk_widget_get_screen(window));
+	windata->composited = cdk_screen_is_composited (ctk_widget_get_screen(window));
 
 	ctk_widget_queue_draw (window);
 }
@@ -739,12 +739,12 @@ create_notification(UrlClickedCb url_clicked)
 
 	windata->composited = FALSE;
 	screen = ctk_window_get_screen(CTK_WINDOW(win));
-	visual = gdk_screen_get_rgba_visual(screen);
+	visual = cdk_screen_get_rgba_visual(screen);
 
 	if (visual != NULL)
 	{
 		ctk_widget_set_visual(win, visual);
-		if (gdk_screen_is_composited(screen))
+		if (cdk_screen_is_composited(screen))
 			windata->composited = TRUE;
 	}
 
@@ -967,7 +967,7 @@ set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf)
 
 	if (pixbuf != NULL)
 	{
-		int pixbuf_width = gdk_pixbuf_get_width(pixbuf);
+		int pixbuf_width = cdk_pixbuf_get_width(pixbuf);
 
 		ctk_widget_show(windata->icon);
 		ctk_widget_set_size_request(windata->iconbox,
@@ -1044,7 +1044,7 @@ add_notification_action(CtkWindow *nw, const char *text, const char *key,
 	buf = g_strdup_printf("stock_%s", key);
 	pixbuf = ctk_icon_theme_load_icon(
 		ctk_icon_theme_get_for_screen(
-			gdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
+			cdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
 		buf, 16, CTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 	g_free(buf);
 

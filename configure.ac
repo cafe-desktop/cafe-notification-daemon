@@ -141,17 +141,17 @@ PKG_CHECK_MODULES(NOTIFICATION_CAPPLET, glib-2.0 >= $REQ_GLIB_VERSION gio-2.0 >=
 AC_SUBST(NOTIFICATION_CAPPLET_CFLAGS)
 AC_SUBST(NOTIFICATION_CAPPLET_LIBS)
 
-gdk_modules="
-	gdk-3.0 >= $CTK_REQUIRED, \
-	gdk-pixbuf-2.0 >= 2.22.0 \
+cdk_modules="
+	cdk-3.0 >= $CTK_REQUIRED, \
+	cdk-pixbuf-2.0 >= 2.22.0 \
 "
-PKG_CHECK_MODULES(GDK, $gdk_modules, have_gdk=yes,
+PKG_CHECK_MODULES(GDK, $cdk_modules, have_cdk=yes,
 [
-	have_gdk=no
+	have_cdk=no
 	AC_MSG_WARN("Some test apps will not be built")
 ])
 
-AM_CONDITIONAL(HAVE_GDK, test "x$have_gdk" = "xyes")
+AM_CONDITIONAL(HAVE_GDK, test "x$have_cdk" = "xyes")
 
 AC_SUBST(GDK_CFLAGS)
 AC_SUBST(GDK_LIBS)

@@ -25,7 +25,7 @@
 #include <glib.h>
 #include <gmodule.h>
 #include <ctk/ctk.h>
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <gio/gio.h>
 #include <string.h>
 #include <libnotify/notify.h>
@@ -205,15 +205,15 @@ static void notification_properties_dialog_setup_monitors(NotificationAppletDial
 
 	// Assumes the user has only one display.
 	// TODO: add support for multiple displays.
-	display = gdk_display_get_default();
+	display = cdk_display_get_default();
 	g_assert(display != NULL);
 
 	// Assumes the user has only one screen.
 	// TODO: add support for mulitple screens.
-	screen = gdk_display_get_default_screen(display);
+	screen = cdk_display_get_default_screen(display);
 	g_assert(screen != NULL);
 
-	num_monitors = gdk_display_get_n_monitors(display);
+	num_monitors = cdk_display_get_n_monitors(display);
 	g_assert(num_monitors >= 1);
 
 	store = ctk_list_store_new(N_COLUMNS_MONITOR, G_TYPE_INT);

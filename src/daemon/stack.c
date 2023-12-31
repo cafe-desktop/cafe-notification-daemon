@@ -28,7 +28,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 
 #define NOTIFY_STACK_SPACING 2
 #define WORKAREA_PADDING 6
@@ -63,7 +63,7 @@ get_work_area (NotifyStack  *stack,
         int             result;
         int             disp_screen;
 
-	workarea = XInternAtom(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), "_NET_WORKAREA", True);
+	workarea = XInternAtom(GDK_DISPLAY_XDISPLAY(cdk_display_get_default()), "_NET_WORKAREA", True);
 
 
         disp_screen = GDK_SCREEN_XNUMBER (stack->screen);
@@ -71,16 +71,16 @@ get_work_area (NotifyStack  *stack,
         /* Defaults in case of error */
         rect->x = 0;
         rect->y = 0;
-        rect->width = WidthOfScreen (gdk_x11_screen_get_xscreen (stack->screen));
-        rect->height = HeightOfScreen (gdk_x11_screen_get_xscreen (stack->screen));
+        rect->width = WidthOfScreen (cdk_x11_screen_get_xscreen (stack->screen));
+        rect->height = HeightOfScreen (cdk_x11_screen_get_xscreen (stack->screen));
 
         if (workarea == None)
                 return FALSE;
 
 
-	win = XRootWindow(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()), disp_screen);
+	win = XRootWindow(GDK_DISPLAY_XDISPLAY(cdk_display_get_default()), disp_screen);
 
-	result = XGetWindowProperty(GDK_DISPLAY_XDISPLAY(gdk_display_get_default()),
+	result = XGetWindowProperty(GDK_DISPLAY_XDISPLAY(cdk_display_get_default()),
 		win,
 		workarea,
 		0,
@@ -195,12 +195,12 @@ _ctk_get_monitor_num (GdkMonitor *monitor)
         GdkDisplay *display;
         int n_monitors, i;
 
-        display = gdk_monitor_get_display(monitor);
-        n_monitors = gdk_display_get_n_monitors(display);
+        display = cdk_monitor_get_display(monitor);
+        n_monitors = cdk_display_get_n_monitors(display);
 
         for(i = 0; i < n_monitors; i++)
         {
-                if (gdk_display_get_monitor(display, i) == monitor) return i;
+                if (cdk_display_get_monitor(display, i) == monitor) return i;
         }
 
         return -1;
@@ -215,10 +215,10 @@ notify_stack_new (NotifyDaemon       *daemon,
         NotifyStack    *stack;
         GdkDisplay     *display;
 
-        display = gdk_screen_get_display (screen);
+        display = cdk_screen_get_display (screen);
         g_assert (daemon != NULL);
         g_assert (screen != NULL && GDK_IS_SCREEN (screen));
-        g_assert ((guint)_ctk_get_monitor_num (monitor) < (guint)gdk_display_get_n_monitors (display));
+        g_assert ((guint)_ctk_get_monitor_num (monitor) < (guint)cdk_display_get_n_monitors (display));
         g_assert (location != NOTIFY_STACK_LOCATION_UNKNOWN);
 
         stack = g_new0 (NotifyStack, 1);
@@ -291,8 +291,8 @@ notify_stack_shift_notifications (NotifyStack *stack,
         int             n_wins;
 
         get_work_area (stack, &workarea);
-        gdk_monitor_get_geometry (stack->monitor, &monitor);
-        gdk_rectangle_intersect (&monitor, &workarea, &workarea);
+        cdk_monitor_get_geometry (stack->monitor, &monitor);
+        cdk_rectangle_intersect (&monitor, &workarea, &workarea);
 
         add_padding_to_rect (&workarea);
 
