@@ -179,8 +179,8 @@
                       <packing>
                         <property name="top_attach">1</property>
                         <property name="bottom_attach">2</property>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options">GTK_FILL</property>
+                        <property name="x_options">CTK_FILL</property>
+                        <property name="y_options">CTK_FILL</property>
                       </packing>
                     </child>
                     <child>
@@ -194,8 +194,8 @@
                         <property name="mnemonic_widget">theme_combo</property>
                       </object>
                       <packing>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options">GTK_FILL</property>
+                        <property name="x_options">CTK_FILL</property>
+                        <property name="y_options">CTK_FILL</property>
                       </packing>
                     </child>
                     <child>
@@ -210,8 +210,8 @@
                       <packing>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options">GTK_FILL</property>
+                        <property name="x_options">CTK_FILL</property>
+                        <property name="y_options">CTK_FILL</property>
                       </packing>
                     </child>
                     <child>

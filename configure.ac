@@ -105,11 +105,11 @@ dnl ---------------------------------------------------------------------------
 dnl Requirements for the themes
 dnl ---------------------------------------------------------------------------
 
-GTK_REQUIRED=3.22.0
+CTK_REQUIRED=3.22.0
 XML_REQUIRED=2.9.0
 
 PKG_CHECK_MODULES(THEME,
-  ctk+-3.0 >= $GTK_REQUIRED
+  ctk+-3.0 >= $CTK_REQUIRED
   libxml-2.0 >= $XML_REQUIRED
 )
 AC_SUBST(THEME_CFLAGS)
@@ -119,14 +119,14 @@ dnl ---------------------------------------------------------------------------
 dnl Requirements for the daemon
 dnl ---------------------------------------------------------------------------
 REQ_GLIB_VERSION=2.50.0
-REQ_LIBCANBERRA_GTK_VERSION=0.4
+REQ_LIBCANBERRA_CTK_VERSION=0.4
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 pkg_modules="
-	ctk+-3.0 >= $GTK_REQUIRED, \
+	ctk+-3.0 >= $CTK_REQUIRED, \
 	glib-2.0 >= $REQ_GLIB_VERSION, \
 	gio-2.0 >= $REQ_GLIB_VERSION, \
         $GMODULE_ADD \
-        libcanberra-ctk3 >= $REQ_LIBCANBERRA_GTK_VERSION, \
+        libcanberra-ctk3 >= $REQ_LIBCANBERRA_CTK_VERSION, \
 	libwnck-3.0 \
         x11 \
 "
@@ -137,12 +137,12 @@ AC_SUBST(NOTIFICATION_DAEMON_LIBS)
 dnl ---------------------------------------------------------------------------
 dnl Requirements for the setup tool
 dnl ---------------------------------------------------------------------------
-PKG_CHECK_MODULES(NOTIFICATION_CAPPLET, glib-2.0 >= $REQ_GLIB_VERSION gio-2.0 >= $REQ_GLIB_VERSION ctk+-3.0 >= $GTK_REQUIRED libnotify)
+PKG_CHECK_MODULES(NOTIFICATION_CAPPLET, glib-2.0 >= $REQ_GLIB_VERSION gio-2.0 >= $REQ_GLIB_VERSION ctk+-3.0 >= $CTK_REQUIRED libnotify)
 AC_SUBST(NOTIFICATION_CAPPLET_CFLAGS)
 AC_SUBST(NOTIFICATION_CAPPLET_LIBS)
 
 gdk_modules="
-	gdk-3.0 >= $GTK_REQUIRED, \
+	gdk-3.0 >= $CTK_REQUIRED, \
 	gdk-pixbuf-2.0 >= 2.22.0 \
 "
 PKG_CHECK_MODULES(GDK, $gdk_modules, have_gdk=yes,

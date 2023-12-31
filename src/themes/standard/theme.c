@@ -128,7 +128,7 @@ get_background_color (GtkStyleContext *context,
         GdkRGBA *c;
 
         g_return_if_fail (color != NULL);
-        g_return_if_fail (GTK_IS_STYLE_CONTEXT (context));
+        g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
 
         ctk_style_context_get (context, state,
                                "background-color", &c,
@@ -159,9 +159,9 @@ static void fill_background(GtkWidget* widget, WindowData* windata, cairo_t* cr)
     context = ctk_widget_get_style_context (windata->win);
 
     ctk_style_context_save (context);
-    ctk_style_context_set_state (context, GTK_STATE_FLAG_NORMAL);
+    ctk_style_context_set_state (context, CTK_STATE_FLAG_NORMAL);
 
-    get_background_color (context, GTK_STATE_FLAG_NORMAL, &bg);
+    get_background_color (context, CTK_STATE_FLAG_NORMAL, &bg);
 
     ctk_style_context_restore (context);
 
@@ -212,7 +212,7 @@ static void draw_stripe(GtkWidget* widget, WindowData* windata, cairo_t* cr)
 
 	stripe_x = alloc.x + 1;
 
-	if (ctk_widget_get_direction(widget) == GTK_TEXT_DIR_RTL)
+	if (ctk_widget_get_direction(widget) == CTK_TEXT_DIR_RTL)
 	{
 		stripe_x = windata->width - STRIPE_WIDTH - stripe_x;
 	}
@@ -223,9 +223,9 @@ static void draw_stripe(GtkWidget* widget, WindowData* windata, cairo_t* cr)
 	switch (windata->urgency)
 	{
 		case URGENCY_LOW: // LOW
-			ctk_style_context_set_state (context, GTK_STATE_FLAG_NORMAL);
-			ctk_style_context_add_class (context, GTK_STYLE_CLASS_VIEW);
-			get_background_color (context, GTK_STATE_FLAG_NORMAL, &bg);
+			ctk_style_context_set_state (context, CTK_STATE_FLAG_NORMAL);
+			ctk_style_context_add_class (context, CTK_STYLE_CLASS_VIEW);
+			get_background_color (context, CTK_STATE_FLAG_NORMAL, &bg);
 			gdk_cairo_set_source_rgba (cr, &bg);
 			break;
 
@@ -235,9 +235,9 @@ static void draw_stripe(GtkWidget* widget, WindowData* windata, cairo_t* cr)
 
 		case URGENCY_NORMAL: // NORMAL
 		default:
-			ctk_style_context_set_state (context, GTK_STATE_FLAG_SELECTED);
-			ctk_style_context_add_class (context, GTK_STYLE_CLASS_VIEW);
-			get_background_color (context, GTK_STATE_FLAG_SELECTED, &bg);
+			ctk_style_context_set_state (context, CTK_STATE_FLAG_SELECTED);
+			ctk_style_context_add_class (context, CTK_STYLE_CLASS_VIEW);
+			get_background_color (context, CTK_STATE_FLAG_SELECTED, &bg);
 			gdk_cairo_set_source_rgba (cr, &bg);
 			break;
 	}
@@ -280,11 +280,11 @@ static GtkArrowType get_notification_arrow_type(GtkWidget* nw)
 
 	if (windata->point_y - monitor_geometry.y + windata->height + DEFAULT_ARROW_HEIGHT > monitor_geometry.height)
 	{
-		return GTK_ARROW_DOWN;
+		return CTK_ARROW_DOWN;
 	}
 	else
 	{
-		return GTK_ARROW_UP;
+		return CTK_ARROW_UP;
 	}
 }
 
@@ -333,8 +333,8 @@ static void create_border_with_arrow(GtkWidget* nw, WindowData* windata)
 	/* Handle the offset and such */
 	switch (arrow_type)
 	{
-		case GTK_ARROW_UP:
-		case GTK_ARROW_DOWN:
+		case CTK_ARROW_UP:
+		case CTK_ARROW_DOWN:
 
 			if (norm_point_x < arrow_side1_width)
 			{
@@ -384,7 +384,7 @@ static void create_border_with_arrow(GtkWidget* nw, WindowData* windata)
 			windata->drawn_arrow_middle_x = arrow_offset + arrow_side1_width;
 			windata->drawn_arrow_end_x = arrow_offset + arrow_side1_width + arrow_side2_width;
 
-			if (arrow_type == GTK_ARROW_UP)
+			if (arrow_type == CTK_ARROW_UP)
 			{
 				windata->drawn_arrow_begin_y = DEFAULT_ARROW_HEIGHT;
 				windata->drawn_arrow_middle_y = 0;
@@ -456,12 +456,12 @@ static void create_border_with_arrow(GtkWidget* nw, WindowData* windata)
 				g_assert(windata->point_x - arrow_offset - arrow_side1_width >= 0);
 			#endif
 
-			ctk_window_move(GTK_WINDOW(windata->win), windata->point_x - arrow_offset - arrow_side1_width, y);
+			ctk_window_move(CTK_WINDOW(windata->win), windata->point_x - arrow_offset - arrow_side1_width, y);
 
 			break;
 
-		case GTK_ARROW_LEFT:
-		case GTK_ARROW_RIGHT:
+		case CTK_ARROW_LEFT:
+		case CTK_ARROW_RIGHT:
 
 			if (norm_point_y < arrow_side1_width)
 			{
@@ -481,7 +481,7 @@ static void create_border_with_arrow(GtkWidget* nw, WindowData* windata)
 
 	g_assert(shape_points != NULL);
 
-	/* FIXME won't work with GTK+3, need a replacement */
+	/* FIXME won't work with CTK+3, need a replacement */
 	/*windata->window_region = gdk_region_polygon(shape_points, windata->num_border_points, GDK_EVEN_ODD_RULE);*/
 	g_free(shape_points);
 }
@@ -583,14 +583,14 @@ static void update_spacers(GtkWidget* nw)
 
 	if (windata->has_arrow)
 	{
-		switch (get_notification_arrow_type(GTK_WIDGET(nw)))
+		switch (get_notification_arrow_type(CTK_WIDGET(nw)))
 		{
-			case GTK_ARROW_UP:
+			case CTK_ARROW_UP:
 				ctk_widget_show(windata->top_spacer);
 				ctk_widget_hide(windata->bottom_spacer);
 				break;
 
-			case GTK_ARROW_DOWN:
+			case CTK_ARROW_DOWN:
 				ctk_widget_hide(windata->top_spacer);
 				ctk_widget_show(windata->bottom_spacer);
 				break;
@@ -635,7 +635,7 @@ static gboolean configure_event_cb(GtkWidget* nw, GdkEventConfigure* event, Wind
 
 static gboolean activate_link(GtkLabel* label, const char* url, WindowData* windata)
 {
-	windata->url_clicked(GTK_WINDOW(windata->win), url);
+	windata->url_clicked(CTK_WINDOW(windata->win), url);
 
 	return TRUE;
 }
@@ -659,14 +659,14 @@ GtkWindow* create_notification(UrlClickedCb url_clicked)
 	windata->urgency = URGENCY_NORMAL;
 	windata->url_clicked = url_clicked;
 
-	win = ctk_window_new(GTK_WINDOW_POPUP);
-	ctk_window_set_resizable(GTK_WINDOW(win), FALSE);
+	win = ctk_window_new(CTK_WINDOW_POPUP);
+	ctk_window_set_resizable(CTK_WINDOW(win), FALSE);
 	windata->win = win;
 
 	windata->composited = FALSE;
 
 
-	screen = ctk_window_get_screen(GTK_WINDOW(win));
+	screen = ctk_window_get_screen(CTK_WINDOW(win));
 
 	visual = gdk_screen_get_rgba_visual(screen);
 
@@ -680,8 +680,8 @@ GtkWindow* create_notification(UrlClickedCb url_clicked)
 		}
 	}
 
-	ctk_window_set_title(GTK_WINDOW(win), "Notification");
-	ctk_window_set_type_hint(GTK_WINDOW(win), GDK_WINDOW_TYPE_HINT_NOTIFICATION);
+	ctk_window_set_title(CTK_WINDOW(win), "Notification");
+	ctk_window_set_type_hint(CTK_WINDOW(win), GDK_WINDOW_TYPE_HINT_NOTIFICATION);
 	ctk_widget_add_events(win, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
 	ctk_widget_realize(win);
 	ctk_widget_set_size_request(win, WIDTH, -1);
@@ -691,46 +691,46 @@ GtkWindow* create_notification(UrlClickedCb url_clicked)
 
 	g_signal_connect(G_OBJECT(win), "configure_event", G_CALLBACK(configure_event_cb), windata);
 
-	main_vbox = ctk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+	main_vbox = ctk_box_new(CTK_ORIENTATION_VERTICAL, 0);
 	ctk_widget_show(main_vbox);
-	ctk_container_add (GTK_CONTAINER (win), main_vbox);
-	ctk_container_set_border_width(GTK_CONTAINER(main_vbox), 1);
+	ctk_container_add (CTK_CONTAINER (win), main_vbox);
+	ctk_container_set_border_width(CTK_CONTAINER(main_vbox), 1);
 
 	g_signal_connect (G_OBJECT (main_vbox), "draw", G_CALLBACK (on_draw), windata);
 
 	windata->top_spacer = ctk_image_new();
-	ctk_box_pack_start(GTK_BOX(main_vbox), windata->top_spacer, FALSE, FALSE, 0);
+	ctk_box_pack_start(CTK_BOX(main_vbox), windata->top_spacer, FALSE, FALSE, 0);
 	ctk_widget_set_size_request(windata->top_spacer, -1, DEFAULT_ARROW_HEIGHT);
 
-	windata->main_hbox = ctk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+	windata->main_hbox = ctk_box_new(CTK_ORIENTATION_HORIZONTAL, 0);
 	ctk_widget_show(windata->main_hbox);
-	ctk_box_pack_start(GTK_BOX(main_vbox), windata->main_hbox, FALSE, FALSE, 0);
+	ctk_box_pack_start(CTK_BOX(main_vbox), windata->main_hbox, FALSE, FALSE, 0);
 
 	windata->bottom_spacer = ctk_image_new();
-	ctk_box_pack_start(GTK_BOX(main_vbox), windata->bottom_spacer, FALSE, FALSE, 0);
+	ctk_box_pack_start(CTK_BOX(main_vbox), windata->bottom_spacer, FALSE, FALSE, 0);
 	ctk_widget_set_size_request(windata->bottom_spacer, -1, DEFAULT_ARROW_HEIGHT);
 
-	vbox = ctk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+	vbox = ctk_box_new(CTK_ORIENTATION_VERTICAL, 6);
 	ctk_widget_show(vbox);
-	ctk_box_pack_start(GTK_BOX(windata->main_hbox), vbox, TRUE, TRUE, 0);
-	ctk_container_set_border_width(GTK_CONTAINER(vbox), 10);
+	ctk_box_pack_start(CTK_BOX(windata->main_hbox), vbox, TRUE, TRUE, 0);
+	ctk_container_set_border_width(CTK_CONTAINER(vbox), 10);
 
-	hbox = ctk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+	hbox = ctk_box_new(CTK_ORIENTATION_HORIZONTAL, 6);
 	ctk_widget_show(hbox);
-	ctk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	ctk_box_pack_start(CTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 
 	spacer = ctk_image_new();
 	ctk_widget_show(spacer);
-	ctk_box_pack_start(GTK_BOX(hbox), spacer, FALSE, FALSE, 0);
+	ctk_box_pack_start(CTK_BOX(hbox), spacer, FALSE, FALSE, 0);
 	ctk_widget_set_size_request(spacer, SPACER_LEFT, -1);
 
 	windata->summary_label = ctk_label_new(NULL);
 	ctk_widget_show(windata->summary_label);
-	ctk_box_pack_start(GTK_BOX(hbox), windata->summary_label, TRUE, TRUE, 0);
-	ctk_label_set_xalign (GTK_LABEL (windata->summary_label), 0.0);
-	ctk_label_set_yalign (GTK_LABEL (windata->summary_label), 0.0);
-	ctk_label_set_line_wrap(GTK_LABEL(windata->summary_label), TRUE);
-	ctk_label_set_line_wrap_mode (GTK_LABEL (windata->summary_label), PANGO_WRAP_WORD_CHAR);
+	ctk_box_pack_start(CTK_BOX(hbox), windata->summary_label, TRUE, TRUE, 0);
+	ctk_label_set_xalign (CTK_LABEL (windata->summary_label), 0.0);
+	ctk_label_set_yalign (CTK_LABEL (windata->summary_label), 0.0);
+	ctk_label_set_line_wrap(CTK_LABEL(windata->summary_label), TRUE);
+	ctk_label_set_line_wrap_mode (CTK_LABEL (windata->summary_label), PANGO_WRAP_WORD_CHAR);
 
 	atkobj = ctk_widget_get_accessible(windata->summary_label);
 	atk_object_set_description (atkobj, _("Notification summary text."));
@@ -738,12 +738,12 @@ GtkWindow* create_notification(UrlClickedCb url_clicked)
 	/* Add the close button */
 	close_button = ctk_button_new();
 	windata->close_button = close_button;
-	ctk_widget_set_halign (close_button, GTK_ALIGN_END);
-	ctk_widget_set_valign (close_button, GTK_ALIGN_START);
+	ctk_widget_set_halign (close_button, CTK_ALIGN_END);
+	ctk_widget_set_valign (close_button, CTK_ALIGN_START);
 	ctk_widget_show(close_button);
-	ctk_box_pack_start(GTK_BOX(hbox), close_button, FALSE, FALSE, 0);
-	ctk_button_set_relief(GTK_BUTTON(close_button), GTK_RELIEF_NONE);
-	ctk_container_set_border_width(GTK_CONTAINER(close_button), 0);
+	ctk_box_pack_start(CTK_BOX(hbox), close_button, FALSE, FALSE, 0);
+	ctk_button_set_relief(CTK_BUTTON(close_button), CTK_RELIEF_NONE);
+	ctk_container_set_border_width(CTK_CONTAINER(close_button), 0);
 	//ctk_widget_set_size_request(close_button, 20, 20);
 	g_signal_connect_swapped(G_OBJECT(close_button), "clicked", G_CALLBACK(ctk_widget_destroy), win);
 
@@ -753,46 +753,46 @@ GtkWindow* create_notification(UrlClickedCb url_clicked)
 	atk_object_set_name(atkobj, "");
 	atk_object_set_description (atkobj, _("Closes the notification."));
 
-	image = ctk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_MENU);
+	image = ctk_image_new_from_icon_name ("window-close", CTK_ICON_SIZE_MENU);
 	ctk_widget_show(image);
-	ctk_container_add(GTK_CONTAINER(close_button), image);
+	ctk_container_add(CTK_CONTAINER(close_button), image);
 
-	windata->content_hbox = ctk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-	ctk_box_pack_start(GTK_BOX(vbox), windata->content_hbox, FALSE, FALSE, 0);
+	windata->content_hbox = ctk_box_new(CTK_ORIENTATION_HORIZONTAL, 6);
+	ctk_box_pack_start(CTK_BOX(vbox), windata->content_hbox, FALSE, FALSE, 0);
 
-	windata->iconbox = ctk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+	windata->iconbox = ctk_box_new(CTK_ORIENTATION_HORIZONTAL, 0);
 	ctk_widget_show(windata->iconbox);
-	ctk_box_pack_start(GTK_BOX(windata->content_hbox), windata->iconbox, FALSE, FALSE, 0);
+	ctk_box_pack_start(CTK_BOX(windata->content_hbox), windata->iconbox, FALSE, FALSE, 0);
 	ctk_widget_set_size_request(windata->iconbox, BODY_X_OFFSET, -1);
 
 	windata->icon = ctk_image_new();
-	ctk_box_pack_start(GTK_BOX(windata->iconbox), windata->icon, TRUE, TRUE, 0);
-	ctk_widget_set_halign (windata->icon, GTK_ALIGN_CENTER);
-	ctk_widget_set_valign (windata->icon, GTK_ALIGN_START);
+	ctk_box_pack_start(CTK_BOX(windata->iconbox), windata->icon, TRUE, TRUE, 0);
+	ctk_widget_set_halign (windata->icon, CTK_ALIGN_CENTER);
+	ctk_widget_set_valign (windata->icon, CTK_ALIGN_START);
 
-	vbox = ctk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+	vbox = ctk_box_new(CTK_ORIENTATION_VERTICAL, 6);
 	ctk_widget_show(vbox);
-	ctk_box_pack_start(GTK_BOX(windata->content_hbox), vbox, TRUE, TRUE, 0);
+	ctk_box_pack_start(CTK_BOX(windata->content_hbox), vbox, TRUE, TRUE, 0);
 
 	windata->body_label = ctk_label_new(NULL);
 	ctk_widget_show(windata->body_label);
-	ctk_box_pack_start(GTK_BOX(vbox), windata->body_label, TRUE, TRUE, 0);
-	ctk_label_set_xalign (GTK_LABEL (windata->body_label), 0.0);
-	ctk_label_set_yalign (GTK_LABEL (windata->body_label), 0.0);
-	ctk_label_set_line_wrap(GTK_LABEL(windata->body_label), TRUE);
-	ctk_label_set_line_wrap_mode (GTK_LABEL (windata->body_label), PANGO_WRAP_WORD_CHAR);
-    ctk_label_set_max_width_chars (GTK_LABEL (windata->body_label), 50);
+	ctk_box_pack_start(CTK_BOX(vbox), windata->body_label, TRUE, TRUE, 0);
+	ctk_label_set_xalign (CTK_LABEL (windata->body_label), 0.0);
+	ctk_label_set_yalign (CTK_LABEL (windata->body_label), 0.0);
+	ctk_label_set_line_wrap(CTK_LABEL(windata->body_label), TRUE);
+	ctk_label_set_line_wrap_mode (CTK_LABEL (windata->body_label), PANGO_WRAP_WORD_CHAR);
+    ctk_label_set_max_width_chars (CTK_LABEL (windata->body_label), 50);
 	g_signal_connect(G_OBJECT(windata->body_label), "activate-link", G_CALLBACK(activate_link), windata);
 
 	atkobj = ctk_widget_get_accessible(windata->body_label);
 	atk_object_set_description (atkobj, _("Notification body text."));
 
-	windata->actions_box = ctk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-	ctk_widget_set_halign (windata->actions_box, GTK_ALIGN_END);
+	windata->actions_box = ctk_box_new(CTK_ORIENTATION_HORIZONTAL, 6);
+	ctk_widget_set_halign (windata->actions_box, CTK_ALIGN_END);
 	ctk_widget_show(windata->actions_box);
-	ctk_box_pack_start(GTK_BOX(vbox), windata->actions_box, FALSE, TRUE, 0);
+	ctk_box_pack_start(CTK_BOX(vbox), windata->actions_box, FALSE, TRUE, 0);
 
-	return GTK_WINDOW(win);
+	return CTK_WINDOW(win);
 }
 
 void set_notification_hints(GtkWindow *nw, GVariant *hints)
@@ -808,9 +808,9 @@ void set_notification_hints(GtkWindow *nw, GVariant *hints)
 		windata->urgency = urgency;
 
 		if (windata->urgency == URGENCY_CRITICAL) {
-			ctk_window_set_title(GTK_WINDOW(nw), "Critical Notification");
+			ctk_window_set_title(CTK_WINDOW(nw), "Critical Notification");
 		} else {
-			ctk_window_set_title(GTK_WINDOW(nw), "Notification");
+			ctk_window_set_title(CTK_WINDOW(nw), "Notification");
 		}
 	}
 
@@ -856,7 +856,7 @@ void set_notification_text(GtkWindow* nw, const char* summary, const char* body)
 	str = g_strdup_printf("<b><big>%s</big></b>", quoted);
 	g_free(quoted);
 
-	ctk_label_set_markup(GTK_LABEL(windata->summary_label), str);
+	ctk_label_set_markup(CTK_LABEL(windata->summary_label), str);
 	g_free(str);
 
 	/* body */
@@ -887,7 +887,7 @@ void set_notification_text(GtkWindow* nw, const char* summary, const char* body)
 		xmlBufferPtr buf = xmlBufferCreate();
 		(void) xmlNodeDump(buf, doc, xmlDocGetRootElement (doc), 0, 0);
 		str = (char *)buf->content;
-		ctk_label_set_markup (GTK_LABEL (windata->body_label), str);
+		ctk_label_set_markup (CTK_LABEL (windata->body_label), str);
 
 		/* cleanup */
 		xmlBufferFree (buf);
@@ -896,7 +896,7 @@ void set_notification_text(GtkWindow* nw, const char* summary, const char* body)
 		xmlFreeDoc (doc);
 
 		/* Does it render properly? */
-		body_label_text = ctk_label_get_text (GTK_LABEL (windata->body_label));
+		body_label_text = ctk_label_get_text (CTK_LABEL (windata->body_label));
 		if ((body_label_text == NULL) || (strlen (body_label_text) == 0)) {
 			goto render_fail;
 		}
@@ -906,7 +906,7 @@ void set_notification_text(GtkWindow* nw, const char* summary, const char* body)
 render_fail:
 	/* could not parse notification body */
 	quoted = g_markup_escape_text(body, -1);
-	ctk_label_set_markup (GTK_LABEL (windata->body_label), quoted);
+	ctk_label_set_markup (CTK_LABEL (windata->body_label), quoted);
 	g_free (quoted);
 
 renrer_ok:
@@ -940,7 +940,7 @@ void set_notification_icon(GtkWindow* nw, GdkPixbuf* pixbuf)
 
 	g_assert(windata != NULL);
 
-	ctk_image_set_from_pixbuf(GTK_IMAGE(windata->icon), pixbuf);
+	ctk_image_set_from_pixbuf(CTK_IMAGE(windata->icon), pixbuf);
 
 	if (pixbuf != NULL)
 	{
@@ -985,9 +985,9 @@ paint_countdown (GtkWidget  *pie,
     context = ctk_widget_get_style_context (windata->win);
 
     ctk_style_context_save (context);
-    ctk_style_context_set_state (context, GTK_STATE_FLAG_SELECTED);
+    ctk_style_context_set_state (context, CTK_STATE_FLAG_SELECTED);
 
-    get_background_color (context, GTK_STATE_FLAG_SELECTED, &bg);
+    get_background_color (context, CTK_STATE_FLAG_SELECTED, &bg);
 
     ctk_style_context_restore (context);
 
@@ -1062,10 +1062,10 @@ void add_notification_action(GtkWindow* nw, const char* text, const char* key, A
 		/* Don't try to re-add a pie_countdown */
 		if (!windata->pie_countdown) {
 			windata->pie_countdown = ctk_drawing_area_new();
-			ctk_widget_set_halign (windata->pie_countdown, GTK_ALIGN_END);
+			ctk_widget_set_halign (windata->pie_countdown, CTK_ALIGN_END);
 			ctk_widget_show(windata->pie_countdown);
 
-			ctk_box_pack_end (GTK_BOX (windata->actions_box), windata->pie_countdown, FALSE, TRUE, 0);
+			ctk_box_pack_end (CTK_BOX (windata->actions_box), windata->pie_countdown, FALSE, TRUE, 0);
 			ctk_widget_set_size_request(windata->pie_countdown,
 						    PIE_WIDTH, PIE_HEIGHT);
 			g_signal_connect(G_OBJECT(windata->pie_countdown), "draw",
@@ -1074,42 +1074,42 @@ void add_notification_action(GtkWindow* nw, const char* text, const char* key, A
 	}
 
 	if (windata->action_icons) {
-		button = ctk_button_new_from_icon_name(key, GTK_ICON_SIZE_BUTTON);
+		button = ctk_button_new_from_icon_name(key, CTK_ICON_SIZE_BUTTON);
 		goto add_button;
 	}
 
 	button = ctk_button_new();
-	hbox = ctk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+	hbox = ctk_box_new(CTK_ORIENTATION_HORIZONTAL, 6);
 	ctk_widget_show(hbox);
-	ctk_container_add(GTK_CONTAINER(button), hbox);
+	ctk_container_add(CTK_CONTAINER(button), hbox);
 
 	/* Try to be smart and find a suitable icon. */
 	buf = g_strdup_printf("stock_%s", key);
-	pixbuf = ctk_icon_theme_load_icon(ctk_icon_theme_get_for_screen(gdk_window_get_screen(ctk_widget_get_window(GTK_WIDGET(nw)))),
-																	buf, 16, GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
+	pixbuf = ctk_icon_theme_load_icon(ctk_icon_theme_get_for_screen(gdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
+																	buf, 16, CTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 	g_free(buf);
 
 	if (pixbuf != NULL)
 	{
 		GtkWidget* image = ctk_image_new_from_pixbuf(pixbuf);
 		ctk_widget_show(image);
-		ctk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
-		ctk_widget_set_halign (image, GTK_ALIGN_CENTER);
-		ctk_widget_set_valign (image, GTK_ALIGN_CENTER);
+		ctk_box_pack_start(CTK_BOX(hbox), image, FALSE, FALSE, 0);
+		ctk_widget_set_halign (image, CTK_ALIGN_CENTER);
+		ctk_widget_set_valign (image, CTK_ALIGN_CENTER);
 	}
 
 	label = ctk_label_new(NULL);
 	ctk_widget_show(label);
-	ctk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
-	ctk_label_set_xalign (GTK_LABEL (label), 0.0);
-	ctk_label_set_yalign (GTK_LABEL (label), 0.5);
+	ctk_box_pack_start(CTK_BOX(hbox), label, FALSE, FALSE, 0);
+	ctk_label_set_xalign (CTK_LABEL (label), 0.0);
+	ctk_label_set_yalign (CTK_LABEL (label), 0.5);
 	buf = g_strdup_printf("<small>%s</small>", text);
-	ctk_label_set_markup(GTK_LABEL(label), buf);
+	ctk_label_set_markup(CTK_LABEL(label), buf);
 	g_free(buf);
 
 add_button:
 	ctk_widget_show(button);
-	ctk_box_pack_start(GTK_BOX(windata->actions_box), button, FALSE, FALSE, 0);
+	ctk_box_pack_start(CTK_BOX(windata->actions_box), button, FALSE, FALSE, 0);
 
 	g_object_set_data(G_OBJECT(button), "_nw", nw);
 	g_object_set_data_full(G_OBJECT(button), "_action_key", g_strdup(key), g_free);
@@ -1125,7 +1125,7 @@ void clear_notification_actions(GtkWindow* nw)
 	windata->pie_countdown = NULL;
 
 	ctk_widget_hide(windata->actions_box);
-	ctk_container_foreach(GTK_CONTAINER(windata->actions_box), (GtkCallback) ctk_widget_destroy, NULL);
+	ctk_container_foreach(CTK_CONTAINER(windata->actions_box), (GtkCallback) ctk_widget_destroy, NULL);
 }
 
 void move_notification(GtkWidget* nw, int x, int y)
@@ -1140,7 +1140,7 @@ void move_notification(GtkWidget* nw, int x, int y)
 	}
 	else
 	{
-		ctk_window_move(GTK_WINDOW(nw), x, y);
+		ctk_window_move(CTK_WINDOW(nw), x, y);
 	}
 }
 
