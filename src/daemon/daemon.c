@@ -40,7 +40,7 @@
 #include <X11/Xatom.h>
 #include <cdk/cdkx.h>
 
-#define WNCK_I_KNOW_THIS_IS_UNSTABLE
+#define VNCK_I_KNOW_THIS_IS_UNSTABLE
 #include <libvnck/libvnck.h>
 
 #include "daemon.h"
