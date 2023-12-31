@@ -16,7 +16,6 @@ requires:
     - git
     - gobject-introspection
     - gtk-doc-tools
-    - libcanberra-ctk3-dev
     - libdconf-dev
     - libexempi-dev
     - libexif-dev
@@ -42,9 +41,19 @@ requires:
     - libglib2.0-doc
     - libtool
 
+    #required for libkanberra
+    - gnome-pkg-tools
+    - libltdl-dev
+    - libasound2-dev
+    - libvorbis-dev
+    - libtdb-dev
+    - libpulse-dev
+    - libgstreamer1.0-dev
+
 before_scripts:
   - ./html-cppcheck
   - ./debrepo-install 'libctk-3-dev libcail-3-dev'
+  - ./install-from-git https://github.com/cafe-desktop/libkanberra master
   - ./install-from-git https://github.com/cafe-desktop/cafe-common master
   - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
 
