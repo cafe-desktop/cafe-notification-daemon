@@ -24,7 +24,6 @@ requires:
     - libgirepository1.0-dev
     - libglib2.0-dev
     - libgtk-3-dev
-    - libcafe-desktop-dev
     - libnotify-dev
     - libpango1.0-dev
     - libstartup-notification0-dev
@@ -39,9 +38,17 @@ requires:
     - autoconf
     - make
 
+    #required for cafe-desktop
+    - intltool
+    - iso-codes
+    - libglib2.0-doc
+    - libtool
+
 before_scripts:
   - ./html-cppcheck
+  - ./debrepo-install 'libctk-3-dev'
   - ./install-from-git https://github.com/cafe-desktop/cafe-common master
+  - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
 
 build_scripts:
   - ./before-build
