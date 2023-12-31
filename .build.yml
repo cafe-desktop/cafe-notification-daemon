@@ -22,7 +22,6 @@ requires:
     - libexif-dev
     - libgirepository1.0-dev
     - libglib2.0-dev
-    - libctk-3-dev
     - libnotify-dev
     - libpango1.0-dev
     - libstartup-notification0-dev
