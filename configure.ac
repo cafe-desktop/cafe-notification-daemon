@@ -143,7 +143,7 @@ AC_SUBST(NOTIFICATION_CAPPLET_LIBS)
 
 cdk_modules="
 	cdk-3.0 >= $CTK_REQUIRED, \
-	cdk-pixbuf-2.0 >= 2.22.0 \
+	gdk-pixbuf-2.0 >= 2.22.0 \
 "
 PKG_CHECK_MODULES(CDK, $cdk_modules, have_cdk=yes,
 [
