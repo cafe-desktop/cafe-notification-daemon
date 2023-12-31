@@ -1,6 +1,6 @@
 /* vi: set sw=4 ts=4 wrap ai: */
 /*
- * mnd-daemon.c: This file is part of mate-notification-daemon
+ * mnd-daemon.c: This file is part of cafe-notification-daemon
  *
  * Copyright (C) 2018 Wu Xiaotian <yetist@gmail.com>
  *

@@ -28,7 +28,7 @@
 #include <glib-object.h>
 #include <gio/gio.h>
 
-#define GSETTINGS_SCHEMA             "org.mate.NotificationDaemon"
+#define GSETTINGS_SCHEMA             "org.cafe.NotificationDaemon"
 #define GSETTINGS_KEY_THEME          "theme"
 #define GSETTINGS_KEY_POPUP_LOCATION "popup-location"
 #define GSETTINGS_KEY_SOUND_ENABLED  "sound-enabled"

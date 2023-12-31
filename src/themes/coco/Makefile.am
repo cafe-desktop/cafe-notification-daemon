@@ -1,6 +1,6 @@
 AM_CPPFLAGS = $(THEME_CFLAGS)
 
-enginedir = $(libdir)/mate-notification-daemon/engines
+enginedir = $(libdir)/cafe-notification-daemon/engines
 engine_LTLIBRARIES = libcoco.la
 
 libcoco_la_SOURCES = coco-theme.c

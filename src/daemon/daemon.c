@@ -1113,9 +1113,9 @@ static gboolean screensaver_active(GtkWidget* nw)
 	proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SESSION,
 			G_DBUS_PROXY_FLAGS_NONE,
 			NULL,
-			"org.mate.ScreenSaver",
+			"org.cafe.ScreenSaver",
 			"/",
-			"org.mate.ScreenSaver",
+			"org.cafe.ScreenSaver",
 			NULL,
 			&error);
 	if (proxy == NULL) {
@@ -1132,7 +1132,7 @@ static gboolean screensaver_active(GtkWidget* nw)
 			&error);
 	if (variant == NULL)
 	{
-		//g_warning("Failed to call mate-screensaver: %s", error->message);
+		//g_warning("Failed to call cafe-screensaver: %s", error->message);
 		g_error_free (error);
 		return active;
 	}

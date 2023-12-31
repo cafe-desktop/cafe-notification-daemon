@@ -1,6 +1,6 @@
 NULL =
 
-enginedir = $(libdir)/mate-notification-daemon/engines
+enginedir = $(libdir)/cafe-notification-daemon/engines
 engine_LTLIBRARIES = libslider.la
 
 AM_CPPFLAGS = $(THEME_CFLAGS)

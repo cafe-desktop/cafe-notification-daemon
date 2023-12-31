@@ -100,7 +100,7 @@ static ThemeEngine* load_theme_engine(const char *name)
 
 	if (!engine->theme_check_init(NOTIFICATION_DAEMON_MAJOR_VERSION, NOTIFICATION_DAEMON_MINOR_VERSION, NOTIFICATION_DAEMON_MICRO_VERSION))
 	{
-		g_warning ("Theme doesn't work with this version of mate-notification-daemon");
+		g_warning ("Theme doesn't work with this version of cafe-notification-daemon");
 		goto error;
 	}
 

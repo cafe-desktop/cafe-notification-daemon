@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR MATE Desktop Environment team
-# This file is distributed under the same license as the mate-notification-daemon package.
+# This file is distributed under the same license as the cafe-notification-daemon package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
@@ -13,23 +13,23 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-notification-daemon 1.23.0\n"
-"Report-Msgid-Bugs-To: https://mate-desktop.org\n"
+"Project-Id-Version: cafe-notification-daemon 1.23.0\n"
+"Report-Msgid-Bugs-To: https://cafe-desktop.org\n"
 "POT-Creation-Date: 2019-11-07 12:05+0100\n"
 "PO-Revision-Date: 2020-02-15 14:27+0000\n"
 "Last-Translator: Roman Horník <roman.hornik@debian-linux.cz>, 2020\n"
-"Language-Team: Czech (https://www.transifex.com/mate/teams/13566/cs/)\n"
+"Language-Team: Czech (https://www.transifex.com/cafe/teams/13566/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:5
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:5
 msgid "Popup location"
 msgstr "Umístění automaticky otevíraného okna"
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:6
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:6
 msgid ""
 "Default popup location on the workspace for stack notifications. Allowed "
 "values: \"top_left\",\"top_right\",\"bottom_left\" and \"bottom_right\""
@@ -38,20 +38,20 @@ msgstr ""
 "Povolené hodnoty: \"top_left\",\"top_right\",\"bottom_left\" a "
 "\"bottom_right\""
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:10
-#: src/capplet/mate-notification-properties.ui:237
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:10
+#: src/capplet/cafe-notification-properties.ui:237
 msgid "Use Active Monitor"
 msgstr "Použít aktivní monitor"
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:11
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:11
 msgid "Display the notification on the active monitor."
 msgstr "Zobrazit notifikaci na aktivním monitoru"
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:15
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:15
 msgid "Monitor"
 msgstr "Monitor"
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:16
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:16
 msgid ""
 "Monitor to display the notification. Allowed values: -1 (display on active "
 "monitor) and 0 to n - 1 where n is the number of monitors."
@@ -59,129 +59,129 @@ msgstr ""
 "Monitor zobrazující notifikace. Povolené hodnoty: -1 (zobrazit na aktivním "
 "monitoru) a od 0 do n - 1, kde n je počet monitorů."
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:20
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:20
 msgid "Current theme"
 msgstr "Aktuální motiv"
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:21
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:21
 msgid "The theme used when displaying notifications."
 msgstr "Motiv používaný k zobrazování oznámení."
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:25
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:25
 msgid "Sound Enabled"
 msgstr "Zvuk povolen"
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:26
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:26
 msgid "Turns on and off sound support for notifications."
 msgstr "Zapne a vypne zvukovou podporu u oznámení."
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:30
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:30
 msgid "Do not disturb"
 msgstr "Nerušit"
 
-#: data/org.mate.NotificationDaemon.gschema.xml.in:31
+#: data/org.cafe.NotificationDaemon.gschema.xml.in:31
 msgid "When enabled, notifications are not shown."
 msgstr "Pokud je povoleno, oznámení se nezobrazí."
 
-#: src/capplet/mate-notification-properties.c:329
+#: src/capplet/cafe-notification-properties.c:329
 msgid "Coco"
 msgstr "Coco"
 
-#: src/capplet/mate-notification-properties.c:333
+#: src/capplet/cafe-notification-properties.c:333
 msgid "Nodoka"
 msgstr "Nodoka"
 
-#: src/capplet/mate-notification-properties.c:337
+#: src/capplet/cafe-notification-properties.c:337
 msgid "Slider"
 msgstr "Táhlo"
 
-#: src/capplet/mate-notification-properties.c:341
+#: src/capplet/cafe-notification-properties.c:341
 msgid "Standard theme"
 msgstr "Standardní motiv"
 
-#: src/capplet/mate-notification-properties.c:490
-msgid "Error initializing libmatenotify"
-msgstr "Chyba během spouštění libmatenotify"
+#: src/capplet/cafe-notification-properties.c:490
+msgid "Error initializing libcafenotify"
+msgstr "Chyba během spouštění libcafenotify"
 
-#: src/capplet/mate-notification-properties.c:503
+#: src/capplet/cafe-notification-properties.c:503
 msgid "Notification Test"
 msgstr "Text oznámení"
 
-#: src/capplet/mate-notification-properties.c:503
+#: src/capplet/cafe-notification-properties.c:503
 msgid "Just a test"
 msgstr "Toliko test"
 
-#: src/capplet/mate-notification-properties.c:507
+#: src/capplet/cafe-notification-properties.c:507
 #, c-format
 msgid "Error while displaying notification: %s"
 msgstr "Chyba při zobrazování oznámení: %s"
 
-#: src/capplet/mate-notification-properties.c:547
+#: src/capplet/cafe-notification-properties.c:547
 #, c-format
 msgid "Could not load user interface: %s"
 msgstr "Nelze načíst uživatelské rozhraní: %s"
 
-#: src/capplet/mate-notification-properties.desktop.in:3
+#: src/capplet/cafe-notification-properties.desktop.in:3
 msgid "Popup Notifications"
 msgstr "Vyskakovací oznámení"
 
-#: src/capplet/mate-notification-properties.desktop.in:4
+#: src/capplet/cafe-notification-properties.desktop.in:4
 msgid "Set your popup notification preferences"
 msgstr "Nastavit předvolby vyskakovacích oznámení"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon
 #. file name)!
-#: src/capplet/mate-notification-properties.desktop.in:7
-msgid "mate-notification-properties"
-msgstr "mate-notification-properties"
+#: src/capplet/cafe-notification-properties.desktop.in:7
+msgid "cafe-notification-properties"
+msgstr "cafe-notification-properties"
 
 #. Translators: Search terms to find this application. Do NOT translate or
 #. localize the semicolons! The list MUST also end with a semicolon!
-#: src/capplet/mate-notification-properties.desktop.in:14
+#: src/capplet/cafe-notification-properties.desktop.in:14
 msgid "MATE;Notification;Theme;"
 msgstr "MATE;oznámení;oznamování;notifikace;motiv;téma;"
 
-#: src/capplet/mate-notification-properties.ui:9
+#: src/capplet/cafe-notification-properties.ui:9
 msgid "Notification Settings"
 msgstr "Nastavení upozornění"
 
-#: src/capplet/mate-notification-properties.ui:58
+#: src/capplet/cafe-notification-properties.ui:58
 msgid "_Preview"
 msgstr "_Náhled"
 
-#: src/capplet/mate-notification-properties.ui:113
+#: src/capplet/cafe-notification-properties.ui:113
 msgid "<b>General Options</b>"
 msgstr "<b>Hlavní nastavení</b>"
 
-#: src/capplet/mate-notification-properties.ui:174
+#: src/capplet/cafe-notification-properties.ui:174
 msgid "P_osition:"
 msgstr "_Pozice:"
 
-#: src/capplet/mate-notification-properties.ui:191
+#: src/capplet/cafe-notification-properties.ui:191
 msgid "_Theme:"
 msgstr "_Motiv:"
 
-#: src/capplet/mate-notification-properties.ui:206
+#: src/capplet/cafe-notification-properties.ui:206
 msgid "_Monitor:"
 msgstr "_Monitor:"
 
-#: src/capplet/mate-notification-properties.ui:253
+#: src/capplet/cafe-notification-properties.ui:253
 msgid "Enable Do Not Disturb"
 msgstr "Povolit funkci Nerušit"
 
-#: src/capplet/mate-notification-properties.ui:304
+#: src/capplet/cafe-notification-properties.ui:304
 msgid "Top Left"
 msgstr "Horní levý"
 
-#: src/capplet/mate-notification-properties.ui:308
+#: src/capplet/cafe-notification-properties.ui:308
 msgid "Top Right"
 msgstr "Horní pravý"
 
-#: src/capplet/mate-notification-properties.ui:312
+#: src/capplet/cafe-notification-properties.ui:312
 msgid "Bottom Left"
 msgstr "Spodní levý"
 
-#: src/capplet/mate-notification-properties.ui:316
+#: src/capplet/cafe-notification-properties.ui:316
 msgid "Bottom Right"
 msgstr "Spodní pravý"
 

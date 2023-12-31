@@ -1,5 +1,5 @@
 <schemalist gettext-domain="@GETTEXT_PACKAGE@">
-  <schema id="org.mate.NotificationDaemon" path="/org/mate/notification-daemon/">
+  <schema id="org.cafe.NotificationDaemon" path="/org/cafe/notification-daemon/">
     <key name="popup-location" type="s">
       <default>'top_right'</default>
       <summary>Popup location</summary>
