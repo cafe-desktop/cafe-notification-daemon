@@ -22,7 +22,7 @@
 #ifndef _SOUND_H
 #define _SOUND_H
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 void sound_play_file(GtkWidget* widget, const char* filename);
 

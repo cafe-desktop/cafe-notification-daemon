@@ -31,7 +31,7 @@
 #include <glib/gi18n.h>
 #include <glib.h>
 #include <glib-object.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <X11/Xproto.h>
 
@@ -165,7 +165,7 @@ static void bus_acquired_handler_cb (GDBusConnection *connection,
 		g_warning ("Failed to export interface: %s", error->message);
 		g_error_free (error);
 
-		gtk_main_quit();
+		ctk_main_quit();
 	}
 }
 
@@ -174,7 +174,7 @@ static void name_lost_handler_cb (GDBusConnection *connection,
 		gpointer         user_data)
 {
 	g_debug("bus name lost\n");
-	gtk_main_quit();
+	ctk_main_quit();
 }
 
 
@@ -241,7 +241,7 @@ static void _notify_timeout_destroy(NotifyTimeout* nt)
 	 * destroyed.
 	 */
 	g_signal_handlers_disconnect_by_func(nt->nw, _notification_destroyed_cb, nt->daemon);
-	gtk_widget_destroy(GTK_WIDGET(nt->nw));
+	ctk_widget_destroy(GTK_WIDGET(nt->nw));
 	g_free(nt);
 }
 
@@ -273,7 +273,7 @@ static void remove_exit_timeout(NotifyDaemon* daemon)
 }
 
 static int
-_gtk_get_monitor_num (GdkMonitor *monitor)
+_ctk_get_monitor_num (GdkMonitor *monitor)
 {
 	GdkDisplay *display;
 	int n_monitors, i;
@@ -293,7 +293,7 @@ static void create_stack_for_monitor(NotifyDaemon* daemon, GdkScreen* screen, Gd
 {
 	NotifyScreen* nscreen = daemon->screen;
 
-	nscreen->stacks[_gtk_get_monitor_num(monitor_num)] = notify_stack_new(daemon, screen, monitor_num, daemon->stack_location);
+	nscreen->stacks[_ctk_get_monitor_num(monitor_num)] = notify_stack_new(daemon, screen, monitor_num, daemon->stack_location);
 }
 
 static void on_screen_monitors_changed(GdkScreen* screen, NotifyDaemon* daemon)
@@ -990,21 +990,21 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 		GtkIconTheme *theme;
 		GtkIconInfo  *icon_info;
 
-		theme = gtk_icon_theme_get_default ();
-		icon_info = gtk_icon_theme_lookup_icon (theme, path, IMAGE_SIZE, GTK_ICON_LOOKUP_USE_BUILTIN);
+		theme = ctk_icon_theme_get_default ();
+		icon_info = ctk_icon_theme_lookup_icon (theme, path, IMAGE_SIZE, GTK_ICON_LOOKUP_USE_BUILTIN);
 
 		if (icon_info != NULL)
 		{
 			gint icon_size;
 
-			icon_size = MIN (IMAGE_SIZE, gtk_icon_info_get_base_size (icon_info));
+			icon_size = MIN (IMAGE_SIZE, ctk_icon_info_get_base_size (icon_info));
 
 			if (icon_size == 0)
 			{
 				icon_size = IMAGE_SIZE;
 			}
 
-			pixbuf = gtk_icon_theme_load_icon (theme, path, icon_size, GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
+			pixbuf = ctk_icon_theme_load_icon (theme, path, icon_size, GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 
 			g_object_unref (icon_info);
 		}
@@ -1149,7 +1149,7 @@ static gboolean fullscreen_window_exists(GtkWidget* nw)
 	WnckWorkspace* wnck_workspace;
 	GList* l;
 
-		wnck_screen = wnck_screen_get(GDK_SCREEN_XNUMBER(gdk_window_get_screen(gtk_widget_get_window(nw))));
+		wnck_screen = wnck_screen_get(GDK_SCREEN_XNUMBER(gdk_window_get_screen(ctk_widget_get_window(nw))));
 
 	wnck_screen_force_update (wnck_screen);
 
@@ -1288,7 +1288,7 @@ static void sync_notification_position(NotifyDaemon* daemon, GtkWindow* nw, Wind
 	 * fairly broken), so just calling move/show above isn't enough to cause
 	 * its position to be calculated.
 	 */
-	gtk_widget_queue_draw (GTK_WIDGET (nw));
+	ctk_widget_queue_draw (GTK_WIDGET (nw));
 }
 
 GQuark notify_daemon_error_quark(void)
@@ -1361,7 +1361,7 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 	{
 		nw = theme_create_notification (url_clicked_cb);
 		g_object_set_data (G_OBJECT (nw), "_notify_daemon", daemon);
-		gtk_widget_realize (GTK_WIDGET (nw));
+		ctk_widget_realize (GTK_WIDGET (nw));
 		new_notification = TRUE;
 
 		g_signal_connect (G_OBJECT (nw), "button-release-event", G_CALLBACK (window_clicked_cb), daemon);
@@ -1534,14 +1534,14 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 							      g_settings_get_int(daemon->gsettings, GSETTINGS_KEY_MONITOR_NUMBER));
 		}
 
-		if (_gtk_get_monitor_num (monitor_id) >= daemon->screen->n_stacks)
+		if (_ctk_get_monitor_num (monitor_id) >= daemon->screen->n_stacks)
 		{
 			/* screw it - dump it on the last one we'll get
 			 a monitors-changed signal soon enough*/
 			monitor_id = gdk_display_get_monitor (gdk_display_get_default(), daemon->screen->n_stacks - 1);
 		}
 
-		notify_stack_add_window (daemon->screen->stacks[_gtk_get_monitor_num (monitor_id)], nw, new_notification);
+		notify_stack_add_window (daemon->screen->stacks[_ctk_get_monitor_num (monitor_id)], nw, new_notification);
 	}
 
 	if (id == 0)

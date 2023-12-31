@@ -61,7 +61,7 @@
 ### cafe-notification-daemon 1.19.0
 
   * Translations update
-  * gtk 3.22: avoid deprecated gdk_screen_get_monitor... functions:
+  * ctk 3.22: avoid deprecated gdk_screen_get_monitor... functions:
   * avoid deprecated gdk_screen_get_width/height
   * avoid deprecated gdk_screen_get_n_monitors
   * Fixes high cpu usage with large timeouts
@@ -87,7 +87,7 @@
   * Build: use 'm4' dir instead of 'macros' for m4 macros, like
     in other projects
   * Move to GTK+3 (require GTK+ >= 3.14), drop GTK+2 code and
-    --with-gtk build option
+    --with-ctk build option
   * Add support for GNotification
   * Fix escaping of special characters
   * Fix various GTK+ deprecations
@@ -120,7 +120,7 @@
 ### cafe-notification-daemon 1.12.0
 
   * Retrieve strings directly from gschema (requires intltool 0.50.1)
-  * Fix height and visibility of themes in gtk3
+  * Fix height and visibility of themes in ctk3
   * Multiple theme fixes
   * Some more fixes and cleanups
 

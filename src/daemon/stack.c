@@ -190,7 +190,7 @@ translate_coordinates (NotifyStackLocation stack_location,
 }
 
 static int
-_gtk_get_monitor_num (GdkMonitor *monitor)
+_ctk_get_monitor_num (GdkMonitor *monitor)
 {
         GdkDisplay *display;
         int n_monitors, i;
@@ -218,7 +218,7 @@ notify_stack_new (NotifyDaemon       *daemon,
         display = gdk_screen_get_display (screen);
         g_assert (daemon != NULL);
         g_assert (screen != NULL && GDK_IS_SCREEN (screen));
-        g_assert ((guint)_gtk_get_monitor_num (monitor) < (guint)gdk_display_get_n_monitors (display));
+        g_assert ((guint)_ctk_get_monitor_num (monitor) < (guint)gdk_display_get_n_monitors (display));
         g_assert (location != NOTIFY_STACK_LOCATION_UNKNOWN);
 
         stack = g_new0 (NotifyStack, 1);
@@ -318,7 +318,7 @@ notify_stack_shift_notifications (NotifyStack *stack,
                 GtkRequisition  req;
 
                 if (nw == NULL || nw2 != nw) {
-                        gtk_widget_get_preferred_size (GTK_WIDGET (nw2), NULL, &req);
+                        ctk_widget_get_preferred_size (GTK_WIDGET (nw2), NULL, &req);
 
                         translate_coordinates (stack->location,
                                                &workarea,
@@ -379,7 +379,7 @@ void notify_stack_add_window(NotifyStack* stack, GtkWindow* nw, gboolean new_not
 	GtkRequisition  req;
 	gint            x, y;
 
-	gtk_widget_get_preferred_size(GTK_WIDGET(nw), NULL, &req);
+	ctk_widget_get_preferred_size(GTK_WIDGET(nw), NULL, &req);
 	notify_stack_shift_notifications(stack, nw, NULL, req.width, req.height + NOTIFY_STACK_SPACING, &x, &y);
 	theme_move_notification(nw, x, y);
 
@@ -401,6 +401,6 @@ void notify_stack_remove_window(NotifyStack* stack, GtkWindow* nw)
 		stack->windows = g_list_delete_link(stack->windows, remove_l);
 	}
 
-	if (gtk_widget_get_realized(GTK_WIDGET(nw)))
-		gtk_widget_unrealize(GTK_WIDGET(nw));
+	if (ctk_widget_get_realized(GTK_WIDGET(nw)))
+		ctk_widget_unrealize(GTK_WIDGET(nw));
 }
