@@ -45,7 +45,7 @@
   * Migrate from dbus-glib to GDBus
   * Add signals, remove annotation from xml file
   * Use gdbus generate files
-  * Fix some gdk deprecations
+  * Fix some cdk deprecations
   * src/daemon/daemon.c: Replace deprecated gvfs-open call by "gio open" from libglib2.0-bin.
 
 ### cafe-notification-daemon 1.20.0
@@ -61,9 +61,9 @@
 ### cafe-notification-daemon 1.19.0
 
   * Translations update
-  * ctk 3.22: avoid deprecated gdk_screen_get_monitor... functions:
-  * avoid deprecated gdk_screen_get_width/height
-  * avoid deprecated gdk_screen_get_n_monitors
+  * ctk 3.22: avoid deprecated cdk_screen_get_monitor... functions:
+  * avoid deprecated cdk_screen_get_width/height
+  * avoid deprecated cdk_screen_get_n_monitors
   * Fixes high cpu usage with large timeouts
   * unescape URI-encode paths for icon files
   * Restore Polish translation credits from GNOME

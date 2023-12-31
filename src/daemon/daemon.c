@@ -38,7 +38,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE
 #include <libwnck/libwnck.h>
@@ -278,12 +278,12 @@ _ctk_get_monitor_num (GdkMonitor *monitor)
 	GdkDisplay *display;
 	int n_monitors, i;
 
-	display = gdk_monitor_get_display(monitor);
-	n_monitors = gdk_display_get_n_monitors(display);
+	display = cdk_monitor_get_display(monitor);
+	n_monitors = cdk_display_get_n_monitors(display);
 
 	for(i = 0; i < n_monitors; i++)
 	{
-		if (gdk_display_get_monitor(display, i) == monitor) return i;
+		if (cdk_display_get_monitor(display, i) == monitor) return i;
 	}
 
 	return -1;
@@ -304,9 +304,9 @@ static void on_screen_monitors_changed(GdkScreen* screen, NotifyDaemon* daemon)
 	int i;
 
 	nscreen = daemon->screen;
-	display = gdk_screen_get_display (screen);
+	display = cdk_screen_get_display (screen);
 
-	n_monitors = gdk_display_get_n_monitors(display);
+	n_monitors = cdk_display_get_n_monitors(display);
 
 	if (n_monitors > nscreen->n_stacks)
 	{
@@ -316,7 +316,7 @@ static void on_screen_monitors_changed(GdkScreen* screen, NotifyDaemon* daemon)
 		/* add more stacks */
 		for (i = nscreen->n_stacks; i < n_monitors; i++)
 		{
-			create_stack_for_monitor(daemon, screen, gdk_display_get_monitor (display, i));
+			create_stack_for_monitor(daemon, screen, cdk_display_get_monitor (display, i));
 		}
 
 		nscreen->n_stacks = n_monitors;
@@ -360,15 +360,15 @@ static void create_stacks_for_screen(NotifyDaemon* daemon, GdkScreen *screen)
 	int i;
 
 	nscreen = daemon->screen;
-	display = gdk_screen_get_display (screen);
+	display = cdk_screen_get_display (screen);
 
-	nscreen->n_stacks = gdk_display_get_n_monitors(display);
+	nscreen->n_stacks = cdk_display_get_n_monitors(display);
 
 	nscreen->stacks = g_renew(NotifyStack*, nscreen->stacks, nscreen->n_stacks);
 
 	for (i = 0; i < nscreen->n_stacks; i++)
 	{
-		create_stack_for_monitor(daemon, screen, gdk_display_get_monitor (display, i));
+		create_stack_for_monitor(daemon, screen, cdk_display_get_monitor (display, i));
 	}
 }
 
@@ -393,12 +393,12 @@ static void create_screen(NotifyDaemon* daemon)
 {
     GdkDisplay *display;
     GdkScreen  *screen;
-    GdkWindow  *gdkwindow;
+    GdkWindow  *cdkwindow;
 
 	g_assert(daemon->screen == NULL);
 
-	display = gdk_display_get_default();
-	screen = gdk_display_get_default_screen (display);
+	display = cdk_display_get_default();
+	screen = cdk_display_get_default_screen (display);
 
 	g_signal_connect(screen, "monitors-changed", G_CALLBACK(on_screen_monitors_changed), daemon);
 
@@ -406,9 +406,9 @@ static void create_screen(NotifyDaemon* daemon)
 
 	daemon->screen->workarea_atom = XInternAtom(GDK_DISPLAY_XDISPLAY (display), "_NET_WORKAREA", True);
 
-	gdkwindow = gdk_screen_get_root_window(screen);
-	gdk_window_add_filter(gdkwindow, (GdkFilterFunc) screen_xevent_filter, daemon->screen);
-	gdk_window_set_events(gdkwindow, gdk_window_get_events(gdkwindow) | GDK_PROPERTY_CHANGE_MASK);
+	cdkwindow = cdk_screen_get_root_window(screen);
+	cdk_window_add_filter(cdkwindow, (GdkFilterFunc) screen_xevent_filter, daemon->screen);
+	cdk_window_set_events(cdkwindow, cdk_window_get_events(cdkwindow) | GDK_PROPERTY_CHANGE_MASK);
 
 	create_stacks_for_screen(daemon, screen);
 }
@@ -477,18 +477,18 @@ static void destroy_screen(NotifyDaemon* daemon)
 {
 	GdkDisplay *display;
 	GdkScreen  *screen;
-	GdkWindow  *gdkwindow;
+	GdkWindow  *cdkwindow;
 	gint        i;
 
-	display = gdk_display_get_default();
-	screen = gdk_display_get_default_screen (display);
+	display = cdk_display_get_default();
+	screen = cdk_display_get_default_screen (display);
 
 	g_signal_handlers_disconnect_by_func (screen,
 										  G_CALLBACK (on_screen_monitors_changed),
 										  daemon);
 
-	gdkwindow = gdk_screen_get_root_window (screen);
-	gdk_window_remove_filter (gdkwindow, (GdkFilterFunc) screen_xevent_filter, daemon->screen);
+	cdkwindow = cdk_screen_get_root_window (screen);
+	cdk_window_remove_filter (cdkwindow, (GdkFilterFunc) screen_xevent_filter, daemon->screen);
 	for (i = 0; i < daemon->screen->n_stacks; i++) {
 		 g_clear_object (&daemon->screen->stacks[i]);
 	}
@@ -508,7 +508,7 @@ static void notify_daemon_finalize(GObject* object)
 
 	if (g_hash_table_size(daemon->monitored_window_hash) > 0)
 	{
-		gdk_window_remove_filter(NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
+		cdk_window_remove_filter(NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
 	}
 
 	if (daemon->skeleton != NULL)
@@ -695,7 +695,7 @@ static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, No
 
 		if (g_hash_table_size(daemon->monitored_window_hash) == 0)
 		{
-			gdk_window_remove_filter(NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
+			cdk_window_remove_filter(NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
 		}
 
 		return GDK_FILTER_CONTINUE;
@@ -954,7 +954,7 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
         data = (guchar *) g_memdup (g_variant_get_data (data_variant),
                                     g_variant_get_size (data_variant));
 
-        pixbuf = gdk_pixbuf_new_from_data (data,
+        pixbuf = cdk_pixbuf_new_from_data (data,
                                            GDK_COLORSPACE_RGB,
                                            has_alpha,
                                            bits_per_sample,
@@ -982,7 +982,7 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 		}
 
 		/* Load file */
-		pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+		pixbuf = cdk_pixbuf_new_from_file (path, NULL);
 	}
 	else
 	{
@@ -1012,7 +1012,7 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 		if (pixbuf == NULL)
 		{
 			/* Well... maybe this is a file afterall. */
-			pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+			pixbuf = cdk_pixbuf_new_from_file (path, NULL);
 		}
 	}
 
@@ -1025,8 +1025,8 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 	int ph;
 	float scale_factor;
 
-	pw = gdk_pixbuf_get_width (pixbuf);
-	ph = gdk_pixbuf_get_height (pixbuf);
+	pw = cdk_pixbuf_get_width (pixbuf);
+	ph = cdk_pixbuf_get_height (pixbuf);
 
 	/* Determine which dimension requires the smallest scale. */
 	scale_factor = (float) IMAGE_SIZE / (float) MAX(pw, ph);
@@ -1039,7 +1039,7 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 
 		scale_x = (int) (pw * scale_factor);
 		scale_y = (int) (ph * scale_factor);
-		return gdk_pixbuf_scale_simple (pixbuf,
+		return cdk_pixbuf_scale_simple (pixbuf,
 										scale_x,
 										scale_y,
 										GDK_INTERP_BILINEAR);
@@ -1149,7 +1149,7 @@ static gboolean fullscreen_window_exists(CtkWidget* nw)
 	WnckWorkspace* wnck_workspace;
 	GList* l;
 
-		wnck_screen = wnck_screen_get(GDK_SCREEN_XNUMBER(gdk_window_get_screen(ctk_widget_get_window(nw))));
+		wnck_screen = wnck_screen_get(GDK_SCREEN_XNUMBER(cdk_window_get_screen(ctk_widget_get_window(nw))));
 
 	wnck_screen_force_update (wnck_screen);
 
@@ -1194,10 +1194,10 @@ static Window get_window_parent(GdkDisplay* display, Window window, Window* root
 	guint nchildren;
 	gboolean result;
 
-	gdk_x11_display_error_trap_push (display);
+	cdk_x11_display_error_trap_push (display);
 	result = XQueryTree(GDK_DISPLAY_XDISPLAY(display), window, root, &parent, &children, &nchildren);
 
-	if (gdk_x11_display_error_trap_pop (display) || !result)
+	if (cdk_x11_display_error_trap_pop (display) || !result)
 	{
 		return None;
 	}
@@ -1220,13 +1220,13 @@ static void monitor_notification_source_windows(NotifyDaemon  *daemon, NotifyTim
 	Window root = None;
 	Window parent;
 
-	display = gdk_display_get_default ();
+	display = cdk_display_get_default ();
 
 	/* Start monitoring events if necessary.  We don't want to
 	   filter events unless we absolutely have to. */
 	if (g_hash_table_size (daemon->monitored_window_hash) == 0)
 	{
-		gdk_window_add_filter (NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
+		cdk_window_add_filter (NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
 	}
 
 	/* Store the window in the timeout */
@@ -1252,14 +1252,14 @@ static void sync_notification_position(NotifyDaemon* daemon, CtkWindow* nw, Wind
 	unsigned int width, height;
 	unsigned int border_width, depth;
 
-	display = gdk_display_get_default ();
+	display = cdk_display_get_default ();
 
-	gdk_x11_display_error_trap_push (display);
+	cdk_x11_display_error_trap_push (display);
 
 	/* Get the root for this window */
 	result = XGetGeometry(GDK_DISPLAY_XDISPLAY(display), source, &root, &x, &y, &width, &height, &border_width, &depth);
 
-	if (gdk_x11_display_error_trap_pop (display) || !result)
+	if (cdk_x11_display_error_trap_pop (display) || !result)
 	{
 		return;
 	}
@@ -1268,9 +1268,9 @@ static void sync_notification_position(NotifyDaemon* daemon, CtkWindow* nw, Wind
 	 * Now calculate the offset coordinates for the source window from
 	 * the root.
 	 */
-	gdk_x11_display_error_trap_push (display);
+	cdk_x11_display_error_trap_push (display);
 	result = XTranslateCoordinates (GDK_DISPLAY_XDISPLAY (display), source, root, 0, 0, &x, &y, &child);
-	if (gdk_x11_display_error_trap_pop (display) || !result)
+	if (cdk_x11_display_error_trap_pop (display) || !result)
 	{
 		return;
 	}
@@ -1520,17 +1520,17 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 		 * number the user has set in gsettings. */
 		if (g_settings_get_boolean(daemon->gsettings, GSETTINGS_KEY_USE_ACTIVE))
 		{
-			display = gdk_display_get_default ();
-			seat = gdk_display_get_default_seat (display);
-			pointer = gdk_seat_get_pointer (seat);
+			display = cdk_display_get_default ();
+			seat = cdk_display_get_default_seat (display);
+			pointer = cdk_seat_get_pointer (seat);
 
-			gdk_device_get_position (pointer, &screen, &x, &y);
-			monitor_id = gdk_display_get_monitor_at_point (gdk_screen_get_display (screen), x, y);
+			cdk_device_get_position (pointer, &screen, &x, &y);
+			monitor_id = cdk_display_get_monitor_at_point (cdk_screen_get_display (screen), x, y);
 		}
 		else
 		{
-			screen = gdk_display_get_default_screen(gdk_display_get_default());
-			monitor_id = gdk_display_get_monitor (gdk_display_get_default(),
+			screen = cdk_display_get_default_screen(cdk_display_get_default());
+			monitor_id = cdk_display_get_monitor (cdk_display_get_default(),
 							      g_settings_get_int(daemon->gsettings, GSETTINGS_KEY_MONITOR_NUMBER));
 		}
 
@@ -1538,7 +1538,7 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 		{
 			/* screw it - dump it on the last one we'll get
 			 a monitors-changed signal soon enough*/
-			monitor_id = gdk_display_get_monitor (gdk_display_get_default(), daemon->screen->n_stacks - 1);
+			monitor_id = cdk_display_get_monitor (cdk_display_get_default(), daemon->screen->n_stacks - 1);
 		}
 
 		notify_stack_add_window (daemon->screen->stacks[_ctk_get_monitor_num (monitor_id)], nw, new_notification);

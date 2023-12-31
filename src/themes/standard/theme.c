@@ -135,7 +135,7 @@ get_background_color (CtkStyleContext *context,
                                NULL);
 
         *color = *c;
-        gdk_rgba_free (c);
+        cdk_rgba_free (c);
 }
 
 static void fill_background(CtkWidget* widget, WindowData* windata, cairo_t* cr)
@@ -171,7 +171,7 @@ static void fill_background(CtkWidget* widget, WindowData* windata, cairo_t* cr)
     }
     else
     {
-        gdk_cairo_set_source_rgba (cr, &bg);
+        cdk_cairo_set_source_rgba (cr, &bg);
     }
 
     cairo_rectangle(cr, 0, 0, allocation.width, allocation.height);
@@ -226,11 +226,11 @@ static void draw_stripe(CtkWidget* widget, WindowData* windata, cairo_t* cr)
 			ctk_style_context_set_state (context, CTK_STATE_FLAG_NORMAL);
 			ctk_style_context_add_class (context, CTK_STYLE_CLASS_VIEW);
 			get_background_color (context, CTK_STATE_FLAG_NORMAL, &bg);
-			gdk_cairo_set_source_rgba (cr, &bg);
+			cdk_cairo_set_source_rgba (cr, &bg);
 			break;
 
 		case URGENCY_CRITICAL: // CRITICAL
-			gdk_rgba_parse (&bg, "#CC0000");
+			cdk_rgba_parse (&bg, "#CC0000");
 			break;
 
 		case URGENCY_NORMAL: // NORMAL
@@ -238,7 +238,7 @@ static void draw_stripe(CtkWidget* widget, WindowData* windata, cairo_t* cr)
 			ctk_style_context_set_state (context, CTK_STATE_FLAG_SELECTED);
 			ctk_style_context_add_class (context, CTK_STYLE_CLASS_VIEW);
 			get_background_color (context, CTK_STATE_FLAG_SELECTED, &bg);
-			gdk_cairo_set_source_rgba (cr, &bg);
+			cdk_cairo_set_source_rgba (cr, &bg);
 			break;
 	}
 
@@ -258,7 +258,7 @@ static void draw_stripe(CtkWidget* widget, WindowData* windata, cairo_t* cr)
 		cairo_fill(cr);
 		cairo_pattern_destroy(gradient);
 	#else
-		gdk_cairo_set_source_rgba (cr, &bg);
+		cdk_cairo_set_source_rgba (cr, &bg);
 		cairo_fill(cr);
 	#endif
 }
@@ -273,10 +273,10 @@ static CtkArrowType get_notification_arrow_type(CtkWidget* nw)
 
 	windata = g_object_get_data(G_OBJECT(nw), "windata");
 
-	screen = gdk_window_get_screen(GDK_WINDOW( ctk_widget_get_window(nw)));
-	display = gdk_screen_get_display (screen);
-	monitor = gdk_display_get_monitor_at_point (display, windata->point_x, windata->point_y);
-	gdk_monitor_get_geometry (monitor, &monitor_geometry);
+	screen = cdk_window_get_screen(GDK_WINDOW( ctk_widget_get_window(nw)));
+	display = cdk_screen_get_display (screen);
+	monitor = cdk_display_get_monitor_at_point (display, windata->point_x, windata->point_y);
+	cdk_monitor_get_geometry (monitor, &monitor_geometry);
 
 	if (windata->point_y - monitor_geometry.y + windata->height + DEFAULT_ARROW_HEIGHT > monitor_geometry.height)
 	{
@@ -318,10 +318,10 @@ static void create_border_with_arrow(CtkWidget* nw, WindowData* windata)
 	width = windata->width;
 	height = windata->height;
 
-	screen = gdk_window_get_screen(GDK_WINDOW(ctk_widget_get_window(nw)));
-	display = gdk_screen_get_display (screen);
-	monitor = gdk_display_get_monitor_at_point (display, windata->point_x, windata->point_y);
-	gdk_monitor_get_geometry (monitor, &monitor_geometry);
+	screen = cdk_window_get_screen(GDK_WINDOW(ctk_widget_get_window(nw)));
+	display = cdk_screen_get_display (screen);
+	monitor = cdk_display_get_monitor_at_point (display, windata->point_x, windata->point_y);
+	cdk_monitor_get_geometry (monitor, &monitor_geometry);
 
 	windata->num_border_points = 5;
 
@@ -482,7 +482,7 @@ static void create_border_with_arrow(CtkWidget* nw, WindowData* windata)
 	g_assert(shape_points != NULL);
 
 	/* FIXME won't work with CTK+3, need a replacement */
-	/*windata->window_region = gdk_region_polygon(shape_points, windata->num_border_points, GDK_EVEN_ODD_RULE);*/
+	/*windata->window_region = cdk_region_polygon(shape_points, windata->num_border_points, GDK_EVEN_ODD_RULE);*/
 	g_free(shape_points);
 }
 
@@ -506,7 +506,7 @@ static void draw_border(CtkWidget* widget, WindowData *windata, cairo_t* cr)
 
 		cairo_close_path(cr);
 		/* FIXME window_region is not set up anyway, see previous fixme */
-		/*gdk_window_shape_combine_region (ctk_widget_get_window (windata->win), windata->window_region, 0, 0);*/
+		/*cdk_window_shape_combine_region (ctk_widget_get_window (windata->win), windata->window_region, 0, 0);*/
 		g_free(windata->border_points);
 		windata->border_points = NULL;
 	}
@@ -668,13 +668,13 @@ CtkWindow* create_notification(UrlClickedCb url_clicked)
 
 	screen = ctk_window_get_screen(CTK_WINDOW(win));
 
-	visual = gdk_screen_get_rgba_visual(screen);
+	visual = cdk_screen_get_rgba_visual(screen);
 
 	if (visual != NULL)
 	{
 		ctk_widget_set_visual(win, visual);
 
-		if (gdk_screen_is_composited(screen))
+		if (cdk_screen_is_composited(screen))
 		{
 			windata->composited = TRUE;
 		}
@@ -944,7 +944,7 @@ void set_notification_icon(CtkWindow* nw, GdkPixbuf* pixbuf)
 
 	if (pixbuf != NULL)
 	{
-		int pixbuf_width = gdk_pixbuf_get_width(pixbuf);
+		int pixbuf_width = cdk_pixbuf_get_width(pixbuf);
 
 		ctk_widget_show(windata->icon);
 		ctk_widget_set_size_request(windata->iconbox, MAX(BODY_X_OFFSET, pixbuf_width), -1);
@@ -1006,7 +1006,7 @@ paint_countdown (CtkWidget  *pie,
     {
         gdouble pct = (gdouble) windata->remaining / (gdouble) windata->timeout;
 
-        gdk_cairo_set_source_rgba (cr2, &bg);
+        cdk_cairo_set_source_rgba (cr2, &bg);
 
         cairo_move_to (cr2, PIE_RADIUS, PIE_RADIUS);
         cairo_arc_negative (cr2, PIE_RADIUS, PIE_RADIUS, PIE_RADIUS, -G_PI_2, -(pct * G_PI * 2) - G_PI_2);
@@ -1085,7 +1085,7 @@ void add_notification_action(CtkWindow* nw, const char* text, const char* key, A
 
 	/* Try to be smart and find a suitable icon. */
 	buf = g_strdup_printf("stock_%s", key);
-	pixbuf = ctk_icon_theme_load_icon(ctk_icon_theme_get_for_screen(gdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
+	pixbuf = ctk_icon_theme_load_icon(ctk_icon_theme_get_for_screen(cdk_window_get_screen(ctk_widget_get_window(CTK_WIDGET(nw)))),
 																	buf, 16, CTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 	g_free(buf);
 
