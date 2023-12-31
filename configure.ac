@@ -119,14 +119,14 @@ dnl ---------------------------------------------------------------------------
 dnl Requirements for the daemon
 dnl ---------------------------------------------------------------------------
 REQ_GLIB_VERSION=2.50.0
-REQ_LIBCANBERRA_CTK_VERSION=0.4
+REQ_LIBKANBERRA_CTK_VERSION=0.4
 PKG_CHECK_MODULES(GMODULE,gmodule-2.0,[GMODULE_ADD="gmodule-2.0"],[GMODULE_ADD=""])
 pkg_modules="
 	ctk+-3.0 >= $CTK_REQUIRED, \
 	glib-2.0 >= $REQ_GLIB_VERSION, \
 	gio-2.0 >= $REQ_GLIB_VERSION, \
         $GMODULE_ADD \
-        libkanberra-ctk3 >= $REQ_LIBCANBERRA_CTK_VERSION, \
+        libkanberra-ctk3 >= $REQ_LIBKANBERRA_CTK_VERSION, \
 	libwnck-3.0 \
         x11 \
 "
