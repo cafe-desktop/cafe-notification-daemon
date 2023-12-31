@@ -1647,7 +1647,7 @@ static gboolean notify_daemon_get_server_information (NotifyDaemonNotifications 
 	notify_daemon_notifications_complete_get_server_information(object,
 			invocation,
 			g_strdup("Notification Daemon"),
-			g_strdup("MATE"),
+			g_strdup("CAFE"),
 			g_strdup(PACKAGE_VERSION),
 			g_strdup("1.1"));
 	return TRUE;
