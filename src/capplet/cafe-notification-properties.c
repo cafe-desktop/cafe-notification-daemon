@@ -32,7 +32,7 @@
 
 #include "stack.h"
 
-#define GSETTINGS_SCHEMA "org.mate.NotificationDaemon"
+#define GSETTINGS_SCHEMA "org.cafe.NotificationDaemon"
 #define GSETTINGS_KEY_THEME "theme"
 #define GSETTINGS_KEY_POPUP_LOCATION "popup-location"
 #define GSETTINGS_KEY_MONITOR_NUMBER "monitor-number"
@@ -487,7 +487,7 @@ static void notification_properties_dialog_preview(NotificationAppletDialog* dia
 {
 	if (!notify_is_initted() && !notify_init("n-d"))
 	{
-		show_message(dialog, _("Error initializing libmatenotify"));
+		show_message(dialog, _("Error initializing libcafenotify"));
 		return;
 	}
 
@@ -540,7 +540,7 @@ static gboolean notification_properties_dialog_init(NotificationAppletDialog* di
 	GtkBuilder* builder = gtk_builder_new();
 	GError* error = NULL;
 
-	gtk_builder_add_from_resource (builder, "/org/mate/notifications/properties/mate-notification-properties.ui", &error);
+	gtk_builder_add_from_resource (builder, "/org/cafe/notifications/properties/cafe-notification-properties.ui", &error);
 
 	if (error != NULL)
 	{
@@ -633,7 +633,7 @@ int main(int argc, char** argv)
 
 	gtk_init(&argc, &argv);
 
-	notify_init("mate-notification-properties");
+	notify_init("cafe-notification-properties");
 
 	if (!notification_properties_dialog_init(&dialog))
 	{

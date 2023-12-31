@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Popup Notifications
 Comment=Set your popup notification preferences
-Exec=mate-notification-properties
+Exec=cafe-notification-properties
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-Icon=mate-notification-properties
+Icon=cafe-notification-properties
 Terminal=false
 Type=Application
 StartupNotify=true

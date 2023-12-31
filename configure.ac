@@ -3,7 +3,7 @@ dnl Process this file with autoconf to create configure.
 dnl ################################################################
 dnl # Initialize autoconf
 dnl ################################################################
-AC_INIT([mate-notification-daemon], [1.24.1], [https://mate-desktop.org])
+AC_INIT([cafe-notification-daemon], [1.24.1], [https://cafe-desktop.org])
 AC_PREREQ(2.63)
 
 AC_CONFIG_HEADERS([config.h])
@@ -30,13 +30,13 @@ if test "x$NOTIFICATION_DAEMON_DEVEL_VERSION" != "x0"; then
 fi
 
 AC_DEFINE_UNQUOTED(NOTIFICATION_DAEMON_MAJOR_VERSION, $NOTIFICATION_DAEMON_MAJOR_VERSION,
-	[mate-notification-daemon major version.])
+	[cafe-notification-daemon major version.])
 AC_DEFINE_UNQUOTED(NOTIFICATION_DAEMON_MINOR_VERSION, $NOTIFICATION_DAEMON_MINOR_VERSION,
-	[mate-notification-daemon minor version.])
+	[cafe-notification-daemon minor version.])
 AC_DEFINE_UNQUOTED(NOTIFICATION_DAEMON_MICRO_VERSION, $NOTIFICATION_DAEMON_MICRO_VERSION,
-	[mate-notification-daemon micro version.])
+	[cafe-notification-daemon micro version.])
 AC_DEFINE_UNQUOTED(NOTIFICATION_DAEMON_VERSION, "$NOTIFICATION_DAEMON_VERSION",
-	[mate-notification-daemon version.])
+	[cafe-notification-daemon version.])
 
 dnl ################################################################
 dnl # Initialize automake
@@ -79,7 +79,7 @@ AM_GNU_GETTEXT_VERSION([0.19.8])
 AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.8])
 AM_GNU_GETTEXT([external])
 
-AC_SUBST([GETTEXT_PACKAGE], [mate-notification-daemon])
+AC_SUBST([GETTEXT_PACKAGE], [cafe-notification-daemon])
 AC_DEFINE([GETTEXT_PACKAGE], [PACKAGE_TARNAME], [Define to the gettext package name.])
 
 
@@ -217,8 +217,8 @@ AM_CONDITIONAL([ICON_UPDATE], [test -n "$UPDATE_ICON_CACHE"])
 AC_CONFIG_FILES([
 Makefile
 data/Makefile
-data/org.freedesktop.mate.Notifications.service
-data/org.mate.NotificationDaemon.gschema.xml
+data/org.freedesktop.cafe.Notifications.service
+data/org.cafe.NotificationDaemon.gschema.xml
 po/Makefile.in
 src/Makefile
 src/daemon/Makefile

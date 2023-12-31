@@ -1,4 +1,4 @@
-enginedir = $(libdir)/mate-notification-daemon/engines
+enginedir = $(libdir)/cafe-notification-daemon/engines
 
 engine_LTLIBRARIES = libstandard.la
 

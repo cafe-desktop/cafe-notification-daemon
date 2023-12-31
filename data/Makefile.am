@@ -5,18 +5,18 @@ icon32dir = $(datadir)/icons/hicolor/32x32/apps
 icon48dir = $(datadir)/icons/hicolor/48x48/apps
 iconscalabledir = $(datadir)/icons/hicolor/scalable/apps
 
-icon16_DATA = icons/16x16/mate-notification-properties.png
-icon22_DATA = icons/22x22/mate-notification-properties.png
-icon24_DATA = icons/24x24/mate-notification-properties.png
-icon32_DATA = icons/32x32/mate-notification-properties.png
-icon48_DATA = icons/48x48/mate-notification-properties.png
-iconscalable_DATA = icons/scalable/mate-notification-properties.svg
+icon16_DATA = icons/16x16/cafe-notification-properties.png
+icon22_DATA = icons/22x22/cafe-notification-properties.png
+icon24_DATA = icons/24x24/cafe-notification-properties.png
+icon32_DATA = icons/32x32/cafe-notification-properties.png
+icon48_DATA = icons/48x48/cafe-notification-properties.png
+iconscalable_DATA = icons/scalable/cafe-notification-properties.svg
 
 
 servicedir   = $(DBUS_SERVICES_DIR)
-service_DATA = org.freedesktop.mate.Notifications.service
+service_DATA = org.freedesktop.cafe.Notifications.service
 
-gsettingsschema_in_files = org.mate.NotificationDaemon.gschema.xml.in
+gsettingsschema_in_files = org.cafe.NotificationDaemon.gschema.xml.in
 gsettings_SCHEMAS = $(gsettingsschema_in_files:.xml.in=.xml)
 @GSETTINGS_RULES@
 
