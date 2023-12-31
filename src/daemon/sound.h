@@ -24,6 +24,6 @@
 
 #include <ctk/ctk.h>
 
-void sound_play_file(GtkWidget* widget, const char* filename);
+void sound_play_file(CtkWidget* widget, const char* filename);
 
 #endif /* _SOUND_H */

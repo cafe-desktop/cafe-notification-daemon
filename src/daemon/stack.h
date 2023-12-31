@@ -42,8 +42,8 @@ NotifyStack* notify_stack_new(NotifyDaemon* daemon, GdkScreen* screen, GdkMonito
 void notify_stack_destroy(NotifyStack* stack);
 
 void notify_stack_set_location(NotifyStack* stack, NotifyStackLocation location);
-void notify_stack_add_window(NotifyStack* stack, GtkWindow* nw, gboolean new_notification);
-void notify_stack_remove_window(NotifyStack* stack, GtkWindow* nw);
+void notify_stack_add_window(NotifyStack* stack, CtkWindow* nw, gboolean new_notification);
+void notify_stack_remove_window(NotifyStack* stack, CtkWindow* nw);
 GList* notify_stack_get_windows(NotifyStack* stack);
 void notify_stack_queue_update_position(NotifyStack* stack);
 

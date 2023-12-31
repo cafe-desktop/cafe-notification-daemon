@@ -42,14 +42,14 @@
 typedef struct {
 	GSettings* gsettings;
 
-	GtkWidget* dialog;
-	GtkWidget* position_combo;
-    GtkWidget* monitor_combo;
-	GtkWidget* theme_combo;
-	GtkWidget* preview_button;
-	GtkWidget* active_checkbox;
-	GtkWidget* dnd_checkbox;
-    GtkWidget* monitor_label;
+	CtkWidget* dialog;
+	CtkWidget* position_combo;
+    CtkWidget* monitor_combo;
+	CtkWidget* theme_combo;
+	CtkWidget* preview_button;
+	CtkWidget* active_checkbox;
+	CtkWidget* dnd_checkbox;
+    CtkWidget* monitor_label;
 
 	NotifyNotification* preview;
 } NotificationAppletDialog;
@@ -74,8 +74,8 @@ enum {
 
 static void notification_properties_position_notify(GSettings *settings, gchar *key, NotificationAppletDialog* dialog)
 {
-	GtkTreeModel* model;
-	GtkTreeIter iter;
+	CtkTreeModel* model;
+	CtkTreeIter iter;
 	const char* location;
 	gboolean valid;
 
@@ -101,12 +101,12 @@ static void notification_properties_position_notify(GSettings *settings, gchar *
 	}
 }
 
-static void notification_properties_monitor_changed(GtkComboBox* widget, NotificationAppletDialog* dialog)
+static void notification_properties_monitor_changed(CtkComboBox* widget, NotificationAppletDialog* dialog)
 {
 	gint monitor;
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
-	GtkTreeModel *model = ctk_combo_box_get_model(CTK_COMBO_BOX(dialog->monitor_combo));
+	CtkTreeModel *model = ctk_combo_box_get_model(CTK_COMBO_BOX(dialog->monitor_combo));
 
 	if (!ctk_combo_box_get_active_iter(CTK_COMBO_BOX(dialog->monitor_combo), &iter))
 	{
@@ -120,8 +120,8 @@ static void notification_properties_monitor_changed(GtkComboBox* widget, Notific
 
 static void notification_properties_monitor_notify(GSettings *settings, gchar *key, NotificationAppletDialog* dialog)
 {
-	GtkTreeModel* model;
-	GtkTreeIter iter;
+	CtkTreeModel* model;
+	CtkTreeIter iter;
 	gint monitor_number;
 	gint monitor_number_at_iter;
 	gboolean valid;
@@ -142,12 +142,12 @@ static void notification_properties_monitor_notify(GSettings *settings, gchar *k
 	}
 }
 
-static void notification_properties_location_changed(GtkComboBox* widget, NotificationAppletDialog* dialog)
+static void notification_properties_location_changed(CtkComboBox* widget, NotificationAppletDialog* dialog)
 {
 	char* location;
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
-	GtkTreeModel* model = ctk_combo_box_get_model(CTK_COMBO_BOX(dialog->position_combo));
+	CtkTreeModel* model = ctk_combo_box_get_model(CTK_COMBO_BOX(dialog->position_combo));
 
 	if (!ctk_combo_box_get_active_iter(CTK_COMBO_BOX(dialog->position_combo), &iter))
 	{
@@ -164,8 +164,8 @@ static void notification_properties_dialog_setup_positions(NotificationAppletDia
 {
 	char* location;
 	gboolean valid;
-	GtkTreeModel* model;
-	GtkTreeIter iter;
+	CtkTreeModel* model;
+	CtkTreeIter iter;
 
 	g_signal_connect(dialog->gsettings, "changed::" GSETTINGS_KEY_POPUP_LOCATION, G_CALLBACK (notification_properties_position_notify), dialog);
 	g_signal_connect(dialog->position_combo, "changed", G_CALLBACK(notification_properties_location_changed), dialog);
@@ -194,10 +194,10 @@ static void notification_properties_dialog_setup_positions(NotificationAppletDia
 
 static void notification_properties_dialog_setup_monitors(NotificationAppletDialog* dialog)
 {
-	GtkListStore *store;
+	CtkListStore *store;
 	GdkDisplay *display;
 	GdkScreen *screen;
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	gint num_monitors;
 	gint cur_monitor_number;
 	gint cur_monitor_number_at_iter;
@@ -250,9 +250,9 @@ static void notification_properties_theme_notify(GSettings *settings, gchar *key
 {
 	const char* theme = g_settings_get_string(dialog->gsettings, key);
 
-	GtkTreeModel* model = ctk_combo_box_get_model(CTK_COMBO_BOX(dialog->theme_combo));
+	CtkTreeModel* model = ctk_combo_box_get_model(CTK_COMBO_BOX(dialog->theme_combo));
 
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 	gboolean valid;
 
 	for (valid = ctk_tree_model_get_iter_first(model, &iter); valid; valid = ctk_tree_model_iter_next(model, &iter))
@@ -272,12 +272,12 @@ static void notification_properties_theme_notify(GSettings *settings, gchar *key
 	}
 }
 
-static void notification_properties_theme_changed(GtkComboBox* widget, NotificationAppletDialog* dialog)
+static void notification_properties_theme_changed(CtkComboBox* widget, NotificationAppletDialog* dialog)
 {
 	char* theme;
-	GtkTreeIter iter;
+	CtkTreeIter iter;
 
-	GtkTreeModel* model = ctk_combo_box_get_model(CTK_COMBO_BOX(dialog->theme_combo));
+	CtkTreeModel* model = ctk_combo_box_get_model(CTK_COMBO_BOX(dialog->theme_combo));
 
 	if (!ctk_combo_box_get_active_iter(CTK_COMBO_BOX(dialog->theme_combo), &iter))
 	{
@@ -305,8 +305,8 @@ static void notification_properties_dialog_setup_themes(NotificationAppletDialog
 	char* theme_name;
 	char* theme_label;
 	gboolean valid;
-	GtkListStore* store;
-	GtkTreeIter iter;
+	CtkListStore* store;
+	CtkTreeIter iter;
 
 	store = ctk_list_store_new(N_COLUMNS_THEME, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
@@ -380,7 +380,7 @@ static void notification_properties_dialog_setup_themes(NotificationAppletDialog
 	g_free(theme);
 }
 
-static void notification_properties_checkbox_toggled(GtkWidget* widget, NotificationAppletDialog* dialog)
+static void notification_properties_checkbox_toggled(CtkWidget* widget, NotificationAppletDialog* dialog)
 {
     gboolean is_active;
 
@@ -434,7 +434,7 @@ static void notification_properties_checkbox_notify(GSettings *settings, gchar *
 	}
 }
 
-static void notification_properties_dnd_toggled(GtkWidget* widget, NotificationAppletDialog* dialog)
+static void notification_properties_dnd_toggled(CtkWidget* widget, NotificationAppletDialog* dialog)
 {
 	gboolean is_active;
 
@@ -468,7 +468,7 @@ static void notification_properties_dnd_notify(GSettings *settings, gchar *key, 
 
 static void show_message(NotificationAppletDialog* dialog, const gchar* message)
 {
-	GtkWidget* d = ctk_message_dialog_new(CTK_WINDOW(dialog->dialog), CTK_DIALOG_DESTROY_WITH_PARENT, CTK_MESSAGE_ERROR, CTK_BUTTONS_CLOSE, "%s", message);
+	CtkWidget* d = ctk_message_dialog_new(CTK_WINDOW(dialog->dialog), CTK_DIALOG_DESTROY_WITH_PARENT, CTK_MESSAGE_ERROR, CTK_BUTTONS_CLOSE, "%s", message);
 	ctk_dialog_run(CTK_DIALOG(d));
 	ctk_widget_destroy(d);
 }
@@ -513,7 +513,7 @@ static void notification_properties_dialog_preview(NotificationAppletDialog* dia
 	g_signal_connect(dialog->preview, "closed", G_CALLBACK(notification_properties_dialog_preview_closed), dialog);
 }
 
-static void notification_properties_dialog_response(GtkWidget* widget, int response, NotificationAppletDialog* dialog)
+static void notification_properties_dialog_response(CtkWidget* widget, int response, NotificationAppletDialog* dialog)
 {
 	switch (response)
 	{
@@ -528,7 +528,7 @@ static void notification_properties_dialog_response(GtkWidget* widget, int respo
 	}
 }
 
-static void notification_properties_dialog_destroyed(GtkWidget* widget, NotificationAppletDialog* dialog)
+static void notification_properties_dialog_destroyed(CtkWidget* widget, NotificationAppletDialog* dialog)
 {
 	dialog->dialog = NULL;
 
@@ -537,7 +537,7 @@ static void notification_properties_dialog_destroyed(GtkWidget* widget, Notifica
 
 static gboolean notification_properties_dialog_init(NotificationAppletDialog* dialog)
 {
-	GtkBuilder* builder = ctk_builder_new();
+	CtkBuilder* builder = ctk_builder_new();
 	GError* error = NULL;
 
 	ctk_builder_add_from_resource (builder, "/org/cafe/notifications/properties/cafe-notification-properties.ui", &error);
