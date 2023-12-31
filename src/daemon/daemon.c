@@ -955,7 +955,7 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
                                     g_variant_get_size (data_variant));
 
         pixbuf = gdk_pixbuf_new_from_data (data,
-                                           CDK_COLORSPACE_RGB,
+                                           GDK_COLORSPACE_RGB,
                                            has_alpha,
                                            bits_per_sample,
                                            width,
