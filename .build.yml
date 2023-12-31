@@ -15,7 +15,7 @@ requires:
     - gcc
     - git
     - gobject-introspection
-    - ctk-doc-tools
+    - gtk-doc-tools
     - libcanberra-ctk3-dev
     - libdconf-dev
     - libexempi-dev
