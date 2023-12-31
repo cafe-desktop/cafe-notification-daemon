@@ -71,7 +71,7 @@ void get_theme_info(char **theme_name, char **theme_ver, char **author,
 CtkWindow* create_notification(UrlClickedCb url_clicked);
 void set_notification_text(CtkWindow *nw, const char *summary,
 			   const char *body);
-void set_notification_icon(CtkWindow *nw, CdkPixbuf *pixbuf);
+void set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf);
 void set_notification_arrow(CtkWidget *nw, gboolean visible, int x, int y);
 void add_notification_action(CtkWindow *nw, const char *text, const char *key,
 			     ActionInvokedCb cb);
@@ -585,7 +585,7 @@ renrer_ok:
 	ctk_widget_set_size_request(windata->summary_label, summary_width, -1);
 }
 
-static CdkPixbuf* scale_pixbuf(CdkPixbuf* pixbuf, int max_width, int max_height, gboolean no_stretch_hint)
+static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height, gboolean no_stretch_hint)
 {
 	float scale_factor_x = 1.0;
 	float scale_factor_y = 1.0;
@@ -624,13 +624,13 @@ static CdkPixbuf* scale_pixbuf(CdkPixbuf* pixbuf, int max_width, int max_height,
 	}
 }
 
-void set_notification_icon(CtkWindow* nw, CdkPixbuf* pixbuf)
+void set_notification_icon(CtkWindow* nw, GdkPixbuf* pixbuf)
 {
 	WindowData* windata = g_object_get_data(G_OBJECT(nw), "windata");
 
 	g_assert(windata != NULL);
 
-	CdkPixbuf* scaled = NULL;
+	GdkPixbuf* scaled = NULL;
 
 	if (pixbuf != NULL)
 	{
@@ -739,7 +739,7 @@ void add_notification_action(CtkWindow* nw, const char* text, const char* key, A
 	CtkWidget* label;
 	CtkWidget* button;
 	CtkWidget* hbox;
-	CdkPixbuf* pixbuf;
+	GdkPixbuf* pixbuf;
 	char* buf;
 
 	windata = g_object_get_data(G_OBJECT(nw), "windata");
