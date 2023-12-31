@@ -127,7 +127,7 @@ pkg_modules="
 	gio-2.0 >= $REQ_GLIB_VERSION, \
         $GMODULE_ADD \
         libkanberra-ctk3 >= $REQ_LIBKANBERRA_CTK_VERSION, \
-	libwnck-3.0 \
+	libvnck-3.0 \
         x11 \
 "
 PKG_CHECK_MODULES(NOTIFICATION_DAEMON, $pkg_modules)

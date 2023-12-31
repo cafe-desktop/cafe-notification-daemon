@@ -41,7 +41,7 @@
 #include <cdk/cdkx.h>
 
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE
-#include <libwnck/libwnck.h>
+#include <libvnck/libvnck.h>
 
 #include "daemon.h"
 #include "engines.h"
@@ -1145,37 +1145,37 @@ static gboolean screensaver_active(CtkWidget* nw)
 
 static gboolean fullscreen_window_exists(CtkWidget* nw)
 {
-	WnckScreen* wnck_screen;
-	WnckWorkspace* wnck_workspace;
+	WnckScreen* vnck_screen;
+	WnckWorkspace* vnck_workspace;
 	GList* l;
 
-		wnck_screen = wnck_screen_get(CDK_SCREEN_XNUMBER(cdk_window_get_screen(ctk_widget_get_window(nw))));
+		vnck_screen = vnck_screen_get(CDK_SCREEN_XNUMBER(cdk_window_get_screen(ctk_widget_get_window(nw))));
 
-	wnck_screen_force_update (wnck_screen);
+	vnck_screen_force_update (vnck_screen);
 
-	wnck_workspace = wnck_screen_get_active_workspace (wnck_screen);
+	vnck_workspace = vnck_screen_get_active_workspace (vnck_screen);
 
-	if (!wnck_workspace)
+	if (!vnck_workspace)
 	{
 		return FALSE;
 	}
 
-	for (l = wnck_screen_get_windows_stacked (wnck_screen); l != NULL; l = l->next)
+	for (l = vnck_screen_get_windows_stacked (vnck_screen); l != NULL; l = l->next)
 	{
-		WnckWindow *wnck_win = (WnckWindow *) l->data;
+		WnckWindow *vnck_win = (WnckWindow *) l->data;
 
-		if (wnck_window_is_on_workspace (wnck_win, wnck_workspace) && wnck_window_is_fullscreen (wnck_win) && wnck_window_is_active (wnck_win))
+		if (vnck_window_is_on_workspace (vnck_win, vnck_workspace) && vnck_window_is_fullscreen (vnck_win) && vnck_window_is_active (vnck_win))
 		{
 			/*
 			 * Sanity check if the window is _really_ fullscreen to
-			 * work around a bug in libwnck that doesn't get all
+			 * work around a bug in libvnck that doesn't get all
 			 * unfullscreen events.
 			 */
-			int sw = wnck_screen_get_width (wnck_screen);
-			int sh = wnck_screen_get_height (wnck_screen);
+			int sw = vnck_screen_get_width (vnck_screen);
+			int sh = vnck_screen_get_height (vnck_screen);
 			int x, y, w, h;
 
-			wnck_window_get_geometry (wnck_win, &x, &y, &w, &h);
+			vnck_window_get_geometry (vnck_win, &x, &y, &w, &h);
 
 			if (sw == w && sh == h)
 			{
