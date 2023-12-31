@@ -386,7 +386,7 @@ static GdkFilterReturn screen_xevent_filter(GdkXEvent* xevent, GdkEvent* event, 
 		}
 	}
 
-	return GDK_FILTER_CONTINUE;
+	return CDK_FILTER_CONTINUE;
 }
 
 static void create_screen(NotifyDaemon* daemon)
@@ -404,11 +404,11 @@ static void create_screen(NotifyDaemon* daemon)
 
 	daemon->screen = g_new0(NotifyScreen, 1);
 
-	daemon->screen->workarea_atom = XInternAtom(GDK_DISPLAY_XDISPLAY (display), "_NET_WORKAREA", True);
+	daemon->screen->workarea_atom = XInternAtom(CDK_DISPLAY_XDISPLAY (display), "_NET_WORKAREA", True);
 
 	cdkwindow = cdk_screen_get_root_window(screen);
 	cdk_window_add_filter(cdkwindow, (GdkFilterFunc) screen_xevent_filter, daemon->screen);
-	cdk_window_set_events(cdkwindow, cdk_window_get_events(cdkwindow) | GDK_PROPERTY_CHANGE_MASK);
+	cdk_window_set_events(cdkwindow, cdk_window_get_events(cdkwindow) | CDK_PROPERTY_CHANGE_MASK);
 
 	create_stacks_for_screen(daemon, screen);
 }
@@ -698,12 +698,12 @@ static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, No
 			cdk_window_remove_filter(NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
 		}
 
-		return GDK_FILTER_CONTINUE;
+		return CDK_FILTER_CONTINUE;
 	}
 
 	if (!g_hash_table_lookup_extended(daemon->monitored_window_hash, GUINT_TO_POINTER(xev->xany.window), &orig_key, &value))
 	{
-		return GDK_FILTER_CONTINUE;
+		return CDK_FILTER_CONTINUE;
 	}
 
 	notify_id = GPOINTER_TO_INT(value);
@@ -718,7 +718,7 @@ static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, No
 
 		if (nt == NULL)
 		{
-			return GDK_FILTER_CONTINUE;
+			return CDK_FILTER_CONTINUE;
 		}
 
 		/*
@@ -729,7 +729,7 @@ static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, No
 		sync_notification_position(daemon, nt->nw, nt->src_window_xid);
 	}
 
-	return GDK_FILTER_CONTINUE;
+	return CDK_FILTER_CONTINUE;
 }
 
 static void _mouse_entered_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaemon* daemon)
@@ -738,7 +738,7 @@ static void _mouse_entered_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaem
 	guint id;
 	GTimeVal now;
 
-	if (event->detail == GDK_NOTIFY_INFERIOR)
+	if (event->detail == CDK_NOTIFY_INFERIOR)
 	{
 		return;
 	}
@@ -761,7 +761,7 @@ static void _mouse_entered_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaem
 
 static void _mouse_exitted_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaemon* daemon)
 {
-	if (event->detail == GDK_NOTIFY_INFERIOR)
+	if (event->detail == CDK_NOTIFY_INFERIOR)
 	{
 		return;
 	}
@@ -955,7 +955,7 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
                                     g_variant_get_size (data_variant));
 
         pixbuf = cdk_pixbuf_new_from_data (data,
-                                           GDK_COLORSPACE_RGB,
+                                           CDK_COLORSPACE_RGB,
                                            has_alpha,
                                            bits_per_sample,
                                            width,
@@ -1042,7 +1042,7 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 		return cdk_pixbuf_scale_simple (pixbuf,
 										scale_x,
 										scale_y,
-										GDK_INTERP_BILINEAR);
+										CDK_INTERP_BILINEAR);
 	}
 	else
 	{
@@ -1149,7 +1149,7 @@ static gboolean fullscreen_window_exists(CtkWidget* nw)
 	WnckWorkspace* wnck_workspace;
 	GList* l;
 
-		wnck_screen = wnck_screen_get(GDK_SCREEN_XNUMBER(cdk_window_get_screen(ctk_widget_get_window(nw))));
+		wnck_screen = wnck_screen_get(CDK_SCREEN_XNUMBER(cdk_window_get_screen(ctk_widget_get_window(nw))));
 
 	wnck_screen_force_update (wnck_screen);
 
@@ -1195,7 +1195,7 @@ static Window get_window_parent(GdkDisplay* display, Window window, Window* root
 	gboolean result;
 
 	cdk_x11_display_error_trap_push (display);
-	result = XQueryTree(GDK_DISPLAY_XDISPLAY(display), window, root, &parent, &children, &nchildren);
+	result = XQueryTree(CDK_DISPLAY_XDISPLAY(display), window, root, &parent, &children, &nchildren);
 
 	if (cdk_x11_display_error_trap_pop (display) || !result)
 	{
@@ -1235,7 +1235,7 @@ static void monitor_notification_source_windows(NotifyDaemon  *daemon, NotifyTim
 
 	for (parent = get_window_parent (display, source, &root); parent != None && root != parent; parent = get_window_parent (display, parent, &root))
 	{
-		XSelectInput (GDK_DISPLAY_XDISPLAY(display), parent, StructureNotifyMask);
+		XSelectInput (CDK_DISPLAY_XDISPLAY(display), parent, StructureNotifyMask);
 
 		g_hash_table_insert(daemon->monitored_window_hash, GUINT_TO_POINTER (parent), GINT_TO_POINTER (nt->id));
 	}
@@ -1257,7 +1257,7 @@ static void sync_notification_position(NotifyDaemon* daemon, CtkWindow* nw, Wind
 	cdk_x11_display_error_trap_push (display);
 
 	/* Get the root for this window */
-	result = XGetGeometry(GDK_DISPLAY_XDISPLAY(display), source, &root, &x, &y, &width, &height, &border_width, &depth);
+	result = XGetGeometry(CDK_DISPLAY_XDISPLAY(display), source, &root, &x, &y, &width, &height, &border_width, &depth);
 
 	if (cdk_x11_display_error_trap_pop (display) || !result)
 	{
@@ -1269,7 +1269,7 @@ static void sync_notification_position(NotifyDaemon* daemon, CtkWindow* nw, Wind
 	 * the root.
 	 */
 	cdk_x11_display_error_trap_push (display);
-	result = XTranslateCoordinates (GDK_DISPLAY_XDISPLAY (display), source, root, 0, 0, &x, &y, &child);
+	result = XTranslateCoordinates (CDK_DISPLAY_XDISPLAY (display), source, root, 0, 0, &x, &y, &child);
 	if (cdk_x11_display_error_trap_pop (display) || !result)
 	{
 		return;
