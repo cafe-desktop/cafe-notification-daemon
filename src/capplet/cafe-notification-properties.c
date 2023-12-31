@@ -195,8 +195,8 @@ static void notification_properties_dialog_setup_positions(NotificationAppletDia
 static void notification_properties_dialog_setup_monitors(NotificationAppletDialog* dialog)
 {
 	CtkListStore *store;
-	GdkDisplay *display;
-	GdkScreen *screen;
+	CdkDisplay *display;
+	CdkScreen *screen;
 	CtkTreeIter iter;
 	gint num_monitors;
 	gint cur_monitor_number;

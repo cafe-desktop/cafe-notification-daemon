@@ -42,7 +42,7 @@ void            theme_set_notification_text      (CtkWindow   *nw,
                                                   const char  *summary,
                                                   const char  *body);
 void            theme_set_notification_icon      (CtkWindow   *nw,
-                                                  GdkPixbuf   *pixbuf);
+                                                  CdkPixbuf   *pixbuf);
 void            theme_set_notification_arrow     (CtkWindow   *nw,
                                                   gboolean     visible,
                                                   int          x,

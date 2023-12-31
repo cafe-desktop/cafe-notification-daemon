@@ -39,7 +39,7 @@ typedef struct {
 	void        (*hide_notification)           (CtkWindow* nw);
 	void        (*set_notification_hints)      (CtkWindow* nw, GVariant *hints);
 	void        (*set_notification_text)       (CtkWindow* nw, const char* summary, const char* body);
-	void        (*set_notification_icon)       (CtkWindow* nw, GdkPixbuf* pixbuf);
+	void        (*set_notification_icon)       (CtkWindow* nw, CdkPixbuf* pixbuf);
 	void        (*set_notification_arrow)      (CtkWindow* nw, gboolean visible, int x, int y);
 	void        (*add_notification_action)     (CtkWindow* nw, const char* label, const char* key, GCallback cb);
 	void        (*clear_notification_actions)  (CtkWindow* nw);
@@ -287,7 +287,7 @@ void theme_set_notification_text(CtkWindow* nw, const char* summary, const char*
 	engine->set_notification_text (nw, summary, body);
 }
 
-void theme_set_notification_icon(CtkWindow* nw, GdkPixbuf* pixbuf)
+void theme_set_notification_icon(CtkWindow* nw, CdkPixbuf* pixbuf)
 {
 	ThemeEngine* engine = g_object_get_data(G_OBJECT (nw), "_theme_engine");
 	engine->set_notification_icon(nw, pixbuf);

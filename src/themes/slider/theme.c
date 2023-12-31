@@ -71,7 +71,7 @@ void get_theme_info(char **theme_name, char **theme_ver, char **author,
 CtkWindow* create_notification(UrlClickedCb url_clicked);
 void set_notification_text(CtkWindow *nw, const char *summary,
 			   const char *body);
-void set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf);
+void set_notification_icon(CtkWindow *nw, CdkPixbuf *pixbuf);
 void set_notification_arrow(CtkWidget *nw, gboolean visible, int x, int y);
 void add_notification_action(CtkWindow *nw, const char *text, const char *key,
 			     ActionInvokedCb cb);
@@ -129,9 +129,9 @@ static void draw_round_rect(cairo_t* cr, gdouble aspect, gdouble x, gdouble y, g
 static void
 get_background_color (CtkStyleContext *context,
                       CtkStateFlags    state,
-                      GdkRGBA         *color)
+                      CdkRGBA         *color)
 {
-    GdkRGBA *c;
+    CdkRGBA *c;
 
     g_return_if_fail (color != NULL);
     g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
@@ -148,8 +148,8 @@ static void fill_background(CtkWidget* widget, WindowData* windata, cairo_t* cr)
 {
 	CtkAllocation allocation;
 	CtkStyleContext *context;
-	GdkRGBA fg;
-	GdkRGBA bg;
+	CdkRGBA fg;
+	CdkRGBA bg;
 
 	ctk_widget_get_allocation(widget, &allocation);
 
@@ -251,7 +251,7 @@ static void paint_window (CtkWidget  *widget,
 	cairo_surface_destroy(surface);
 }
 
-static gboolean on_window_map(CtkWidget* widget, GdkEvent* event, WindowData* windata)
+static gboolean on_window_map(CtkWidget* widget, CdkEvent* event, WindowData* windata)
 {
 	return FALSE;
 }
@@ -283,7 +283,7 @@ static void update_content_hbox_visibility(WindowData* windata)
 	}
 }
 
-static gboolean on_configure_event(CtkWidget* widget, GdkEventConfigure* event, WindowData* windata)
+static gboolean on_configure_event(CtkWidget* widget, CdkEventConfigure* event, WindowData* windata)
 {
 	windata->width = event->width;
 	windata->height = event->height;
@@ -314,8 +314,8 @@ CtkWindow* create_notification(UrlClickedCb url_clicked)
 	CtkWidget* image;
 	AtkObject* atkobj;
 	WindowData* windata;
-	GdkVisual *visual;
-	GdkScreen* screen;
+	CdkVisual *visual;
+	CdkScreen* screen;
 
 	windata = g_new0(WindowData, 1);
 	windata->urgency = URGENCY_NORMAL;
@@ -585,7 +585,7 @@ renrer_ok:
 	ctk_widget_set_size_request(windata->summary_label, summary_width, -1);
 }
 
-static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height, gboolean no_stretch_hint)
+static CdkPixbuf* scale_pixbuf(CdkPixbuf* pixbuf, int max_width, int max_height, gboolean no_stretch_hint)
 {
 	float scale_factor_x = 1.0;
 	float scale_factor_y = 1.0;
@@ -624,13 +624,13 @@ static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height,
 	}
 }
 
-void set_notification_icon(CtkWindow* nw, GdkPixbuf* pixbuf)
+void set_notification_icon(CtkWindow* nw, CdkPixbuf* pixbuf)
 {
 	WindowData* windata = g_object_get_data(G_OBJECT(nw), "windata");
 
 	g_assert(windata != NULL);
 
-	GdkPixbuf* scaled = NULL;
+	CdkPixbuf* scaled = NULL;
 
 	if (pixbuf != NULL)
 	{
@@ -670,7 +670,7 @@ paint_countdown (CtkWidget  *pie,
                  WindowData* windata)
 {
 	CtkStyleContext* context;
-	GdkRGBA bg;
+	CdkRGBA bg;
 	CtkAllocation allocation;
 	cairo_t* cr2;
 	cairo_surface_t* surface;
@@ -725,7 +725,7 @@ on_countdown_draw (CtkWidget *widget, cairo_t *cr, WindowData *windata)
 	return FALSE;
 }
 
-static void on_action_clicked(CtkWidget* w, GdkEventButton *event, ActionInvokedCb action_cb)
+static void on_action_clicked(CtkWidget* w, CdkEventButton *event, ActionInvokedCb action_cb)
 {
 	CtkWindow* nw = g_object_get_data(G_OBJECT(w), "_nw");
 	const char* key = g_object_get_data(G_OBJECT(w), "_action_key");
@@ -739,7 +739,7 @@ void add_notification_action(CtkWindow* nw, const char* text, const char* key, A
 	CtkWidget* label;
 	CtkWidget* button;
 	CtkWidget* hbox;
-	GdkPixbuf* pixbuf;
+	CdkPixbuf* pixbuf;
 	char* buf;
 
 	windata = g_object_get_data(G_OBJECT(nw), "windata");

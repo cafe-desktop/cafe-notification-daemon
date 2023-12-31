@@ -127,7 +127,7 @@ typedef struct {
 static void notify_daemon_finalize(GObject* object);
 static void _notification_destroyed_cb(CtkWindow* nw, NotifyDaemon* daemon);
 static void _close_notification(NotifyDaemon* daemon, guint id, gboolean hide_notification, NotifydClosedReason reason);
-static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, NotifyDaemon* daemon);
+static CdkFilterReturn _notify_x11_filter(CdkXEvent* xevent, CdkEvent* event, NotifyDaemon* daemon);
 static void _emit_closed_signal(CtkWindow* nw, NotifydClosedReason reason);
 static void _action_invoked_cb(CtkWindow* nw, const char* key);
 static NotifyStackLocation get_stack_location_from_string(const gchar *slocation);
@@ -273,9 +273,9 @@ static void remove_exit_timeout(NotifyDaemon* daemon)
 }
 
 static int
-_ctk_get_monitor_num (GdkMonitor *monitor)
+_ctk_get_monitor_num (CdkMonitor *monitor)
 {
-	GdkDisplay *display;
+	CdkDisplay *display;
 	int n_monitors, i;
 
 	display = cdk_monitor_get_display(monitor);
@@ -289,16 +289,16 @@ _ctk_get_monitor_num (GdkMonitor *monitor)
 	return -1;
 }
 
-static void create_stack_for_monitor(NotifyDaemon* daemon, GdkScreen* screen, GdkMonitor *monitor_num)
+static void create_stack_for_monitor(NotifyDaemon* daemon, CdkScreen* screen, CdkMonitor *monitor_num)
 {
 	NotifyScreen* nscreen = daemon->screen;
 
 	nscreen->stacks[_ctk_get_monitor_num(monitor_num)] = notify_stack_new(daemon, screen, monitor_num, daemon->stack_location);
 }
 
-static void on_screen_monitors_changed(GdkScreen* screen, NotifyDaemon* daemon)
+static void on_screen_monitors_changed(CdkScreen* screen, NotifyDaemon* daemon)
 {
-	GdkDisplay     *display;
+	CdkDisplay     *display;
 	NotifyScreen* nscreen;
 	int n_monitors;
 	int i;
@@ -353,9 +353,9 @@ static void on_screen_monitors_changed(GdkScreen* screen, NotifyDaemon* daemon)
 	}
 }
 
-static void create_stacks_for_screen(NotifyDaemon* daemon, GdkScreen *screen)
+static void create_stacks_for_screen(NotifyDaemon* daemon, CdkScreen *screen)
 {
-	GdkDisplay     *display;
+	CdkDisplay     *display;
 	NotifyScreen* nscreen;
 	int i;
 
@@ -372,7 +372,7 @@ static void create_stacks_for_screen(NotifyDaemon* daemon, GdkScreen *screen)
 	}
 }
 
-static GdkFilterReturn screen_xevent_filter(GdkXEvent* xevent, GdkEvent* event, NotifyScreen* nscreen)
+static CdkFilterReturn screen_xevent_filter(CdkXEvent* xevent, CdkEvent* event, NotifyScreen* nscreen)
 {
 	XEvent* xev = (XEvent*) xevent;
 
@@ -391,9 +391,9 @@ static GdkFilterReturn screen_xevent_filter(GdkXEvent* xevent, GdkEvent* event, 
 
 static void create_screen(NotifyDaemon* daemon)
 {
-    GdkDisplay *display;
-    GdkScreen  *screen;
-    GdkWindow  *cdkwindow;
+    CdkDisplay *display;
+    CdkScreen  *screen;
+    CdkWindow  *cdkwindow;
 
 	g_assert(daemon->screen == NULL);
 
@@ -407,7 +407,7 @@ static void create_screen(NotifyDaemon* daemon)
 	daemon->screen->workarea_atom = XInternAtom(CDK_DISPLAY_XDISPLAY (display), "_NET_WORKAREA", True);
 
 	cdkwindow = cdk_screen_get_root_window(screen);
-	cdk_window_add_filter(cdkwindow, (GdkFilterFunc) screen_xevent_filter, daemon->screen);
+	cdk_window_add_filter(cdkwindow, (CdkFilterFunc) screen_xevent_filter, daemon->screen);
 	cdk_window_set_events(cdkwindow, cdk_window_get_events(cdkwindow) | CDK_PROPERTY_CHANGE_MASK);
 
 	create_stacks_for_screen(daemon, screen);
@@ -475,9 +475,9 @@ static void notify_daemon_init(NotifyDaemon* daemon)
 
 static void destroy_screen(NotifyDaemon* daemon)
 {
-	GdkDisplay *display;
-	GdkScreen  *screen;
-	GdkWindow  *cdkwindow;
+	CdkDisplay *display;
+	CdkScreen  *screen;
+	CdkWindow  *cdkwindow;
 	gint        i;
 
 	display = cdk_display_get_default();
@@ -488,7 +488,7 @@ static void destroy_screen(NotifyDaemon* daemon)
 										  daemon);
 
 	cdkwindow = cdk_screen_get_root_window (screen);
-	cdk_window_remove_filter (cdkwindow, (GdkFilterFunc) screen_xevent_filter, daemon->screen);
+	cdk_window_remove_filter (cdkwindow, (CdkFilterFunc) screen_xevent_filter, daemon->screen);
 	for (i = 0; i < daemon->screen->n_stacks; i++) {
 		 g_clear_object (&daemon->screen->stacks[i]);
 	}
@@ -508,7 +508,7 @@ static void notify_daemon_finalize(GObject* object)
 
 	if (g_hash_table_size(daemon->monitored_window_hash) > 0)
 	{
-		cdk_window_remove_filter(NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
+		cdk_window_remove_filter(NULL, (CdkFilterFunc) _notify_x11_filter, daemon);
 	}
 
 	if (daemon->skeleton != NULL)
@@ -679,7 +679,7 @@ static void _queue_idle_reposition_notification(NotifyDaemon* daemon, gint notif
 	g_hash_table_insert(daemon->idle_reposition_notify_ids, GINT_TO_POINTER(notify_id), GUINT_TO_POINTER(idle_id));
 }
 
-static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, NotifyDaemon* daemon)
+static CdkFilterReturn _notify_x11_filter(CdkXEvent* xevent, CdkEvent* event, NotifyDaemon* daemon)
 {
 	XEvent* xev;
 	gpointer orig_key;
@@ -695,7 +695,7 @@ static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, No
 
 		if (g_hash_table_size(daemon->monitored_window_hash) == 0)
 		{
-			cdk_window_remove_filter(NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
+			cdk_window_remove_filter(NULL, (CdkFilterFunc) _notify_x11_filter, daemon);
 		}
 
 		return CDK_FILTER_CONTINUE;
@@ -732,7 +732,7 @@ static GdkFilterReturn _notify_x11_filter(GdkXEvent* xevent, GdkEvent* event, No
 	return CDK_FILTER_CONTINUE;
 }
 
-static void _mouse_entered_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaemon* daemon)
+static void _mouse_entered_cb(CtkWindow* nw, CdkEventCrossing* event, NotifyDaemon* daemon)
 {
 	NotifyTimeout* nt;
 	guint id;
@@ -759,7 +759,7 @@ static void _mouse_entered_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaem
 	}
 }
 
-static void _mouse_exitted_cb(CtkWindow* nw, GdkEventCrossing* event, NotifyDaemon* daemon)
+static void _mouse_exitted_cb(CtkWindow* nw, CdkEventCrossing* event, NotifyDaemon* daemon)
 {
 	if (event->detail == CDK_NOTIFY_INFERIOR)
 	{
@@ -917,7 +917,7 @@ static NotifyTimeout* _store_notification(NotifyDaemon* daemon, CtkWindow* nw, i
 	return nt;
 }
 
-static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
+static CdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
 {
         gboolean        has_alpha;
         int             bits_per_sample;
@@ -928,7 +928,7 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
         GVariant       *data_variant;
         gsize           expected_len;
         guchar         *data;
-        GdkPixbuf      *pixbuf;
+        CdkPixbuf      *pixbuf;
 
         g_variant_get (icon_data,
                        "(iiibii@ay)",
@@ -961,15 +961,15 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
                                            width,
                                            height,
                                            rowstride,
-                                           (GdkPixbufDestroyNotify) g_free,
+                                           (CdkPixbufDestroyNotify) g_free,
                                            NULL);
 
         return pixbuf;
 }
 
-static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
+static CdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 {
-	GdkPixbuf* pixbuf = NULL;
+	CdkPixbuf* pixbuf = NULL;
 
 	if (!strncmp (path, "file://", 7) || *path == '/')
 	{
@@ -1019,7 +1019,7 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 	return pixbuf;
 }
 
-static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_stretch_hint)
+static CdkPixbuf* _notify_daemon_scale_pixbuf(CdkPixbuf *pixbuf, gboolean no_stretch_hint)
 {
 	int pw;
 	int ph;
@@ -1050,7 +1050,7 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 	}
 }
 
-static void window_clicked_cb(CtkWindow* nw, GdkEventButton* button, NotifyDaemon* daemon)
+static void window_clicked_cb(CtkWindow* nw, CdkEventButton* button, NotifyDaemon* daemon)
 {
 	if (daemon->url_clicked_lock)
 	{
@@ -1187,7 +1187,7 @@ static gboolean fullscreen_window_exists(CtkWidget* nw)
 	return FALSE;
 }
 
-static Window get_window_parent(GdkDisplay* display, Window window, Window* root)
+static Window get_window_parent(CdkDisplay* display, Window window, Window* root)
 {
 	Window parent;
 	Window* children = NULL;
@@ -1216,7 +1216,7 @@ static Window get_window_parent(GdkDisplay* display, Window window, Window* root
  */
 static void monitor_notification_source_windows(NotifyDaemon  *daemon, NotifyTimeout *nt, Window source)
 {
-	GdkDisplay *display;
+	CdkDisplay *display;
 	Window root = None;
 	Window parent;
 
@@ -1226,7 +1226,7 @@ static void monitor_notification_source_windows(NotifyDaemon  *daemon, NotifyTim
 	   filter events unless we absolutely have to. */
 	if (g_hash_table_size (daemon->monitored_window_hash) == 0)
 	{
-		cdk_window_add_filter (NULL, (GdkFilterFunc) _notify_x11_filter, daemon);
+		cdk_window_add_filter (NULL, (CdkFilterFunc) _notify_x11_filter, daemon);
 	}
 
 	/* Store the window in the timeout */
@@ -1244,7 +1244,7 @@ static void monitor_notification_source_windows(NotifyDaemon  *daemon, NotifyTim
 /* Use a source X Window ID to reposition a notification. */
 static void sync_notification_position(NotifyDaemon* daemon, CtkWindow* nw, Window source)
 {
-	GdkDisplay *display;
+	CdkDisplay *display;
 	Status result;
 	Window root;
 	Window child;
@@ -1320,7 +1320,7 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 	gboolean sound_enabled;
 	gboolean do_not_disturb;
 	gint i;
-	GdkPixbuf* pixbuf;
+	CdkPixbuf* pixbuf;
 	GSettings* gsettings;
 
 	if (g_hash_table_size (daemon->notification_hash) > MAX_NOTIFICATIONS)
@@ -1478,7 +1478,7 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 
 	if (pixbuf != NULL)
 	{
-		GdkPixbuf *scaled;
+		CdkPixbuf *scaled;
 		scaled = NULL;
 		scaled = _notify_daemon_scale_pixbuf (pixbuf, TRUE);
 		theme_set_notification_icon (nw, scaled);
@@ -1506,11 +1506,11 @@ static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, 
 	}
 	else
 	{
-		GdkMonitor *monitor_id;
-		GdkDisplay *display;
-		GdkSeat *seat;
-		GdkDevice *pointer;
-		GdkScreen* screen;
+		CdkMonitor *monitor_id;
+		CdkDisplay *display;
+		CdkSeat *seat;
+		CdkDevice *pointer;
+		CdkScreen* screen;
 		gint x, y;
 
 		theme_set_notification_arrow (nw, FALSE, 0, 0);
