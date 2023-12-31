@@ -24,7 +24,6 @@ requires:
     - libnotify-dev
     - libpango1.0-dev
     - libstartup-notification0-dev
-    - libwnck-3-dev
     - libx11-dev
     - libxml2-dev
     - libxml2-utils
@@ -50,10 +49,20 @@ requires:
     - libpulse-dev
     - libgstreamer1.0-dev
 
+    #required for libvnck
+    - build-essential
+    - docbook-xml
+    - gettext
+    - libxext-dev
+    - libxres-dev
+    - meson
+    - ninja-build
+
 before_scripts:
   - ./html-cppcheck
   - ./debrepo-install 'libctk-3-dev libcail-3-dev'
   - ./install-from-git https://github.com/cafe-desktop/libkanberra master
+  - ./install-from-git https://github.com/cafe-desktop/libvnck master meson
   - ./install-from-git https://github.com/cafe-desktop/cafe-common master
   - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
 
