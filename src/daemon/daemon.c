@@ -1042,7 +1042,7 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 		return gdk_pixbuf_scale_simple (pixbuf,
 										scale_x,
 										scale_y,
-										CDK_INTERP_BILINEAR);
+										GDK_INTERP_BILINEAR);
 	}
 	else
 	{

@@ -616,7 +616,7 @@ static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height,
 		scale_x = (int) (pw * scale_factor);
 		scale_y = (int) (ph * scale_factor);
 
-		return gdk_pixbuf_scale_simple(pixbuf, scale_x, scale_y, CDK_INTERP_BILINEAR);
+		return gdk_pixbuf_scale_simple(pixbuf, scale_x, scale_y, GDK_INTERP_BILINEAR);
 	}
 	else
 	{
