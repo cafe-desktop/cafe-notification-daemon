@@ -24,7 +24,7 @@
 #include "sound.h"
 
 #include <glib/gi18n.h>
-#include <canberra-ctk.h>
+#include <kanberra-ctk.h>
 
 void
 sound_play_file (CtkWidget *widget,
