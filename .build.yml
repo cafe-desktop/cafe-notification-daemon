@@ -20,7 +20,6 @@ requires:
     - libdconf-dev
     - libexempi-dev
     - libexif-dev
-    - libgail-3-dev
     - libgirepository1.0-dev
     - libglib2.0-dev
     - libctk-3-dev
@@ -46,7 +45,7 @@ requires:
 
 before_scripts:
   - ./html-cppcheck
-  - ./debrepo-install 'libctk-3-dev'
+  - ./debrepo-install 'libctk-3-dev libcail-3-dev'
   - ./install-from-git https://github.com/cafe-desktop/cafe-common master
   - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
 
