@@ -591,8 +591,8 @@ static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height,
 	float scale_factor_y = 1.0;
 	float scale_factor = 1.0;
 
-	int pw = cdk_pixbuf_get_width(pixbuf);
-	int ph = cdk_pixbuf_get_height(pixbuf);
+	int pw = gdk_pixbuf_get_width(pixbuf);
+	int ph = gdk_pixbuf_get_height(pixbuf);
 
 	/* Determine which dimension requires the smallest scale. */
 	scale_factor_x = (float) max_width / (float) pw;
@@ -616,7 +616,7 @@ static GdkPixbuf* scale_pixbuf(GdkPixbuf* pixbuf, int max_width, int max_height,
 		scale_x = (int) (pw * scale_factor);
 		scale_y = (int) (ph * scale_factor);
 
-		return cdk_pixbuf_scale_simple(pixbuf, scale_x, scale_y, CDK_INTERP_BILINEAR);
+		return gdk_pixbuf_scale_simple(pixbuf, scale_x, scale_y, CDK_INTERP_BILINEAR);
 	}
 	else
 	{
@@ -641,7 +641,7 @@ void set_notification_icon(CtkWindow* nw, GdkPixbuf* pixbuf)
 
 	if (scaled != NULL)
 	{
-		int pixbuf_width = cdk_pixbuf_get_width(scaled);
+		int pixbuf_width = gdk_pixbuf_get_width(scaled);
 
 		ctk_widget_show(windata->icon);
 		ctk_widget_set_size_request(windata->icon, MAX(BODY_X_OFFSET, pixbuf_width), -1);

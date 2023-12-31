@@ -967,7 +967,7 @@ set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf)
 
 	if (pixbuf != NULL)
 	{
-		int pixbuf_width = cdk_pixbuf_get_width(pixbuf);
+		int pixbuf_width = gdk_pixbuf_get_width(pixbuf);
 
 		ctk_widget_show(windata->icon);
 		ctk_widget_set_size_request(windata->iconbox,
