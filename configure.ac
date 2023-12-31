@@ -126,7 +126,7 @@ pkg_modules="
 	glib-2.0 >= $REQ_GLIB_VERSION, \
 	gio-2.0 >= $REQ_GLIB_VERSION, \
         $GMODULE_ADD \
-        libcanberra-ctk3 >= $REQ_LIBCANBERRA_CTK_VERSION, \
+        libkanberra-ctk3 >= $REQ_LIBCANBERRA_CTK_VERSION, \
 	libwnck-3.0 \
         x11 \
 "
