@@ -911,7 +911,7 @@ static NotifyTimeout* _store_notification(NotifyDaemon* daemon, CtkWindow* nw, i
 
 	_calculate_timeout(daemon, nt, timeout);
 
-	g_hash_table_insert(daemon->notification_hash, g_memdup(&id, sizeof(guint)), nt);
+	g_hash_table_insert(daemon->notification_hash, g_memdup2(&id, sizeof(guint)), nt);
 	remove_exit_timeout(daemon);
 
 	return nt;
@@ -951,8 +951,8 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
                 return NULL;
         }
 
-        data = (guchar *) g_memdup (g_variant_get_data (data_variant),
-                                    g_variant_get_size (data_variant));
+        data = (guchar *) g_memdup2 (g_variant_get_data (data_variant),
+                                     g_variant_get_size (data_variant));
 
         pixbuf = gdk_pixbuf_new_from_data (data,
                                            GDK_COLORSPACE_RGB,
