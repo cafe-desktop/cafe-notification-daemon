@@ -207,7 +207,7 @@ AC_DEFINE_UNQUOTED(DBUS_SERVICES_DIR, "$DBUS_SERVICES_DIR", [Where services dir 
 dnl ---------------------------------------------------------------------------
 dnl Enabel/disable icon cache generation
 dnl ---------------------------------------------------------------------------
-AC_ARG_ENABLE(icon-update, AC_HELP_STRING([--disable-icon-update],
+AC_ARG_ENABLE(icon-update, AS_HELP_STRING([--disable-icon-update],
                                         [Disable icon cache update]))
 if (test "$enable_icon_update" != no); then
         AC_PATH_PROG(UPDATE_ICON_CACHE, [ctk-update-icon-cache])
