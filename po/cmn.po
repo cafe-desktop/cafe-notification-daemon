@@ -2,22 +2,23 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the cafe-notification-daemon package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # 趙惟倫 <bluebat@member.fsf.org>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: cafe-notification-daemon 1.23.0\n"
 "Report-Msgid-Bugs-To: https://cafe-desktop.org\n"
-"POT-Creation-Date: 2019-11-07 12:05+0100\n"
+"POT-Creation-Date: 2024-01-02 15:08+0100\n"
 "PO-Revision-Date: 2020-02-15 14:27+0000\n"
 "Last-Translator: 趙惟倫 <bluebat@member.fsf.org>, 2020\n"
-"Language-Team: Chinese (Mandarin) (https://www.transifex.com/cafe/teams/13566/cmn/)\n"
+"Language-Team: Chinese (Mandarin) (https://www.transifex.com/cafe/"
+"teams/13566/cmn/)\n"
+"Language: cmn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cmn\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.cafe.NotificationDaemon.gschema.xml.in:5
@@ -29,7 +30,8 @@ msgid ""
 "Default popup location on the workspace for stack notifications. Allowed "
 "values: \"top_left\",\"top_right\",\"bottom_left\" and \"bottom_right\""
 msgstr ""
-"預設堆疊通知在工作區上的彈出位置。允許值：「top_left」，「top_right」，「bottom_left」和「bottom_right」"
+"預設堆疊通知在工作區上的彈出位置。允許值：「top_left」，「top_right」，"
+"「bottom_left」和「bottom_right」"
 
 #: data/org.cafe.NotificationDaemon.gschema.xml.in:10
 #: src/capplet/cafe-notification-properties.ui:237
@@ -48,7 +50,9 @@ msgstr "監視器"
 msgid ""
 "Monitor to display the notification. Allowed values: -1 (display on active "
 "monitor) and 0 to n - 1 where n is the number of monitors."
-msgstr "要顯示通知的監視器。允許的值：-1 (顯示於現用監視器) 以及 0 到 n-1 其中 n 表示監視器數量。"
+msgstr ""
+"要顯示通知的監視器。允許的值：-1 (顯示於現用監視器) 以及 0 到 n-1 其中 n 表示"
+"監視器數量。"
 
 #: data/org.cafe.NotificationDaemon.gschema.xml.in:20
 msgid "Current theme"
@@ -120,14 +124,7 @@ msgstr ""
 msgid "Set your popup notification preferences"
 msgstr ""
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: src/capplet/cafe-notification-properties.desktop.in:7
-msgid "cafe-notification-properties"
-msgstr ""
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: src/capplet/cafe-notification-properties.desktop.in:14
 msgid "CAFE;Notification;Theme;"
 msgstr ""
@@ -189,18 +186,18 @@ msgstr "%u 並非有效的通知識別號"
 msgid "Notification"
 msgstr "通知"
 
-#: src/themes/coco/coco-theme.c:462 src/themes/nodoka/nodoka-theme.c:809
-#: src/themes/slider/theme.c:414 src/themes/standard/theme.c:734
+#: src/themes/coco/coco-theme.c:464 src/themes/nodoka/nodoka-theme.c:811
+#: src/themes/slider/theme.c:416 src/themes/standard/theme.c:736
 msgid "Notification summary text."
 msgstr ""
 
-#: src/themes/coco/coco-theme.c:476 src/themes/nodoka/nodoka-theme.c:862
-#: src/themes/slider/theme.c:435 src/themes/standard/theme.c:786
+#: src/themes/coco/coco-theme.c:478 src/themes/nodoka/nodoka-theme.c:864
+#: src/themes/slider/theme.c:437 src/themes/standard/theme.c:788
 msgid "Notification body text."
 msgstr ""
 
-#: src/themes/nodoka/nodoka-theme.c:823 src/themes/nodoka/nodoka-theme.c:825
-#: src/themes/slider/theme.c:396 src/themes/slider/theme.c:398
-#: src/themes/standard/theme.c:750 src/themes/standard/theme.c:752
+#: src/themes/nodoka/nodoka-theme.c:825 src/themes/nodoka/nodoka-theme.c:827
+#: src/themes/slider/theme.c:398 src/themes/slider/theme.c:400
+#: src/themes/standard/theme.c:752 src/themes/standard/theme.c:754
 msgid "Closes the notification."
 msgstr ""

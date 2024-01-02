@@ -2,25 +2,25 @@
 # Copyright (C) YEAR CAFE Desktop Environment team
 # This file is distributed under the same license as the cafe-notification-daemon package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Rezső Páder <rezso@rezso.net>, 2020
 # Stefano Karapetsas <stefano@karapetsas.com>, 2020
 # Falu <info@falu.me>, 2020
 # Balázs Meskó <meskobalazs@mailbox.org>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: cafe-notification-daemon 1.23.0\n"
 "Report-Msgid-Bugs-To: https://cafe-desktop.org\n"
-"POT-Creation-Date: 2019-11-07 12:05+0100\n"
+"POT-Creation-Date: 2024-01-02 15:08+0100\n"
 "PO-Revision-Date: 2020-02-15 14:27+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>, 2020\n"
 "Language-Team: Hungarian (https://www.transifex.com/cafe/teams/13566/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.cafe.NotificationDaemon.gschema.xml.in:5
@@ -32,8 +32,8 @@ msgid ""
 "Default popup location on the workspace for stack notifications. Allowed "
 "values: \"top_left\",\"top_right\",\"bottom_left\" and \"bottom_right\""
 msgstr ""
-"A munkaterületen felbukkanó veremértesítések felbukkanásának alapértelmezett"
-" helye. A lehetséges értékek: „top_left” (bal felső), top_right” (jobb "
+"A munkaterületen felbukkanó veremértesítések felbukkanásának alapértelmezett "
+"helye. A lehetséges értékek: „top_left” (bal felső), top_right” (jobb "
 "felső), „bottom_left (bal alsó) és „bottom_right” (jobb alsó)."
 
 #: data/org.cafe.NotificationDaemon.gschema.xml.in:10
@@ -127,14 +127,7 @@ msgstr "Felugró értesítések"
 msgid "Set your popup notification preferences"
 msgstr "Felugró értesítések beállításai"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
-#: src/capplet/cafe-notification-properties.desktop.in:7
-msgid "cafe-notification-properties"
-msgstr "cafe-notification-properties"
-
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: src/capplet/cafe-notification-properties.desktop.in:14
 msgid "CAFE;Notification;Theme;"
 msgstr "CAFE;Értesítés;Téma;"
@@ -196,18 +189,21 @@ msgstr "A(z) %u nem érvényes értesítésazonosító"
 msgid "Notification"
 msgstr "Értesítés"
 
-#: src/themes/coco/coco-theme.c:462 src/themes/nodoka/nodoka-theme.c:809
-#: src/themes/slider/theme.c:414 src/themes/standard/theme.c:734
+#: src/themes/coco/coco-theme.c:464 src/themes/nodoka/nodoka-theme.c:811
+#: src/themes/slider/theme.c:416 src/themes/standard/theme.c:736
 msgid "Notification summary text."
 msgstr "Értesítési szöveg összefoglalója."
 
-#: src/themes/coco/coco-theme.c:476 src/themes/nodoka/nodoka-theme.c:862
-#: src/themes/slider/theme.c:435 src/themes/standard/theme.c:786
+#: src/themes/coco/coco-theme.c:478 src/themes/nodoka/nodoka-theme.c:864
+#: src/themes/slider/theme.c:437 src/themes/standard/theme.c:788
 msgid "Notification body text."
 msgstr "Értesítési szöveg törzse."
 
-#: src/themes/nodoka/nodoka-theme.c:823 src/themes/nodoka/nodoka-theme.c:825
-#: src/themes/slider/theme.c:396 src/themes/slider/theme.c:398
-#: src/themes/standard/theme.c:750 src/themes/standard/theme.c:752
+#: src/themes/nodoka/nodoka-theme.c:825 src/themes/nodoka/nodoka-theme.c:827
+#: src/themes/slider/theme.c:398 src/themes/slider/theme.c:400
+#: src/themes/standard/theme.c:752 src/themes/standard/theme.c:754
 msgid "Closes the notification."
 msgstr "Bezárja az értesítést."
+
+#~ msgid "cafe-notification-properties"
+#~ msgstr "cafe-notification-properties"
