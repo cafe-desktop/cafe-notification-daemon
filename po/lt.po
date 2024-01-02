@@ -205,6 +205,3 @@ msgstr "Pranešimo pagrindinės dalies tekstas."
 #: src/themes/standard/theme.c:752 src/themes/standard/theme.c:754
 msgid "Closes the notification."
 msgstr "Užveria pranešimą."
-
-#~ msgid "cafe-notification-properties"
-#~ msgstr "cafe-notification-properties"

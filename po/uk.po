@@ -207,6 +207,3 @@ msgstr "Текст сповіщення."
 #: src/themes/standard/theme.c:752 src/themes/standard/theme.c:754
 msgid "Closes the notification."
 msgstr "Закриває повідомлення."
-
-#~ msgid "cafe-notification-properties"
-#~ msgstr "cafe-notification-properties"

@@ -218,7 +218,3 @@
 # This file is distributed under the same license as the notification-daemon package.
 # YunQiang Su <wzssyqa@gmail.com>, 2010.
 #
-
-
-
-
