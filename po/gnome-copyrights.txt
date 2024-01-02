@@ -94,7 +94,7 @@
 # Copyright (c) (c) 2006 Canonical Ltd, and Rosetta Contributors 2006
 # This file is distributed under the same license as the notification-daemon package.
 #
-# Gabor Kelemen <kelemeng at cafe dot hu>, 2010.
+# Gabor Kelemen <kelemeng at mate dot hu>, 2010.
 
 
 
@@ -143,7 +143,7 @@
 # Copyright (C) 2006 Christian Hammond
 # This file is distributed under the same license as the notification-daemon package.
 #
-# Wouter Bolsterlee <uws+cafe@xs4all.nl>, 2006.
+# Wouter Bolsterlee <uws+mate@xs4all.nl>, 2006.
 #
 
 
