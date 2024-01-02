@@ -13,7 +13,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cafe-notification-daemon 1.23.0\n"
+"Project-Id-Version: cafe-notification-daemon 1.25.0\n"
 "Report-Msgid-Bugs-To: https://cafe-desktop.org\n"
 "POT-Creation-Date: 2024-01-02 15:08+0100\n"
 "PO-Revision-Date: 2020-02-15 14:27+0000\n"
