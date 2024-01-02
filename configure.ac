@@ -3,7 +3,7 @@ dnl Process this file with autoconf to create configure.
 dnl ################################################################
 dnl # Initialize autoconf
 dnl ################################################################
-AC_INIT([cafe-notification-daemon], [1.24.1], [https://cafe-desktop.org])
+AC_INIT([cafe-notification-daemon], [1.25.0], [https://cafe-desktop.org])
 AC_PREREQ(2.63)
 
 AC_CONFIG_HEADERS([config.h])
