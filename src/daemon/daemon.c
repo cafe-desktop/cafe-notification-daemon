@@ -1113,9 +1113,9 @@ static gboolean screensaver_active(CtkWidget* nw)
 	proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SESSION,
 			G_DBUS_PROXY_FLAGS_NONE,
 			NULL,
-			"org.cafe.ScreenSaver",
+			"org.freedesktop.ScreenSaver",
 			"/",
-			"org.cafe.ScreenSaver",
+			"org.freedesktop.ScreenSaver",
 			NULL,
 			&error);
 	if (proxy == NULL) {
