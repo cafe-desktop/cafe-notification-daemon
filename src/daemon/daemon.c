@@ -1114,7 +1114,7 @@ static gboolean screensaver_active(CtkWidget* nw)
 			G_DBUS_PROXY_FLAGS_NONE,
 			NULL,
 			"org.freedesktop.ScreenSaver",
-			"/",
+			"/org/freedesktop/ScreenSaver",
 			"org.freedesktop.ScreenSaver",
 			NULL,
 			&error);
