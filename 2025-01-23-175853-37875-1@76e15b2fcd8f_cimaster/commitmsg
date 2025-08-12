@@ -1,0 +1,3 @@
+daemon: Rename org.cafe.ScreenSaver -> org.freedesktop.ScreenSaver
+
+This change is needed after https://github.com/cafe-desktop/cafe-screensaver/commit/7ae6284641c675702dbb7f0b6c0fb62005df52dc
