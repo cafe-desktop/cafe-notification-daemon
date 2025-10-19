@@ -302,8 +302,6 @@ static void notification_properties_dialog_setup_themes(NotificationAppletDialog
 	GDir* dir;
 	const gchar* filename;
 	char* theme;
-	char* theme_name;
-	char* theme_label;
 	gboolean valid;
 	CtkListStore* store;
 	CtkTreeIter iter;
@@ -321,6 +319,9 @@ static void notification_properties_dialog_setup_themes(NotificationAppletDialog
 		{
 			if (g_str_has_suffix(filename, "." G_MODULE_SUFFIX))
 			{
+				char* theme_name;
+				char* theme_label;
+
 				theme_name = get_theme_name(filename);
 
 				/* FIXME: other solution than hardcode? */
