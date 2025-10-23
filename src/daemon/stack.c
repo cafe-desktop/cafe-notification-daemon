@@ -1,5 +1,4 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
- *
+/*
  * Copyright (C) 2006 Christian Hammond <chipx86@chipx86.com>
  * Copyright (C) 2010 Red Hat, Inc.
  * Copyright (C) 2011 Perberos <perberos@gmail.com>
@@ -118,7 +117,7 @@ get_origin_coordinates (NotifyStackLocation stack_location,
                         CdkRectangle       *workarea,
                         gint               *x,
                         gint               *y,
-                        gint               *shiftx,
+                        gint               *shiftx G_GNUC_UNUSED,
                         gint               *shifty,
                         gint                width,
                         gint                height)
@@ -156,7 +155,7 @@ translate_coordinates (NotifyStackLocation stack_location,
                        CdkRectangle       *workarea,
                        gint               *x,
                        gint               *y,
-                       gint               *shiftx,
+                       gint               *shiftx G_GNUC_UNUSED,
                        gint               *shifty,
                        gint                width,
                        gint                height)

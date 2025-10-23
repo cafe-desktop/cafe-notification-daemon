@@ -1,5 +1,4 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
- *
+/*
  * Copyright (C) 2006-2007 Christian Hammond <chipx86@chipx86.com>
  * Copyright (C) 2009 Red Hat, Inc.
  * Copyright (C) 2011 Perberos <perberos@gmail.com>
@@ -144,7 +143,9 @@ get_background_color (CtkStyleContext *context,
     cdk_rgba_free (c);
 }
 
-static void fill_background(CtkWidget* widget, WindowData* windata, cairo_t* cr)
+static void fill_background (CtkWidget  *widget,
+			     WindowData *windata G_GNUC_UNUSED,
+			     cairo_t    *cr)
 {
 	CtkAllocation allocation;
 	CtkStyleContext *context;
@@ -251,7 +252,9 @@ static void paint_window (CtkWidget  *widget,
 	cairo_surface_destroy(surface);
 }
 
-static gboolean on_window_map(CtkWidget* widget, CdkEvent* event, WindowData* windata)
+static gboolean on_window_map (CtkWidget  *widget G_GNUC_UNUSED,
+			       CdkEvent   *event G_GNUC_UNUSED,
+			       WindowData *windata G_GNUC_UNUSED)
 {
 	return FALSE;
 }
@@ -293,7 +296,8 @@ static gboolean on_configure_event(CtkWidget* widget, CdkEventConfigure* event, 
 	return FALSE;
 }
 
-static void on_window_realize(CtkWidget* widget, WindowData* windata)
+static void on_window_realize (CtkWidget  *widget G_GNUC_UNUSED,
+			       WindowData *windata G_GNUC_UNUSED)
 {
 	/* Nothing */
 }
@@ -657,7 +661,10 @@ void set_notification_icon(CtkWindow* nw, GdkPixbuf* pixbuf)
 	update_content_hbox_visibility(windata);
 }
 
-void set_notification_arrow(CtkWidget* nw, gboolean visible, int x, int y)
+void set_notification_arrow (CtkWidget *nw,
+			     gboolean   visible G_GNUC_UNUSED,
+			     int        x G_GNUC_UNUSED,
+			     int        y G_GNUC_UNUSED)
 {
 	WindowData* windata = g_object_get_data(G_OBJECT(nw), "windata");
 
@@ -725,7 +732,9 @@ on_countdown_draw (CtkWidget *widget, cairo_t *cr, WindowData *windata)
 	return FALSE;
 }
 
-static void on_action_clicked(CtkWidget* w, CdkEventButton *event, ActionInvokedCb action_cb)
+static void on_action_clicked (CtkWidget      *w,
+			       CdkEventButton *event G_GNUC_UNUSED,
+			       ActionInvokedCb action_cb)
 {
 	CtkWindow* nw = g_object_get_data(G_OBJECT(w), "_nw");
 	const char* key = g_object_get_data(G_OBJECT(w), "_action_key");
@@ -841,7 +850,7 @@ void get_theme_info(char** theme_name, char** theme_ver, char** author, char** h
 	*homepage = g_strdup("http://www.gnome.org/");
 }
 
-gboolean get_always_stack(CtkWidget* nw)
+gboolean get_always_stack (CtkWidget* nw G_GNUC_UNUSED)
 {
 	return TRUE;
 }

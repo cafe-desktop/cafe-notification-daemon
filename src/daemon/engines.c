@@ -1,5 +1,4 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
- *
+/*
  * Copyright (C) 2006 Christian Hammond <chipx86@chipx86.com>
  * Copyright (C) 2005 John (J5) Palmieri <johnp@redhat.com>
  * Copyright (C) 2010 Red Hat, Inc.
@@ -151,7 +150,9 @@ static void theme_engine_unref(ThemeEngine* engine)
 	}
 }
 
-static void theme_changed_cb(GSettings *settings, gchar *key, gpointer user_data)
+static void theme_changed_cb (GSettings *settings G_GNUC_UNUSED,
+			      gchar     *key G_GNUC_UNUSED,
+			      gpointer   user_data G_GNUC_UNUSED)
 {
 	if (active_engine == NULL)
 	{

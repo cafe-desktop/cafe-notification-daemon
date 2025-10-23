@@ -1,5 +1,4 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
- *
+/*
  * Copyright (C) 2006-2007 Christian Hammond <chipx86@chipx86.com>
  * Copyright (C) 2009 Red Hat, Inc.
  * Copyright (C) 2011 Perberos <perberos@gmail.com>
@@ -486,7 +485,9 @@ static void create_border_with_arrow(CtkWidget* nw, WindowData* windata)
 	g_free(shape_points);
 }
 
-static void draw_border(CtkWidget* widget, WindowData *windata, cairo_t* cr)
+static void draw_border (CtkWidget  *widget G_GNUC_UNUSED,
+			 WindowData *windata,
+			 cairo_t    *cr)
 {
 	cairo_set_source_rgba(cr, 0.0, 0.0, 0.0, 1.0);
 	cairo_set_line_width(cr, 1.0);
@@ -633,7 +634,9 @@ static gboolean configure_event_cb(CtkWidget* nw, CdkEventConfigure* event, Wind
 	return FALSE;
 }
 
-static gboolean activate_link(CtkLabel* label, const char* url, WindowData* windata)
+static gboolean activate_link (CtkLabel   *label G_GNUC_UNUSED,
+			       const char *url,
+			       WindowData *windata)
 {
 	windata->url_clicked(CTK_WINDOW(windata->win), url);
 
@@ -1032,7 +1035,9 @@ on_countdown_draw (CtkWidget *widget, cairo_t *cr, WindowData *windata)
 	return FALSE;
 }
 
-static void action_clicked_cb(CtkWidget* w, CdkEventButton* event, ActionInvokedCb action_cb)
+static void action_clicked_cb (CtkWidget      *w,
+			       CdkEventButton *event G_GNUC_UNUSED,
+			       ActionInvokedCb action_cb)
 {
 	CtkWindow* nw;
 	const char* key;
