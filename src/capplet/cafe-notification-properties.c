@@ -1,5 +1,4 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
- *
+/*
  * Copyright (C) 2007 Jonh Wendell <wendell@bani.com.br>
  * Copyright (C) 2011 Perberos <perberos@gmail.com>
  *
@@ -72,7 +71,9 @@ enum {
 	N_COLUMNS_THEME
 };
 
-static void notification_properties_position_notify(GSettings *settings, gchar *key, NotificationAppletDialog* dialog)
+static void notification_properties_position_notify (GSettings                *settings G_GNUC_UNUSED,
+						     gchar                    *key,
+						     NotificationAppletDialog *dialog)
 {
 	CtkTreeModel* model;
 	CtkTreeIter iter;
@@ -101,7 +102,8 @@ static void notification_properties_position_notify(GSettings *settings, gchar *
 	}
 }
 
-static void notification_properties_monitor_changed(CtkComboBox* widget, NotificationAppletDialog* dialog)
+static void notification_properties_monitor_changed (CtkComboBox              *widget G_GNUC_UNUSED,
+						     NotificationAppletDialog *dialog)
 {
 	gint monitor;
 	CtkTreeIter iter;
@@ -118,7 +120,9 @@ static void notification_properties_monitor_changed(CtkComboBox* widget, Notific
 	g_settings_set_int(dialog->gsettings, GSETTINGS_KEY_MONITOR_NUMBER, monitor);
 }
 
-static void notification_properties_monitor_notify(GSettings *settings, gchar *key, NotificationAppletDialog* dialog)
+static void notification_properties_monitor_notify (GSettings                *settings G_GNUC_UNUSED,
+						    gchar                    *key G_GNUC_UNUSED,
+						    NotificationAppletDialog *dialog)
 {
 	CtkTreeModel* model;
 	CtkTreeIter iter;
@@ -142,7 +146,8 @@ static void notification_properties_monitor_notify(GSettings *settings, gchar *k
 	}
 }
 
-static void notification_properties_location_changed(CtkComboBox* widget, NotificationAppletDialog* dialog)
+static void notification_properties_location_changed (CtkComboBox              *widget G_GNUC_UNUSED,
+						      NotificationAppletDialog *dialog)
 {
 	char* location;
 	CtkTreeIter iter;
@@ -246,7 +251,9 @@ static void notification_properties_dialog_setup_monitors(NotificationAppletDial
 	g_signal_connect(dialog->monitor_combo, "changed", G_CALLBACK(notification_properties_monitor_changed), dialog);
 }
 
-static void notification_properties_theme_notify(GSettings *settings, gchar *key, NotificationAppletDialog* dialog)
+static void notification_properties_theme_notify (GSettings                *settings G_GNUC_UNUSED,
+						  gchar                    *key,
+						  NotificationAppletDialog *dialog)
 {
 	const char* theme = g_settings_get_string(dialog->gsettings, key);
 
@@ -272,7 +279,8 @@ static void notification_properties_theme_notify(GSettings *settings, gchar *key
 	}
 }
 
-static void notification_properties_theme_changed(CtkComboBox* widget, NotificationAppletDialog* dialog)
+static void notification_properties_theme_changed (CtkComboBox              *widget G_GNUC_UNUSED,
+						   NotificationAppletDialog *dialog)
 {
 	char* theme;
 	CtkTreeIter iter;
@@ -529,7 +537,8 @@ static void notification_properties_dialog_response(CtkWidget* widget, int respo
 	}
 }
 
-static void notification_properties_dialog_destroyed(CtkWidget* widget, NotificationAppletDialog* dialog)
+static void notification_properties_dialog_destroyed (CtkWidget                *widget G_GNUC_UNUSED,
+						      NotificationAppletDialog *dialog)
 {
 	dialog->dialog = NULL;
 

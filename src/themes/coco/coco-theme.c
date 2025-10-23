@@ -110,7 +110,9 @@ void notification_tick(CtkWindow *nw, glong remaining);
 
 /* Handle clicking on link */
 static gboolean
-activate_link (CtkLabel *label, const char *url, WindowData *windata)
+activate_link (CtkLabel   *label G_GNUC_UNUSED,
+	       const char *url,
+	       WindowData *windata)
 {
 	windata->url_clicked (CTK_WINDOW (windata->win), url);
 	return TRUE;
@@ -138,7 +140,9 @@ nodoka_rounded_rectangle (cairo_t * cr,
 
 /* Fill background */
 static void
-fill_background(CtkWidget *widget, WindowData *windata, cairo_t *cr)
+fill_background (CtkWidget  *widget G_GNUC_UNUSED,
+		 WindowData *windata,
+		 cairo_t    *cr)
 {
 	float alpha;
 	if (windata->composited)
@@ -164,7 +168,9 @@ fill_background(CtkWidget *widget, WindowData *windata, cairo_t *cr)
 }
 
 static void
-draw_pie(CtkWidget *pie, WindowData *windata, cairo_t *cr)
+draw_pie (CtkWidget  *pie G_GNUC_UNUSED,
+	  WindowData *windata,
+	  cairo_t    *cr)
 {
 	if (windata->timeout == 0)
 		return;
@@ -334,8 +340,9 @@ static void on_composited_changed (CtkWidget* window, WindowData* windata)
 }
 
 static void
-action_clicked_cb(CtkWidget *w, CdkEventButton *event,
-				  ActionInvokedCb action_cb)
+action_clicked_cb (CtkWidget      *w,
+		   CdkEventButton *event G_GNUC_UNUSED,
+		   ActionInvokedCb action_cb)
 {
 	CtkWindow *nw   = g_object_get_data(G_OBJECT(w), "_nw");
 	const char *key = g_object_get_data(G_OBJECT(w), "_action_key");
@@ -595,7 +602,10 @@ set_notification_icon(CtkWindow *nw, GdkPixbuf *pixbuf)
 
 /* Set notification arrow */
 void
-set_notification_arrow(CtkWidget *nw, gboolean visible, int x, int y)
+set_notification_arrow (CtkWidget *nw G_GNUC_UNUSED,
+			gboolean   visible G_GNUC_UNUSED,
+			int        x G_GNUC_UNUSED,
+			int        y G_GNUC_UNUSED)
 {
     /* nothing */
 }

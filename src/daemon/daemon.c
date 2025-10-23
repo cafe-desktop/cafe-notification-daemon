@@ -1,5 +1,4 @@
-/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
- *
+/*
  * Copyright (C) 2006 Christian Hammond <chipx86@chipx86.com>
  * Copyright (C) 2005 John (J5) Palmieri <johnp@redhat.com>
  * Copyright (C) 2010 Red Hat, Inc.
@@ -143,8 +142,8 @@ static gboolean notify_daemon_get_server_information (NotifyDaemonNotifications 
 G_DEFINE_TYPE(NotifyDaemon, notify_daemon, G_TYPE_OBJECT);
 
 static void bus_acquired_handler_cb (GDBusConnection *connection,
-		const gchar     *name,
-		gpointer         user_data)
+				     const gchar     *name G_GNUC_UNUSED,
+				     gpointer         user_data)
 {
 	NotifyDaemon *daemon;
 
@@ -169,9 +168,9 @@ static void bus_acquired_handler_cb (GDBusConnection *connection,
 	}
 }
 
-static void name_lost_handler_cb (GDBusConnection *connection,
-		const gchar     *name,
-		gpointer         user_data)
+static void name_lost_handler_cb (GDBusConnection *connection G_GNUC_UNUSED,
+				  const gchar     *name G_GNUC_UNUSED,
+				  gpointer         user_data G_GNUC_UNUSED)
 {
 	g_debug("bus name lost\n");
 	ctk_main_quit();
@@ -246,7 +245,7 @@ static void _notify_timeout_destroy(NotifyTimeout* nt)
 	g_free(nt);
 }
 
-static gboolean do_exit(gpointer user_data)
+static gboolean do_exit (gpointer user_data G_GNUC_UNUSED)
 {
 	exit(0);
 	return FALSE;
@@ -373,7 +372,9 @@ static void create_stacks_for_screen(NotifyDaemon* daemon, CdkScreen *screen)
 	}
 }
 
-static CdkFilterReturn screen_xevent_filter(CdkXEvent* xevent, CdkEvent* event, NotifyScreen* nscreen)
+static CdkFilterReturn screen_xevent_filter (CdkXEvent    *xevent,
+					     CdkEvent     *event G_GNUC_UNUSED,
+					     NotifyScreen *nscreen)
 {
 	XEvent* xev = (XEvent*) xevent;
 
@@ -414,7 +415,9 @@ static void create_screen(NotifyDaemon* daemon)
 	create_stacks_for_screen(daemon, screen);
 }
 
-static void on_popup_location_changed(GSettings *settings, gchar *key, NotifyDaemon* daemon)
+static void on_popup_location_changed (GSettings    *settings G_GNUC_UNUSED,
+				       gchar        *key,
+				       NotifyDaemon *daemon)
 {
 	NotifyStackLocation stack_location;
 	gchar *slocation;
@@ -680,7 +683,9 @@ static void _queue_idle_reposition_notification(NotifyDaemon* daemon, gint notif
 	g_hash_table_insert(daemon->idle_reposition_notify_ids, GINT_TO_POINTER(notify_id), GUINT_TO_POINTER(idle_id));
 }
 
-static CdkFilterReturn _notify_x11_filter(CdkXEvent* xevent, CdkEvent* event, NotifyDaemon* daemon)
+static CdkFilterReturn _notify_x11_filter (CdkXEvent    *xevent,
+					   CdkEvent     *event G_GNUC_UNUSED,
+					   NotifyDaemon *daemon)
 {
 	XEvent* xev;
 	gpointer orig_key;
@@ -767,7 +772,9 @@ static void _mouse_exitted_cb(CtkWindow* nw, CdkEventCrossing* event, NotifyDaem
 	nt->paused = FALSE;
 }
 
-static gboolean _is_expired(gpointer key, NotifyTimeout* nt, gboolean* phas_more_timeouts)
+static gboolean _is_expired (gpointer       key G_GNUC_UNUSED,
+			     NotifyTimeout *nt,
+			     gboolean      *phas_more_timeouts)
 {
 	GDateTime *now;
 	GTimeSpan  time_span;
@@ -1046,7 +1053,9 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 	}
 }
 
-static void window_clicked_cb(CtkWindow* nw, CdkEventButton* button, NotifyDaemon* daemon)
+static void window_clicked_cb (CtkWindow      *nw,
+			       CdkEventButton *button G_GNUC_UNUSED,
+			       NotifyDaemon   *daemon)
 {
 	if (daemon->url_clicked_lock)
 	{
@@ -1099,7 +1108,7 @@ static void url_clicked_cb(CtkWindow* nw, const char *url)
 	}
 }
 
-static gboolean screensaver_active(CtkWidget* nw)
+static gboolean screensaver_active (CtkWidget* nw G_GNUC_UNUSED)
 {
 	GError* error = NULL;
 	gboolean active = FALSE;
@@ -1238,7 +1247,9 @@ static void monitor_notification_source_windows(NotifyDaemon  *daemon, NotifyTim
 }
 
 /* Use a source X Window ID to reposition a notification. */
-static void sync_notification_position(NotifyDaemon* daemon, CtkWindow* nw, Window source)
+static void sync_notification_position (NotifyDaemon *daemon G_GNUC_UNUSED,
+					CtkWindow    *nw,
+					Window        source)
 {
 	CdkDisplay *display;
 	Status result;
@@ -1299,7 +1310,17 @@ GQuark notify_daemon_error_quark(void)
 	return q;
 }
 
-static gboolean notify_daemon_notify_handler(NotifyDaemonNotifications *object, GDBusMethodInvocation *invocation, const gchar *app_name, guint id, const gchar *icon, const gchar *summary, const gchar *body, const gchar *const *actions, GVariant *hints, gint timeout, gpointer user_data)
+static gboolean notify_daemon_notify_handler (NotifyDaemonNotifications *object,
+					      GDBusMethodInvocation     *invocation,
+					      const gchar               *app_name G_GNUC_UNUSED,
+					      guint                      id,
+					      const gchar               *icon,
+					      const gchar               *summary,
+					      const gchar               *body,
+					      const gchar *const        *actions,
+					      GVariant                  *hints,
+					      gint                       timeout,
+					      gpointer                   user_data)
 {
 	NotifyDaemon *daemon;
 	daemon = NOTIFY_DAEMON (user_data);
@@ -1638,7 +1659,9 @@ static gboolean notify_daemon_get_capabilities( NotifyDaemonNotifications *objec
 	return TRUE;
 }
 
-static gboolean notify_daemon_get_server_information (NotifyDaemonNotifications *object, GDBusMethodInvocation *invocation, gpointer user_data)
+static gboolean notify_daemon_get_server_information (NotifyDaemonNotifications *object,
+						      GDBusMethodInvocation     *invocation,
+						      gpointer                   user_data G_GNUC_UNUSED)
 {
 	notify_daemon_notifications_complete_get_server_information(object,
 			invocation,
