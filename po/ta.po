@@ -8,9 +8,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: cafe-notification-daemon 1.25.0\n"
+"Project-Id-Version: cafe-notification-daemon 2.0.0\n"
 "Report-Msgid-Bugs-To: https://cafe-desktop.org\n"
-"POT-Creation-Date: 2024-01-02 15:08+0100\n"
+"POT-Creation-Date: 2025-10-24 09:11+0200\n"
 "PO-Revision-Date: 2020-02-15 14:27+0000\n"
 "Last-Translator: Stefano Karapetsas <stefano@karapetsas.com>, 2020\n"
 "Language-Team: Tamil (https://www.transifex.com/cafe/teams/13566/ta/)\n"
@@ -73,54 +73,54 @@ msgstr ""
 msgid "When enabled, notifications are not shown."
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:329
+#: src/capplet/cafe-notification-properties.c:338
 msgid "Coco"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:333
+#: src/capplet/cafe-notification-properties.c:342
 msgid "Nodoka"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:337
+#: src/capplet/cafe-notification-properties.c:346
 msgid "Slider"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:341
+#: src/capplet/cafe-notification-properties.c:350
 msgid "Standard theme"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:490
+#: src/capplet/cafe-notification-properties.c:499
 msgid "Error initializing libcafenotify"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:503
+#: src/capplet/cafe-notification-properties.c:512
 msgid "Notification Test"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:503
+#: src/capplet/cafe-notification-properties.c:512
 msgid "Just a test"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:507
+#: src/capplet/cafe-notification-properties.c:516
 #, c-format
 msgid "Error while displaying notification: %s"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.c:547
+#: src/capplet/cafe-notification-properties.c:557
 #, c-format
 msgid "Could not load user interface: %s"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.desktop.in:3
+#: src/capplet/cafe-notification-properties.desktop.in:2
 msgid "Popup Notifications"
 msgstr ""
 
-#: src/capplet/cafe-notification-properties.desktop.in:4
+#: src/capplet/cafe-notification-properties.desktop.in:3
 msgid "Set your popup notification preferences"
 msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: src/capplet/cafe-notification-properties.desktop.in:14
+#: src/capplet/cafe-notification-properties.desktop.in:13
 msgid "CAFE;Notification;Theme;"
 msgstr ""
 
@@ -168,11 +168,11 @@ msgstr ""
 msgid "Bottom Right"
 msgstr ""
 
-#: src/daemon/daemon.c:1328
+#: src/daemon/daemon.c:1345
 msgid "Exceeded maximum number of notifications"
 msgstr ""
 
-#: src/daemon/daemon.c:1609
+#: src/daemon/daemon.c:1626
 #, c-format
 msgid "%u is not a valid notification ID"
 msgstr ""
@@ -181,18 +181,18 @@ msgstr ""
 msgid "Notification"
 msgstr ""
 
-#: src/themes/coco/coco-theme.c:464 src/themes/nodoka/nodoka-theme.c:811
-#: src/themes/slider/theme.c:416 src/themes/standard/theme.c:736
+#: src/themes/coco/coco-theme.c:471 src/themes/nodoka/nodoka-theme.c:822
+#: src/themes/slider/theme.c:420 src/themes/standard/theme.c:739
 msgid "Notification summary text."
 msgstr ""
 
-#: src/themes/coco/coco-theme.c:478 src/themes/nodoka/nodoka-theme.c:864
-#: src/themes/slider/theme.c:437 src/themes/standard/theme.c:788
+#: src/themes/coco/coco-theme.c:485 src/themes/nodoka/nodoka-theme.c:875
+#: src/themes/slider/theme.c:441 src/themes/standard/theme.c:791
 msgid "Notification body text."
 msgstr ""
 
-#: src/themes/nodoka/nodoka-theme.c:825 src/themes/nodoka/nodoka-theme.c:827
-#: src/themes/slider/theme.c:398 src/themes/slider/theme.c:400
-#: src/themes/standard/theme.c:752 src/themes/standard/theme.c:754
+#: src/themes/nodoka/nodoka-theme.c:836 src/themes/nodoka/nodoka-theme.c:838
+#: src/themes/slider/theme.c:402 src/themes/slider/theme.c:404
+#: src/themes/standard/theme.c:755 src/themes/standard/theme.c:757
 msgid "Closes the notification."
 msgstr ""
