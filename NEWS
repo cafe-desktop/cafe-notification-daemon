@@ -1,3 +1,13 @@
+### cafe-notification-daemon 2.0.0
+
+  * ci: some improvements
+  * daemon: Rename org.cafe.ScreenSaver -> org.freedesktop.ScreenSaver
+  * daemon: avoid deprecated GTimeVal
+  * cafe-notification-properties: reduce the scope of some variables
+  * add G_GNUC_UNUSED in unused parameters
+  * po: add copyright info to 'boldquot.sed' and 'quot.sed'
+  * update translations
+
 ### cafe-notification-daemon 1.25.0
 
   * initial release: mate-notification-daemon 1.24.1 fork
