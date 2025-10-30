@@ -59,17 +59,18 @@ requires:
     - ninja-build
 
 before_scripts:
-  - ./html-cppcheck
-  - ./debrepo-install 'libctk-3-dev libcail-3-dev'
-  - ./install-from-git https://github.com/cafe-desktop/libkanberra master
-  - ./install-from-git https://github.com/cafe-desktop/libvnck master meson
-  - ./install-from-git https://github.com/cafe-desktop/cafe-common master
-  - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
+#  - ./html-cppcheck
+  - ./debrepo-install #'libctk-3-dev libcail-3-dev'
+#  - ./install-from-git https://github.com/cafe-desktop/libkanberra master
+#  - ./install-from-git https://github.com/cafe-desktop/libvnck master meson
+#  - ./install-from-git https://github.com/cafe-desktop/cafe-common master
+#  - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
 
 build_scripts:
-  - ./before-build
-  - ./make-scanbuild '--enable-compile-warnings=maximum'
-  - ./after-build
+#  - ./before-build
+#  - ./make-scanbuild '--enable-compile-warnings=maximum'
+#  - ./after-build
+  - ./build-debs
 
 after_scripts:
   - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/cafe-notification-daemon/raw/master/data/icons/16x16/cafe-notification-properties.png; fi
