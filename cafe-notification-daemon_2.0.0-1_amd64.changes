@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Fri, 24 Oct 2025 09:47:19 +0200
+Source: cafe-notification-daemon
+Binary: cafe-notification-daemon cafe-notification-daemon-common cafe-notification-daemon-dbgsym
+Architecture: all amd64
+Version: 2.0.0-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Pablo Barciela <scow@riseup.net>
+Changed-By: Pablo Barciela <scow@riseup.net>
+Description:
+ cafe-notification-daemon - daemon to display passive popup notifications
+ cafe-notification-daemon-common - daemon to display passive popup notifications (common files)
+Changes:
+ cafe-notification-daemon (2.0.0-1) unstable; urgency=medium
+ .
+   * New upstream release
+Checksums-Sha1:
+ 22c9d9a91c3af861b7966c292229576e6250e43d 55456 cafe-notification-daemon-common_2.0.0-1_all.deb
+ 12f69f67ee5ed89031f4f7358fbfff41321f5e59 165956 cafe-notification-daemon-dbgsym_2.0.0-1_amd64.deb
+ a643e7a3494215e3ee68c38246cf4e120c7ab37b 16136 cafe-notification-daemon_2.0.0-1_amd64.buildinfo
+ 16a6c59890cb91cb64bcb0a7f88dca467a612ac0 54748 cafe-notification-daemon_2.0.0-1_amd64.deb
+Checksums-Sha256:
+ b870505197ffd8ea41fd9f67f97c5d5664493228f124e4f71725c09f31b5b966 55456 cafe-notification-daemon-common_2.0.0-1_all.deb
+ 0ab3d8682717ee226347061a26276e3edf3d2198e8b3e7d0024eaf9de50a0255 165956 cafe-notification-daemon-dbgsym_2.0.0-1_amd64.deb
+ fb5fd8b20526fddb4f8dce9b5886fe69fd508bc6ab69d6cc3a31edef722822c7 16136 cafe-notification-daemon_2.0.0-1_amd64.buildinfo
+ 0a51a8487f50034aca19d4f673148f8e078262acc2957326fa86c3d347376f4f 54748 cafe-notification-daemon_2.0.0-1_amd64.deb
+Files:
+ 2a2082e7c52bceaa40955b79ef2d7b0f 55456 x11 optional cafe-notification-daemon-common_2.0.0-1_all.deb
+ 79e61701a2f622ee7f2f42b4aef37512 165956 debug optional cafe-notification-daemon-dbgsym_2.0.0-1_amd64.deb
+ 7d79674a5f4c95728c1546473e4f92a3 16136 x11 optional cafe-notification-daemon_2.0.0-1_amd64.buildinfo
+ 6f63fe83d5e6bf3fceb6b8bc2ac9b0d5 54748 x11 optional cafe-notification-daemon_2.0.0-1_amd64.deb

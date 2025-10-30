@@ -1,0 +1,2177 @@
+Checking src/capplet/cafe-notification-properties.c ...
+src/capplet/cafe-notification-properties.c:88:13: style: Variable 'valid' is reassigned a value before the old one has been used. [redundantAssignment]
+ for (valid = ctk_tree_model_get_iter_first(model, &iter); valid; valid = ctk_tree_model_iter_next(model, &iter))
+            ^
+src/capplet/cafe-notification-properties.c:86:8: note: valid is assigned
+ valid = ctk_tree_model_get_iter_first(model, &iter);
+       ^
+src/capplet/cafe-notification-properties.c:88:13: note: valid is overwritten
+ for (valid = ctk_tree_model_get_iter_first(model, &iter); valid; valid = ctk_tree_model_iter_next(model, &iter))
+            ^
+src/capplet/cafe-notification-properties.c:90:10: style: Local variable 'key' shadows outer argument [shadowArgument]
+  gchar* key;
+         ^
+src/capplet/cafe-notification-properties.c:75:38: note: Shadowed declaration
+           gchar                    *key,
+                                     ^
+src/capplet/cafe-notification-properties.c:90:10: note: Shadow variable
+  gchar* key;
+         ^
+src/capplet/cafe-notification-properties.c:204:13: style: Variable 'screen' can be declared as pointer to const [constVariablePointer]
+ CdkScreen *screen;
+            ^
+src/capplet/cafe-notification-properties.c:48:13: style: struct member 'NotificationAppletDialog::preview_button' is never used. [unusedStructMember]
+ CtkWidget* preview_button;
+            ^
+1/10 files checked 9% done
+Checking src/daemon/daemon.c ...
+src/daemon/daemon.c:950:68: error: There is an unknown macro here somewhere. Configuration is required. If G_GSIZE_FORMAT is a macro then please configure it. [unknownMacro]
+                g_warning ("Expected image data to be of length %" G_GSIZE_FORMAT
+                                                                   ^
+2/10 files checked 31% done
+Checking src/daemon/engines.c ...
+3/10 files checked 36% done
+Checking src/daemon/mnd-daemon.c ...
+Checking src/daemon/mnd-daemon.c: HAVE_CONFIG_H...
+4/10 files checked 37% done
+Checking src/daemon/sound.c ...
+5/10 files checked 37% done
+Checking src/daemon/stack.c ...
+src/daemon/stack.c:44:46: style: Parameter 'stack' can be declared as pointer to const [constParameterPointer]
+GList* notify_stack_get_windows(NotifyStack *stack)
+                                             ^
+src/daemon/stack.c:61:25: style: Variable 'workareas' can be declared as pointer to const [constVariablePointer]
+        long           *workareas;
+                        ^
+src/daemon/stack.c:117:45: style: Parameter 'workarea' can be declared as pointer to const [constParameterPointer]
+                        CdkRectangle       *workarea,
+                                            ^
+src/daemon/stack.c:155:44: style: Parameter 'workarea' can be declared as pointer to const [constParameterPointer]
+                       CdkRectangle       *workarea,
+                                           ^
+src/daemon/stack.c:275:48: style: Parameter 'nw' can be declared as pointer to const [constParameterPointer]
+                                  CtkWindow   *nw,
+                                               ^
+6/10 files checked 43% done
+Checking src/themes/coco/coco-theme.c ...
+src/themes/coco/coco-theme.c:277:27: style: Parameter 'event' can be declared as pointer to const. However it seems that 'configure_event_cb' is a callback function, if 'event' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+       CdkEventConfigure *event,
+                          ^
+src/themes/coco/coco-theme.c:422:18: note: You might need to cast the function pointer here
+      G_CALLBACK(configure_event_cb), windata);
+                 ^
+src/themes/coco/coco-theme.c:277:27: note: Parameter 'event' can be declared as pointer to const
+       CdkEventConfigure *event,
+                          ^
+src/themes/coco/coco-theme.c:325:75: style: Parameter 'event' can be declared as pointer to const. However it seems that 'on_configure_event' is a callback function, if 'event' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+static gboolean on_configure_event (CtkWidget* widget, CdkEventConfigure* event, WindowData* windata)
+                                                                          ^
+src/themes/coco/coco-theme.c:431:67: note: You might need to cast the function pointer here
+ g_signal_connect (G_OBJECT (win), "configure-event", G_CALLBACK (on_configure_event), windata);
+                                                                  ^
+src/themes/coco/coco-theme.c:325:75: note: Parameter 'event' can be declared as pointer to const
+static gboolean on_configure_event (CtkWidget* widget, CdkEventConfigure* event, WindowData* windata)
+                                                                          ^
+src/themes/coco/coco-theme.c:605:39: style: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const [constParameterPointer]
+set_notification_arrow (CtkWidget *nw G_GNUC_UNUSED,
+                                      ^
+src/themes/coco/coco-theme.c:712:14: style: Variable 'windata' can be declared as pointer to const [constVariablePointer]
+ WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
+             ^
+src/themes/coco/coco-theme.c:39:13: style: struct member 'WindowData::top_spacer' is never used. [unusedStructMember]
+ CtkWidget *top_spacer;
+            ^
+src/themes/coco/coco-theme.c:40:13: style: struct member 'WindowData::bottom_spacer' is never used. [unusedStructMember]
+ CtkWidget *bottom_spacer;
+            ^
+src/themes/coco/coco-theme.c:47:13: style: struct member 'WindowData::last_sep' is never used. [unusedStructMember]
+ CtkWidget *last_sep;
+            ^
+src/themes/coco/coco-theme.c:48:13: style: struct member 'WindowData::stripe_spacer' is never used. [unusedStructMember]
+ CtkWidget *stripe_spacer;
+            ^
+7/10 files checked 54% done
+Checking src/themes/nodoka/nodoka-theme.c ...
+src/themes/nodoka/nodoka-theme.c:142:14: style: Variable 'windata' can be declared as pointer to const [constVariablePointer]
+ WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
+             ^
+src/themes/nodoka/nodoka-theme.c:634:27: style: Parameter 'event' can be declared as pointer to const. However it seems that 'configure_event_cb' is a callback function, if 'event' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+       CdkEventConfigure *event,
+                          ^
+src/themes/nodoka/nodoka-theme.c:773:18: note: You might need to cast the function pointer here
+      G_CALLBACK(configure_event_cb), windata);
+                 ^
+src/themes/nodoka/nodoka-theme.c:634:27: note: Parameter 'event' can be declared as pointer to const
+       CdkEventConfigure *event,
+                          ^
+src/themes/nodoka/nodoka-theme.c:1110:14: style: Variable 'windata' can be declared as pointer to const [constVariablePointer]
+ WindowData *windata = g_object_get_data(G_OBJECT(nw), "windata");
+             ^
+src/themes/nodoka/nodoka-theme.c:63:13: style: struct member 'WindowData::last_sep' is never used. [unusedStructMember]
+ CtkWidget *last_sep;
+            ^
+src/themes/nodoka/nodoka-theme.c:64:13: style: struct member 'WindowData::stripe_spacer' is never used. [unusedStructMember]
+ CtkWidget *stripe_spacer;
+            ^
+src/themes/nodoka/nodoka-theme.c:428:23: style: Variable 'center_color.green' is assigned a value that is never used. [unreadVariable]
+   center_color.green = center_color.red;
+                      ^
+src/themes/nodoka/nodoka-theme.c:429:22: style: Variable 'center_color.blue' is assigned a value that is never used. [unreadVariable]
+   center_color.blue = center_color.red;
+                     ^
+src/themes/nodoka/nodoka-theme.c:439:21: style: Variable 'center_color.red' is assigned a value that is never used. [unreadVariable]
+   center_color.red = 205 / 255.0 * color_mult;
+                    ^
+src/themes/nodoka/nodoka-theme.c:440:23: style: Variable 'center_color.green' is assigned a value that is never used. [unreadVariable]
+   center_color.green = 0;
+                      ^
+src/themes/nodoka/nodoka-theme.c:441:22: style: Variable 'center_color.blue' is assigned a value that is never used. [unreadVariable]
+   center_color.blue = 0;
+                     ^
+src/themes/nodoka/nodoka-theme.c:452:21: style: Variable 'center_color.red' is assigned a value that is never used. [unreadVariable]
+   center_color.red = 9 / 255.0 * color_mult;
+                    ^
+src/themes/nodoka/nodoka-theme.c:453:23: style: Variable 'center_color.green' is assigned a value that is never used. [unreadVariable]
+   center_color.green = 139 / 255.0 * color_mult;
+                      ^
+src/themes/nodoka/nodoka-theme.c:454:22: style: Variable 'center_color.blue' is assigned a value that is never used. [unreadVariable]
+   center_color.blue = 207 / 255.0 * color_mult;
+                     ^
+8/10 files checked 70% done
+Checking src/themes/slider/theme.c ...
+src/themes/slider/theme.c:255:51: style: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const. However it seems that 'on_window_map' is a callback function, if 'G_GNUC_UNUSED' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+static gboolean on_window_map (CtkWidget  *widget G_GNUC_UNUSED,
+                                                  ^
+src/themes/slider/theme.c:331:58: note: You might need to cast the function pointer here
+ g_signal_connect(G_OBJECT(win), "map-event", G_CALLBACK(on_window_map), windata);
+                                                         ^
+src/themes/slider/theme.c:255:51: note: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const
+static gboolean on_window_map (CtkWidget  *widget G_GNUC_UNUSED,
+                                                  ^
+src/themes/slider/theme.c:256:29: style: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const. However it seems that 'on_window_map' is a callback function, if 'G_GNUC_UNUSED' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+          CdkEvent   *event G_GNUC_UNUSED,
+                            ^
+src/themes/slider/theme.c:331:58: note: You might need to cast the function pointer here
+ g_signal_connect(G_OBJECT(win), "map-event", G_CALLBACK(on_window_map), windata);
+                                                         ^
+src/themes/slider/theme.c:256:29: note: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const
+          CdkEvent   *event G_GNUC_UNUSED,
+                            ^
+src/themes/slider/theme.c:289:74: style: Parameter 'event' can be declared as pointer to const. However it seems that 'on_configure_event' is a callback function, if 'event' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+static gboolean on_configure_event(CtkWidget* widget, CdkEventConfigure* event, WindowData* windata)
+                                                                         ^
+src/themes/slider/theme.c:361:64: note: You might need to cast the function pointer here
+ g_signal_connect(G_OBJECT(win), "configure-event", G_CALLBACK(on_configure_event), windata);
+                                                               ^
+src/themes/slider/theme.c:289:74: note: Parameter 'event' can be declared as pointer to const
+static gboolean on_configure_event(CtkWidget* widget, CdkEventConfigure* event, WindowData* windata)
+                                                                         ^
+src/themes/slider/theme.c:299:51: style: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const. However it seems that 'on_window_realize' is a callback function, if 'G_GNUC_UNUSED' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+static void on_window_realize (CtkWidget  *widget G_GNUC_UNUSED,
+                                                  ^
+src/themes/slider/theme.c:333:56: note: You might need to cast the function pointer here
+ g_signal_connect(G_OBJECT(win), "realize", G_CALLBACK(on_window_realize), windata);
+                                                       ^
+src/themes/slider/theme.c:299:51: note: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const
+static void on_window_realize (CtkWidget  *widget G_GNUC_UNUSED,
+                                                  ^
+src/themes/slider/theme.c:669:14: style: Variable 'windata' can be declared as pointer to const [constVariablePointer]
+ WindowData* windata = g_object_get_data(G_OBJECT(nw), "windata");
+             ^
+src/themes/slider/theme.c:853:42: style: Parameter 'G_GNUC_UNUSED' can be declared as pointer to const [constParameterPointer]
+gboolean get_always_stack (CtkWidget* nw G_GNUC_UNUSED)
+                                         ^
+src/themes/slider/theme.c:41:13: style: struct member 'WindowData::last_sep' is never used. [unusedStructMember]
+ CtkWidget* last_sep;
+            ^
+9/10 files checked 83% done
+Checking src/themes/standard/theme.c ...
+src/themes/standard/theme.c:626:70: style: Parameter 'event' can be declared as pointer to const. However it seems that 'configure_event_cb' is a callback function, if 'event' is declared with const you might also need to cast function pointer(s). [constParameterCallback]
+static gboolean configure_event_cb(CtkWidget* nw, CdkEventConfigure* event, WindowData* windata)
+                                                                     ^
+src/themes/standard/theme.c:695:64: note: You might need to cast the function pointer here
+ g_signal_connect(G_OBJECT(win), "configure_event", G_CALLBACK(configure_event_cb), windata);
+                                                               ^
+src/themes/standard/theme.c:626:70: note: Parameter 'event' can be declared as pointer to const
+static gboolean configure_event_cb(CtkWidget* nw, CdkEventConfigure* event, WindowData* windata)
+                                                                     ^
+src/themes/standard/theme.c:1138:14: style: Variable 'windata' can be declared as pointer to const [constVariablePointer]
+ WindowData* windata = g_object_get_data(G_OBJECT(nw), "windata");
+             ^
+src/themes/standard/theme.c:43:13: style: struct member 'WindowData::last_sep' is never used. [unusedStructMember]
+ CtkWidget* last_sep;
+            ^
+src/themes/standard/theme.c:44:13: style: struct member 'WindowData::stripe_spacer' is never used. [unusedStructMember]
+ CtkWidget* stripe_spacer;
+            ^
+src/themes/standard/theme.c:415:5: style: Variable 'i' is assigned a value that is never used. [unreadVariable]
+    ADD_POINT(0, height - 1, 0, 1);
+    ^
+src/themes/standard/theme.c:447:6: style: Variable 'i' is assigned a value that is never used. [unreadVariable]
+     ADD_POINT(0, height - DEFAULT_ARROW_HEIGHT, 0, 1);
+     ^
+src/themes/standard/theme.c:467:23: style: Variable 'arrow_side1_width' is assigned a value that is never used. [unreadVariable]
+    arrow_side1_width = 0;
+                      ^
+src/themes/standard/theme.c:468:18: style: Variable 'arrow_offset' is assigned a value that is never used. [unreadVariable]
+    arrow_offset = norm_point_y;
+                 ^
+src/themes/standard/theme.c:472:23: style: Variable 'arrow_side2_width' is assigned a value that is never used. [unreadVariable]
+    arrow_side2_width = 0;
+                      ^
+src/themes/standard/theme.c:473:18: style: Variable 'arrow_offset' is assigned a value that is never used. [unreadVariable]
+    arrow_offset = norm_point_y - arrow_side1_width;
+                 ^
+Checking src/themes/standard/theme.c: ENABLE_GRADIENT_LOOK...
+10/10 files checked 100% done
+src/daemon/stack.c:392:6: style: The function 'notify_stack_remove_window' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+void notify_stack_remove_window(NotifyStack* stack, CtkWindow* nw)
+     ^
+nofile:0:0: information: Active checkers: There was critical errors (use --checkers-report=<filename> to see details) [checkersReport]
+
+/usr/bin/cafe-autogen
+checking for autoreconf >= 2.53...
+(B  testing autoreconf... found 2.72
+checking for pkg-config >= 0.14.0...
+(B  testing pkg-config... found 1.8.1
+Checking for required M4 macros...
+(BChecking for forbidden M4 macros...
+(BProcessing ./configure.ac
+(BRunning autoreconf...
+(Bautoreconf: export WARNINGS=no-portability
+autoreconf: Entering directory '.'
+autoreconf: running: autopoint --force
+autopoint: using AM_GNU_GETTEXT_REQUIRE_VERSION instead of AM_GNU_GETTEXT_VERSION
+Copying file ABOUT-NLS
+Copying file config.rpath
+Copying file m4/build-to-host.m4
+Copying file m4/gettext.m4
+Copying file m4/host-cpu-c-abi.m4
+Copying file m4/iconv.m4
+Copying file m4/intlmacosx.m4
+Copying file m4/lib-ld.m4
+Copying file m4/lib-link.m4
+Copying file m4/lib-prefix.m4
+Copying file m4/nls.m4
+Copying file m4/po.m4
+Copying file m4/progtest.m4
+Copying file po/Makefile.in.in
+Copying file po/Makevars.template
+Copying file po/Rules-quot
+Copying file po/en@boldquot.header
+Copying file po/en@quot.header
+Copying file po/insert-header.sed
+Copying file po/remove-potcdate.sed
+autoreconf: running: aclocal --force -I m4 ${ACLOCAL_FLAGS}
+autoreconf: configure.ac: tracing
+autoreconf: running: libtoolize --copy --force
+libtoolize: putting auxiliary files in '.'.
+libtoolize: copying file './ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+autoreconf: configure.ac: not using Intltool
+autoreconf: configure.ac: not using Gtkdoc
+autoreconf: running: aclocal --force -I m4 ${ACLOCAL_FLAGS}
+autoreconf: running: /usr/bin/autoconf --force
+autoreconf: running: /usr/bin/autoheader --force
+autoreconf: running: automake --add-missing --copy --force-missing
+configure.ac:52: installing './compile'
+configure.ac:71: installing './config.guess'
+configure.ac:71: installing './config.sub'
+configure.ac:44: installing './install-sh'
+configure.ac:44: installing './missing'
+src/capplet/Makefile.am: installing './depcomp'
+autoreconf: Leaving directory '.'
+Skipping configure process.
+scan-build: Using '/usr/lib/llvm-19/bin/clang' for static analysis
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking xargs -n works... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for gcc... /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer accepts -g... yes
+checking for /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer option to enable C11 features... none needed
+checking whether /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer understands -c and -o together... rm: cannot remove 'conftest.plist': Is a directory
+yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer... gcc3
+checking how to run the C preprocessor... /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer -E
+checking whether make sets $(MAKE)... (cached) yes
+checking whether ln -s works... yes
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for size_t... yes
+checking whether C compiler accepts -Werror=unknown-warning-option... no
+checking whether C compiler accepts -Wall... yes
+checking whether C compiler accepts -Wmissing-prototypes... yes
+checking whether C compiler accepts -Wbad-function-cast... yes
+checking whether C compiler accepts -Wcast-align... yes
+checking whether C compiler accepts -Wextra... yes
+checking whether C compiler accepts -Wformat-nonliteral... yes
+checking whether C compiler accepts -Wmissing-declarations... yes
+checking whether C compiler accepts -Wnested-externs... yes
+checking whether C compiler accepts -Wpointer-arith... yes
+checking whether C compiler accepts -Wredundant-decls... yes
+checking whether C compiler accepts -Wshadow... yes
+checking whether C compiler accepts -Wstrict-prototypes... yes
+checking whether C compiler accepts -Wunused-macros... yes
+checking whether C compiler accepts -Werror=format-security... yes
+checking whether C compiler accepts -fstrict-aliasing... yes
+checking flags to pass to the C compiler /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer... -Wall -Wmissing-prototypes -Wbad-function-cast -Wcast-align -Wextra -Wformat-nonliteral -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wunused-macros -Werror=format-security -fstrict-aliasing
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer... /usr/bin/x86_64-linux-gnu-ld
+checking if the linker (/usr/bin/x86_64-linux-gnu-ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... rm: cannot remove 'conftest.plist': Is a directory
+BSD nm
+checking the maximum length of command line arguments... 3145728
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/x86_64-linux-gnu-ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ranlib... ranlib
+checking for ar... ar
+checking for archiver @FILE support... rm: cannot remove 'conftest.plist': Is a directory
+@
+checking for strip... strip
+checking command to parse /usr/bin/nm -B output from /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer object... rm: cannot remove 'conftest.plist': Is a directory
+ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... no
+checking if : is a manifest tool... no
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer supports -fno-rtti -fno-exceptions... no
+checking for /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer option to produce PIC... -fPIC -DPIC
+checking if /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer PIC flag -fPIC -DPIC works... yes
+checking if /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer static flag -static works... yes
+checking if /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer supports -c -o file.o... yes
+checking if /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer supports -c -o file.o... (cached) yes
+checking whether the /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer linker (/usr/bin/x86_64-linux-gnu-ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking whether NLS is requested... yes
+checking for msgfmt... /usr/bin/msgfmt
+checking for gmsgfmt... /usr/bin/msgfmt
+checking for xgettext... /usr/bin/xgettext
+checking for msgmerge... /usr/bin/msgmerge
+checking for ld... /usr/bin/x86_64-linux-gnu-ld -m elf_x86_64
+checking if the linker (/usr/bin/x86_64-linux-gnu-ld -m elf_x86_64) is GNU ld... yes
+checking for shared library run path origin... done
+checking 32-bit host C ABI... no
+checking for egrep -e... (cached) /usr/bin/grep -E
+checking for ELF binary format... yes
+checking for the common suffixes of directories in the library search path... lib,lib,lib64
+checking for CFPreferencesCopyAppValue... no
+checking for CFLocaleCopyPreferredLanguages... no
+checking for GNU gettext in libc... yes
+checking whether to use NLS... yes
+checking where the gettext function comes from... libc
+checking for glib-compile-resources... /usr/bin/glib-compile-resources
+checking for xmllint... /usr/bin/xmllint
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for ctk+-3.0 >= 3.22.0
+  libxml-2.0 >= 2.9.0
+... yes
+checking for gmodule-2.0... yes
+checking for 
+	ctk+-3.0 >= 3.22.0, 	glib-2.0 >= 2.50.0, 	gio-2.0 >= 2.50.0,         gmodule-2.0         libkanberra-ctk3 >= 0.4, 	libvnck-3.0         x11 ... yes
+checking for glib-2.0 >= 2.50.0 gio-2.0 >= 2.50.0 ctk+-3.0 >= 3.22.0 libnotify... yes
+checking for 
+	cdk-3.0 >= 3.22.0, 	gdk-pixbuf-2.0 >= 2.22.0 ... yes
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking pkg-config is at least version 0.16... yes
+checking dbus version... 1.16.2
+checking for ctk-update-icon-cache... /usr/bin/ctk-update-icon-cache
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating data/Makefile
+config.status: creating data/org.freedesktop.cafe.Notifications.service
+config.status: creating data/org.cafe.NotificationDaemon.gschema.xml
+config.status: creating po/Makefile.in
+config.status: creating src/Makefile
+config.status: creating src/daemon/Makefile
+config.status: creating src/capplet/Makefile
+config.status: creating src/themes/Makefile
+config.status: creating src/themes/coco/Makefile
+config.status: creating src/themes/nodoka/Makefile
+config.status: creating src/themes/slider/Makefile
+config.status: creating src/themes/standard/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+config.status: executing po-directories commands
+config.status: creating po/POTFILES
+config.status: creating po/Makefile
+
+			cafe-notification-daemon 2.0.0
+			================================
+
+	prefix:                   /usr
+	exec_prefix:              ${prefix}
+	bindir:                   ${exec_prefix}/bin
+	datadir:                  ${datarootdir}
+	source code location:     .
+	compiler:                 /usr/share/clang/scan-build-19/bin/../libexec/ccc-analyzer
+	cflags:	                  -Wall -Wmissing-prototypes -Wbad-function-cast -Wcast-align -Wextra -Wformat-nonliteral -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wunused-macros -Werror=format-security -fstrict-aliasing
+	warning flags:            -Wall -Wmissing-prototypes -Wbad-function-cast -Wcast-align -Wextra -Wformat-nonliteral -Wmissing-declarations -Wnested-externs -Wpointer-arith -Wredundant-decls -Wshadow -Wstrict-prototypes -Wunused-macros -Werror=format-security -fstrict-aliasing
+
+	dbus-1 system.d           /usr/etc/dbus-1/system.d
+	dbus-1 services           ${prefix}/share/dbus-1/services
+
+
+scan-build: Analysis run complete.
+scan-build: Removing directory '/tmp/scan-build-2025-10-24-080025-35077-1' because it contains no reports.
+scan-build: No bugs found.
+scan-build: Using '/usr/lib/llvm-19/bin/clang' for static analysis
+make  all-recursive
+make[1]: Entering directory '/rootdir'
+Making all in po
+make[2]: Entering directory '/rootdir/po'
+make cafe-notification-daemon.pot-update
+make[3]: Entering directory '/rootdir/po'
+package_gnu=""; \
+test -n "$package_gnu" || { \
+  if { if (LC_ALL=C find --version) 2>/dev/null | grep GNU >/dev/null; then \
+         LC_ALL=C find -L .. -maxdepth 1 -type f -size -10000000c -exec grep -i 'GNU cafe-notification-daemon' /dev/null '{}' ';' 2>/dev/null; \
+       else \
+         LC_ALL=C grep -i 'GNU cafe-notification-daemon' ../* 2>/dev/null; \
+       fi; \
+     } | grep -v 'libtool:' >/dev/null; then \
+     package_gnu=yes; \
+   else \
+     package_gnu=no; \
+   fi; \
+}; \
+if test "$package_gnu" = "yes"; then \
+  package_prefix='GNU '; \
+else \
+  package_prefix=''; \
+fi; \
+if test -n '' || test 'https://cafe-desktop.org' = '@'PACKAGE_BUGREPORT'@'; then \
+  msgid_bugs_address=''; \
+else \
+  msgid_bugs_address='https://cafe-desktop.org'; \
+fi; \
+case `/usr/bin/xgettext --version | sed 1q | sed -e 's,^[^0-9]*,,'` in \
+  '' | 0.[0-9] | 0.[0-9].* | 0.1[0-5] | 0.1[0-5].* | 0.16 | 0.16.[0-1]*) \
+    /usr/bin/xgettext --default-domain=cafe-notification-daemon --directory=.. \
+      --add-comments=TRANSLATORS: \
+      --files-from=./POTFILES.in \
+      --copyright-holder='CAFE Desktop Environment team' \
+      --msgid-bugs-address="$msgid_bugs_address" \
+      --from-code=UTF-8 --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 --add-comments=Translators:  \
+    ;; \
+  *) \
+    /usr/bin/xgettext --default-domain=cafe-notification-daemon --directory=.. \
+      --add-comments=TRANSLATORS: \
+      --files-from=./POTFILES.in \
+      --copyright-holder='CAFE Desktop Environment team' \
+      --package-name="${package_prefix}cafe-notification-daemon" \
+      --package-version='2.0.0' \
+      --msgid-bugs-address="$msgid_bugs_address" \
+      --from-code=UTF-8 --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 --add-comments=Translators:  \
+    ;; \
+esac
+test ! -f cafe-notification-daemon.po || { \
+  if test -f ./cafe-notification-daemon.pot-header; then \
+    sed -e '1,/^#$/d' < cafe-notification-daemon.po > cafe-notification-daemon.1po && \
+    cat ./cafe-notification-daemon.pot-header cafe-notification-daemon.1po > cafe-notification-daemon.po && \
+    rm -f cafe-notification-daemon.1po \
+    || exit 1; \
+  fi; \
+  if test -f ./cafe-notification-daemon.pot; then \
+    sed -f ./remove-potcdate.sed < ./cafe-notification-daemon.pot > cafe-notification-daemon.1po && \
+    sed -f ./remove-potcdate.sed < cafe-notification-daemon.po > cafe-notification-daemon.2po && \
+    if cmp cafe-notification-daemon.1po cafe-notification-daemon.2po >/dev/null 2>&1; then \
+      rm -f cafe-notification-daemon.1po cafe-notification-daemon.2po cafe-notification-daemon.po; \
+    else \
+      rm -f cafe-notification-daemon.1po cafe-notification-daemon.2po ./cafe-notification-daemon.pot && \
+      mv cafe-notification-daemon.po ./cafe-notification-daemon.pot; \
+    fi; \
+  else \
+    mv cafe-notification-daemon.po ./cafe-notification-daemon.pot; \
+  fi; \
+}
+make[3]: Leaving directory '/rootdir/po'
+test ! -f ./cafe-notification-daemon.pot || \
+  test -z "af.gmo am.gmo ar.gmo as.gmo ast.gmo az.gmo be.gmo bg.gmo bn.gmo bn_IN.gmo br.gmo bs.gmo ca.gmo ca@valencia.gmo cmn.gmo crh.gmo cs.gmo cy.gmo da.gmo de.gmo dz.gmo el.gmo en_AU.gmo en_CA.gmo en_GB.gmo eo.gmo es.gmo es_AR.gmo es_CL.gmo es_CO.gmo es_MX.gmo et.gmo eu.gmo fa.gmo fi.gmo fr.gmo fr_CA.gmo frp.gmo ga.gmo gl.gmo gu.gmo ha.gmo he.gmo hi.gmo hr.gmo hu.gmo hy.gmo id.gmo ie.gmo ig.gmo is.gmo it.gmo ja.gmo ka.gmo kab.gmo kk.gmo kn.gmo ko.gmo ku.gmo ku_IQ.gmo ky.gmo lt.gmo lv.gmo mai.gmo mg.gmo mk.gmo ml.gmo mn.gmo mr.gmo ms.gmo nb.gmo nds.gmo ne.gmo nl.gmo nn.gmo oc.gmo or.gmo pa.gmo pl.gmo ps.gmo pt.gmo pt_BR.gmo ro.gmo ru.gmo sc.gmo si.gmo sk.gmo sl.gmo sq.gmo sr.gmo sr@latin.gmo sv.gmo ta.gmo te.gmo th.gmo tr.gmo ug.gmo uk.gmo ur.gmo uz.gmo vi.gmo wa.gmo xh.gmo yo.gmo zh_CN.gmo zh_HK.gmo zh_TW.gmo" || make af.gmo am.gmo ar.gmo as.gmo ast.gmo az.gmo be.gmo bg.gmo bn.gmo bn_IN.gmo br.gmo bs.gmo ca.gmo ca@valencia.gmo cmn.gmo crh.gmo cs.gmo cy.gmo da.gmo de.gmo dz.gmo el.gmo en_AU.gmo en_CA.gmo en_GB.gmo eo.gmo es.gmo es_AR.gmo es_CL.gmo es_CO.gmo es_MX.gmo et.gmo eu.gmo fa.gmo fi.gmo fr.gmo fr_CA.gmo frp.gmo ga.gmo gl.gmo gu.gmo ha.gmo he.gmo hi.gmo hr.gmo hu.gmo hy.gmo id.gmo ie.gmo ig.gmo is.gmo it.gmo ja.gmo ka.gmo kab.gmo kk.gmo kn.gmo ko.gmo ku.gmo ku_IQ.gmo ky.gmo lt.gmo lv.gmo mai.gmo mg.gmo mk.gmo ml.gmo mn.gmo mr.gmo ms.gmo nb.gmo nds.gmo ne.gmo nl.gmo nn.gmo oc.gmo or.gmo pa.gmo pl.gmo ps.gmo pt.gmo pt_BR.gmo ro.gmo ru.gmo sc.gmo si.gmo sk.gmo sl.gmo sq.gmo sr.gmo sr@latin.gmo sv.gmo ta.gmo te.gmo th.gmo tr.gmo ug.gmo uk.gmo ur.gmo uz.gmo vi.gmo wa.gmo xh.gmo yo.gmo zh_CN.gmo zh_HK.gmo zh_TW.gmo
+make[3]: Entering directory '/rootdir/po'
+/usr/bin/msgmerge --update --quiet --quiet --lang=af --previous af.po cafe-notification-daemon.pot
+rm -f af.gmo && /usr/bin/msgmerge --for-msgfmt -o af.1po af.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o af.gmo af.1po && rm -f af.1po
+af.1po: 18 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=am --previous am.po cafe-notification-daemon.pot
+rm -f am.gmo && /usr/bin/msgmerge --for-msgfmt -o am.1po am.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o am.gmo am.1po && rm -f am.1po
+am.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ar --previous ar.po cafe-notification-daemon.pot
+rm -f ar.gmo && /usr/bin/msgmerge --for-msgfmt -o ar.1po ar.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ar.gmo ar.1po && rm -f ar.1po
+ar.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=as --previous as.po cafe-notification-daemon.pot
+rm -f as.gmo && /usr/bin/msgmerge --for-msgfmt -o as.1po as.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o as.gmo as.1po && rm -f as.1po
+as.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ast --previous ast.po cafe-notification-daemon.pot
+rm -f ast.gmo && /usr/bin/msgmerge --for-msgfmt -o ast.1po ast.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ast.gmo ast.1po && rm -f ast.1po
+ast.1po: 23 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=az --previous az.po cafe-notification-daemon.pot
+rm -f az.gmo && /usr/bin/msgmerge --for-msgfmt -o az.1po az.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o az.gmo az.1po && rm -f az.1po
+az.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=be --previous be.po cafe-notification-daemon.pot
+rm -f be.gmo && /usr/bin/msgmerge --for-msgfmt -o be.1po be.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o be.gmo be.1po && rm -f be.1po
+be.1po: 31 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=bg --previous bg.po cafe-notification-daemon.pot
+rm -f bg.gmo && /usr/bin/msgmerge --for-msgfmt -o bg.1po bg.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o bg.gmo bg.1po && rm -f bg.1po
+bg.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=bn --previous bn.po cafe-notification-daemon.pot
+rm -f bn.gmo && /usr/bin/msgmerge --for-msgfmt -o bn.1po bn.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o bn.gmo bn.1po && rm -f bn.1po
+bn.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=bn_IN --previous bn_IN.po cafe-notification-daemon.pot
+rm -f bn_IN.gmo && /usr/bin/msgmerge --for-msgfmt -o bn_IN.1po bn_IN.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o bn_IN.gmo bn_IN.1po && rm -f bn_IN.1po
+bn_IN.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=br --previous br.po cafe-notification-daemon.pot
+rm -f br.gmo && /usr/bin/msgmerge --for-msgfmt -o br.1po br.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o br.gmo br.1po && rm -f br.1po
+br.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=bs --previous bs.po cafe-notification-daemon.pot
+rm -f bs.gmo && /usr/bin/msgmerge --for-msgfmt -o bs.1po bs.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o bs.gmo bs.1po && rm -f bs.1po
+bs.1po: 7 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ca --previous ca.po cafe-notification-daemon.pot
+rm -f ca.gmo && /usr/bin/msgmerge --for-msgfmt -o ca.1po ca.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ca.gmo ca.1po && rm -f ca.1po
+ca.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ca@valencia --previous ca@valencia.po cafe-notification-daemon.pot
+rm -f ca@valencia.gmo && /usr/bin/msgmerge --for-msgfmt -o ca@valencia.1po ca@valencia.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ca@valencia.gmo ca@valencia.1po && rm -f ca@valencia.1po
+ca@valencia.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=cmn --previous cmn.po cafe-notification-daemon.pot
+rm -f cmn.gmo && /usr/bin/msgmerge --for-msgfmt -o cmn.1po cmn.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o cmn.gmo cmn.1po && rm -f cmn.1po
+cmn.1po: 31 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=crh --previous crh.po cafe-notification-daemon.pot
+rm -f crh.gmo && /usr/bin/msgmerge --for-msgfmt -o crh.1po crh.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o crh.gmo crh.1po && rm -f crh.1po
+crh.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=cs --previous cs.po cafe-notification-daemon.pot
+rm -f cs.gmo && /usr/bin/msgmerge --for-msgfmt -o cs.1po cs.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o cs.gmo cs.1po && rm -f cs.1po
+cs.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=cy --previous cy.po cafe-notification-daemon.pot
+rm -f cy.gmo && /usr/bin/msgmerge --for-msgfmt -o cy.1po cy.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o cy.gmo cy.1po && rm -f cy.1po
+cy.1po: 6 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=da --previous da.po cafe-notification-daemon.pot
+rm -f da.gmo && /usr/bin/msgmerge --for-msgfmt -o da.1po da.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o da.gmo da.1po && rm -f da.1po
+da.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=de --previous de.po cafe-notification-daemon.pot
+rm -f de.gmo && /usr/bin/msgmerge --for-msgfmt -o de.1po de.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o de.gmo de.1po && rm -f de.1po
+de.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=dz --previous dz.po cafe-notification-daemon.pot
+rm -f dz.gmo && /usr/bin/msgmerge --for-msgfmt -o dz.1po dz.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o dz.gmo dz.1po && rm -f dz.1po
+dz.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=el --previous el.po cafe-notification-daemon.pot
+rm -f el.gmo && /usr/bin/msgmerge --for-msgfmt -o el.1po el.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o el.gmo el.1po && rm -f el.1po
+el.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=en_AU --previous en_AU.po cafe-notification-daemon.pot
+rm -f en_AU.gmo && /usr/bin/msgmerge --for-msgfmt -o en_AU.1po en_AU.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o en_AU.gmo en_AU.1po && rm -f en_AU.1po
+en_AU.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=en_CA --previous en_CA.po cafe-notification-daemon.pot
+rm -f en_CA.gmo && /usr/bin/msgmerge --for-msgfmt -o en_CA.1po en_CA.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o en_CA.gmo en_CA.1po && rm -f en_CA.1po
+en_CA.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=en_GB --previous en_GB.po cafe-notification-daemon.pot
+rm -f en_GB.gmo && /usr/bin/msgmerge --for-msgfmt -o en_GB.1po en_GB.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o en_GB.gmo en_GB.1po && rm -f en_GB.1po
+en_GB.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=eo --previous eo.po cafe-notification-daemon.pot
+rm -f eo.gmo && /usr/bin/msgmerge --for-msgfmt -o eo.1po eo.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o eo.gmo eo.1po && rm -f eo.1po
+eo.1po: 23 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=es --previous es.po cafe-notification-daemon.pot
+rm -f es.gmo && /usr/bin/msgmerge --for-msgfmt -o es.1po es.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o es.gmo es.1po && rm -f es.1po
+es.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=es_AR --previous es_AR.po cafe-notification-daemon.pot
+rm -f es_AR.gmo && /usr/bin/msgmerge --for-msgfmt -o es_AR.1po es_AR.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o es_AR.gmo es_AR.1po && rm -f es_AR.1po
+es_AR.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=es_CL --previous es_CL.po cafe-notification-daemon.pot
+rm -f es_CL.gmo && /usr/bin/msgmerge --for-msgfmt -o es_CL.1po es_CL.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o es_CL.gmo es_CL.1po && rm -f es_CL.1po
+es_CL.1po: 34 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=es_CO --previous es_CO.po cafe-notification-daemon.pot
+rm -f es_CO.gmo && /usr/bin/msgmerge --for-msgfmt -o es_CO.1po es_CO.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o es_CO.gmo es_CO.1po && rm -f es_CO.1po
+es_CO.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=es_MX --previous es_MX.po cafe-notification-daemon.pot
+rm -f es_MX.gmo && /usr/bin/msgmerge --for-msgfmt -o es_MX.1po es_MX.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o es_MX.gmo es_MX.1po && rm -f es_MX.1po
+es_MX.1po: 30 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=et --previous et.po cafe-notification-daemon.pot
+rm -f et.gmo && /usr/bin/msgmerge --for-msgfmt -o et.1po et.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o et.gmo et.1po && rm -f et.1po
+et.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=eu --previous eu.po cafe-notification-daemon.pot
+rm -f eu.gmo && /usr/bin/msgmerge --for-msgfmt -o eu.1po eu.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o eu.gmo eu.1po && rm -f eu.1po
+eu.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=fa --previous fa.po cafe-notification-daemon.pot
+rm -f fa.gmo && /usr/bin/msgmerge --for-msgfmt -o fa.1po fa.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o fa.gmo fa.1po && rm -f fa.1po
+fa.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=fi --previous fi.po cafe-notification-daemon.pot
+rm -f fi.gmo && /usr/bin/msgmerge --for-msgfmt -o fi.1po fi.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o fi.gmo fi.1po && rm -f fi.1po
+fi.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=fr --previous fr.po cafe-notification-daemon.pot
+rm -f fr.gmo && /usr/bin/msgmerge --for-msgfmt -o fr.1po fr.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o fr.gmo fr.1po && rm -f fr.1po
+fr.1po: 40 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=fr_CA --previous fr_CA.po cafe-notification-daemon.pot
+rm -f fr_CA.gmo && /usr/bin/msgmerge --for-msgfmt -o fr_CA.1po fr_CA.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o fr_CA.gmo fr_CA.1po && rm -f fr_CA.1po
+fr_CA.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=frp --previous frp.po cafe-notification-daemon.pot
+rm -f frp.gmo && /usr/bin/msgmerge --for-msgfmt -o frp.1po frp.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o frp.gmo frp.1po && rm -f frp.1po
+frp.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ga --previous ga.po cafe-notification-daemon.pot
+rm -f ga.gmo && /usr/bin/msgmerge --for-msgfmt -o ga.1po ga.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ga.gmo ga.1po && rm -f ga.1po
+ga.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=gl --previous gl.po cafe-notification-daemon.pot
+rm -f gl.gmo && /usr/bin/msgmerge --for-msgfmt -o gl.1po gl.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o gl.gmo gl.1po && rm -f gl.1po
+gl.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=gu --previous gu.po cafe-notification-daemon.pot
+rm -f gu.gmo && /usr/bin/msgmerge --for-msgfmt -o gu.1po gu.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o gu.gmo gu.1po && rm -f gu.1po
+gu.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ha --previous ha.po cafe-notification-daemon.pot
+rm -f ha.gmo && /usr/bin/msgmerge --for-msgfmt -o ha.1po ha.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ha.gmo ha.1po && rm -f ha.1po
+ha.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=he --previous he.po cafe-notification-daemon.pot
+rm -f he.gmo && /usr/bin/msgmerge --for-msgfmt -o he.1po he.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o he.gmo he.1po && rm -f he.1po
+he.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=hi --previous hi.po cafe-notification-daemon.pot
+rm -f hi.gmo && /usr/bin/msgmerge --for-msgfmt -o hi.1po hi.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o hi.gmo hi.1po && rm -f hi.1po
+hi.1po: 31 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=hr --previous hr.po cafe-notification-daemon.pot
+rm -f hr.gmo && /usr/bin/msgmerge --for-msgfmt -o hr.1po hr.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o hr.gmo hr.1po && rm -f hr.1po
+hr.1po: 35 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=hu --previous hu.po cafe-notification-daemon.pot
+rm -f hu.gmo && /usr/bin/msgmerge --for-msgfmt -o hu.1po hu.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o hu.gmo hu.1po && rm -f hu.1po
+hu.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=hy --previous hy.po cafe-notification-daemon.pot
+rm -f hy.gmo && /usr/bin/msgmerge --for-msgfmt -o hy.1po hy.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o hy.gmo hy.1po && rm -f hy.1po
+hy.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=id --previous id.po cafe-notification-daemon.pot
+rm -f id.gmo && /usr/bin/msgmerge --for-msgfmt -o id.1po id.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o id.gmo id.1po && rm -f id.1po
+id.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ie --previous ie.po cafe-notification-daemon.pot
+rm -f ie.gmo && /usr/bin/msgmerge --for-msgfmt -o ie.1po ie.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ie.gmo ie.1po && rm -f ie.1po
+ie.1po: 34 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ig --previous ig.po cafe-notification-daemon.pot
+rm -f ig.gmo && /usr/bin/msgmerge --for-msgfmt -o ig.1po ig.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ig.gmo ig.1po && rm -f ig.1po
+ig.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=is --previous is.po cafe-notification-daemon.pot
+rm -f is.gmo && /usr/bin/msgmerge --for-msgfmt -o is.1po is.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o is.gmo is.1po && rm -f is.1po
+is.1po: 33 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=it --previous it.po cafe-notification-daemon.pot
+rm -f it.gmo && /usr/bin/msgmerge --for-msgfmt -o it.1po it.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o it.gmo it.1po && rm -f it.1po
+it.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ja --previous ja.po cafe-notification-daemon.pot
+rm -f ja.gmo && /usr/bin/msgmerge --for-msgfmt -o ja.1po ja.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ja.gmo ja.1po && rm -f ja.1po
+ja.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ka --previous ka.po cafe-notification-daemon.pot
+rm -f ka.gmo && /usr/bin/msgmerge --for-msgfmt -o ka.1po ka.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ka.gmo ka.1po && rm -f ka.1po
+ka.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=kab --previous kab.po cafe-notification-daemon.pot
+rm -f kab.gmo && /usr/bin/msgmerge --for-msgfmt -o kab.1po kab.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o kab.gmo kab.1po && rm -f kab.1po
+kab.1po: 4 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=kk --previous kk.po cafe-notification-daemon.pot
+rm -f kk.gmo && /usr/bin/msgmerge --for-msgfmt -o kk.1po kk.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o kk.gmo kk.1po && rm -f kk.1po
+kk.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=kn --previous kn.po cafe-notification-daemon.pot
+rm -f kn.gmo && /usr/bin/msgmerge --for-msgfmt -o kn.1po kn.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o kn.gmo kn.1po && rm -f kn.1po
+kn.1po: 6 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ko --previous ko.po cafe-notification-daemon.pot
+rm -f ko.gmo && /usr/bin/msgmerge --for-msgfmt -o ko.1po ko.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ko.gmo ko.1po && rm -f ko.1po
+ko.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ku --previous ku.po cafe-notification-daemon.pot
+rm -f ku.gmo && /usr/bin/msgmerge --for-msgfmt -o ku.1po ku.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ku.gmo ku.1po && rm -f ku.1po
+ku.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ku_IQ --previous ku_IQ.po cafe-notification-daemon.pot
+rm -f ku_IQ.gmo && /usr/bin/msgmerge --for-msgfmt -o ku_IQ.1po ku_IQ.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ku_IQ.gmo ku_IQ.1po && rm -f ku_IQ.1po
+ku_IQ.1po: 5 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ky --previous ky.po cafe-notification-daemon.pot
+rm -f ky.gmo && /usr/bin/msgmerge --for-msgfmt -o ky.1po ky.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ky.gmo ky.1po && rm -f ky.1po
+ky.1po: 18 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=lt --previous lt.po cafe-notification-daemon.pot
+rm -f lt.gmo && /usr/bin/msgmerge --for-msgfmt -o lt.1po lt.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o lt.gmo lt.1po && rm -f lt.1po
+lt.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=lv --previous lv.po cafe-notification-daemon.pot
+rm -f lv.gmo && /usr/bin/msgmerge --for-msgfmt -o lv.1po lv.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o lv.gmo lv.1po && rm -f lv.1po
+lv.1po: 31 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=mai --previous mai.po cafe-notification-daemon.pot
+rm -f mai.gmo && /usr/bin/msgmerge --for-msgfmt -o mai.1po mai.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o mai.gmo mai.1po && rm -f mai.1po
+mai.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=mg --previous mg.po cafe-notification-daemon.pot
+rm -f mg.gmo && /usr/bin/msgmerge --for-msgfmt -o mg.1po mg.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o mg.gmo mg.1po && rm -f mg.1po
+mg.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=mk --previous mk.po cafe-notification-daemon.pot
+rm -f mk.gmo && /usr/bin/msgmerge --for-msgfmt -o mk.1po mk.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o mk.gmo mk.1po && rm -f mk.1po
+mk.1po: 31 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ml --previous ml.po cafe-notification-daemon.pot
+rm -f ml.gmo && /usr/bin/msgmerge --for-msgfmt -o ml.1po ml.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ml.gmo ml.1po && rm -f ml.1po
+ml.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=mn --previous mn.po cafe-notification-daemon.pot
+rm -f mn.gmo && /usr/bin/msgmerge --for-msgfmt -o mn.1po mn.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o mn.gmo mn.1po && rm -f mn.1po
+mn.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=mr --previous mr.po cafe-notification-daemon.pot
+rm -f mr.gmo && /usr/bin/msgmerge --for-msgfmt -o mr.1po mr.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o mr.gmo mr.1po && rm -f mr.1po
+mr.1po: 26 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ms --previous ms.po cafe-notification-daemon.pot
+rm -f ms.gmo && /usr/bin/msgmerge --for-msgfmt -o ms.1po ms.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ms.gmo ms.1po && rm -f ms.1po
+ms.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=nb --previous nb.po cafe-notification-daemon.pot
+rm -f nb.gmo && /usr/bin/msgmerge --for-msgfmt -o nb.1po nb.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o nb.gmo nb.1po && rm -f nb.1po
+nb.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=nds --previous nds.po cafe-notification-daemon.pot
+rm -f nds.gmo && /usr/bin/msgmerge --for-msgfmt -o nds.1po nds.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o nds.gmo nds.1po && rm -f nds.1po
+nds.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ne --previous ne.po cafe-notification-daemon.pot
+rm -f ne.gmo && /usr/bin/msgmerge --for-msgfmt -o ne.1po ne.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ne.gmo ne.1po && rm -f ne.1po
+ne.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=nl --previous nl.po cafe-notification-daemon.pot
+rm -f nl.gmo && /usr/bin/msgmerge --for-msgfmt -o nl.1po nl.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o nl.gmo nl.1po && rm -f nl.1po
+nl.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=nn --previous nn.po cafe-notification-daemon.pot
+rm -f nn.gmo && /usr/bin/msgmerge --for-msgfmt -o nn.1po nn.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o nn.gmo nn.1po && rm -f nn.1po
+nn.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=oc --previous oc.po cafe-notification-daemon.pot
+rm -f oc.gmo && /usr/bin/msgmerge --for-msgfmt -o oc.1po oc.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o oc.gmo oc.1po && rm -f oc.1po
+oc.1po: 38 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=or --previous or.po cafe-notification-daemon.pot
+rm -f or.gmo && /usr/bin/msgmerge --for-msgfmt -o or.1po or.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o or.gmo or.1po && rm -f or.1po
+or.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=pa --previous pa.po cafe-notification-daemon.pot
+rm -f pa.gmo && /usr/bin/msgmerge --for-msgfmt -o pa.1po pa.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o pa.gmo pa.1po && rm -f pa.1po
+pa.1po: 25 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=pl --previous pl.po cafe-notification-daemon.pot
+rm -f pl.gmo && /usr/bin/msgmerge --for-msgfmt -o pl.1po pl.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o pl.gmo pl.1po && rm -f pl.1po
+pl.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ps --previous ps.po cafe-notification-daemon.pot
+rm -f ps.gmo && /usr/bin/msgmerge --for-msgfmt -o ps.1po ps.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ps.gmo ps.1po && rm -f ps.1po
+ps.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=pt --previous pt.po cafe-notification-daemon.pot
+rm -f pt.gmo && /usr/bin/msgmerge --for-msgfmt -o pt.1po pt.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o pt.gmo pt.1po && rm -f pt.1po
+pt.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=pt_BR --previous pt_BR.po cafe-notification-daemon.pot
+rm -f pt_BR.gmo && /usr/bin/msgmerge --for-msgfmt -o pt_BR.1po pt_BR.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o pt_BR.gmo pt_BR.1po && rm -f pt_BR.1po
+pt_BR.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ro --previous ro.po cafe-notification-daemon.pot
+rm -f ro.gmo && /usr/bin/msgmerge --for-msgfmt -o ro.1po ro.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ro.gmo ro.1po && rm -f ro.1po
+ro.1po: 33 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ru --previous ru.po cafe-notification-daemon.pot
+rm -f ru.gmo && /usr/bin/msgmerge --for-msgfmt -o ru.1po ru.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ru.gmo ru.1po && rm -f ru.1po
+ru.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=sc --previous sc.po cafe-notification-daemon.pot
+rm -f sc.gmo && /usr/bin/msgmerge --for-msgfmt -o sc.1po sc.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o sc.gmo sc.1po && rm -f sc.1po
+sc.1po: 31 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=si --previous si.po cafe-notification-daemon.pot
+rm -f si.gmo && /usr/bin/msgmerge --for-msgfmt -o si.1po si.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o si.gmo si.1po && rm -f si.1po
+si.1po: 2 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=sk --previous sk.po cafe-notification-daemon.pot
+rm -f sk.gmo && /usr/bin/msgmerge --for-msgfmt -o sk.1po sk.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o sk.gmo sk.1po && rm -f sk.1po
+sk.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=sl --previous sl.po cafe-notification-daemon.pot
+rm -f sl.gmo && /usr/bin/msgmerge --for-msgfmt -o sl.1po sl.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o sl.gmo sl.1po && rm -f sl.1po
+sl.1po: 40 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=sq --previous sq.po cafe-notification-daemon.pot
+rm -f sq.gmo && /usr/bin/msgmerge --for-msgfmt -o sq.1po sq.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o sq.gmo sq.1po && rm -f sq.1po
+sq.1po: 29 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=sr --previous sr.po cafe-notification-daemon.pot
+rm -f sr.gmo && /usr/bin/msgmerge --for-msgfmt -o sr.1po sr.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o sr.gmo sr.1po && rm -f sr.1po
+sr.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=sr@latin --previous sr@latin.po cafe-notification-daemon.pot
+rm -f sr@latin.gmo && /usr/bin/msgmerge --for-msgfmt -o sr@latin.1po sr@latin.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o sr@latin.gmo sr@latin.1po && rm -f sr@latin.1po
+sr@latin.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=sv --previous sv.po cafe-notification-daemon.pot
+rm -f sv.gmo && /usr/bin/msgmerge --for-msgfmt -o sv.1po sv.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o sv.gmo sv.1po && rm -f sv.1po
+sv.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ta --previous ta.po cafe-notification-daemon.pot
+rm -f ta.gmo && /usr/bin/msgmerge --for-msgfmt -o ta.1po ta.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ta.gmo ta.1po && rm -f ta.1po
+ta.1po: 3 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=te --previous te.po cafe-notification-daemon.pot
+rm -f te.gmo && /usr/bin/msgmerge --for-msgfmt -o te.1po te.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o te.gmo te.1po && rm -f te.1po
+te.1po: 6 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=th --previous th.po cafe-notification-daemon.pot
+rm -f th.gmo && /usr/bin/msgmerge --for-msgfmt -o th.1po th.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o th.gmo th.1po && rm -f th.1po
+th.1po: 4 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=tr --previous tr.po cafe-notification-daemon.pot
+rm -f tr.gmo && /usr/bin/msgmerge --for-msgfmt -o tr.1po tr.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o tr.gmo tr.1po && rm -f tr.1po
+tr.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ug --previous ug.po cafe-notification-daemon.pot
+rm -f ug.gmo && /usr/bin/msgmerge --for-msgfmt -o ug.1po ug.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ug.gmo ug.1po && rm -f ug.1po
+ug.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=uk --previous uk.po cafe-notification-daemon.pot
+rm -f uk.gmo && /usr/bin/msgmerge --for-msgfmt -o uk.1po uk.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o uk.gmo uk.1po && rm -f uk.1po
+uk.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=ur --previous ur.po cafe-notification-daemon.pot
+rm -f ur.gmo && /usr/bin/msgmerge --for-msgfmt -o ur.1po ur.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o ur.gmo ur.1po && rm -f ur.1po
+ur.1po: 27 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=uz --previous uz.po cafe-notification-daemon.pot
+rm -f uz.gmo && /usr/bin/msgmerge --for-msgfmt -o uz.1po uz.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o uz.gmo uz.1po && rm -f uz.1po
+uz.1po: 27 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=vi --previous vi.po cafe-notification-daemon.pot
+rm -f vi.gmo && /usr/bin/msgmerge --for-msgfmt -o vi.1po vi.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o vi.gmo vi.1po && rm -f vi.1po
+vi.1po: 36 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=wa --previous wa.po cafe-notification-daemon.pot
+rm -f wa.gmo && /usr/bin/msgmerge --for-msgfmt -o wa.1po wa.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o wa.gmo wa.1po && rm -f wa.1po
+wa.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=xh --previous xh.po cafe-notification-daemon.pot
+rm -f xh.gmo && /usr/bin/msgmerge --for-msgfmt -o xh.1po xh.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o xh.gmo xh.1po && rm -f xh.1po
+xh.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=yo --previous yo.po cafe-notification-daemon.pot
+rm -f yo.gmo && /usr/bin/msgmerge --for-msgfmt -o yo.1po yo.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o yo.gmo yo.1po && rm -f yo.1po
+yo.1po: 1 translated message.
+/usr/bin/msgmerge --update --quiet --quiet --lang=zh_CN --previous zh_CN.po cafe-notification-daemon.pot
+rm -f zh_CN.gmo && /usr/bin/msgmerge --for-msgfmt -o zh_CN.1po zh_CN.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o zh_CN.gmo zh_CN.1po && rm -f zh_CN.1po
+zh_CN.1po: 41 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=zh_HK --previous zh_HK.po cafe-notification-daemon.pot
+rm -f zh_HK.gmo && /usr/bin/msgmerge --for-msgfmt -o zh_HK.1po zh_HK.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o zh_HK.gmo zh_HK.1po && rm -f zh_HK.1po
+zh_HK.1po: 33 translated messages.
+/usr/bin/msgmerge --update --quiet --quiet --lang=zh_TW --previous zh_TW.po cafe-notification-daemon.pot
+rm -f zh_TW.gmo && /usr/bin/msgmerge --for-msgfmt -o zh_TW.1po zh_TW.po cafe-notification-daemon.pot && /usr/bin/msgfmt -c --statistics --verbose -o zh_TW.gmo zh_TW.1po && rm -f zh_TW.1po
+zh_TW.1po: 41 translated messages.
+make[3]: Leaving directory '/rootdir/po'
+touch ./stamp-po
+make[2]: Leaving directory '/rootdir/po'
+Making all in data
+make[2]: Entering directory '/rootdir/data'
+  GEN      org.cafe.NotificationDaemon.gschema.valid
+make[2]: Leaving directory '/rootdir/data'
+Making all in src
+make[2]: Entering directory '/rootdir/src'
+Making all in daemon
+make[3]: Entering directory '/rootdir/src/daemon'
+  GEN      mnd-dbus-generated.c
+  CC       cafe_notification_daemon-daemon.o
+  CC       cafe_notification_daemon-engines.o
+  CC       cafe_notification_daemon-stack.o
+  CC       cafe_notification_daemon-sound.o
+  CC       cafe_notification_daemon-mnd-daemon.o
+engines.c: In function 'load_theme_engine':
+engines.c:60:9: warning: 'g_module_build_path' is deprecated [-Wdeprecated-declarations]
+   60 |         path = g_module_build_path (ENGINES_DIR, name);
+      |         ^~~~
+In file included from /usr/include/glib-2.0/gio/giomodule.h:31,
+                 from /usr/include/glib-2.0/gio/gio.h:102,
+                 from daemon.h:29,
+                 from engines.c:25:
+/usr/include/glib-2.0/gmodule.h:142:23: note: declared here
+  142 | gchar*                g_module_build_path    (const gchar  *directory,
+      |                       ^~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/glib-2.0/glib/gtypes.h:34,
+                 from /usr/include/glib-2.0/glib/galloca.h:34,
+                 from /usr/include/glib-2.0/glib.h:32,
+                 from /usr/include/glib-2.0/glib/gi18n.h:23,
+                 from daemon.c:30:
+daemon.c: In function '_action_invoked_cb':
+/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:104:42: warning: cast from function call of type 'gpointer' {aka 'void *'} to non-matching type 'long unsigned int' [-Wbad-function-cast]
+  104 | #define GPOINTER_TO_UINT(p)     ((guint) (gulong) (p))
+      |                                          ^
+daemon.c:58:10: note: in expansion of macro 'GPOINTER_TO_UINT'
+   58 |         (GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(nw), "_notify_id")))
+      |          ^~~~~~~~~~~~~~~~
+daemon.c:575:14: note: in expansion of macro 'NW_GET_NOTIFY_ID'
+  575 |         id = NW_GET_NOTIFY_ID(nw);
+      |              ^~~~~~~~~~~~~~~~
+daemon.c: In function '_emit_closed_signal':
+/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:104:42: warning: cast from function call of type 'gpointer' {aka 'void *'} to non-matching type 'long unsigned int' [-Wbad-function-cast]
+  104 | #define GPOINTER_TO_UINT(p)     ((guint) (gulong) (p))
+      |                                          ^
+daemon.c:58:10: note: in expansion of macro 'GPOINTER_TO_UINT'
+   58 |         (GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(nw), "_notify_id")))
+      |          ^~~~~~~~~~~~~~~~
+daemon.c:587:14: note: in expansion of macro 'NW_GET_NOTIFY_ID'
+  587 |         id = NW_GET_NOTIFY_ID(nw);
+      |              ^~~~~~~~~~~~~~~~
+daemon.c: In function '_notification_destroyed_cb':
+/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:104:42: warning: cast from function call of type 'gpointer' {aka 'void *'} to non-matching type 'long unsigned int' [-Wbad-function-cast]
+  104 | #define GPOINTER_TO_UINT(p)     ((guint) (gulong) (p))
+      |                                          ^
+daemon.c:58:10: note: in expansion of macro 'GPOINTER_TO_UINT'
+   58 |         (GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(nw), "_notify_id")))
+      |          ^~~~~~~~~~~~~~~~
+daemon.c:632:37: note: in expansion of macro 'NW_GET_NOTIFY_ID'
+  632 |         _close_notification(daemon, NW_GET_NOTIFY_ID(nw), FALSE, NOTIFYD_CLOSED_EXPIRED);
+      |                                     ^~~~~~~~~~~~~~~~
+daemon.c: In function '_mouse_entered_cb':
+/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:104:42: warning: cast from function call of type 'gpointer' {aka 'void *'} to non-matching type 'long unsigned int' [-Wbad-function-cast]
+  104 | #define GPOINTER_TO_UINT(p)     ((guint) (gulong) (p))
+      |                                          ^
+daemon.c:58:10: note: in expansion of macro 'GPOINTER_TO_UINT'
+   58 |         (GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(nw), "_notify_id")))
+      |          ^~~~~~~~~~~~~~~~
+daemon.c:752:14: note: in expansion of macro 'NW_GET_NOTIFY_ID'
+  752 |         id = NW_GET_NOTIFY_ID(nw);
+      |              ^~~~~~~~~~~~~~~~
+daemon.c: In function '_mouse_exitted_cb':
+/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:104:42: warning: cast from function call of type 'gpointer' {aka 'void *'} to non-matching type 'long unsigned int' [-Wbad-function-cast]
+  104 | #define GPOINTER_TO_UINT(p)     ((guint) (gulong) (p))
+      |                                          ^
+daemon.c:58:10: note: in expansion of macro 'GPOINTER_TO_UINT'
+   58 |         (GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(nw), "_notify_id")))
+      |          ^~~~~~~~~~~~~~~~
+daemon.c:769:20: note: in expansion of macro 'NW_GET_NOTIFY_ID'
+  769 |         guint id = NW_GET_NOTIFY_ID(nw);
+      |                    ^~~~~~~~~~~~~~~~
+daemon.c: In function '_notify_daemon_pixbuf_from_data_hint':
+daemon.c:967:44: warning: cast between incompatible function types from 'void (*)(void *)' to 'void (*)(guchar *, void *)' {aka 'void (*)(unsigned char *, void *)'} [-Wcast-function-type]
+  967 |                                            (GdkPixbufDestroyNotify) g_free,
+      |                                            ^
+daemon.c: In function 'window_clicked_cb':
+/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h:104:42: warning: cast from function call of type 'gpointer' {aka 'void *'} to non-matching type 'long unsigned int' [-Wbad-function-cast]
+  104 | #define GPOINTER_TO_UINT(p)     ((guint) (gulong) (p))
+      |                                          ^
+daemon.c:58:10: note: in expansion of macro 'GPOINTER_TO_UINT'
+   58 |         (GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(nw), "_notify_id")))
+      |          ^~~~~~~~~~~~~~~~
+daemon.c:1067:38: note: in expansion of macro 'NW_GET_NOTIFY_ID'
+ 1067 |         _close_notification (daemon, NW_GET_NOTIFY_ID (nw), TRUE, NOTIFYD_CLOSED_USER);
+      |                                      ^~~~~~~~~~~~~~~~
+daemon.c: In function 'notify_daemon_notify_handler':
+daemon.c:1531:22: warning: declaration of 'x' shadows a previous local [-Wshadow]
+ 1531 |                 gint x, y;
+      |                      ^
+daemon.c:1332:14: note: shadowed declaration is here
+ 1332 |         gint x = 0;
+      |              ^
+daemon.c:1531:25: warning: declaration of 'y' shadows a previous local [-Wshadow]
+ 1531 |                 gint x, y;
+      |                         ^
+daemon.c:1333:14: note: shadowed declaration is here
+ 1333 |         gint y = 0;
+      |              ^
+daemon.c:1599:38: warning: declaration of 'data' shadows a previous local [-Wshadow]
+ 1599 |                 _NotifyPendingClose* data;
+      |                                      ^~~~
+daemon.c:1329:19: note: shadowed declaration is here
+ 1329 |         GVariant* data;
+      |                   ^~~~
+daemon.c: At top level:
+daemon.c:59:9: warning: macro 'NW_GET_NOTIFY_SENDER' is not used [-Wunused-macros]
+   59 | #define NW_GET_NOTIFY_SENDER(nw) \
+      |         ^~~~~~~~~~~~~~~~~~~~
+  CC       cafe_notification_daemon-mnd-dbus-generated.o
+mnd-dbus-generated.c:46:9: warning: macro 'g_marshal_value_peek_char' is not used [-Wunused-macros]
+   46 | #define g_marshal_value_peek_char(v)     (v)->data[0].v_int
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:52:9: warning: macro 'g_marshal_value_peek_int64' is not used [-Wunused-macros]
+   52 | #define g_marshal_value_peek_int64(v)    (v)->data[0].v_int64
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:61:9: warning: macro 'g_marshal_value_peek_pointer' is not used [-Wunused-macros]
+   61 | #define g_marshal_value_peek_pointer(v)  (v)->data[0].v_pointer
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:53:9: warning: macro 'g_marshal_value_peek_uint64' is not used [-Wunused-macros]
+   53 | #define g_marshal_value_peek_uint64(v)   (v)->data[0].v_uint64
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:51:9: warning: macro 'g_marshal_value_peek_ulong' is not used [-Wunused-macros]
+   51 | #define g_marshal_value_peek_ulong(v)    (v)->data[0].v_ulong
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:45:9: warning: macro 'g_marshal_value_peek_boolean' is not used [-Wunused-macros]
+   45 | #define g_marshal_value_peek_boolean(v)  (v)->data[0].v_int
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:50:9: warning: macro 'g_marshal_value_peek_long' is not used [-Wunused-macros]
+   50 | #define g_marshal_value_peek_long(v)     (v)->data[0].v_long
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:47:9: warning: macro 'g_marshal_value_peek_uchar' is not used [-Wunused-macros]
+   47 | #define g_marshal_value_peek_uchar(v)    (v)->data[0].v_uint
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:56:9: warning: macro 'g_marshal_value_peek_float' is not used [-Wunused-macros]
+   56 | #define g_marshal_value_peek_float(v)    (v)->data[0].v_float
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:57:9: warning: macro 'g_marshal_value_peek_double' is not used [-Wunused-macros]
+   57 | #define g_marshal_value_peek_double(v)   (v)->data[0].v_double
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:54:9: warning: macro 'g_marshal_value_peek_enum' is not used [-Wunused-macros]
+   54 | #define g_marshal_value_peek_enum(v)     (v)->data[0].v_long
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:55:9: warning: macro 'g_marshal_value_peek_flags' is not used [-Wunused-macros]
+   55 | #define g_marshal_value_peek_flags(v)    (v)->data[0].v_ulong
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:59:9: warning: macro 'g_marshal_value_peek_param' is not used [-Wunused-macros]
+   59 | #define g_marshal_value_peek_param(v)    (v)->data[0].v_pointer
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+mnd-dbus-generated.c:2200:38: warning: Value stored to 'skeleton' during its initialization is never read [deadcode.DeadStores]
+ 2200 |   NotifyDaemonNotificationsSkeleton *skeleton = NOTIFY_DAEMON_NOTIFICATIONS_SKELETON (_skeleton);
+      |                                      ^~~~~~~~   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+daemon.c:251:9: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  251 |         return FALSE;
+      |                ^~~~~
+/usr/include/glib-2.0/glib/gmacros.h:931:16: note: expanded from macro 'FALSE'
+  931 | #define FALSE   (0)
+      |                  ^
+daemon.c:1418:35: warning: Casting a non-structure type to a structure type and accessing a field can lead to memory access errors or data corruption [alpha.core.CastToStruct]
+ 1418 |                 if (g_variant_is_of_type (data, G_VARIANT_TYPE_BOOLEAN))
+      |                                                 ^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/glib-2.0/glib/gvarianttype.h:41:46: note: expanded from macro 'G_VARIANT_TYPE_BOOLEAN'
+   41 | #define G_VARIANT_TYPE_BOOLEAN              ((const GVariantType *) "b")
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~
+daemon.c:1422:40: warning: Casting a non-structure type to a structure type and accessing a field can lead to memory access errors or data corruption [alpha.core.CastToStruct]
+ 1422 |                 else if (g_variant_is_of_type (data, G_VARIANT_TYPE_INT32))
+      |                                                      ^~~~~~~~~~~~~~~~~~~~
+/usr/include/glib-2.0/glib/gvarianttype.h:72:46: note: expanded from macro 'G_VARIANT_TYPE_INT32'
+   72 | #define G_VARIANT_TYPE_INT32                ((const GVariantType *) "i")
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.
+  CCLD     cafe-notification-daemon
+make[3]: Leaving directory '/rootdir/src/daemon'
+Making all in themes
+make[3]: Entering directory '/rootdir/src/themes'
+Making all in coco
+make[4]: Entering directory '/rootdir/src/themes/coco'
+  CC       libcoco_la-coco-theme.lo
+coco-theme.c: In function 'set_notification_text':
+coco-theme.c:539:17: warning: 'content' is deprecated [-Wdeprecated-declarations]
+  539 |                 str = (char *)buf->content;
+      |                 ^~~
+In file included from /usr/include/libxml2/libxml/parser.h:16,
+                 from /usr/include/libxml2/libxml/tree.h:17,
+                 from /usr/include/libxml2/libxml/xpath.h:27,
+                 from coco-theme.c:30:
+/usr/include/libxml2/libxml/tree.h:103:14: note: declared here
+  103 |     xmlChar *content XML_DEPRECATED_MEMBER;
+      |              ^~~~~~~
+coco-theme.c: In function 'clear_notification_actions':
+coco-theme.c:705:51: warning: cast between incompatible function types from 'void (*)(CtkWidget *)' {aka 'void (*)(struct _CtkWidget *)'} to 'void (*)(CtkWidget *, void *)' {aka 'void (*)(struct _CtkWidget *, void *)'} [-Wcast-function-type]
+  705 |                                                   (CtkCallback)ctk_widget_destroy, NULL);
+      |                                                   ^
+coco-theme.c: At top level:
+coco-theme.c:105:9: warning: macro 'DEFAULT_ARROW_SKEW' is not used [-Wunused-macros]
+  105 | #define DEFAULT_ARROW_SKEW    -6
+      |         ^~~~~~~~~~~~~~~~~~
+coco-theme.c:104:9: warning: macro 'DEFAULT_ARROW_WIDTH' is not used [-Wunused-macros]
+  104 | #define DEFAULT_ARROW_WIDTH   22
+      |         ^~~~~~~~~~~~~~~~~~~
+coco-theme.c:103:9: warning: macro 'DEFAULT_ARROW_HEIGHT' is not used [-Wunused-macros]
+  103 | #define DEFAULT_ARROW_HEIGHT  14
+      |         ^~~~~~~~~~~~~~~~~~~~
+coco-theme.c:97:9: warning: macro 'SPACER_LEFT' is not used [-Wunused-macros]
+   97 | #define SPACER_LEFT   30
+      |         ^~~~~~~~~~~
+coco-theme.c:93:9: warning: macro 'STRIPE_WIDTH' is not used [-Wunused-macros]
+   93 | #define STRIPE_WIDTH  32
+      |         ^~~~~~~~~~~~
+coco-theme.c:102:9: warning: macro 'DEFAULT_ARROW_OFFSET' is not used [-Wunused-macros]
+  102 | #define DEFAULT_ARROW_OFFSET  (SPACER_LEFT + 12)
+      |         ^~~~~~~~~~~~~~~~~~~~
+  CCLD     libcoco.la
+make[4]: Leaving directory '/rootdir/src/themes/coco'
+Making all in nodoka
+make[4]: Entering directory '/rootdir/src/themes/nodoka'
+  CC       libnodoka_la-nodoka-theme.lo
+nodoka-theme.c: In function 'set_notification_text':
+nodoka-theme.c:928:17: warning: 'content' is deprecated [-Wdeprecated-declarations]
+  928 |                 str = (char *)buf->content;
+      |                 ^~~
+In file included from /usr/include/libxml2/libxml/parser.h:16,
+                 from /usr/include/libxml2/libxml/tree.h:17,
+                 from /usr/include/libxml2/libxml/xpath.h:27,
+                 from nodoka-theme.c:32:
+/usr/include/libxml2/libxml/tree.h:103:14: note: declared here
+  103 |     xmlChar *content XML_DEPRECATED_MEMBER;
+      |              ^~~~~~~
+nodoka-theme.c: In function 'clear_notification_actions':
+nodoka-theme.c:1103:51: warning: cast between incompatible function types from 'void (*)(CtkWidget *)' {aka 'void (*)(struct _CtkWidget *)'} to 'void (*)(CtkWidget *, void *)' {aka 'void (*)(struct _CtkWidget *, void *)'} [-Wcast-function-type]
+ 1103 |                                                   (CtkCallback)ctk_widget_destroy, NULL);
+      |                                                   ^
+  CCLD     libnodoka.la
+make[4]: Leaving directory '/rootdir/src/themes/nodoka'
+Making all in slider
+make[4]: Entering directory '/rootdir/src/themes/slider'
+  CC       libslider_la-theme.lo
+theme.c: In function 'set_notification_text':
+theme.c:545:17: warning: 'content' is deprecated [-Wdeprecated-declarations]
+  545 |                 str = (char *)buf->content;
+      |                 ^~~
+In file included from /usr/include/libxml2/libxml/parser.h:16,
+                 from /usr/include/libxml2/libxml/tree.h:17,
+                 from /usr/include/libxml2/libxml/xpath.h:27,
+                 from theme.c:27:
+/usr/include/libxml2/libxml/tree.h:103:14: note: declared here
+  103 |     xmlChar *content XML_DEPRECATED_MEMBER;
+      |              ^~~~~~~
+theme.c: In function 'clear_notification_actions':
+theme.c:833:68: warning: cast between incompatible function types from 'void (*)(CtkWidget *)' {aka 'void (*)(struct _CtkWidget *)'} to 'void (*)(CtkWidget *, void *)' {aka 'void (*)(struct _CtkWidget *, void *)'} [-Wcast-function-type]
+  833 |         ctk_container_foreach(CTK_CONTAINER(windata->actions_box), (CtkCallback) ctk_widget_destroy, NULL);
+      |                                                                    ^
+  CCLD     libslider.la
+make[4]: Leaving directory '/rootdir/src/themes/slider'
+Making all in standard
+make[4]: Entering directory '/rootdir/src/themes/standard'
+  CC       libstandard_la-theme.lo
+theme.c: In function 'set_notification_text':
+theme.c:892:17: warning: 'content' is deprecated [-Wdeprecated-declarations]
+  892 |                 str = (char *)buf->content;
+      |                 ^~~
+In file included from /usr/include/libxml2/libxml/parser.h:16,
+                 from /usr/include/libxml2/libxml/tree.h:17,
+                 from /usr/include/libxml2/libxml/xpath.h:27,
+                 from theme.c:26:
+/usr/include/libxml2/libxml/tree.h:103:14: note: declared here
+  103 |     xmlChar *content XML_DEPRECATED_MEMBER;
+      |              ^~~~~~~
+theme.c: In function 'clear_notification_actions':
+theme.c:1133:68: warning: cast between incompatible function types from 'void (*)(CtkWidget *)' {aka 'void (*)(struct _CtkWidget *)'} to 'void (*)(CtkWidget *, void *)' {aka 'void (*)(struct _CtkWidget *, void *)'} [-Wcast-function-type]
+ 1133 |         ctk_container_foreach(CTK_CONTAINER(windata->actions_box), (CtkCallback) ctk_widget_destroy, NULL);
+      |                                                                    ^
+theme.c: At top level:
+theme.c:120:9: warning: macro 'BOTTOM_GRADIENT_HEIGHT' is not used [-Wunused-macros]
+  120 | #define BOTTOM_GRADIENT_HEIGHT 30
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+theme.c:110:9: warning: macro 'IMAGE_PADDING' is not used [-Wunused-macros]
+  110 | #define IMAGE_PADDING 10
+      |         ^~~~~~~~~~~~~
+theme.c:415:5: warning: Out of bound access to memory after the end of the heap area [alpha.security.ArrayBoundV2]
+  415 |                                 ADD_POINT(0, height - 1, 0, 1);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+theme.c:292:3: note: expanded from macro 'ADD_POINT'
+  292 |                 windata->border_points[i].x = (_x); \
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~
+theme.c:447:6: warning: Out of bound access to memory after the end of the heap area [alpha.security.ArrayBoundV2]
+  447 |                                         ADD_POINT(0, height - DEFAULT_ARROW_HEIGHT, 0, 1);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+theme.c:292:3: note: expanded from macro 'ADD_POINT'
+  292 |                 windata->border_points[i].x = (_x); \
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~
+theme.c:467:5: warning: Value stored to 'arrow_side1_width' is never read [deadcode.DeadStores]
+  467 |                                 arrow_side1_width = 0;
+      |                                 ^                   ~
+theme.c:467:25: warning: This statement is never executed [alpha.deadcode.UnreachableCode]
+  467 |                                 arrow_side1_width = 0;
+      |                                                     ^
+theme.c:468:5: warning: Value stored to 'arrow_offset' is never read [deadcode.DeadStores]
+  468 |                                 arrow_offset = norm_point_y;
+      |                                 ^              ~~~~~~~~~~~~
+theme.c:472:5: warning: Value stored to 'arrow_side2_width' is never read [deadcode.DeadStores]
+  472 |                                 arrow_side2_width = 0;
+      |                                 ^                   ~
+theme.c:473:5: warning: Value stored to 'arrow_offset' is never read [deadcode.DeadStores]
+  473 |                                 arrow_offset = norm_point_y - arrow_side1_width;
+      |                                 ^              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+7 warnings generated.
+  CCLD     libstandard.la
+make[4]: Leaving directory '/rootdir/src/themes/standard'
+make[4]: Entering directory '/rootdir/src/themes'
+make[4]: Nothing to be done for 'all-am'.
+make[4]: Leaving directory '/rootdir/src/themes'
+make[3]: Leaving directory '/rootdir/src/themes'
+Making all in capplet
+make[3]: Entering directory '/rootdir/src/capplet'
+  GEN      cafe-notification-properties-resources.h
+  GEN      cafe-notification-properties-resources.c
+make  all-am
+make[4]: Entering directory '/rootdir/src/capplet'
+  CC       cafe_notification_properties-cafe-notification-properties-resources.o
+  CC       cafe_notification_properties-cafe-notification-properties.o
+  GEN      cafe-notification-properties.desktop
+cafe-notification-properties-resources.c:167:9: warning: macro '__G_CONSTRUCTOR_H__' is not used [-Wunused-macros]
+  167 | #define __G_CONSTRUCTOR_H__
+      |         ^~~~~~~~~~~~~~~~~~~
+cafe-notification-properties.c: In function 'notification_properties_position_notify':
+cafe-notification-properties.c:90:24: warning: declaration of 'key' shadows a parameter [-Wshadow]
+   90 |                 gchar* key;
+      |                        ^~~
+cafe-notification-properties.c:75:80: note: shadowed declaration is here
+   75 |                                                      gchar                    *key,
+      |                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+cafe-notification-properties.c:86:2: warning: Value stored to 'valid' is never read [deadcode.DeadStores]
+   86 |         valid = ctk_tree_model_get_iter_first(model, &iter);
+      |         ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+  CCLD     cafe-notification-properties
+make[4]: Leaving directory '/rootdir/src/capplet'
+make[3]: Leaving directory '/rootdir/src/capplet'
+make[3]: Entering directory '/rootdir/src'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/rootdir/src'
+make[2]: Leaving directory '/rootdir/src'
+make[2]: Entering directory '/rootdir'
+make[2]: Leaving directory '/rootdir'
+make[1]: Leaving directory '/rootdir'
+scan-build: Analysis run complete.
+scan-build: 12 bugs found.
+scan-build: Run 'scan-view /rootdir/html-report/2025-10-24-080033-37773-1' to examine bug reports.
+Making check in po
+make[1]: Entering directory '/rootdir/po'
+make[1]: Nothing to be done for 'check'.
+make[1]: Leaving directory '/rootdir/po'
+Making check in data
+make[1]: Entering directory '/rootdir/data'
+make[1]: Nothing to be done for 'check'.
+make[1]: Leaving directory '/rootdir/data'
+Making check in src
+make[1]: Entering directory '/rootdir/src'
+Making check in daemon
+make[2]: Entering directory '/rootdir/src/daemon'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/rootdir/src/daemon'
+Making check in themes
+make[2]: Entering directory '/rootdir/src/themes'
+Making check in coco
+make[3]: Entering directory '/rootdir/src/themes/coco'
+make[3]: Nothing to be done for 'check'.
+make[3]: Leaving directory '/rootdir/src/themes/coco'
+Making check in nodoka
+make[3]: Entering directory '/rootdir/src/themes/nodoka'
+make[3]: Nothing to be done for 'check'.
+make[3]: Leaving directory '/rootdir/src/themes/nodoka'
+Making check in slider
+make[3]: Entering directory '/rootdir/src/themes/slider'
+make[3]: Nothing to be done for 'check'.
+make[3]: Leaving directory '/rootdir/src/themes/slider'
+Making check in standard
+make[3]: Entering directory '/rootdir/src/themes/standard'
+make[3]: Nothing to be done for 'check'.
+make[3]: Leaving directory '/rootdir/src/themes/standard'
+make[3]: Entering directory '/rootdir/src/themes'
+make[3]: Nothing to be done for 'check-am'.
+make[3]: Leaving directory '/rootdir/src/themes'
+make[2]: Leaving directory '/rootdir/src/themes'
+Making check in capplet
+make[2]: Entering directory '/rootdir/src/capplet'
+make  check-am
+make[3]: Entering directory '/rootdir/src/capplet'
+make[3]: Nothing to be done for 'check-am'.
+make[3]: Leaving directory '/rootdir/src/capplet'
+make[2]: Leaving directory '/rootdir/src/capplet'
+make[2]: Entering directory '/rootdir/src'
+make[2]: Nothing to be done for 'check-am'.
+make[2]: Leaving directory '/rootdir/src'
+make[1]: Leaving directory '/rootdir/src'
+make[1]: Entering directory '/rootdir'
+make[1]: Leaving directory '/rootdir'
+Listing... 0%Listing... 0%Listing... 0%              adduser/testing,now 3.153 all [installed,automatic]
+advaita-icon-theme/unknown,now 3.25.0-1 all [installed,automatic]
+alsa-topology-conf/testing,now 1.2.5.1-3 all [installed,automatic]
+alsa-ucm-conf/testing,now 1.2.14-1 all [installed,automatic]
+appstream/testing,now 1.1.1-1 amd64 [installed,automatic]
+apt/testing,now 3.1.9 amd64 [installed,automatic]
+aptitude-common/testing,now 0.8.13-8 all [installed,automatic]
+aptitude/testing,now 0.8.13-8 amd64 [installed]
+arch-test/testing,now 0.22-1 all [installed,automatic]
+at-spi2-common/testing,now 2.58.1-1 all [installed,automatic]
+at-spi2-core/testing,now 2.58.1-1 amd64 [installed,automatic]
+autoconf-archive/testing,now 20220903-3 all [installed]
+autoconf/testing,now 2.72-3.1 all [installed]
+automake/testing,now 1:1.17-4 all [installed,automatic]
+autopoint/testing,now 0.23.1-2 all [installed]
+autotools-dev/testing,now 20240727.1 all [installed,automatic]
+base-files/testing,now 14 amd64 [installed,automatic]
+base-passwd/testing,now 3.6.7 amd64 [installed,automatic]
+bash/testing,now 5.3-1 amd64 [installed,automatic]
+binfmt-support/testing,now 2.2.2-7 amd64 [installed,automatic]
+binutils-common/testing,now 2.45-7 amd64 [installed,automatic]
+binutils-x86-64-linux-gnu/testing,now 2.45-7 amd64 [installed,automatic]
+binutils/testing,now 2.45-7 amd64 [installed,automatic]
+bsdextrautils/testing,now 2.41.2-1 amd64 [installed,automatic]
+bsdutils/testing,now 1:2.41.2-1 amd64 [installed,automatic]
+build-essential/testing,now 12.12 amd64 [installed]
+bzip2-doc/testing,now 1.0.8-6 all [installed,automatic]
+bzip2/testing,now 1.0.8-6 amd64 [installed,automatic]
+ca-certificates/testing,now 20250419 all [installed,automatic]
+clang-19/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+clang-tools-19/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+clang-tools/testing,now 1:19.0-63 amd64 [installed]
+clang/testing,now 1:19.0-63 amd64 [installed]
+coreutils/testing,now 9.7-3 amd64 [installed,automatic]
+cowbuilder/testing,now 0.90 amd64 [installed,automatic]
+cowdancer/testing,now 0.90 amd64 [installed,automatic]
+cpp-15-x86-64-linux-gnu/testing,now 15.2.0-4 amd64 [installed,automatic]
+cpp-15/testing,now 15.2.0-4 amd64 [installed,automatic]
+cpp-x86-64-linux-gnu/testing,now 4:15.2.0-4 amd64 [installed,automatic]
+cpp/testing,now 4:15.2.0-4 amd64 [installed,automatic]
+cppcheck/testing,now 2.18.0-2 amd64 [installed]
+ctk-update-icon-cache/unknown,now 3.25.6-1 amd64 [installed,automatic]
+dash/testing,now 0.5.12-12 amd64 [installed,automatic]
+dbus-bin/testing,now 1.16.2-2 amd64 [installed,automatic]
+dbus-daemon/testing,now 1.16.2-2 amd64 [installed,automatic]
+dbus-session-bus-common/testing,now 1.16.2-2 all [installed,automatic]
+dbus-system-bus-common/testing,now 1.16.2-2 all [installed,automatic]
+dbus-user-session/testing,now 1.16.2-2 amd64 [installed,automatic]
+dbus/testing,now 1.16.2-2 amd64 [installed,automatic]
+dconf-gsettings-backend/testing,now 0.49.0-1 amd64 [installed,automatic]
+dconf-service/testing,now 0.49.0-1 amd64 [installed,automatic]
+dctrl-tools/testing,now 2.24-3+b1 amd64 [installed,automatic]
+debconf/testing,now 1.5.91 all [installed,automatic]
+debhelper/testing,now 13.28 all [installed,automatic]
+debian-archive-keyring/testing,now 2025.1 all [installed,automatic]
+debian-keyring/testing,now 2025.09.18 all [installed,automatic]
+debian-tag2upload-keyring/testing,now 1.1 all [installed,automatic]
+debianutils/testing,now 5.23.2 amd64 [installed,automatic]
+debootstrap/testing,now 1.0.141 all [installed,automatic]
+devscripts/testing,now 2.25.20 all [installed,automatic]
+dh-autoreconf/testing,now 21 all [installed,automatic]
+dh-strip-nondeterminism/testing,now 1.15.0-1 all [installed,automatic]
+diffstat/testing,now 1.68-1 amd64 [installed,automatic]
+diffutils/testing,now 1:3.12-1 amd64 [installed,automatic]
+dirmngr/testing,now 2.4.8-3 amd64 [installed,automatic]
+distro-info-data/testing,now 0.68 all [installed,automatic]
+distro-info/testing,now 1.14 amd64 [installed,automatic]
+dmsetup/testing,now 2:1.02.205-2 amd64 [installed,automatic]
+docbook-to-man/testing,now 1:2.0.0-49 amd64 [installed,automatic]
+docbook-xml/testing,now 4.5-13 all [installed]
+docbook-xsl/testing,now 1.79.2+dfsg-7 all [installed,automatic]
+docbook/testing,now 4.5-11 all [installed,automatic]
+dpkg-dev/testing,now 1.22.21 all [installed,automatic]
+dpkg/testing,now 1.22.21 amd64 [installed,automatic]
+dput/testing,now 1.2.4 all [installed,automatic]
+dwz/testing,now 0.16-2 amd64 [installed,automatic]
+eatmydata/testing,now 131-2 all [installed,automatic]
+ed/testing,now 1.22.2-1 amd64 [installed,automatic]
+equivs/testing,now 2.3.2 all [installed,automatic]
+expect/testing,now 5.45.4-4 amd64 [installed]
+fakeroot/testing,now 1.37.1.2-1 amd64 [installed,automatic]
+file/testing,now 1:5.46-5 amd64 [installed,automatic]
+findutils/testing,now 4.10.0-3 amd64 [installed,automatic]
+fontconfig-config/testing,now 2.15.0-2.4 amd64 [installed,automatic]
+fontconfig/testing,now 2.15.0-2.4 amd64 [installed,automatic]
+fonts-dejavu-core/testing,now 2.37-8 all [installed,automatic]
+fonts-dejavu-mono/testing,now 2.37-8 all [installed,automatic]
+g++-15-x86-64-linux-gnu/testing,now 15.2.0-4 amd64 [installed,automatic]
+g++-15/testing,now 15.2.0-4 amd64 [installed,automatic]
+g++-x86-64-linux-gnu/testing,now 4:15.2.0-4 amd64 [installed,automatic]
+g++/testing,now 4:15.2.0-4 amd64 [installed,automatic]
+gcc-15-base/testing,now 15.2.0-4 amd64 [installed,automatic]
+gcc-15-x86-64-linux-gnu/testing,now 15.2.0-4 amd64 [installed,automatic]
+gcc-15/testing,now 15.2.0-4 amd64 [installed,automatic]
+gcc-x86-64-linux-gnu/testing,now 4:15.2.0-4 amd64 [installed,automatic]
+gcc/testing,now 4:15.2.0-4 amd64 [installed]
+gettext-base/testing,now 0.23.1-2+b1 amd64 [installed,automatic]
+gettext/testing,now 0.23.1-2+b1 amd64 [installed]
+gir1.2-atk-1.0/testing,now 2.58.1-1 amd64 [installed,automatic]
+gir1.2-atspi-2.0/testing,now 2.58.1-1 amd64 [installed,automatic]
+gir1.2-ctk-3.0/unknown,now 3.25.6-1 amd64 [installed,automatic]
+gir1.2-freedesktop-dev/testing,now 1.86.0-6 amd64 [installed,automatic]
+gir1.2-freedesktop/testing,now 1.86.0-6 amd64 [installed,automatic]
+gir1.2-gdkpixbuf-2.0/testing,now 2.44.4+dfsg-1 amd64 [installed,automatic]
+gir1.2-girepository-2.0-dev/testing,now 1.86.0-6 amd64 [installed,automatic]
+gir1.2-girepository-2.0/testing,now 1.86.0-6 amd64 [installed,automatic]
+gir1.2-glib-2.0-dev/testing,now 2.86.1-1 amd64 [installed,automatic]
+gir1.2-glib-2.0/testing,now 2.86.1-1 amd64 [installed,automatic]
+gir1.2-gstreamer-1.0/testing,now 1.26.7-1 amd64 [installed,automatic]
+gir1.2-harfbuzz-0.0/testing,now 12.1.0-1 amd64 [installed,automatic]
+gir1.2-notify-0.7/testing,now 0.8.6-2 amd64 [installed,automatic]
+gir1.2-pango-1.0/testing,now 1.56.3-2 amd64 [installed,automatic]
+girepository-tools/testing,now 2.86.1-1 amd64 [installed,automatic]
+git-buildpackage/testing,now 0.9.38 all [installed,automatic]
+git-debpush/testing,now 13.16 all [installed,automatic]
+git-man/testing,now 1:2.51.0-1 all [installed,automatic]
+git/testing,now 1:2.51.0-1 amd64 [installed]
+gnome-pkg-tools/testing,now 0.22.10 all [installed]
+gnupg-l10n/testing,now 2.4.8-3 all [installed,automatic]
+gnupg-utils/testing,now 2.4.8-3 amd64 [installed,automatic]
+gnupg/testing,now 2.4.8-3 all [installed,automatic]
+gobject-introspection-bin/testing,now 1.86.0-6 amd64 [installed,automatic]
+gobject-introspection/testing,now 1.86.0-6 amd64 [installed]
+gpg-agent/testing,now 2.4.8-3 amd64 [installed,automatic]
+gpg-wks-client/testing,now 2.4.8-3 amd64 [installed,automatic]
+gpg/testing,now 2.4.8-3 amd64 [installed,automatic]
+gpgconf/testing,now 2.4.8-3 amd64 [installed,automatic]
+gpgsm/testing,now 2.4.8-3 amd64 [installed,automatic]
+gpgv/testing,now 2.4.8-3 amd64 [installed,automatic]
+grep/testing,now 3.12-1 amd64 [installed,automatic]
+groff-base/testing,now 1.23.0-9 amd64 [installed,automatic]
+gsettings-desktop-schemas/testing,now 49.1-1 all [installed,automatic]
+gtk-doc-tools/testing,now 1.35.1-1 all [installed]
+gzip/testing,now 1.13-1 amd64 [installed,automatic]
+hicolor-icon-theme/testing,now 0.18-2 all [installed,automatic]
+hostname/testing,now 3.25 amd64 [installed,automatic]
+icu-devtools/testing,now 76.1-4 amd64 [installed,automatic]
+init-system-helpers/testing,now 1.69 all [installed,automatic]
+intltool-debian/testing,now 0.35.0+20060710.6 all [installed,automatic]
+intltool/testing,now 0.51.0-7 all [installed]
+iso-codes/testing,now 4.18.0-1 all [installed]
+krb5-locales/testing,now 1.21.3-5 all [installed,automatic]
+less/testing,now 668-1 amd64 [installed,automatic]
+lib32gcc-s1/testing,now 15.2.0-4 amd64 [installed,automatic]
+lib32stdc++6/testing,now 15.2.0-4 amd64 [installed,automatic]
+libabsl20240722/testing,now 20240722.0-4 amd64 [installed,automatic]
+libacl1/testing,now 2.3.2-2+b1 amd64 [installed,automatic]
+libalgorithm-diff-perl/testing,now 1.201-1 all [installed,automatic]
+libalgorithm-diff-xs-perl/testing,now 0.04-9 amd64 [installed,automatic]
+libalgorithm-merge-perl/testing,now 0.08-5 all [installed,automatic]
+libaliased-perl/testing,now 0.34-3 all [installed,automatic]
+libapparmor1/testing,now 4.1.0-1 amd64 [installed,automatic]
+libappstream5/testing,now 1.1.1-1 amd64 [installed,automatic]
+libapt-pkg-perl/testing,now 0.1.42 amd64 [installed,automatic]
+libapt-pkg7.0/testing,now 3.1.9 amd64 [installed,automatic]
+libarchive-cpio-perl/testing,now 0.10-3 all [installed,automatic]
+libarchive-zip-perl/testing,now 1.68-1 all [installed,automatic]
+libarchive13t64/testing,now 3.7.4-4+b1 amd64 [installed,automatic]
+libarray-intspan-perl/testing,now 2.004-2 all [installed,automatic]
+libasan8/testing,now 15.2.0-4 amd64 [installed,automatic]
+libasound2-data/testing,now 1.2.14-2 all [installed,automatic]
+libasound2-dev/testing,now 1.2.14-2 amd64 [installed]
+libasound2t64/testing,now 1.2.14-2 amd64 [installed,automatic]
+libassuan9/testing,now 3.0.2-2 amd64 [installed,automatic]
+libasyncns0/testing,now 0.8-7 amd64 [installed,automatic]
+libatk-bridge2.0-0t64/testing,now 2.58.1-1 amd64 [installed,automatic]
+libatk-bridge2.0-dev/testing,now 2.58.1-1 amd64 [installed,automatic]
+libatk1.0-0t64/testing,now 2.58.1-1 amd64 [installed,automatic]
+libatk1.0-dev/testing,now 2.58.1-1 amd64 [installed,automatic]
+libatomic1/testing,now 15.2.0-4 amd64 [installed,automatic]
+libatspi2.0-0t64/testing,now 2.58.1-1 amd64 [installed,automatic]
+libatspi2.0-dev/testing,now 2.58.1-1 amd64 [installed,automatic]
+libattr1/testing,now 1:2.5.2-3 amd64 [installed,automatic]
+libaudit-common/testing,now 1:4.1.2-1 all [installed,automatic]
+libaudit1/testing,now 1:4.1.2-1 amd64 [installed,automatic]
+libauthen-sasl-perl/testing,now 2.1900-1 all [installed,automatic]
+libavahi-client3/testing,now 0.8-17 amd64 [installed,automatic]
+libavahi-common-data/testing,now 0.8-17 amd64 [installed,automatic]
+libavahi-common3/testing,now 0.8-17 amd64 [installed,automatic]
+libb-hooks-endofscope-perl/testing,now 0.28-2 all [installed,automatic]
+libb-hooks-op-check-perl/testing,now 0.22-3+b2 amd64 [installed,automatic]
+libberkeleydb-perl/testing,now 0.66-1 amd64 [installed,automatic]
+libbinutils/testing,now 2.45-7 amd64 [installed,automatic]
+libblkid-dev/testing,now 2.41.2-1 amd64 [installed,automatic]
+libblkid1/testing,now 2.41.2-1 amd64 [installed,automatic]
+libboost-iostreams1.83.0/testing,now 1.83.0-5 amd64 [installed,automatic]
+libbrotli-dev/testing,now 1.1.0-2+b7 amd64 [installed,automatic]
+libbrotli1/testing,now 1.1.0-2+b7 amd64 [installed,automatic]
+libbsd0/testing,now 0.12.2-2 amd64 [installed,automatic]
+libbz2-1.0/testing,now 1.0.8-6 amd64 [installed,automatic]
+libbz2-dev/testing,now 1.0.8-6 amd64 [installed,automatic]
+libc-bin/testing,now 2.41-12 amd64 [installed,automatic]
+libc-dev-bin/testing,now 2.41-12 amd64 [installed,automatic]
+libc6-dev/testing,now 2.41-12 amd64 [installed,automatic]
+libc6-i386/testing,now 2.41-12 amd64 [installed,automatic]
+libc6/testing,now 2.41-12 amd64 [installed,automatic]
+libcail-3-0/unknown,now 3.25.6-1 amd64 [installed,automatic]
+libcail-3-dev/unknown,now 3.25.6-1 amd64 [installed]
+libcairo-gobject2/testing,now 1.18.4-1+b1 amd64 [installed,automatic]
+libcairo-script-interpreter2/testing,now 1.18.4-1+b1 amd64 [installed,automatic]
+libcairo2-dev/testing,now 1.18.4-1+b1 amd64 [installed,automatic]
+libcairo2/testing,now 1.18.4-1+b1 amd64 [installed,automatic]
+libcap-dev/testing,now 1:2.75-10+b1 amd64 [installed,automatic]
+libcap-ng0/testing,now 0.8.5-4+b1 amd64 [installed,automatic]
+libcap2-bin/testing,now 1:2.75-10+b1 amd64 [installed,automatic]
+libcap2/testing,now 1:2.75-10+b1 amd64 [installed,automatic]
+libcapture-tiny-perl/testing,now 0.50-1 all [installed,automatic]
+libcbor0.10/testing,now 0.10.2-2 amd64 [installed,automatic]
+libcc1-0/testing,now 15.2.0-4 amd64 [installed,automatic]
+libcgi-fast-perl/testing,now 1:2.17-1 all [installed,automatic]
+libcgi-pm-perl/testing,now 4.71-1 all [installed,automatic]
+libclang-common-19-dev/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+libclang-cpp19/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+libclang-rt-19-dev/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+libclang1-19/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+libclass-data-inheritable-perl/testing,now 0.10-1 all [installed,automatic]
+libclass-inspector-perl/testing,now 1.36-3 all [installed,automatic]
+libclass-method-modifiers-perl/testing,now 2.15-1 all [installed,automatic]
+libclass-xsaccessor-perl/testing,now 1.19-4+b5 amd64 [installed,automatic]
+libclone-perl/testing,now 0.47-1+b1 amd64 [installed,automatic]
+libcolord2/testing,now 1.4.8-1 amd64 [installed,automatic]
+libcom-err2/testing,now 1.47.2-3+b3 amd64 [installed,automatic]
+libcommon-sense-perl/testing,now 3.75-3+b5 amd64 [installed,automatic]
+libconfig-tiny-perl/testing,now 2.30-1 all [installed,automatic]
+libconst-fast-perl/testing,now 0.014-2 all [installed,automatic]
+libcontextual-return-perl/testing,now 0.004014-4 all [installed,automatic]
+libconvert-binhex-perl/testing,now 1.125-3 all [installed,automatic]
+libcpanel-json-xs-perl/testing,now 4.40-1 amd64 [installed,automatic]
+libcrypt-dev/testing,now 1:4.4.38-1 amd64 [installed,automatic]
+libcrypt-urandom-perl/testing,now 0.54-1 amd64 [installed,automatic]
+libcrypt1/testing,now 1:4.4.38-1 amd64 [installed,automatic]
+libcryptsetup12/testing,now 2:2.8.1-1 amd64 [installed,automatic]
+libctf-nobfd0/testing,now 2.45-7 amd64 [installed,automatic]
+libctf0/testing,now 2.45-7 amd64 [installed,automatic]
+libctk-3-0/unknown,now 3.25.6-1 amd64 [installed,automatic]
+libctk-3-bin/unknown,now 3.25.6-1 amd64 [installed,automatic]
+libctk-3-common/unknown,now 3.25.6-1 all [installed,automatic]
+libctk-3-dev/unknown,now 3.25.6-1 amd64 [installed]
+libcups2t64/testing,now 2.4.14-1 amd64 [installed,automatic]
+libcurl3t64-gnutls/testing,now 8.16.0-4 amd64 [installed,automatic]
+libcurl4t64/testing,now 8.16.0-4 amd64 [installed,automatic]
+libcwidget4/testing,now 0.5.18-6+b2 amd64 [installed,automatic]
+libdata-dpath-perl/testing,now 0.60-1 all [installed,automatic]
+libdata-dump-perl/testing,now 1.25-1 all [installed,automatic]
+libdata-messagepack-perl/testing,now 1.02-3 amd64 [installed,automatic]
+libdata-optlist-perl/testing,now 0.114-1 all [installed,automatic]
+libdata-validate-domain-perl/testing,now 0.15-1 all [installed,automatic]
+libdata-validate-ip-perl/testing,now 0.31-1 all [installed,automatic]
+libdata-validate-uri-perl/testing,now 0.07-3 all [installed,automatic]
+libdatrie-dev/testing,now 0.2.13-4 amd64 [installed,automatic]
+libdatrie1/testing,now 0.2.13-4 amd64 [installed,automatic]
+libdav1d7/testing,now 1.5.1-1 amd64 [installed,automatic]
+libdb5.3t64/testing,now 5.3.28+dfsg2-10 amd64 [installed,automatic]
+libdbus-1-3/testing,now 1.16.2-2 amd64 [installed,automatic]
+libdbus-1-dev/testing,now 1.16.2-2 amd64 [installed,automatic]
+libdconf-dev/testing,now 0.49.0-1 amd64 [installed]
+libdconf-doc/testing,now 0.49.0-1 all [installed,automatic]
+libdconf1/testing,now 0.49.0-1 amd64 [installed,automatic]
+libdebconfclient0/testing,now 0.280 amd64 [installed,automatic]
+libdebhelper-perl/testing,now 13.28 all [installed,automatic]
+libdeflate-dev/testing,now 1.23-2 amd64 [installed,automatic]
+libdeflate0/testing,now 1.23-2 amd64 [installed,automatic]
+libdevel-callchecker-perl/testing,now 0.009-2 amd64 [installed,automatic]
+libdevel-size-perl/testing,now 0.85-1 amd64 [installed,automatic]
+libdevel-stacktrace-perl/testing,now 2.0500-1 all [installed,automatic]
+libdevmapper1.02.1/testing,now 2:1.02.205-2 amd64 [installed,automatic]
+libdistro-info-perl/testing,now 1.14 all [installed,automatic]
+libdpkg-perl/testing,now 1.22.21 all [installed,automatic]
+libdrm-amdgpu1/testing,now 2.4.127-1 amd64 [installed,automatic]
+libdrm-common/testing,now 2.4.127-1 all [installed,automatic]
+libdrm-intel1/testing,now 2.4.127-1 amd64 [installed,automatic]
+libdrm2/testing,now 2.4.127-1 amd64 [installed,automatic]
+libdw-dev/testing,now 0.193-3 amd64 [installed,automatic]
+libdw1t64/testing,now 0.193-3 amd64 [installed,automatic]
+libdynaloader-functions-perl/testing,now 0.004-2 all [installed,automatic]
+libeatmydata1/testing,now 131-2+b1 amd64 [installed,automatic]
+libedit2/testing,now 3.1-20250104-1 amd64 [installed,automatic]
+libegl-dev/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libegl-mesa0/testing,now 25.2.5-1 amd64 [installed,automatic]
+libegl1-mesa-dev/testing,now 25.2.5-1 amd64 [installed,automatic]
+libegl1/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libelf-dev/testing,now 0.193-3 amd64 [installed,automatic]
+libelf1t64/testing,now 0.193-3 amd64 [installed,automatic]
+libemail-address-xs-perl/testing,now 1.05-1+b4 amd64 [installed,automatic]
+libencode-locale-perl/testing,now 1.05-3 all [installed,automatic]
+libepoxy-dev/testing,now 1.5.10-2 amd64 [installed,automatic]
+libepoxy0/testing,now 1.5.10-2 amd64 [installed,automatic]
+liberror-perl/testing,now 0.17030-1 all [installed,automatic]
+libexception-class-perl/testing,now 1.45-1 all [installed,automatic]
+libexempi-dev/testing,now 2.6.6-2 amd64 [installed]
+libexempi8/testing,now 2.6.6-2 amd64 [installed,automatic]
+libexif-dev/testing,now 0.6.25-1 amd64 [installed]
+libexif-doc/testing,now 0.6.25-1 all [installed,automatic]
+libexif12/testing,now 0.6.25-1 amd64 [installed,automatic]
+libexpat1-dev/testing,now 2.7.3-1 amd64 [installed,automatic]
+libexpat1/testing,now 2.7.3-1 amd64 [installed,automatic]
+libexporter-tiny-perl/testing,now 1.006002-1 all [installed,automatic]
+libfakeroot/testing,now 1.37.1.2-1 amd64 [installed,automatic]
+libfcgi-bin/testing,now 2.4.5-0.1 amd64 [installed,automatic]
+libfcgi-perl/testing,now 0.82+ds-3+b2 amd64 [installed,automatic]
+libfcgi0t64/testing,now 2.4.5-0.1 amd64 [installed,automatic]
+libfeature-compat-class-perl/testing,now 0.07-1 all [installed,automatic]
+libfeature-compat-try-perl/testing,now 0.05-1 all [installed,automatic]
+libffi-dev/testing,now 3.5.2-2 amd64 [installed,automatic]
+libffi8/testing,now 3.5.2-2 amd64 [installed,automatic]
+libfido2-1/testing,now 1.16.0-2 amd64 [installed,automatic]
+libfile-basedir-perl/testing,now 0.09-2 all [installed,automatic]
+libfile-dirlist-perl/testing,now 0.05-3 all [installed,automatic]
+libfile-fcntllock-perl/testing,now 0.22-4+b4 amd64 [installed,automatic]
+libfile-find-rule-perl/testing,now 0.34-4 all [installed,automatic]
+libfile-homedir-perl/testing,now 1.006-2 all [installed,automatic]
+libfile-listing-perl/testing,now 6.16-1 all [installed,automatic]
+libfile-sharedir-perl/testing,now 1.118-3 all [installed,automatic]
+libfile-stripnondeterminism-perl/testing,now 1.15.0-1 all [installed,automatic]
+libfile-touch-perl/testing,now 0.12-2 all [installed,automatic]
+libfile-which-perl/testing,now 1.27-2 all [installed,automatic]
+libflac14/testing,now 1.5.0+ds-2 amd64 [installed,automatic]
+libfont-afm-perl/testing,now 1.20-4 all [installed,automatic]
+libfont-ttf-perl/testing,now 1.06-2 all [installed,automatic]
+libfontconfig-dev/testing,now 2.15.0-2.4 amd64 [installed,automatic]
+libfontconfig1/testing,now 2.15.0-2.4 amd64 [installed,automatic]
+libfreetype-dev/testing,now 2.13.3+dfsg-1 amd64 [installed,automatic]
+libfreetype6/testing,now 2.13.3+dfsg-1 amd64 [installed,automatic]
+libfreezethaw-perl/testing,now 0.5001-3 all [installed,automatic]
+libfribidi-dev/testing,now 1.0.16-3 amd64 [installed,automatic]
+libfribidi0/testing,now 1.0.16-3 amd64 [installed,automatic]
+libfyaml0/testing,now 0.9-2 amd64 [installed,automatic]
+libgbm1/testing,now 25.2.5-1 amd64 [installed,automatic]
+libgc1/testing,now 1:8.2.8-1 amd64 [installed,automatic]
+libgcc-15-dev/testing,now 15.2.0-4 amd64 [installed,automatic]
+libgcc-s1/testing,now 15.2.0-4 amd64 [installed,automatic]
+libgcrypt20/testing,now 1.11.2-2 amd64 [installed,automatic]
+libgdbm-compat4t64/testing,now 1.26-1 amd64 [installed,automatic]
+libgdbm6t64/testing,now 1.26-1 amd64 [installed,automatic]
+libgdk-pixbuf-2.0-0/testing,now 2.44.4+dfsg-1 amd64 [installed,automatic]
+libgdk-pixbuf-2.0-dev/testing,now 2.44.4+dfsg-1 amd64 [installed,automatic]
+libgdk-pixbuf2.0-bin/testing,now 2.44.4+dfsg-1 amd64 [installed,automatic]
+libgdk-pixbuf2.0-common/testing,now 2.44.4+dfsg-1 all [installed,automatic]
+libgio-2.0-dev-bin/testing,now 2.86.1-1 amd64 [installed,automatic]
+libgio-2.0-dev/testing,now 2.86.1-1 amd64 [installed,automatic]
+libgirepository-1.0-1/testing,now 1.86.0-6 amd64 [installed,automatic]
+libgirepository-1.0-dev/testing,now 1.86.0-6 amd64 [installed,automatic]
+libgirepository-2.0-0/testing,now 2.86.1-1 amd64 [installed,automatic]
+libgirepository1.0-dev/testing,now 1.86.0-6 amd64 [installed]
+libgitlab-api-v4-perl/testing,now 0.27-1 all [installed,automatic]
+libgl-dev/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libgl1-mesa-dri/testing,now 25.2.5-1 amd64 [installed,automatic]
+libgl1/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libgles-dev/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libgles1/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libgles2/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libglib2.0-0t64/testing,now 2.86.1-1 amd64 [installed,automatic]
+libglib2.0-bin/testing,now 2.86.1-1 amd64 [installed,automatic]
+libglib2.0-data/testing,now 2.86.1-1 all [installed,automatic]
+libglib2.0-dev-bin/testing,now 2.86.1-1 amd64 [installed,automatic]
+libglib2.0-dev/testing,now 2.86.1-1 amd64 [installed]
+libglib2.0-doc/testing,now 2.86.1-1 all [installed]
+libglvnd-core-dev/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libglvnd-dev/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libglvnd0/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libglx-dev/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libglx-mesa0/testing,now 25.2.5-1 amd64 [installed,automatic]
+libglx0/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libgmp10/testing,now 2:6.3.0+dfsg-5 amd64 [installed,automatic]
+libgnutls30t64/testing,now 3.8.10-2 amd64 [installed,automatic]
+libgomp1/testing,now 15.2.0-4 amd64 [installed,automatic]
+libgpg-error-l10n/testing,now 1.56-2 all [installed,automatic]
+libgpg-error0/testing,now 1.56-2 amd64 [installed,automatic]
+libgpgme11t64/testing,now 1.24.2-3 amd64 [installed,automatic]
+libgpm2/testing,now 1.20.7-12 amd64 [installed,automatic]
+libgprofng0/testing,now 2.45-7 amd64 [installed,automatic]
+libgraphite2-3/testing,now 1.3.14-11 amd64 [installed,automatic]
+libgraphite2-dev/testing,now 1.3.14-11 amd64 [installed,automatic]
+libgssapi-krb5-2/testing,now 1.21.3-5 amd64 [installed,automatic]
+libgstreamer1.0-0/testing,now 1.26.7-1 amd64 [installed,automatic]
+libgstreamer1.0-dev/testing,now 1.26.7-1 amd64 [installed]
+libharfbuzz-cairo0/testing,now 12.1.0-1 amd64 [installed,automatic]
+libharfbuzz-dev/testing,now 12.1.0-1 amd64 [installed,automatic]
+libharfbuzz-gobject0/testing,now 12.1.0-1 amd64 [installed,automatic]
+libharfbuzz-icu0/testing,now 12.1.0-1 amd64 [installed,automatic]
+libharfbuzz-subset0/testing,now 12.1.0-1 amd64 [installed,automatic]
+libharfbuzz0b/testing,now 12.1.0-1 amd64 [installed,automatic]
+libhogweed6t64/testing,now 3.10.2-1 amd64 [installed,automatic]
+libhtml-form-perl/testing,now 6.12-1 all [installed,automatic]
+libhtml-format-perl/testing,now 2.16-2 all [installed,automatic]
+libhtml-html5-entities-perl/testing,now 0.004-3 all [installed,automatic]
+libhtml-parser-perl/testing,now 3.83-1+b2 amd64 [installed,automatic]
+libhtml-tagset-perl/testing,now 3.24-1 all [installed,automatic]
+libhtml-tokeparser-simple-perl/testing,now 3.16-4 all [installed,automatic]
+libhtml-tree-perl/testing,now 5.07-3 all [installed,automatic]
+libhttp-cookies-perl/testing,now 6.11-1 all [installed,automatic]
+libhttp-daemon-perl/testing,now 6.16-1 all [installed,automatic]
+libhttp-date-perl/testing,now 6.06-1 all [installed,automatic]
+libhttp-message-perl/testing,now 7.00-2 all [installed,automatic]
+libhttp-negotiate-perl/testing,now 6.01-2 all [installed,automatic]
+libhttp-tiny-multipart-perl/testing,now 0.08-2 all [installed,automatic]
+libhwasan0/testing,now 15.2.0-4 amd64 [installed,automatic]
+libice-dev/testing,now 2:1.1.1-1 amd64 [installed,automatic]
+libice6/testing,now 2:1.1.1-1 amd64 [installed,automatic]
+libicu-dev/testing,now 76.1-4 amd64 [installed,automatic]
+libicu76/testing,now 76.1-4 amd64 [installed,automatic]
+libidn2-0/testing,now 2.3.8-4 amd64 [installed,automatic]
+libimport-into-perl/testing,now 1.002005-2 all [installed,automatic]
+libindirect-perl/testing,now 0.39-2+b4 amd64 [installed,automatic]
+libio-compress-brotli-perl/testing,now 0.004001-2+b3 amd64 [installed,automatic]
+libio-html-perl/testing,now 1.004-3 all [installed,automatic]
+libio-interactive-perl/testing,now 1.027-1 all [installed,automatic]
+libio-prompter-perl/testing,now 0.005004-1 all [installed,automatic]
+libio-sessiondata-perl/testing,now 1.03-3 all [installed,automatic]
+libio-socket-ssl-perl/testing,now 2.095-1 all [installed,automatic]
+libio-string-perl/testing,now 1.08-4 all [installed,automatic]
+libio-stringy-perl/testing,now 2.113-2 all [installed,automatic]
+libipc-run3-perl/testing,now 0.049-1 all [installed,automatic]
+libipc-system-simple-perl/testing,now 1.30-2 all [installed,automatic]
+libisl23/testing,now 0.27-1 amd64 [installed,automatic]
+libiterator-perl/testing,now 0.03+ds1-2 all [installed,automatic]
+libiterator-util-perl/testing,now 0.02+ds1-2 all [installed,automatic]
+libitm1/testing,now 15.2.0-4 amd64 [installed,automatic]
+libjansson4/testing,now 2.14-2+b3 amd64 [installed,automatic]
+libjbig-dev/testing,now 2.1-6.1+b2 amd64 [installed,automatic]
+libjbig0/testing,now 2.1-6.1+b2 amd64 [installed,automatic]
+libjpeg-dev/testing,now 1:2.1.5-4 amd64 [installed,automatic]
+libjpeg62-turbo-dev/testing,now 1:2.1.5-4 amd64 [installed,automatic]
+libjpeg62-turbo/testing,now 1:2.1.5-4 amd64 [installed,automatic]
+libjson-c5/testing,now 0.18+ds-1.1 amd64 [installed,automatic]
+libjson-maybexs-perl/testing,now 1.004008-1 all [installed,automatic]
+libjson-perl/testing,now 4.10000-1 all [installed,automatic]
+libjson-xs-perl/testing,now 4.040-1 amd64 [installed,automatic]
+libk5crypto3/testing,now 1.21.3-5 amd64 [installed,automatic]
+libkeyutils1/testing,now 1.6.3-6 amd64 [installed,automatic]
+libkmod2/testing,now 34.2-2 amd64 [installed,automatic]
+libkrb5-3/testing,now 1.21.3-5 amd64 [installed,automatic]
+libkrb5support0/testing,now 1.21.3-5 amd64 [installed,automatic]
+libksba8/testing,now 1.6.7-2+b1 amd64 [installed,automatic]
+liblastlog2-2/testing,now 2.41.2-1 amd64 [installed,automatic]
+liblcms2-2/testing,now 2.16-2 amd64 [installed,automatic]
+libldap-common/testing,now 2.6.10+dfsg-1 all [installed,automatic]
+libldap2/testing,now 2.6.10+dfsg-1 amd64 [installed,automatic]
+liblerc-dev/testing,now 4.0.0+ds-5 amd64 [installed,automatic]
+liblerc4/testing,now 4.0.0+ds-5 amd64 [installed,automatic]
+liblist-compare-perl/testing,now 0.55-2 all [installed,automatic]
+liblist-moreutils-perl/testing,now 0.430-2 all [installed,automatic]
+liblist-moreutils-xs-perl/testing,now 0.430-4+b2 amd64 [installed,automatic]
+liblist-someutils-perl/testing,now 0.59-1 all [installed,automatic]
+liblist-someutils-xs-perl/testing,now 0.58-3+b3 amd64 [installed,automatic]
+liblist-utilsby-perl/testing,now 0.12-2 all [installed,automatic]
+libllvm19/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+liblocale-gettext-perl/testing,now 1.07-7+b1 amd64 [installed,automatic]
+liblog-any-adapter-screen-perl/testing,now 0.141-1 all [installed,automatic]
+liblog-any-perl/testing,now 1.718-1 all [installed,automatic]
+liblsan0/testing,now 15.2.0-4 amd64 [installed,automatic]
+libltdl-dev/testing,now 2.5.4-5 amd64 [installed]
+libltdl7/testing,now 2.5.4-5 amd64 [installed,automatic]
+liblwp-mediatypes-perl/testing,now 6.04-2 all [installed,automatic]
+liblwp-protocol-https-perl/testing,now 6.14-1 all [installed,automatic]
+liblz1/testing,now 1.15-3 amd64 [installed,automatic]
+liblz4-1/testing,now 1.10.0-4 amd64 [installed,automatic]
+liblzma-dev/testing,now 5.8.1-2 amd64 [installed,automatic]
+liblzma5/testing,now 5.8.1-2 amd64 [installed,automatic]
+liblzo2-2/testing,now 2.10-3+b1 amd64 [installed,automatic]
+libmagic-mgc/testing,now 1:5.46-5 amd64 [installed,automatic]
+libmagic1t64/testing,now 1:5.46-5 amd64 [installed,automatic]
+libmail-sendmail-perl/testing,now 0.82-1 all [installed,automatic]
+libmailtools-perl/testing,now 2.22-1 all [installed,automatic]
+libmarkdown2/testing,now 2.2.7-2.1 amd64 [installed,automatic]
+libmatch-simple-perl/testing,now 0.012-1 all [installed,automatic]
+libmatch-simple-xs-perl/testing,now 0.002-1+b1 amd64 [installed,automatic]
+libmath-base85-perl/testing,now 0.5+dfsg-2 all [installed,automatic]
+libmd0/testing,now 1.1.0-2+b1 amd64 [installed,automatic]
+libmetacpan-client-perl/testing,now 2.033000-1 all [installed,automatic]
+libmime-tools-perl/testing,now 5.515-1 all [installed,automatic]
+libmldbm-perl/testing,now 2.05-4 all [installed,automatic]
+libmodule-implementation-perl/testing,now 0.09-2 all [installed,automatic]
+libmodule-runtime-perl/testing,now 0.018-1 all [installed,automatic]
+libmoo-perl/testing,now 2.005005-1 all [installed,automatic]
+libmoox-aliases-perl/testing,now 0.001006-2 all [installed,automatic]
+libmount-dev/testing,now 2.41.2-1 amd64 [installed,automatic]
+libmount1/testing,now 2.41.2-1 amd64 [installed,automatic]
+libmouse-perl/testing,now 2.5.11-1+b1 amd64 [installed,automatic]
+libmp3lame0/testing,now 3.100-6+b3 amd64 [installed,automatic]
+libmpc3/testing,now 1.3.1-2 amd64 [installed,automatic]
+libmpfr6/testing,now 4.2.2-2 amd64 [installed,automatic]
+libmpg123-0t64/testing,now 1.33.3-1 amd64 [installed,automatic]
+libnamespace-clean-perl/testing,now 0.27-2 all [installed,automatic]
+libncurses-dev/testing,now 6.5+20250216-2 amd64 [installed,automatic]
+libncurses6/testing,now 6.5+20250216-2 amd64 [installed,automatic]
+libncursesw6/testing,now 6.5+20250216-2 amd64 [installed,automatic]
+libnet-domain-tld-perl/testing,now 1.75-4 all [installed,automatic]
+libnet-http-perl/testing,now 6.24-1 all [installed,automatic]
+libnet-ipv6addr-perl/testing,now 1.02-1 all [installed,automatic]
+libnet-netmask-perl/testing,now 2.0003-1 all [installed,automatic]
+libnet-smtp-ssl-perl/testing,now 1.04-2 all [installed,automatic]
+libnet-ssleay-perl/testing,now 1.94-3 amd64 [installed,automatic]
+libnetaddr-ip-perl/testing,now 4.079+dfsg-2+b5 amd64 [installed,automatic]
+libnettle8t64/testing,now 3.10.2-1 amd64 [installed,automatic]
+libnghttp2-14/testing,now 1.64.0-1.1+b1 amd64 [installed,automatic]
+libnghttp3-9/testing,now 1.12.0-1 amd64 [installed,automatic]
+libngtcp2-16/testing,now 1.16.0-1 amd64 [installed,automatic]
+libngtcp2-crypto-gnutls8/testing,now 1.16.0-1 amd64 [installed,automatic]
+libngtcp2-crypto-ossl0/testing,now 1.16.0-1 amd64 [installed,automatic]
+libnotify-dev/testing,now 0.8.6-2 amd64 [installed]
+libnotify4/testing,now 0.8.6-2 amd64 [installed,automatic]
+libnpth0t64/testing,now 1.8-3 amd64 [installed,automatic]
+libnss-systemd/testing,now 258.1-1 amd64 [installed,automatic]
+libnumber-compare-perl/testing,now 0.03-3 all [installed,automatic]
+libobjc-15-dev/testing,now 15.2.0-4 amd64 [installed,automatic]
+libobjc4/testing,now 15.2.0-4 amd64 [installed,automatic]
+libobject-pad-perl/testing,now 0.820-1 amd64 [installed,automatic]
+libogg-dev/testing,now 1.3.6-1 amd64 [installed,automatic]
+libogg0/testing,now 1.3.6-1 amd64 [installed,automatic]
+libopengl-dev/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libopengl0/testing,now 1.7.0-1+b2 amd64 [installed,automatic]
+libopus0/testing,now 1.5.2-2 amd64 [installed,automatic]
+libosp5/testing,now 1.5.2-15.2 amd64 [installed,automatic]
+libp11-kit0/testing,now 0.25.9-2 amd64 [installed,automatic]
+libpackage-stash-perl/testing,now 0.40-1 all [installed,automatic]
+libpackage-stash-xs-perl/testing,now 0.30-1+b4 amd64 [installed,automatic]
+libpam-cap/testing,now 1:2.75-10+b1 amd64 [installed,automatic]
+libpam-modules-bin/testing,now 1.7.0-5 amd64 [installed,automatic]
+libpam-modules/testing,now 1.7.0-5 amd64 [installed,automatic]
+libpam-runtime/testing,now 1.7.0-5 all [installed,automatic]
+libpam-systemd/testing,now 258.1-1 amd64 [installed,automatic]
+libpam0g/testing,now 1.7.0-5 amd64 [installed,automatic]
+libpango-1.0-0/testing,now 1.56.3-2 amd64 [installed,automatic]
+libpango1.0-dev/testing,now 1.56.3-2 amd64 [installed]
+libpangocairo-1.0-0/testing,now 1.56.3-2 amd64 [installed,automatic]
+libpangoft2-1.0-0/testing,now 1.56.3-2 amd64 [installed,automatic]
+libpangoxft-1.0-0/testing,now 1.56.3-2 amd64 [installed,automatic]
+libparams-classify-perl/testing,now 0.015-2+b4 amd64 [installed,automatic]
+libparams-util-perl/testing,now 1.102-3+b1 amd64 [installed,automatic]
+libpath-iterator-rule-perl/testing,now 1.015-2 all [installed,automatic]
+libpath-tiny-perl/testing,now 0.148-1 all [installed,automatic]
+libpciaccess0/testing,now 0.17-3+b3 amd64 [installed,automatic]
+libpcre2-16-0/testing,now 10.46-1 amd64 [installed,automatic]
+libpcre2-32-0/testing,now 10.46-1 amd64 [installed,automatic]
+libpcre2-8-0/testing,now 10.46-1 amd64 [installed,automatic]
+libpcre2-dev/testing,now 10.46-1 amd64 [installed,automatic]
+libpcre2-posix3/testing,now 10.46-1 amd64 [installed,automatic]
+libperl5.40/testing,now 5.40.1-6 amd64 [installed,automatic]
+libperlio-gzip-perl/testing,now 0.20-1+b4 amd64 [installed,automatic]
+libperlio-utf8-strict-perl/testing,now 0.010-1+b3 amd64 [installed,automatic]
+libpfm4/testing,now 4.13.0+git106-g3e4031b-1 amd64 [installed,automatic]
+libpipeline1/testing,now 1.5.8-1 amd64 [installed,automatic]
+libpixman-1-0/testing,now 0.46.4-1 amd64 [installed,automatic]
+libpixman-1-dev/testing,now 0.46.4-1 amd64 [installed,automatic]
+libpkgconf3/testing,now 1.8.1-4 amd64 [installed,automatic]
+libpng-dev/testing,now 1.6.50-1 amd64 [installed,automatic]
+libpng-tools/testing,now 1.6.50-1 amd64 [installed,automatic]
+libpng16-16t64/testing,now 1.6.50-1 amd64 [installed,automatic]
+libpod-constants-perl/testing,now 0.19-2 all [installed,automatic]
+libpod-parser-perl/testing,now 1.67-1 all [installed,automatic]
+libproc-processtable-perl/testing,now 0.637-1 amd64 [installed,automatic]
+libproc2-0/testing,now 2:4.0.4-9 amd64 [installed,automatic]
+libpsl5t64/testing,now 0.21.2-1.1+b1 amd64 [installed,automatic]
+libpulse-dev/testing,now 17.0+dfsg1-2+b1 amd64 [installed]
+libpulse-mainloop-glib0/testing,now 17.0+dfsg1-2+b1 amd64 [installed,automatic]
+libpulse0/testing,now 17.0+dfsg1-2+b1 amd64 [installed,automatic]
+libpython3-stdlib/testing,now 3.13.7-1 amd64 [installed,automatic]
+libpython3.13-minimal/testing,now 3.13.9-1 amd64 [installed,automatic]
+libpython3.13-stdlib/testing,now 3.13.9-1 amd64 [installed,automatic]
+libquadmath0/testing,now 15.2.0-4 amd64 [installed,automatic]
+libre-engine-re2-perl/testing,now 0.18+ds-3 amd64 [installed,automatic]
+libre2-11/testing,now 20250805-1+b1 amd64 [installed,automatic]
+libreadline8t64/testing,now 8.3-3 amd64 [installed,automatic]
+libreadonly-perl/testing,now 2.050-3 all [installed,automatic]
+libref-util-perl/testing,now 0.204-2 all [installed,automatic]
+libref-util-xs-perl/testing,now 0.117-2+b4 amd64 [installed,automatic]
+libregexp-pattern-license-perl/testing,now 3.11.2-1 all [installed,automatic]
+libregexp-pattern-perl/testing,now 0.2.14-2 all [installed,automatic]
+libregexp-wildcards-perl/testing,now 1.05-3 all [installed,automatic]
+librole-tiny-perl/testing,now 2.002004-1 all [installed,automatic]
+librsvg2-2/testing,now 2.60.0+dfsg-1+b1 amd64 [installed,automatic]
+librsvg2-common/testing,now 2.60.0+dfsg-1+b1 amd64 [installed,automatic]
+librtmp1/testing,now 2.4+20151223.gitfa8646d.1-3 amd64 [installed,automatic]
+libsafe-isa-perl/testing,now 1.000010-1 all [installed,automatic]
+libsasl2-2/testing,now 2.1.28+dfsg1-10 amd64 [installed,automatic]
+libsasl2-modules-db/testing,now 2.1.28+dfsg1-10 amd64 [installed,automatic]
+libsasl2-modules/testing,now 2.1.28+dfsg1-10 amd64 [installed,automatic]
+libseccomp2/testing,now 2.6.0-2 amd64 [installed,automatic]
+libselinux1-dev/testing,now 3.9-2 amd64 [installed,automatic]
+libselinux1/testing,now 3.9-2 amd64 [installed,automatic]
+libsemanage-common/testing,now 3.9-1 all [installed,automatic]
+libsemanage2/testing,now 3.9-1 amd64 [installed,automatic]
+libsensors-config/testing,now 1:3.6.2-2 all [installed,automatic]
+libsensors5/testing,now 1:3.6.2-2 amd64 [installed,automatic]
+libsepol-dev/testing,now 3.9-2 amd64 [installed,automatic]
+libsepol2/testing,now 3.9-2 amd64 [installed,automatic]
+libsereal-decoder-perl/testing,now 5.004+ds-1+b3 amd64 [installed,automatic]
+libsereal-encoder-perl/testing,now 5.004+ds-1+b3 amd64 [installed,automatic]
+libset-intspan-perl/testing,now 1.19-3 all [installed,automatic]
+libsframe2/testing,now 2.45-7 amd64 [installed,automatic]
+libsharpyuv-dev/testing,now 1.5.0-0.1 amd64 [installed,automatic]
+libsharpyuv0/testing,now 1.5.0-0.1 amd64 [installed,automatic]
+libsigc++-2.0-0v5/testing,now 2.12.1-4 amd64 [installed,automatic]
+libsm-dev/testing,now 2:1.2.6-1 amd64 [installed,automatic]
+libsm6/testing,now 2:1.2.6-1 amd64 [installed,automatic]
+libsmartcols1/testing,now 2.41.2-1 amd64 [installed,automatic]
+libsndfile1/testing,now 1.2.2-3 amd64 [installed,automatic]
+libsoap-lite-perl/testing,now 1.27-3 all [installed,automatic]
+libsocket6-perl/testing,now 0.29-3+b4 amd64 [installed,automatic]
+libsort-versions-perl/testing,now 1.62-3 all [installed,automatic]
+libsqlite3-0/testing,now 3.46.1-8 amd64 [installed,automatic]
+libssh2-1t64/testing,now 1.11.1-1 amd64 [installed,automatic]
+libssl3t64/testing,now 3.5.4-1 amd64 [installed,automatic]
+libstartup-notification0-dev/testing,now 0.12-8 amd64 [installed]
+libstartup-notification0/testing,now 0.12-8 amd64 [installed,automatic]
+libstdc++-15-dev/testing,now 15.2.0-4 amd64 [installed,automatic]
+libstdc++6/testing,now 15.2.0-4 amd64 [installed,automatic]
+libstemmer0d/testing,now 3.0.1-1 amd64 [installed,automatic]
+libstrictures-perl/testing,now 2.000006-1 all [installed,automatic]
+libstring-copyright-perl/testing,now 0.003014-1 all [installed,automatic]
+libstring-escape-perl/testing,now 2010.002-3 all [installed,automatic]
+libstring-license-perl/testing,now 0.0.11-1 all [installed,automatic]
+libstring-shellquote-perl/testing,now 1.04-3 all [installed,automatic]
+libsub-exporter-perl/testing,now 0.990-1 all [installed,automatic]
+libsub-exporter-progressive-perl/testing,now 0.001013-3 all [installed,automatic]
+libsub-identify-perl/testing,now 0.14-3+b3 amd64 [installed,automatic]
+libsub-infix-perl/testing,now 0.004-5 all [installed,automatic]
+libsub-install-perl/testing,now 0.929-1 all [installed,automatic]
+libsub-name-perl/testing,now 0.28-1 amd64 [installed,automatic]
+libsub-quote-perl/testing,now 2.006009-1 all [installed,automatic]
+libsyntax-keyword-try-perl/testing,now 0.31-1 amd64 [installed,automatic]
+libsys-cpuaffinity-perl/testing,now 1.13~03-2+b4 amd64 [installed,automatic]
+libsys-hostname-long-perl/testing,now 1.5-3 all [installed,automatic]
+libsysprof-capture-4-dev/testing,now 49.0-1 amd64 [installed,automatic]
+libsystemd-dev/testing,now 258.1-1 amd64 [installed,automatic]
+libsystemd-shared/testing,now 258.1-1 amd64 [installed,automatic]
+libsystemd0/testing,now 258.1-1 amd64 [installed,automatic]
+libtask-weaken-perl/testing,now 1.06-2 all [installed,automatic]
+libtasn1-6/testing,now 4.20.0-2 amd64 [installed,automatic]
+libtcl8.6/testing,now 8.6.17+dfsg-1 amd64 [installed,automatic]
+libtdb-dev/testing,now 2:1.4.14+samba4.23.2+dfsg-1 amd64 [installed]
+libtdb1/testing,now 2:1.4.14+samba4.23.2+dfsg-1 amd64 [installed,automatic]
+libterm-readkey-perl/testing,now 2.38-2+b4 amd64 [installed,automatic]
+libtext-charwidth-perl/testing,now 0.04-11+b4 amd64 [installed,automatic]
+libtext-glob-perl/testing,now 0.11-3 all [installed,automatic]
+libtext-levenshteinxs-perl/testing,now 0.03-5+b4 amd64 [installed,automatic]
+libtext-markdown-discount-perl/testing,now 0.18-1 amd64 [installed,automatic]
+libtext-wrapi18n-perl/testing,now 0.06-10 all [installed,automatic]
+libtext-xslate-perl/testing,now 3.5.9-2+b1 amd64 [installed,automatic]
+libthai-data/testing,now 0.1.29-2 all [installed,automatic]
+libthai-dev/testing,now 0.1.29-2+b1 amd64 [installed,automatic]
+libthai0/testing,now 0.1.29-2+b1 amd64 [installed,automatic]
+libtiff-dev/testing,now 4.7.1-1 amd64 [installed,automatic]
+libtiff6/testing,now 4.7.1-1 amd64 [installed,automatic]
+libtiffxx6/testing,now 4.7.1-1 amd64 [installed,automatic]
+libtime-duration-perl/testing,now 1.21-2 all [installed,automatic]
+libtime-moment-perl/testing,now 0.44-2+b4 amd64 [installed,automatic]
+libtimedate-perl/testing,now 2.3300-2 all [installed,automatic]
+libtinfo6/testing,now 6.5+20250216-2 amd64 [installed,automatic]
+libtinyxml2-11/testing,now 11.0.0+dfsg-1+b1 amd64 [installed,automatic]
+libtool/testing,now 2.5.4-5 all [installed]
+libtry-tiny-perl/testing,now 0.32-1 all [installed,automatic]
+libtsan2/testing,now 15.2.0-4 amd64 [installed,automatic]
+libtype-tiny-perl/testing,now 2.008004-1 all [installed,automatic]
+libtype-tiny-xs-perl/testing,now 0.025-2+b1 amd64 [installed,automatic]
+libtypes-serialiser-perl/testing,now 1.01-1 all [installed,automatic]
+libubsan1/testing,now 15.2.0-4 amd64 [installed,automatic]
+libuchardet0/testing,now 0.0.8-2 amd64 [installed,automatic]
+libudev1/testing,now 258.1-1 amd64 [installed,automatic]
+libunicode-utf8-perl/testing,now 0.62-3 amd64 [installed,automatic]
+libunistring5/testing,now 1.3-2 amd64 [installed,automatic]
+libunwind-dev/testing,now 1.8.1-0.1 amd64 [installed,automatic]
+libunwind8/testing,now 1.8.1-0.1 amd64 [installed,automatic]
+liburi-perl/testing,now 5.30-1 all [installed,automatic]
+libuuid1/testing,now 2.41.2-1 amd64 [installed,automatic]
+libvariable-magic-perl/testing,now 0.64-1+b1 amd64 [installed,automatic]
+libvorbis-dev/testing,now 1.3.7-3 amd64 [installed]
+libvorbis0a/testing,now 1.3.7-3 amd64 [installed,automatic]
+libvorbisenc2/testing,now 1.3.7-3 amd64 [installed,automatic]
+libvorbisfile3/testing,now 1.3.7-3 amd64 [installed,automatic]
+libvulkan1/testing,now 1.4.321.0-1 amd64 [installed,automatic]
+libwant-perl/testing,now 0.29-2+b4 amd64 [installed,automatic]
+libwayland-bin/testing,now 1.24.0-2+b1 amd64 [installed,automatic]
+libwayland-client0/testing,now 1.24.0-2+b1 amd64 [installed,automatic]
+libwayland-cursor0/testing,now 1.24.0-2+b1 amd64 [installed,automatic]
+libwayland-dev/testing,now 1.24.0-2+b1 amd64 [installed,automatic]
+libwayland-egl1/testing,now 1.24.0-2+b1 amd64 [installed,automatic]
+libwayland-server0/testing,now 1.24.0-2+b1 amd64 [installed,automatic]
+libwebp-dev/testing,now 1.5.0-0.1 amd64 [installed,automatic]
+libwebp7/testing,now 1.5.0-0.1 amd64 [installed,automatic]
+libwebpdecoder3/testing,now 1.5.0-0.1 amd64 [installed,automatic]
+libwebpdemux2/testing,now 1.5.0-0.1 amd64 [installed,automatic]
+libwebpmux3/testing,now 1.5.0-0.1 amd64 [installed,automatic]
+libwww-mechanize-perl/testing,now 2.19-1 all [installed,automatic]
+libwww-perl/testing,now 6.80-1 all [installed,automatic]
+libwww-robotrules-perl/testing,now 6.02-1 all [installed,automatic]
+libx11-6/testing,now 2:1.8.12-1 amd64 [installed,automatic]
+libx11-data/testing,now 2:1.8.12-1 all [installed,automatic]
+libx11-dev/testing,now 2:1.8.12-1 amd64 [installed]
+libx11-xcb1/testing,now 2:1.8.12-1 amd64 [installed,automatic]
+libxapian30/testing,now 1.4.29-3 amd64 [installed,automatic]
+libxau-dev/testing,now 1:1.0.11-1 amd64 [installed,automatic]
+libxau6/testing,now 1:1.0.11-1 amd64 [installed,automatic]
+libxcb-dri3-0/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-glx0/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-present0/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-randr0/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-render0-dev/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-render0/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-shm0-dev/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-shm0/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-sync1/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb-util1/testing,now 0.4.1-1 amd64 [installed,automatic]
+libxcb-xfixes0/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb1-dev/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcb1/testing,now 1.17.0-2+b1 amd64 [installed,automatic]
+libxcomposite-dev/testing,now 1:0.4.6-1 amd64 [installed,automatic]
+libxcomposite1/testing,now 1:0.4.6-1 amd64 [installed,automatic]
+libxcursor-dev/testing,now 1:1.2.3-1 amd64 [installed,automatic]
+libxcursor1/testing,now 1:1.2.3-1 amd64 [installed,automatic]
+libxdamage-dev/testing,now 1:1.1.6-1+b2 amd64 [installed,automatic]
+libxdamage1/testing,now 1:1.1.6-1+b2 amd64 [installed,automatic]
+libxdelta2t64/testing,now 1.1.3-10.8 amd64 [installed,automatic]
+libxdmcp-dev/testing,now 1:1.1.5-1 amd64 [installed,automatic]
+libxdmcp6/testing,now 1:1.1.5-1 amd64 [installed,automatic]
+libxext-dev/testing,now 2:1.3.4-1+b3 amd64 [installed]
+libxext6/testing,now 2:1.3.4-1+b3 amd64 [installed,automatic]
+libxfixes-dev/testing,now 1:6.0.0-2+b4 amd64 [installed,automatic]
+libxfixes3/testing,now 1:6.0.0-2+b4 amd64 [installed,automatic]
+libxft-dev/testing,now 2.3.6-1+b4 amd64 [installed,automatic]
+libxft2/testing,now 2.3.6-1+b4 amd64 [installed,automatic]
+libxi-dev/testing,now 2:1.8.2-1 amd64 [installed,automatic]
+libxi6/testing,now 2:1.8.2-1 amd64 [installed,automatic]
+libxinerama-dev/testing,now 2:1.1.4-3+b4 amd64 [installed,automatic]
+libxinerama1/testing,now 2:1.1.4-3+b4 amd64 [installed,automatic]
+libxkbcommon-dev/testing,now 1.7.0-2.1 amd64 [installed,automatic]
+libxkbcommon0/testing,now 1.7.0-2.1 amd64 [installed,automatic]
+libxml-libxml-perl/testing,now 2.0207+dfsg+really+2.0134-6 amd64 [installed,automatic]
+libxml-namespacesupport-perl/testing,now 1.12-2 all [installed,automatic]
+libxml-parser-perl/testing,now 2.47-1+b3 amd64 [installed,automatic]
+libxml-sax-base-perl/testing,now 1.09-3 all [installed,automatic]
+libxml-sax-expat-perl/testing,now 0.51-2 all [installed,automatic]
+libxml-sax-perl/testing,now 1.02+dfsg-4 all [installed,automatic]
+libxml2-16/testing,now 2.14.6+dfsg-0.1 amd64 [installed,automatic]
+libxml2-dev/testing,now 2.14.6+dfsg-0.1 amd64 [installed]
+libxml2-utils/testing,now 2.14.6+dfsg-0.1 amd64 [installed]
+libxmlb2/testing,now 0.3.24-1 amd64 [installed,automatic]
+libxmlrpc-lite-perl/testing,now 0.717-5 all [installed,automatic]
+libxmuu1/testing,now 2:1.1.3-3+b4 amd64 [installed,automatic]
+libxrandr-dev/testing,now 2:1.5.4-1+b3 amd64 [installed,automatic]
+libxrandr2/testing,now 2:1.5.4-1+b3 amd64 [installed,automatic]
+libxrender-dev/testing,now 1:0.9.12-1 amd64 [installed,automatic]
+libxrender1/testing,now 1:0.9.12-1 amd64 [installed,automatic]
+libxres-dev/testing,now 2:1.2.1-1+b2 amd64 [installed]
+libxres1/testing,now 2:1.2.1-1+b2 amd64 [installed,automatic]
+libxs-parse-keyword-perl/testing,now 0.49-1 amd64 [installed,automatic]
+libxs-parse-sublike-perl/testing,now 0.39-1 amd64 [installed,automatic]
+libxshmfence1/testing,now 1.3.3-1 amd64 [installed,automatic]
+libxslt1.1/testing,now 1.1.43-0.2 amd64 [installed,automatic]
+libxstring-perl/testing,now 0.005-2+b4 amd64 [installed,automatic]
+libxtst-dev/testing,now 2:1.2.5-1 amd64 [installed,automatic]
+libxtst6/testing,now 2:1.2.5-1 amd64 [installed,automatic]
+libxxf86vm1/testing,now 1:1.1.4-1+b4 amd64 [installed,automatic]
+libxxhash0/testing,now 0.8.3-2 amd64 [installed,automatic]
+libyaml-0-2/testing,now 0.2.5-2 amd64 [installed,automatic]
+libyaml-libyaml-perl/testing,now 0.904.0+ds-1 amd64 [installed,automatic]
+libz3-4/testing,now 4.13.3-1 amd64 [installed,automatic]
+libz3-dev/testing,now 4.13.3-1 amd64 [installed,automatic]
+libzstd-dev/testing,now 1.5.7+dfsg-2 amd64 [installed,automatic]
+libzstd1/testing,now 1.5.7+dfsg-2 amd64 [installed,automatic]
+licensecheck/testing,now 3.3.9-1 all [installed,automatic]
+lintian/testing,now 2.127.0 all [installed,automatic]
+linux-libc-dev/testing,now 6.16.12-2 all [installed,automatic]
+linux-sysctl-defaults/testing,now 4.14 all [installed,automatic]
+llvm-19-dev/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+llvm-19-linker-tools/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+llvm-19-runtime/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+llvm-19-tools/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+llvm-19/testing,now 1:19.1.7-7 amd64 [installed,automatic]
+login.defs/testing,now 1:4.18.0-1 all [installed,automatic]
+login/testing,now 1:4.16.0-2+really2.41.2-1 amd64 [installed,automatic]
+lsb-release/testing,now 12.1-2 all [installed,automatic]
+lzip/testing,now 1.25-3 amd64 [installed,automatic]
+lzop/testing,now 1.04-2 amd64 [installed,automatic]
+m4/testing,now 1.4.20-2 amd64 [installed,automatic]
+make/testing,now 4.4.1-2 amd64 [installed]
+man-db/testing,now 2.13.1-1 amd64 [installed,automatic]
+manpages-dev/testing,now 6.15-1 all [installed,automatic]
+manpages/testing,now 6.15-1 all [installed,automatic]
+mawk/testing,now 1.3.4.20250131-1 amd64 [installed,automatic]
+media-types/testing,now 14.0.0 all [installed,automatic]
+mesa-libgallium/testing,now 25.2.5-1 amd64 [installed,automatic]
+mesa-vulkan-drivers/testing,now 25.2.5-1 amd64 [installed,automatic]
+meson/testing,now 1.9.1-1 all [installed]
+mount/testing,now 2.41.2-1 amd64 [installed,automatic]
+native-architecture/testing,now 0.2.6 all [installed,automatic]
+ncurses-base/testing,now 6.5+20250216-2 all [installed,automatic]
+ncurses-bin/testing,now 6.5+20250216-2 amd64 [installed,automatic]
+net-tools/testing,now 2.10-2 amd64 [installed,automatic]
+netbase/testing,now 6.5 all [installed,automatic]
+ninja-build/testing,now 1.12.1-1 amd64 [installed]
+opensp/testing,now 1.5.2-15.2 amd64 [installed,automatic]
+openssh-client/testing,now 1:10.2p1-2 amd64 [installed,automatic]
+openssl-provider-legacy/testing,now 3.5.4-1 amd64 [installed,automatic]
+openssl/testing,now 3.5.4-1 amd64 [installed,automatic]
+pango1.0-tools/testing,now 1.56.3-2 amd64 [installed,automatic]
+passwd/testing,now 1:4.18.0-1 amd64 [installed,automatic]
+patch/testing,now 2.8-2 amd64 [installed,automatic]
+patchutils/testing,now 0.4.3-1 amd64 [installed,automatic]
+pbuilder/testing,now 0.231.1 all [installed,automatic]
+pbzip2/testing,now 1.1.13-1 amd64 [installed,automatic]
+perl-base/testing,now 5.40.1-6 amd64 [installed,automatic]
+perl-modules-5.40/testing,now 5.40.1-6 all [installed,automatic]
+perl-openssl-defaults/testing,now 7+b2 amd64 [installed,automatic]
+perl/testing,now 5.40.1-6 amd64 [installed,automatic]
+pinentry-curses/testing,now 1.3.2-3 amd64 [installed,automatic]
+pixz/testing,now 1.0.7-4 amd64 [installed,automatic]
+pkgconf-bin/testing,now 1.8.1-4 amd64 [installed,automatic]
+pkgconf/testing,now 1.8.1-4 amd64 [installed,automatic]
+plzip/testing,now 1.12-3 amd64 [installed,automatic]
+po-debconf/testing,now 1.0.21+nmu1 all [installed,automatic]
+pristine-tar/testing,now 1.50+nmu2 amd64 [installed,automatic]
+procps/testing,now 2:4.0.4-9 amd64 [installed,automatic]
+psmisc/testing,now 23.7-2 amd64 [installed,automatic]
+publicsuffix/testing,now 20250820.0948-0.1 all [installed,automatic]
+python-apt-common/testing,now 3.0.0 all [installed,automatic]
+python3-apt/testing,now 3.0.0 amd64 [installed,automatic]
+python3-autocommand/testing,now 2.2.2-3 all [installed,automatic]
+python3-bs4/testing,now 4.14.2-1 all [installed,automatic]
+python3-certifi/testing,now 2025.1.31+ds-1 all [installed,automatic]
+python3-chardet/testing,now 5.2.0+dfsg-2 all [installed,automatic]
+python3-charset-normalizer/testing,now 3.4.3-1 amd64 [installed,automatic]
+python3-cssselect/testing,now 1.3.0-1 all [installed,automatic]
+python3-dateutil/testing,now 2.9.0-4 all [installed,automatic]
+python3-debian/testing,now 1.0.1 all [installed,automatic]
+python3-gpg/testing,now 1.24.2-3 amd64 [installed,automatic]
+python3-html5lib/testing,now 1.2-2 all [installed,automatic]
+python3-idna/testing,now 3.10-1 all [installed,automatic]
+python3-inflect/testing,now 7.5.0-1 all [installed,automatic]
+python3-jaraco.context/testing,now 6.0.1-1 all [installed,automatic]
+python3-jaraco.functools/testing,now 4.1.0-1 all [installed,automatic]
+python3-jaraco.text/testing,now 4.0.0-1 all [installed,automatic]
+python3-lxml/testing,now 6.0.2-1 amd64 [installed,automatic]
+python3-magic/testing,now 2:0.4.27-3 all [installed,automatic]
+python3-mako/testing,now 1.3.10-3 all [installed,automatic]
+python3-markdown/testing,now 3.9-1 all [installed,automatic]
+python3-markupsafe/testing,now 3.0.2-2 amd64 [installed,automatic]
+python3-minimal/testing,now 3.13.7-1 amd64 [installed,automatic]
+python3-more-itertools/testing,now 10.8.0-1 all [installed,automatic]
+python3-packaging/testing,now 25.0-1 all [installed,automatic]
+python3-pkg-resources/testing,now 78.1.1-0.1 all [installed,automatic]
+python3-pygments/testing,now 2.18.0+dfsg-2 all [installed,automatic]
+python3-requests/testing,now 2.32.5+dfsg-1 all [installed,automatic]
+python3-setuptools/testing,now 78.1.1-0.1 all [installed,automatic]
+python3-soupsieve/testing,now 2.7-2 all [installed,automatic]
+python3-typeguard/testing,now 4.4.4-1 all [installed,automatic]
+python3-typing-extensions/testing,now 4.15.0-1 all [installed,automatic]
+python3-unidiff/testing,now 0.7.5-2 all [installed,automatic]
+python3-urllib3/testing,now 2.5.0-1 all [installed,automatic]
+python3-webencodings/testing,now 0.5.1-5 all [installed,automatic]
+python3-xdg/testing,now 0.28-2 all [installed,automatic]
+python3-yaml/testing,now 6.0.2-2 amd64 [installed,automatic]
+python3-zipp/testing,now 3.23.0-1 all [installed,automatic]
+python3.13-minimal/testing,now 3.13.9-1 amd64 [installed,automatic]
+python3.13/testing,now 3.13.9-1 amd64 [installed,automatic]
+python3/testing,now 3.13.7-1 amd64 [installed,automatic]
+quilt/testing,now 0.68-1 all [installed]
+readline-common/testing,now 8.3-3 all [installed,automatic]
+rpcsvc-proto/testing,now 1.4.3-1 amd64 [installed,automatic]
+sed/testing,now 4.9-2 amd64 [installed,automatic]
+sensible-utils/testing,now 0.0.26 all [installed,automatic]
+sgml-base/testing,now 1.31+nmu1 all [installed,automatic]
+sgml-data/testing,now 2.0.11+nmu1 all [installed,automatic]
+shared-mime-info/testing,now 2.4-5+b3 amd64 [installed]
+sq/testing,now 1.3.1-4 amd64 [installed,automatic]
+sqv/testing,now 1.3.0-3 amd64 [installed,automatic]
+strace/testing,now 6.16+ds-2 amd64 [installed,automatic]
+sudo/testing,now 1.9.17p2-1 amd64 [installed,automatic]
+systemd-cryptsetup/testing,now 258.1-1 amd64 [installed,automatic]
+systemd-sysv/testing,now 258.1-1 amd64 [installed,automatic]
+systemd-timesyncd/testing,now 258.1-1 amd64 [installed,automatic]
+systemd/testing,now 258.1-1 amd64 [installed,automatic]
+sysvinit-utils/testing,now 3.14-4 amd64 [installed,automatic]
+t1utils/testing,now 1.41-4 amd64 [installed,automatic]
+tar/testing,now 1.35+dfsg-3.1 amd64 [installed,automatic]
+tcl-expect/testing,now 5.45.4-4 amd64 [installed,automatic]
+tcl8.6/testing,now 8.6.17+dfsg-1 amd64 [installed,automatic]
+tzdata/testing,now 2025b-5 all [installed,automatic]
+ucf/testing,now 3.0052 all [installed,automatic]
+unzip/testing,now 6.0-29 amd64 [installed,automatic]
+util-linux/testing,now 2.41.2-1 amd64 [installed,automatic]
+uuid-dev/testing,now 2.41.2-1 amd64 [installed,automatic]
+wayland-protocols/testing,now 1.45-2 all [installed,automatic]
+wdiff/testing,now 1.2.2-9 amd64 [installed,automatic]
+wget/testing,now 1.25.0-2 amd64 [installed,automatic]
+x11-common/testing,now 1:7.7+25 all [installed,automatic]
+x11proto-dev/testing,now 2024.1-1 all [installed,automatic]
+xauth/testing,now 1:1.1.2-1.1 amd64 [installed,automatic]
+xdelta3/testing,now 3.0.11-dfsg-1.2 amd64 [installed,automatic]
+xdelta/testing,now 1.1.3-10.8 amd64 [installed,automatic]
+xdg-user-dirs/testing,now 0.19-1 amd64 [installed,automatic]
+xkb-data/testing,now 2.42-1 all [installed,automatic]
+xml-core/testing,now 0.19 all [installed,automatic]
+xorg-sgml-doctools/testing,now 1:1.11-1.1 all [installed,automatic]
+xsltproc/testing,now 1.1.43-0.2 amd64 [installed,automatic]
+xtrans-dev/testing,now 1.6.0-1 all [installed,automatic]
+xz-utils/testing,now 5.8.1-2 amd64 [installed,automatic]
+zlib1g-dev/testing,now 1:1.3.dfsg+really1.3.1-1+b1 amd64 [installed,automatic]
+zlib1g/testing,now 1:1.3.dfsg+really1.3.1-1+b1 amd64 [installed,automatic]
+Errors detected in the build 0
+Warnings detected in the logs 63
+cppcheck defects detected in the logs 50
+TOTAL warnings detected in the logs 113
