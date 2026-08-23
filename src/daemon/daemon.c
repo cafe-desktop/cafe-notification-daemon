@@ -957,7 +957,7 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
         data = (guchar *) g_memdup2 (g_variant_get_data (data_variant),
                                      g_variant_get_size (data_variant));
 
-        pixbuf = gdk_pixbuf_new_from_data (data,
+        pixbuf = cdk_pixbuf_new_from_data (data,
                                            GDK_COLORSPACE_RGB,
                                            has_alpha,
                                            bits_per_sample,
@@ -985,7 +985,7 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 		}
 
 		/* Load file */
-		pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+		pixbuf = cdk_pixbuf_new_from_file (path, NULL);
 	}
 	else
 	{
@@ -1015,7 +1015,7 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 		if (pixbuf == NULL)
 		{
 			/* Well... maybe this is a file afterall. */
-			pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+			pixbuf = cdk_pixbuf_new_from_file (path, NULL);
 		}
 	}
 
@@ -1028,8 +1028,8 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 	int ph;
 	float scale_factor;
 
-	pw = gdk_pixbuf_get_width (pixbuf);
-	ph = gdk_pixbuf_get_height (pixbuf);
+	pw = cdk_pixbuf_get_width (pixbuf);
+	ph = cdk_pixbuf_get_height (pixbuf);
 
 	/* Determine which dimension requires the smallest scale. */
 	scale_factor = (float) IMAGE_SIZE / (float) MAX(pw, ph);
@@ -1042,7 +1042,7 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 
 		scale_x = (int) (pw * scale_factor);
 		scale_y = (int) (ph * scale_factor);
-		return gdk_pixbuf_scale_simple (pixbuf,
+		return cdk_pixbuf_scale_simple (pixbuf,
 										scale_x,
 										scale_y,
 										GDK_INTERP_BILINEAR);
