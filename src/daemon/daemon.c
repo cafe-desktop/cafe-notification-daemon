@@ -958,7 +958,7 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
                                      g_variant_get_size (data_variant));
 
         pixbuf = cdk_pixbuf_new_from_data (data,
-                                           GDK_COLORSPACE_RGB,
+                                           CDK_COLORSPACE_RGB,
                                            has_alpha,
                                            bits_per_sample,
                                            width,
@@ -1045,7 +1045,7 @@ static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_str
 		return cdk_pixbuf_scale_simple (pixbuf,
 										scale_x,
 										scale_y,
-										GDK_INTERP_BILINEAR);
+										CDK_INTERP_BILINEAR);
 	}
 	else
 	{
