@@ -920,7 +920,7 @@ static NotifyTimeout* _store_notification(NotifyDaemon* daemon, CtkWindow* nw, i
 	return nt;
 }
 
-static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
+static CdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
 {
         gboolean        has_alpha;
         int             bits_per_sample;
@@ -931,7 +931,7 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
         GVariant       *data_variant;
         gsize           expected_len;
         guchar         *data;
-        GdkPixbuf      *pixbuf;
+        CdkPixbuf      *pixbuf;
 
         g_variant_get (icon_data,
                        "(iiibii@ay)",
@@ -964,15 +964,15 @@ static GdkPixbuf * _notify_daemon_pixbuf_from_data_hint (GVariant *icon_data)
                                            width,
                                            height,
                                            rowstride,
-                                           (GdkPixbufDestroyNotify) g_free,
+                                           (CdkPixbufDestroyNotify) g_free,
                                            NULL);
 
         return pixbuf;
 }
 
-static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
+static CdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 {
-	GdkPixbuf* pixbuf = NULL;
+	CdkPixbuf* pixbuf = NULL;
 
 	if (!strncmp (path, "file://", 7) || *path == '/')
 	{
@@ -1022,7 +1022,7 @@ static GdkPixbuf* _notify_daemon_pixbuf_from_path(const char* path)
 	return pixbuf;
 }
 
-static GdkPixbuf* _notify_daemon_scale_pixbuf(GdkPixbuf *pixbuf, gboolean no_stretch_hint)
+static CdkPixbuf* _notify_daemon_scale_pixbuf(CdkPixbuf *pixbuf, gboolean no_stretch_hint)
 {
 	int pw;
 	int ph;
@@ -1337,7 +1337,7 @@ static gboolean notify_daemon_notify_handler (NotifyDaemonNotifications *object,
 	gboolean sound_enabled;
 	gboolean do_not_disturb;
 	gint i;
-	GdkPixbuf* pixbuf;
+	CdkPixbuf* pixbuf;
 	GSettings* gsettings;
 
 	if (g_hash_table_size (daemon->notification_hash) > MAX_NOTIFICATIONS)
@@ -1495,7 +1495,7 @@ static gboolean notify_daemon_notify_handler (NotifyDaemonNotifications *object,
 
 	if (pixbuf != NULL)
 	{
-		GdkPixbuf *scaled;
+		CdkPixbuf *scaled;
 		scaled = NULL;
 		scaled = _notify_daemon_scale_pixbuf (pixbuf, TRUE);
 		theme_set_notification_icon (nw, scaled);
