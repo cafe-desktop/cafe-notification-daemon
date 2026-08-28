@@ -3,73 +3,12 @@
 ##########################################################
 requires:
   debian:
-    # Useful URL: https://github.com/cafe-desktop/debian-packages
-    # cafe B-D: libkanberra-ctk3-dev libctk-3-dev libvnck-3-dev cafe-common
-    - aptitude
-    - autoconf-archive
-    - autopoint
-    - clang
-    - clang-tools
-    - cppcheck
-    - expect #required for unbuffer
-    - gcc
-    - git
-    - gobject-introspection
-    - gtk-doc-tools
-    - libdconf-dev
-    - libexempi-dev
-    - libexif-dev
-    - libgirepository1.0-dev
-    - libglib2.0-dev
-    - libnotify-dev
-    - libpango1.0-dev
-    - libstartup-notification0-dev
-    - libx11-dev
-    - libxml2-dev
-    - libxml2-utils
-    - quilt
-    - shared-mime-info
-
-    #required for cafe-common
-    - autoconf
-    - make
-
-    #required for cafe-desktop
-    - intltool
-    - iso-codes
-    - libglib2.0-doc
-    - libtool
-
-    #required for libkanberra
-    - gnome-pkg-tools
-    - libltdl-dev
-    - libasound2-dev
-    - libvorbis-dev
-    - libtdb-dev
-    - libpulse-dev
-    - libgstreamer1.0-dev
-
-    #required for libvnck
-    - build-essential
-    - docbook-xml
-    - gettext
-    - libxext-dev
-    - libxres-dev
-    - meson
-    - ninja-build
 
 before_scripts:
-  - ./html-cppcheck
-  - ./debrepo-install 'libctk-3-dev libcail-3-dev'
-  - ./install-from-git https://github.com/cafe-desktop/libkanberra master
-  - ./install-from-git https://github.com/cafe-desktop/libvnck master meson
-  - ./install-from-git https://github.com/cafe-desktop/cafe-common master
-  - ./install-from-git https://github.com/cafe-desktop/cafe-desktop master
+  - ./debrepo-install
 
 build_scripts:
-  - ./before-build
-  - ./make-scanbuild '--enable-compile-warnings=maximum'
-  - ./after-build
+  - ./build-debs https://github.com/cafe-desktop/debian-packages devel cafe-notification-daemon
 
 after_scripts:
   - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/${OWNER_NAME}/cafe-notification-daemon/raw/master/data/icons/16x16/cafe-notification-properties.png; fi
